@@ -10,9 +10,9 @@ import Foundation
 
 class Weekday: NSObject {
     
-    var contextBlocks: ContextBlock
+    var contextBlocks: [ContextBlock]
     
-    init(contextBlocks blocks: [(TimeBlock,Context)] = []) {
+    init(contextBlocks blocks: [ContextBlock] = []) {
         
         contextBlocks = blocks
         

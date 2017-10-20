@@ -14,14 +14,17 @@ class User: NSObject {
     var contexts: [Context]
     var week: Week
     
-    var schedule: [Activity]
+    var schedule: [Activity] = []
     
     init(projects projs: [Project] = [], contexts ctxs: [Context] = [], week wk: Week = Week()) {
-        
+		
         projects = projs
         contexts = ctxs
         week = wk
-        schedule = getSchedule(from: Date())
+		
+		super.init()
+		
+        schedule = self.getSchedule(from: Date())
         
         
     }

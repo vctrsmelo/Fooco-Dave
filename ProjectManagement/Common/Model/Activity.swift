@@ -13,9 +13,10 @@ class Activity: NSObject{
     var project: Project
     var timeBlock: TimeBlock
     
-    override init(withProject proj: Project, at tb: TimeBlock) {
-        project = proj
+    init(withProject proj: Project, at tb: TimeBlock) {
+		project = proj
         timeBlock = tb
+		super.init()
     }
     
 }
