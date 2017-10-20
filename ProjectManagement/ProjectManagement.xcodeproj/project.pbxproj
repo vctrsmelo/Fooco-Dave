@@ -264,8 +264,7 @@
 				EEA46BB71F9A36D600851D5D /* DaveUITests */,
 				EEA46BAC1F9A36D600851D5D /* DaveTests */,
 			);
-			name = Dave;
-			path = "New Group";
+			path = Dave;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
