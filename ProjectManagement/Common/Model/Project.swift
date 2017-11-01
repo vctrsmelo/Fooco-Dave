@@ -17,17 +17,15 @@ class Project {
     var priority: Int
     var totalTimeEstimated: TimeInterval
     var timeLeftEstimated: TimeInterval {
-        get{
-            var timeLeft = totalTimeEstimated
-            for activity in scheduledActivities {
-                timeLeft -= activity.timeBlock.totalTime
-            }
-            return timeLeft
+        var timeLeft = totalTimeEstimated
+        for activity in scheduledActivities {
+            timeLeft -= activity.timeBlock.totalTime
         }
+        return timeLeft
         
     }
-    private var scheduledActivities: [Activity] = []
     
+    private var scheduledActivities: [Activity] = []
     
     init(named: String, startsAt: Date, endsAt: Date, withContext ctxt: Context, andPriority prior: Int = 1, totalTimeEstimated totalTime: TimeInterval) {
         name = named
@@ -45,7 +43,7 @@ class Project {
         let ta = User.sharedInstance.weekSchedule.getWorkingSeconds(for: self.context, from: Date(), to: endingDate)
         let sf = 1.0 - User.sharedInstance.safetyMargin
 
-        return (ta*sf - tl)*p
+        return (ta * sf - tl) * p
 
     }
 
@@ -53,25 +51,38 @@ class Project {
         scheduledActivities = []
     }
 
-    func getAnActivityFor(timeBlock: TimeBlock) -> Activity {
+    func getNextActivityFor(timeBlock tbl: TimeBlock) -> Activity? {
 
-        var newActivity = Activity(withProject: self, at: timeBlock)
-        scheduledActivities.append(newActivity)
+        //if timeBlock is smaller than the minimal acceptable and the time left of project is bigger than this minimal acceptable value, should not create the activity.
+        if context.minProjectWorkingTime != nil && tbl.totalTime < context.minProjectWorkingTime! && self.timeLeftEstimated >= context.minProjectWorkingTime! {
+            return nil
+        }
+        
+        //really creates the activity
+        let activity = allocateActivity(for: tbl)
+        scheduledActivities.append(activity)
+        return activity
+    }
+    
+    private func allocateActivity(for tbl: TimeBlock) -> Activity {
+        
+        let maxTime = context.maxProjectWorkingTime
+        let newActivity = (maxTime == nil || tbl.totalTime <= maxTime!) ? Activity(withProject: self, at: tbl) : Activity(withProject: self, at: TimeBlock(startsAt: tbl.startsAt, endsAt: tbl.startsAt.addingTimeInterval(maxTime!)))
         return newActivity
-
+        
     }
     
 }
 
 extension Project: Comparable, Equatable {
     
-    static func <(lhs: Project, rhs: Project) -> Bool {
+    static func <(lhs: Project, rhs: Project) -> Bool { //:swiftlint:disable:this operator_whitespace
         
         return (lhs.getPriorityValue() < rhs.getPriorityValue())
     
     }
     
-    static func ==(lhs: Project, rhs: Project) -> Bool {
+    static func ==(lhs: Project, rhs: Project) -> Bool { //:swiftlint:disable:this operator_whitespace
         
         return (lhs.getPriorityValue() == rhs.getPriorityValue())
 
@@ -85,6 +96,4 @@ extension Project: Hashable {
         return name.hashValue
     }
     
-    
 }
-

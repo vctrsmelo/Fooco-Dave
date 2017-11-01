@@ -54,6 +54,14 @@ struct Week {
         saturday = Weekday()
         sunday = Weekday()
     }
+    
+    func getDay(for date: Date) -> Weekday? {
+        
+        let weekdayAsInt = Calendar.current.component(.weekday, from: date)
+        
+        return self.getDay(weekdayAsInt)
+        
+    }
         
     /**
      return the default working hours allocated for the context. Does not consider the user calendar events

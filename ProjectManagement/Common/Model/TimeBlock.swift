@@ -13,23 +13,19 @@ class TimeBlock {
     var startsAt: Date
     var endsAt: Date
     
-    private(set) var totalTime: TimeInterval {
+    var totalTime: TimeInterval {
         get {
             return endsAt.timeIntervalSince(startsAt)
-        }
-        set {
-            
         }
     }
     
     init(startsAt starting: Date, endsAt ending: Date) {
         
         if Calendar.current.compare(starting, to: ending, toGranularity: .hour) != ComparisonResult.orderedDescending {
-            
             fatalError("[Timeblock init] tried to create a timeblock with starting date after ending date")
             
         }
-        
+
         startsAt = starting
         endsAt = ending
         
@@ -93,8 +89,8 @@ class TimeBlock {
         return timeBlocks
     }
 
-    func contains(timeBlock tb: TimeBlock) -> Bool {
-        return (self.startsAt <= tb.startsAt && self.endsAt >= tb.endsAt)
+    func contains(timeBlock tbl: TimeBlock) -> Bool {
+        return (self.startsAt <= tbl.startsAt && self.endsAt >= tbl.endsAt)
     }
     
 }

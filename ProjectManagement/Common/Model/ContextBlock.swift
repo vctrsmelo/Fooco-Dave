@@ -14,62 +14,57 @@ class ContextBlock {
     var context: Context
     
     var activities: [Activity] = []
-    var events: [TimeBlock]
+    var events: [Event]
     
-    private var _leftTimeBlocks: [TimeBlock]? = nil
+    private var _leftTimeBlocks: [TimeBlock]?
     var leftTimeBlocks: [TimeBlock] {
-        get {
-            if _leftTimeBlocks != nil {
-                return _leftTimeBlocks!
-            }
-            var timeBlocks = [timeBlock]
-            
-            //Gera um array de timeblocks, que são os tempos que sobraram após os eventos do usuário serem discontados do timeBlock
-            for event in events {
-                for i in 0 ..< timeBlocks.count-1 {
-
-                    let splittedTbs = timeBlocks[i] - event
-                    timeBlocks.remove(at: i)
-                    timeBlocks.append(contentsOf: splittedTbs)
-
-                }
-            }
-            _leftTimeBlocks = timeBlocks
+        if _leftTimeBlocks != nil {
             return _leftTimeBlocks!
         }
+        var timeBlocks = [timeBlock]
+        
+        //Gera um array de timeblocks, que são os tempos que sobraram após os eventos do usuário serem discontados do timeBlock
+        for event in events {
+            for i in 0 ..< timeBlocks.count - 1 {
+
+                let splittedTbs = timeBlocks[i] - event
+                timeBlocks.remove(at: i)
+                timeBlocks.append(contentsOf: splittedTbs)
+
+            }
+        }
+        _leftTimeBlocks = timeBlocks
+        return _leftTimeBlocks!
     }
-    
-    private var _leftTime: Double? = nil
-    var leftTime: Double{
-        get {
-            
-            if _leftTime != nil{
-                return _leftTime!
-            }
-            
-            var leftTime = timeBlock.totalTime
-            
-            for event in events {
-                leftTime -= event.totalTime
-            }
-            
-            _leftTime = leftTime
+
+    private var _leftTime: Double?
+    var leftTime: Double {
+
+        if _leftTime != nil {
             return _leftTime!
-            
         }
         
+        var leftTime = timeBlock.totalTime
+        
+        for event in events {
+            leftTime -= event.totalTime
+        }
+        
+        _leftTime = leftTime
+        return _leftTime!
+        
     }
     
-    init(timeBlock tb: TimeBlock, context ctx: Context, activities actvs: [Activity] = [], events evts: [TimeBlock] = []) {
+    init(timeBlock tbl: TimeBlock, context ctx: Context, activities actvs: [Activity] = [], events evts: [Event] = []) {
         
-        timeBlock = tb
+        timeBlock = tbl
         context = ctx
         activities = actvs
         events = evts
         
     }
     
-    func discountEventsTimeIfApplicable(events evts: [TimeBlock]) {
+    func discountEventsTimeIfApplicable(events evts: [Event]) {
         
         for event in evts {
             
@@ -85,6 +80,24 @@ class ContextBlock {
                 _leftTimeBlocks = nil
             }
             
+        }
+        
+    }
+    
+    func addActivities(with evts: [Event]) {
+        
+
+        //append events to the contextBlock
+        discountEventsTimeIfApplicable(events: evts)
+        
+        //create the activity
+        for tbl in leftTimeBlocks {
+            
+            guard let nextProject = User.sharedInstance.getNextProject(for: context) else { continue }
+            
+            if let nextActivity = nextProject.getNextActivityFor(timeBlock: tbl) {
+                activities.append(nextActivity)
+            }
         }
         
     }

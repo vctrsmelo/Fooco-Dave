@@ -14,15 +14,15 @@ class Context: NSObject {
     var name: String
     var projects: Set<Project>?
     var color: UIColor
-    var minimalWorkingTimePerProject: TimeInterval?
-    var maximumWorkingTimePerProject: TimeInterval?
-    
-    init(named: String, color clr: UIColor = UIColor.contextColors().random(), projects projs: Set<Project>? = nil, minimalWorkingTimePerProject min: TimeInterval?, maximumWorkingHoursPerProject max: TimeInterval?) {
+    var minProjectWorkingTime: TimeInterval?
+    var maxProjectWorkingTime: TimeInterval?
+
+    init(named: String, color clr: UIColor = UIColor.contextColors().random(), projects projs: Set<Project>? = nil, minProjectWorkingTime min: TimeInterval?, maximumWorkingHoursPerProject max: TimeInterval?) {
         name = named
         projects = projs
         color = clr
-        minimalWorkingTimePerProject = min
-        maximumWorkingTimePerProject = max
+        minProjectWorkingTime = min
+        maxProjectWorkingTime = max
     }
 
 }
