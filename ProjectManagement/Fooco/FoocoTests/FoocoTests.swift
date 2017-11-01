@@ -32,4 +32,11 @@ class FoocoTests: XCTestCase {
         }
     }
     
+    func testUser() {
+        
+        var usr = User.sharedInstance
+        usr.updateCurrentScheduleUntil(date: Date())
+        
+    }
+    
 }

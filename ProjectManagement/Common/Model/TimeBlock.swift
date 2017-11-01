@@ -8,10 +8,19 @@
 
 import Foundation
 
-class TimeBlock: NSObject {
+class TimeBlock {
 
     var startsAt: Date
     var endsAt: Date
+    
+    private(set) var totalTime: TimeInterval {
+        get {
+            return endsAt.timeIntervalSince(startsAt)
+        }
+        set {
+            
+        }
+    }
     
     init(startsAt starting: Date, endsAt ending: Date) {
         
@@ -26,4 +35,123 @@ class TimeBlock: NSObject {
         
     }
     
+    /**
+     Split two timeblocks according to their intersections. If are not intersecting or are the same, return nil.
+     */
+    static func split(timeBlock1 tb1: TimeBlock, timeBlock2 tb2: TimeBlock) -> [TimeBlock]? {
+
+        let tb1StartsDay = Calendar.current.component(.day, from: tb1.startsAt)
+        let tb1EndsDay = Calendar.current.component(.day, from: tb1.endsAt)
+
+        let tb2StartsDay = Calendar.current.component(.day, from: tb2.startsAt)
+        let tb2EndsDay = Calendar.current.component(.day, from: tb2.endsAt)
+
+        //if are not intersecting or are the same, return []
+        if tb1EndsDay <= tb2StartsDay ||
+            tb1StartsDay >= tb2EndsDay ||
+            (tb1StartsDay == tb2StartsDay && tb1EndsDay == tb2EndsDay) {
+            return nil
+        }
+
+        var dates = [tb1.startsAt,tb1.endsAt,tb2.startsAt,tb2.endsAt]
+
+        dates.sort()
+
+        var datesToRemove: [Int] = []
+
+        //remove duplicated days
+        for i in 0 ..< dates.count-1 {
+
+            let day1 = Calendar.current.component(.day, from: dates[i])
+            let day2 = Calendar.current.component(.day, from: dates[i+1])
+
+            if day1 == day2 {
+                datesToRemove.append(i)
+            }
+
+        }
+
+        while !datesToRemove.isEmpty {
+            dates.remove(at: datesToRemove.popLast()!)
+        }
+
+        return getTimeBlocksFrom(datesArray: dates)
+
+    }
+
+    /**
+     Get timeblocks from the space between the dates in array.
+     */
+    static func getTimeBlocksFrom(datesArray dates: [Date]) -> [TimeBlock] {
+
+        var timeBlocks: [TimeBlock] = []
+
+        for i in 0 ..< dates.count-1 {
+            timeBlocks.append(TimeBlock(startsAt: dates[i], endsAt: dates[i+1]))
+        }
+
+        return timeBlocks
+    }
+
+    func contains(timeBlock tb: TimeBlock) -> Bool {
+        return (self.startsAt <= tb.startsAt && self.endsAt >= tb.endsAt)
+    }
+    
 }
+
+extension TimeBlock {
+
+    /**
+     If the contained timeblock is inside the container, return the timeBlocks resulting from removing the contained timeBlock from container.
+     */
+    static func -(container: TimeBlock, contained: TimeBlock) -> [TimeBlock] {
+
+        if contained.endsAt <= container.startsAt ||
+           contained.startsAt >= container.endsAt {
+            return [container]
+        }
+
+        guard var splittedTimeBlocks = self.split(timeBlock1: container, timeBlock2: contained) else { return [container]}
+
+        var indexToRemove: [Int] = []
+        for i in 0 ..< splittedTimeBlocks.count {
+
+            if contained.contains(timeBlock: splittedTimeBlocks[i]){
+
+                indexToRemove.append(i)
+
+            }
+
+        }
+
+        while !indexToRemove.isEmpty {
+
+            splittedTimeBlocks.remove(at: indexToRemove.popLast()!)
+
+        }
+
+        return splittedTimeBlocks
+
+    }
+
+
+}
+
+extension TimeBlock: Equatable {
+    
+    static func ==(lhs: TimeBlock, rhs: TimeBlock) -> Bool {
+        
+        let beginHourLhs = Calendar.current.component(.hour, from: lhs.startsAt)
+        let beginHourRhs = Calendar.current.component(.hour, from: rhs.startsAt)
+        
+        let endsHourLhs = Calendar.current.component(.hour, from: lhs.endsAt)
+        let endsHourRhs = Calendar.current.component(.hour, from: rhs.endsAt)
+        
+        return (beginHourLhs == beginHourRhs && endsHourLhs == endsHourRhs)
+        
+    }
+    
+    
+    
+}
+
