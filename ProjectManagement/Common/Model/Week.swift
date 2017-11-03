@@ -9,14 +9,26 @@
 import Foundation
 
 struct Week {
-    
+
+    var sunday: Weekday
     var monday: Weekday
     var tuesday: Weekday
     var wednesday: Weekday
     var thursday: Weekday
     var friday: Weekday
     var saturday: Weekday
-    var sunday: Weekday
+    
+    init(sunday sun: Weekday, monday mon: Weekday, tuesday tue: Weekday, wednesday wed: Weekday, thursday thu: Weekday, friday fri: Weekday, saturday sat: Weekday) {
+
+        sunday = sun
+        monday = mon
+        tuesday = tue
+        wednesday = wed
+        thursday = thu
+        friday = fri
+        saturday = sat
+
+    }
     
     /**
      Return the repective weekday schedule.
@@ -26,19 +38,19 @@ struct Week {
     func getDay(_ val: Int) -> Weekday? {
         switch val {
             case 1:
-                return monday.copy() as? Weekday
+                return sunday
             case 2:
-                return tuesday.copy() as? Weekday
+                return monday
             case 3:
-                return wednesday.copy() as? Weekday
+                return tuesday
             case 4:
-                return thursday.copy() as? Weekday
+                return wednesday
             case 5:
-                return friday.copy() as? Weekday
+                return thursday
             case 6:
-                return saturday.copy() as? Weekday
+                return friday
             case 7:
-                return sunday.copy() as? Weekday
+                return saturday
             default:
                 return nil
         }
@@ -64,15 +76,15 @@ struct Week {
     }
         
     /**
-     return the default working hours allocated for the context. Does not consider the user calendar events
+     return the default working hours allocated for the context in a week.
     */
-    func getDefaultWeeklySecondsFor(context: Context) -> TimeInterval {
+    func getWeeklyWorkingSeconds(for context: Context) -> TimeInterval {
         
         var seconds: TimeInterval = 0.0
         
         for i in 1 ... 7 {
             
-            seconds += getDefaultDailySecondsFor(context: context, at: i)
+            seconds += getDefaultDailySeconds(for: context, at: self.getDay(i)!)
             
         }
         
@@ -81,72 +93,66 @@ struct Week {
     }
     
     /**
-     return the default working hours allocated for the context at that weekday. Does not consider the user calendar events
+     return the default working hours allocated for the context at that weekday.
      */
-    func getDefaultDailySecondsFor(context: Context, at weekday: Int) -> TimeInterval {
-        
-        var seconds: TimeInterval = 0.0
-        
-        guard let day = getDay(weekday) else { return 0.0 }
-        
-        for block in day.contextBlocks {
-            
-            if block.context == context {
-                
-                seconds += DateInterval(start: block.timeBlock.startsAt, end: block.timeBlock.endsAt).duration
-                
-            }
-            
-        }
-        
-        return seconds
-        
-    }
+    func getDefaultDailySeconds(for context: Context, at weekday: Weekday) -> TimeInterval {
     
-    /**
-     return the default working hours allocated for the context at that weekday. Does not consider the user calendar events
-     */
-    func getDailySecondsFor(context: Context, at date: Date) -> TimeInterval {
+        var secondsLeft: TimeInterval = 0.0
         
-        let weekdayAsInt = Calendar.current.component(.weekday, from: date)
-        guard let weekday = self.getDay(weekdayAsInt) else { return 0.0 }
-        let eventsAtDate = User.sharedInstance.getEvents(at: date)
-
-        var secondsLeft = 0.0
-        
-        for contextBlock in weekday.contextBlocks {
+        for block in weekday.contextBlocks {
             
-            if contextBlock.context != context {
+            if block.context != context {
                 continue
             }
-            
-            for event in eventsAtDate {
-                
-                let resultingTimeBlocks = contextBlock.timeBlock - event
-                
-                for tb in resultingTimeBlocks {
-                    secondsLeft += tb.totalTime
-                }
-                
-            }
+
+            secondsLeft += block.leftTime
             
         }
         
         return secondsLeft
         
     }
+    
+    /**
+     return the default working hours allocated for the context at that weekday. May consider the user calendar events
+     */
+    func getDailySeconds(for context: Context, at date: Date, consideringEvents: Bool) -> TimeInterval {
+        
+        let weekdayAsInt = Calendar.current.component(.weekday, from: date)
+        guard let weekday = self.getDay(weekdayAsInt) else { return 0.0 }
+        
+        var secondsLeft: TimeInterval = 0.0
+        let eventsAtDate = User.sharedInstance.getEvents(at: date)
+        
+        for block in weekday.contextBlocks {
+            
+            if block.context != context {
+                continue
+            }
+            
+            if consideringEvents {
+                block.discountEventsTimeIfApplicable(events: eventsAtDate)
+            }
+            
+            secondsLeft += block.leftTime
+            
+        }
+        
+        return secondsLeft
+    
+    }
 
-    func getWorkingSeconds(for context: Context, from startingDate: Date, to endingDate: Date) -> TimeInterval{
+    func getWorkingSeconds(for context: Context, from startingDate: Date, to endingDate: Date, consideringEvents: Bool) -> TimeInterval {
         
         var date = startingDate
-        let aDayInSeconds: TimeInterval = 86400
+        let aDayInSeconds: TimeInterval = 86_400
         var seconds: TimeInterval = 0.0
         
         while date <= endingDate {
             
-            seconds += self.getDailySecondsFor(context: context, at: date)
-            
+            seconds += self.getDailySeconds(for: context, at: date, consideringEvents: consideringEvents)
             date.addTimeInterval(aDayInSeconds)
+            
         }
         
         return seconds

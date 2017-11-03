@@ -10,9 +10,21 @@ import XCTest
 
 class FoocoTests: XCTestCase {
     
+    let today: Date! = Date()
+    let tomorrow: Date! = Date().addingTimeInterval(86_400)
+    var context1: Context!
+    var proj1: Project!
+    var proj2: Project!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        context1 = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
+        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 52_000)
+        
+        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 53_000)
+        
     }
     
     override func tearDown() {
@@ -32,10 +44,55 @@ class FoocoTests: XCTestCase {
         }
     }
     
-    func testUser() {
+    func testUserGetNextProject() {
+        let user = User.sharedInstance
+        user.add(contexts: [context1])
+        user.add(projects: [proj1])
         
-        var usr = User.sharedInstance
-        usr.updateCurrentScheduleUntil(date: Date())
+        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock.init(startsAt: Date(), endsAt: Date().addingTimeInterval(72_000)), context: context1)])
+        user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
+        
+        
+        //1 project
+        XCTAssert(user.getNextProject(for: context1) == proj1)
+        
+        //2 projects
+        user.add(projects: [proj2])
+        XCTAssert(user.getNextProject(for: context1) == proj2)
+        
+       
+        
+    }
+    
+    func testUserUpdateSchedule() {
+        
+        let user = User.sharedInstance
+        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(72_000)), context: context1)])
+        user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
+        
+        user.add(contexts: [context1])
+        user.add(projects: [proj1])
+        user.add(projects: [proj2])
+        
+        XCTAssert(user.getNextProject(for: context1) == proj2)
+        
+        
+        user.updateCurrentScheduleUntil(date: tomorrow)
+        
+        let todayWeekday: Weekday = user.getSchedule(for: today)!
+        
+        for cbl in todayWeekday.contextBlocks where cbl.context == context1 {
+            
+            for act in cbl.activities {
+                
+                if act.project != proj2 {
+                    
+                }
+                
+                XCTAssertTrue(act.project == proj2)
+            }
+            
+        }
         
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Weekday {
+struct Weekday {
     
     var contextBlocks: [ContextBlock]
     
@@ -17,24 +17,5 @@ class Weekday {
         contextBlocks = blocks
         
     }
-    
-}
-
-extension Weekday: NSCopying {
-    
-    func copy(with zone: NSZone? = nil) -> Any {
-        
-        var contextBlocksCopy: [ContextBlock] = []
-        for cb in contextBlocks {
-        
-            cb.copy()
-
-        }
-        
-        return Weekday(contextBlocks: contextBlocksCopy)
-    
-    }
-    
-    
     
 }

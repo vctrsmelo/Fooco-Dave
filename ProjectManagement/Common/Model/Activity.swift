@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Activity: NSObject{
+class Activity: NSObject {
     
     var project: Project
     var timeBlock: TimeBlock
     
-    init(withProject proj: Project, at tb: TimeBlock){
+    init(withProject proj: Project, at tb: TimeBlock) {
 		project = proj
         timeBlock = tb
 		super.init()

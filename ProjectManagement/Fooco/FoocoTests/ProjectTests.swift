@@ -34,11 +34,11 @@ class ProjectTests: XCTestCase {
     
     func testPriorityCalculation() {
         
-        let ctx = Context(named: "Context1", color: UIColor.contextColors()[0], projects: [], minimalWorkingTimePerProject: 60*60, maximumWorkingHoursPerProject: 60*60*24)
-        var proj = Project.init(named: "proj1", startsAt: Date(), endsAt: Date().addingTimeInterval(86400), withContext: ctx, totalTimeEstimated: 60*60*48)
-        
-//        XCTAssert
-        print("priority: \(proj.getPriorityValue())")
+//        let ctx = Context(named: "Context1", color: UIColor.contextColors()[0], projects: [], minimalWorkingTimePerProject: 60*60, maximumWorkingHoursPerProject: 60*60*24)
+//        var proj = Project.init(named: "proj1", startsAt: Date(), endsAt: Date().addingTimeInterval(86400), withContext: ctx, totalTimeEstimated: 60*60*48)
+//
+////        XCTAssert
+//        print("priority: \(proj.getPriorityValue())")
         
     }
     

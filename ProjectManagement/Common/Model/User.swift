@@ -17,7 +17,7 @@ class User: NSObject {
     var weekSchedule: Week
     var safetyMargin = 0.2 //20%
     
-    var currentSchedule: [Date: Weekday] = [:]
+    private var currentSchedule: [Date: Weekday] = [:]
     
     private var _isCurrentScheduleUpdated: Bool = false
     var isCurrentScheduleUpdated: Bool {
@@ -47,12 +47,20 @@ class User: NSObject {
         
     }
 
+    
+    func getSchedule(for date: Date) -> Weekday? {
+        
+        return currentSchedule[date.getDay()]
+        
+    }
+    
     /**
      Append the projects into user current projects list
     */
     func add(projects projs: [Project]) {
         projects.append(contentsOf: projs)
         projects.sort()
+        
     }
     
     func add(contexts ctxs: [Context]) {
@@ -68,7 +76,6 @@ class User: NSObject {
      */
     func getEvents(at date: Date) -> [Event] {
         
-        
         return [] //TODO: implement this method
     }
     
@@ -83,9 +90,9 @@ class User: NSObject {
     private func updateCurrentScheduleUntilAux(date: Date) {
     
         //recursivity
-        if date > Date() {
+        if date.getDay() > Date().getDay() {
             
-            updateCurrentScheduleUntil(date: Calendar.current.date(byAdding: .day, value: -1, to: date)!)
+            updateCurrentScheduleUntilAux(date: Calendar.current.date(byAdding: .day, value: -1, to: date.getDay())!)
         }
         
         //get weekday
@@ -99,13 +106,12 @@ class User: NSObject {
             contextBlock.addActivities(with: events)
         }
         
-        currentSchedule[date] = weekday
+        set(weekday: weekday, for: date)
         
     }
     
-    func addActivities(into: ContextBlock) {
-        
-        
+    private func set(weekday: Weekday, for date: Date) {
+        currentSchedule[date.getDay()] = weekday
     }
     
     func getNextProject(for ctx: Context) -> Project? {
@@ -122,4 +128,18 @@ class User: NSObject {
     }
     
 
+}
+
+extension Date {
+    
+    /**
+     Set hours, minutes and seconds to zero, returning only the day.
+    */
+    func getDay() -> Date {
+        let hours = Calendar.current.component(.hour, from: self)
+        let minutes = Calendar.current.component(.minute, from: self)
+        let seconds = Calendar.current.component(.second, from: self)
+        let subtractTime: Double = TimeInterval(hours * 60 * 60 + minutes * 60 + seconds)
+        return self.addingTimeInterval(-subtractTime)
+    }
 }

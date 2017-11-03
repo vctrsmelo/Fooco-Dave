@@ -7,13 +7,21 @@
 
 import Foundation
 
-class Event: TimeBlock {
+class Event {
     
     var name: String
+    var timeBlock: TimeBlock
     
-    init(named: String, startsAt: Date, endsAt: Date) {
+    init(named: String, startsAt: Date, endsAt: Date, at tbl: TimeBlock) {
         name = named
-        super.init(startsAt: startsAt, endsAt: endsAt)
+        timeBlock = tbl
+    }
+    
+}
+
+extension Event: Equatable {
+    static func ==(lhs: Event, rhs: Event) -> Bool {
+        return lhs.timeBlock == rhs.timeBlock && lhs.name == rhs.name
     }
     
 }

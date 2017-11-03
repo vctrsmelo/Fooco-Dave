@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TimeBlock {
+struct TimeBlock {
 
     var startsAt: Date
     var endsAt: Date
@@ -21,7 +21,7 @@ class TimeBlock {
     
     init(startsAt starting: Date, endsAt ending: Date) {
         
-        if Calendar.current.compare(starting, to: ending, toGranularity: .hour) != ComparisonResult.orderedDescending {
+        if Calendar.current.compare(starting, to: ending, toGranularity: .hour) == ComparisonResult.orderedDescending {
             fatalError("[Timeblock init] tried to create a timeblock with starting date after ending date")
             
         }
@@ -102,10 +102,16 @@ extension TimeBlock {
      */
     static func -(container: TimeBlock, contained: TimeBlock) -> [TimeBlock] {
 
+        if container == contained {
+            [TimeBlock.init(startsAt: container.startsAt, endsAt: container.startsAt)]
+        }
+        
         if contained.endsAt <= container.startsAt ||
            contained.startsAt >= container.endsAt {
             return [container]
         }
+        
+        
 
         guard var splittedTimeBlocks = self.split(timeBlock1: container, timeBlock2: contained) else { return [container]}
 
@@ -146,8 +152,6 @@ extension TimeBlock: Equatable {
         return (beginHourLhs == beginHourRhs && endsHourLhs == endsHourRhs)
         
     }
-    
-    
     
 }
 

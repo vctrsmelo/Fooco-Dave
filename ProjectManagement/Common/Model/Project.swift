@@ -40,10 +40,10 @@ class Project {
 
         let tl = timeLeftEstimated
         let p: Double = Double(priority)
-        let ta = User.sharedInstance.weekSchedule.getWorkingSeconds(for: self.context, from: Date(), to: endingDate)
+        let ta = User.sharedInstance.weekSchedule.getWorkingSeconds(for: self.context, from: Date(), to: endingDate, consideringEvents: true)
         let sf = 1.0 - User.sharedInstance.safetyMargin
 
-        return (ta * sf - tl) * p
+        return ((ta * sf) / (tl*p))
 
     }
 
@@ -51,7 +51,7 @@ class Project {
         scheduledActivities = []
     }
 
-    func getNextActivityFor(timeBlock tbl: TimeBlock) -> Activity? {
+    func getNextActivity(for tbl: TimeBlock) -> Activity? {
 
         //if timeBlock is smaller than the minimal acceptable and the time left of project is bigger than this minimal acceptable value, should not create the activity.
         if context.minProjectWorkingTime != nil && tbl.totalTime < context.minProjectWorkingTime! && self.timeLeftEstimated >= context.minProjectWorkingTime! {
