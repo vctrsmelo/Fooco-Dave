@@ -37,6 +37,8 @@
 		FC2F29CF1F9A3EA200984409 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB901F9A37E70051B33B /* User.swift */; };
 		FC2F29D01F9A3EA200984409 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB911F9A37E70051B33B /* Week.swift */; };
 		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
+		FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
+		FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,7 @@
 		EEA46BB41F9A36D600851D5D /* DaveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCCD97671FACEA340068DB28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,7 @@
 		EE99BB8A1F9A37E70051B33B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FCCD97661FACEA1A0068DB28 /* Extensions */,
 				EE99BB931F9A383E0051B33B /* Model */,
 			);
 			path = Common;
@@ -279,6 +283,14 @@
 				EEA46B851F9A36CA00851D5D /* FoocoUITests */,
 			);
 			path = Fooco;
+			sourceTree = "<group>";
+		};
+		FCCD97661FACEA1A0068DB28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCCD97671FACEA340068DB28 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,6 +525,7 @@
 				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
 				EEA46B691F9A36CA00851D5D /* ViewController.swift in Sources */,
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
+				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
@@ -543,6 +556,7 @@
 			files = (
 				FC2F29CA1F9A3EA200984409 /* Activity.swift in Sources */,
 				FC2F29CB1F9A3EA200984409 /* Context.swift in Sources */,
+				FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29CE1F9A3EA200984409 /* TimeBlock.swift in Sources */,
 				EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */,
 				FC2F29CF1F9A3EA200984409 /* User.swift in Sources */,
@@ -679,7 +693,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -744,7 +758,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
