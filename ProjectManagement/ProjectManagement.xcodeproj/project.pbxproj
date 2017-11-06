@@ -206,12 +206,10 @@
 		EEA46B651F9A36CA00851D5D /* Fooco */ = {
 			isa = PBXGroup;
 			children = (
-				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
 				EEA46B681F9A36CA00851D5D /* ViewController.swift */,
 				EEA46B6A1F9A36CA00851D5D /* Main.storyboard */,
 				EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */,
-				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
-				EEA46B721F9A36CA00851D5D /* Info.plist */,
+				FC37F4471FB0CEEB0003738E /* Supporting Files */,
 			);
 			path = Fooco;
 			sourceTree = "<group>";
@@ -237,12 +235,10 @@
 		EEA46B971F9A36D600851D5D /* Dave */ = {
 			isa = PBXGroup;
 			children = (
-				EEA46B981F9A36D600851D5D /* AppDelegate.swift */,
 				EEA46B9A1F9A36D600851D5D /* ViewController.swift */,
 				EEA46B9C1F9A36D600851D5D /* Main.storyboard */,
 				EEA46B9F1F9A36D600851D5D /* Assets.xcassets */,
-				EEA46BA11F9A36D600851D5D /* LaunchScreen.storyboard */,
-				EEA46BA41F9A36D600851D5D /* Info.plist */,
+				FC37F4461FB0CECB0003738E /* Supporting Files */,
 			);
 			path = Dave;
 			sourceTree = "<group>";
@@ -283,6 +279,26 @@
 				EEA46B851F9A36CA00851D5D /* FoocoUITests */,
 			);
 			path = Fooco;
+			sourceTree = "<group>";
+		};
+		FC37F4461FB0CECB0003738E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEA46B981F9A36D600851D5D /* AppDelegate.swift */,
+				EEA46BA11F9A36D600851D5D /* LaunchScreen.storyboard */,
+				EEA46BA41F9A36D600851D5D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC37F4471FB0CEEB0003738E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
+				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
+				EEA46B721F9A36CA00851D5D /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		FCCD97661FACEA1A0068DB28 /* Extensions */ = {
@@ -710,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -769,7 +785,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Fooco;
@@ -1089,7 +1105,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1148,7 +1164,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Dave;
