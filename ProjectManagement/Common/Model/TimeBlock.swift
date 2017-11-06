@@ -103,7 +103,7 @@ extension TimeBlock {
     static func -(container: TimeBlock, contained: TimeBlock) -> [TimeBlock] {
 
         if container == contained {
-            [TimeBlock.init(startsAt: container.startsAt, endsAt: container.startsAt)]
+            return []
         }
         
         if contained.endsAt <= container.startsAt ||
@@ -111,8 +111,6 @@ extension TimeBlock {
             return [container]
         }
         
-        
-
         guard var splittedTimeBlocks = self.split(timeBlock1: container, timeBlock2: contained) else { return [container]}
 
         var indexToRemove: [Int] = []

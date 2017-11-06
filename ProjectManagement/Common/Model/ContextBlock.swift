@@ -19,15 +19,15 @@ class ContextBlock {
     private var _leftTimeBlocks: [TimeBlock]?
     var leftTimeBlocks: [TimeBlock] {
         
-        var timeBlocks = [timeBlock]
-        
         if _leftTimeBlocks != nil {
             return _leftTimeBlocks!
         }
         
-
+        var timeBlocks = [timeBlock]
+        
         //Gera um array de timeblocks, que são os tempos que sobraram após os eventos do usuário serem discontados do timeBlock
         for event in events {
+            
             var timeBlocksToAppend: [TimeBlock] = []
             for i in 0 ..< timeBlocks.count {
 
@@ -88,7 +88,7 @@ class ContextBlock {
     
     func discountEventsTimeIfApplicable(events evts: [Event]) {
         
-        if leftTimeBlocks.isEmpty {
+        if leftTimeBlocks.isEmpty { // testar se cai aqui
             return
         }
         

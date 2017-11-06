@@ -41,9 +41,9 @@ class Project {
         let tl = timeLeftEstimated
         let p: Double = Double(priority)
         let ta = User.sharedInstance.weekSchedule.getWorkingSeconds(for: self.context, from: Date(), to: endingDate, consideringEvents: true)
-        let sf = 1.0 - User.sharedInstance.safetyMargin
-
-        return ((ta * sf) / (tl*p))
+        //let sf = 1.0 - User.sharedInstance.safetyMargin
+        //return ((ta * sf) / (tl*p))
+        return (ta / (tl*p))
 
     }
 
@@ -67,8 +67,14 @@ class Project {
     private func allocateActivity(for tbl: TimeBlock) -> Activity {
         
         let maxTime = context.maxProjectWorkingTime
-        let newActivity = (maxTime == nil || tbl.totalTime <= maxTime!) ? Activity(withProject: self, at: tbl) : Activity(withProject: self, at: TimeBlock(startsAt: tbl.startsAt, endsAt: tbl.startsAt.addingTimeInterval(maxTime!)))
-        return newActivity
+
+        var activityTime = (tbl.totalTime <= self.timeLeftEstimated) ? tbl.totalTime : self.timeLeftEstimated
+        if maxTime != nil && activityTime > maxTime! {
+            activityTime = maxTime!
+        }
+
+        let endsAt = tbl.startsAt.addingTimeInterval(activityTime)
+        return Activity(withProject: self, at: TimeBlock(startsAt: tbl.startsAt, endsAt: endsAt))
         
     }
     

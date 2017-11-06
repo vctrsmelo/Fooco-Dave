@@ -15,7 +15,7 @@ class User: NSObject {
     var projects: [Project]
     var contexts: [Context]
     var weekSchedule: Week
-    var safetyMargin = 0.2 //20%
+    //var safetyMargin = 0.2 //20%
     
     private var currentSchedule: [Date: Weekday] = [:]
     
