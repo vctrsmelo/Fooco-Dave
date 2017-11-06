@@ -9,10 +9,23 @@ import UIKit
 
 class HomeViewControllerFooco: UIViewController {
 
+	private enum MovementState {
+		case atCenter, atRight, atLeft, goingRight, goingLeft
+	}
+	
 	private var activities = [Activity]()
 	
-	private var goingLeft = false
-	private var goingRight = false
+//	private var goingLeft = false
+//	private var goingRight = false
+	
+	private let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeOut)
+	
+	private var movementState = MovementState.atCenter
+	private var movement: CGFloat = 0
+	
+	private var initialCenterPosition: CGPoint = CGPoint.zero
+	private var initialLeftPosition: CGPoint = CGPoint.zero
+	private var initialRightPosition: CGPoint = CGPoint.zero
 	
 	@IBOutlet private weak var topLabel: UILabel!
 	@IBOutlet private weak var activityView: UIView!
@@ -21,6 +34,12 @@ class HomeViewControllerFooco: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.movement = self.leftView.frame.width // leftView and rightView should have the same size
+		
+		self.initialCenterPosition = self.activityView.frame.origin
+		self.initialLeftPosition = self.leftView.frame.origin
+		self.initialRightPosition = self.rightView.frame.origin
 		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
@@ -58,7 +77,80 @@ class HomeViewControllerFooco: UIViewController {
 		return greeting
 	}
 
-    /*
+	@IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+		
+		let translation = sender.translation(in: self.view)
+		
+		switch sender.state {
+		case .began:
+			if (self.movementState == .atCenter || self.movementState == .atLeft) && translation.x > 0 {
+				self.moveRight()
+			} else if (self.movementState == .atCenter || self.movementState == .atRight) && translation.x < 0 {
+				self.moveLeft()
+			}
+			
+		case.changed:
+			if self.movementState == .goingRight {
+				animator.fractionComplete = translation.x / self.movement
+			} else if self.movementState == .goingLeft {
+				animator.fractionComplete = -translation.x / self.movement
+			}
+			
+		case .ended, .cancelled:
+			animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+			
+		case .failed, .possible:
+			break
+		}
+	}
+	
+	private func moveRight() {
+		animator.addAnimations {
+			self.activityView.frame = self.activityView.frame.offsetBy(dx: self.movement, dy: 0)
+			
+			self.leftView.frame.origin = self.initialLeftPosition + CGPoint(x: self.movement, y: 0)
+			self.leftView.alpha = 1
+			
+			self.rightView.frame.origin = self.initialRightPosition
+			self.rightView.alpha = 0
+		}
+		
+		self.movementState = .goingRight
+		
+		self.animationCommon()
+	}
+	
+	private func moveLeft() {
+		animator.addAnimations {
+			self.activityView.frame = self.activityView.frame.offsetBy(dx: -self.movement, dy: 0)
+			
+			self.leftView.frame.origin = self.initialLeftPosition
+			self.leftView.alpha = 0
+			
+			self.rightView.frame.origin = self.initialRightPosition + CGPoint(x: -self.movement, y: 0)
+			self.rightView.alpha = 1
+		}
+		
+		self.movementState = .goingLeft
+		
+		self.animationCommon()
+	}
+	
+	private func animationCommon() {
+		animator.addCompletion { animatingPosition in
+			if self.activityView.frame.origin.x == self.initialCenterPosition.x {
+				self.movementState = .atCenter
+			} else if self.activityView.frame.origin.x > self.initialCenterPosition.x {
+				self.movementState = .atRight
+			} else if self.activityView.frame.origin.x < self.initialCenterPosition.x {
+				self.movementState = .atLeft
+			}
+		}
+		
+		animator.pauseAnimation()
+	}
+	
+	/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -68,4 +160,10 @@ class HomeViewControllerFooco: UIViewController {
     }
     */
 
+}
+
+extension CGPoint {
+	static func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+		return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+	}
 }
