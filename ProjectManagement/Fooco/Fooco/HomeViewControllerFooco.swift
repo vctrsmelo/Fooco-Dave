@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
+class HomeViewControllerFooco: UIViewController {
 
 	private var activities = [Activity]()
 	
@@ -18,7 +18,6 @@ class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 	@IBOutlet private weak var activityView: UIView!
 	@IBOutlet private weak var leftView: UIView!
 	@IBOutlet private weak var rightView: UIView!
-	@IBOutlet private weak var scrollView: UIScrollView!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +25,6 @@ class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
 		self.topLabel.text = self.chooseTopLabelText()
-
-        self.scrollView.delegate = self
     }
 	
 	private func chooseTopLabelText() -> String {
@@ -60,32 +57,6 @@ class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 		
 		return greeting
 	}
-	
-	// MARK: - Scroll View Delegate
-	
-	func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		
-		let movement = scrollView.contentOffset.x
-		
-		let animator = UIViewPropertyAnimator(duration: 2, timingParameters: UICubicTimingParameters(animationCurve: .easeIn))
-		
-		animator.addAnimations {
-			if movement < 0 {
-				self.leftView.isHidden = false
-				self.rightView.isHidden = true
-			} else if movement > 0 {
-				self.leftView.isHidden = true
-				self.rightView.isHidden = false
-			} else {
-				self.leftView.isHidden = true
-				self.rightView.isHidden = true
-			}
-		}
-		
-		animator.startAnimation()
-		
-	}
-
 
     /*
     // MARK: - Navigation
