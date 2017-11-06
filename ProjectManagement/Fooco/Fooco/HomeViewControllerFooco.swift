@@ -9,21 +9,38 @@ import UIKit
 
 class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 
-	@IBOutlet weak var topLabel: UILabel!
-	@IBOutlet weak var activityView: UIView!
-	@IBOutlet weak var leftView: UIView!
-	@IBOutlet weak var rightView: UIView!
-	@IBOutlet weak var scrollView: UIScrollView!
+	private var activities = [Activity]()
+	
+	private var goingLeft = false
+	private var goingRight = false
+	
+	@IBOutlet private weak var topLabel: UILabel!
+	@IBOutlet private weak var activityView: UIView!
+	@IBOutlet private weak var leftView: UIView!
+	@IBOutlet private weak var rightView: UIView!
+	@IBOutlet private weak var scrollView: UIScrollView!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
-		self.topLabel.text = NSLocalizedString("Your Next Activity", comment: "Home screen top label")
+		self.topLabel.text = self.chooseTopLabelText()
 
         self.scrollView.delegate = self
     }
+	
+	private func chooseTopLabelText() -> String {
+		let topLabelText: String
+		
+		if self.activities.isEmpty {
+			topLabelText = NSLocalizedString("You Have Finished for Now", comment: "Home screen top label for empty activities queue")
+		} else {
+			topLabelText = NSLocalizedString("Your Next Activity", comment: "Home screen default top label")
+		}
+		
+		return topLabelText
+	}
 	
 	private func chooseGreeting(for time: Date) -> String {
 		let hour = Calendar.current.component(.hour, from: time)
@@ -32,13 +49,13 @@ class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 		
 		switch hour {
 		case 12...17:
-			greeting = NSLocalizedString("Good Afternoon", comment: "Greeting")
+			greeting = NSLocalizedString("Good Afternoon", comment: "Greeting for afternoon")
 			
 		case 18...23:
-			greeting = NSLocalizedString("Good Evening", comment: "Greeting")
+			greeting = NSLocalizedString("Good Evening", comment: "Greeting for evening")
 			
 		default:
-			greeting = NSLocalizedString("Good Morning", comment: "Greeting")
+			greeting = NSLocalizedString("Good Morning", comment: "Greeting for morning")
 		}
 		
 		return greeting
@@ -47,7 +64,26 @@ class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 	// MARK: - Scroll View Delegate
 	
 	func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		print(scrollView.contentOffset)
+		
+		let movement = scrollView.contentOffset.x
+		
+		let animator = UIViewPropertyAnimator(duration: 2, timingParameters: UICubicTimingParameters(animationCurve: .easeIn))
+		
+		animator.addAnimations {
+			if movement < 0 {
+				self.leftView.isHidden = false
+				self.rightView.isHidden = true
+			} else if movement > 0 {
+				self.leftView.isHidden = true
+				self.rightView.isHidden = false
+			} else {
+				self.leftView.isHidden = true
+				self.rightView.isHidden = true
+			}
+		}
+		
+		animator.startAnimation()
+		
 	}
 
 
