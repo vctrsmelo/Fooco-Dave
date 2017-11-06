@@ -17,10 +17,39 @@ class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.navigationItem.title = self.chooseGreeting(for: Date())
+		
+		self.topLabel.text = NSLocalizedString("Your Next Activity", comment: "Home screen top label")
 
-        
+        self.scrollView.delegate = self
     }
-    
+	
+	private func chooseGreeting(for time: Date) -> String {
+		let hour = Calendar.current.component(.hour, from: time)
+		
+		let greeting: String
+		
+		switch hour {
+		case 12...17:
+			greeting = NSLocalizedString("Good Afternoon", comment: "Greeting")
+			
+		case 18...23:
+			greeting = NSLocalizedString("Good Evening", comment: "Greeting")
+			
+		default:
+			greeting = NSLocalizedString("Good Morning", comment: "Greeting")
+		}
+		
+		return greeting
+	}
+	
+	// MARK: - Scroll View Delegate
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		print(scrollView.contentOffset)
+	}
+
 
     /*
     // MARK: - Navigation
