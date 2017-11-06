@@ -7,12 +7,18 @@
 
 import UIKit
 
-class HomeViewControllerFooco: UIViewController {
+class HomeViewControllerFooco: UIViewController, UIScrollViewDelegate {
 
-    override func viewDidLoad() {
+	@IBOutlet weak var topLabel: UILabel!
+	@IBOutlet weak var activityView: UIView!
+	@IBOutlet weak var leftView: UIView!
+	@IBOutlet weak var rightView: UIView!
+	@IBOutlet weak var scrollView: UIScrollView!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
 

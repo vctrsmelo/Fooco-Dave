@@ -29,7 +29,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxp-Jy-4Yy">
                                 <rect key="frame" x="-138" y="139.5" width="650" height="351.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-QA-lZt" userLabel="Left View">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-QA-lZt" userLabel="Left View">
                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="351.5"/>
                                         <color key="backgroundColor" red="0.4253954291343689" green="0.69918102025985718" blue="0.68405985832214355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -172,7 +172,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDq-g6-KEx" userLabel="Right View">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDq-g6-KEx" userLabel="Right View">
                                         <rect key="frame" x="492.5" y="0.0" width="157.5" height="351.5"/>
                                         <color key="backgroundColor" red="0.42051130533218384" green="0.61492890119552612" blue="0.69045358896255493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -207,6 +207,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fzf-FU-b0v"/>
+                    <connections>
+                        <outlet property="activityView" destination="9rO-JB-msb" id="RtF-cL-i9b"/>
+                        <outlet property="leftView" destination="5q5-QA-lZt" id="JnW-7M-saN"/>
+                        <outlet property="rightView" destination="DDq-g6-KEx" id="60I-dq-seF"/>
+                        <outlet property="scrollView" destination="yxp-Jy-4Yy" id="YCm-8R-Vbr"/>
+                        <outlet property="topLabel" destination="r3U-pL-xjE" id="8AB-Jg-yMG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
