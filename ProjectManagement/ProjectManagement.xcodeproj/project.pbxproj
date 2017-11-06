@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
-		EEA46B691F9A36CA00851D5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B681F9A36CA00851D5D /* ViewController.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
 		EEA46B6E1F9A36CA00851D5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */; };
 		EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */; };
@@ -37,6 +36,7 @@
 		FC2F29CF1F9A3EA200984409 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB901F9A37E70051B33B /* User.swift */; };
 		FC2F29D01F9A3EA200984409 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB911F9A37E70051B33B /* Week.swift */; };
 		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
+		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
 		FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
@@ -83,7 +83,6 @@
 		EE99BB921F9A37E70051B33B /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B661F9A36CA00851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEA46B681F9A36CA00851D5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EEA46B6B1F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEA46B701F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		EEA46BB41F9A36D600851D5D /* DaveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FCCD97671FACEA340068DB28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,7 +206,7 @@
 		EEA46B651F9A36CA00851D5D /* Fooco */ = {
 			isa = PBXGroup;
 			children = (
-				EEA46B681F9A36CA00851D5D /* ViewController.swift */,
+				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
 				EEA46B6A1F9A36CA00851D5D /* Main.storyboard */,
 				EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */,
 				FC37F4471FB0CEEB0003738E /* Supporting Files */,
@@ -539,13 +539,13 @@
 				FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */,
 				FC2F29C31F9A3EA100984409 /* Context.swift in Sources */,
 				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
-				EEA46B691F9A36CA00851D5D /* ViewController.swift in Sources */,
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
 				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */,
+				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
 				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
