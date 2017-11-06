@@ -171,16 +171,14 @@ class FoocoTests: XCTestCase {
             return
         }
         
-        for cbl in todayWeekday.contextBlocks where cbl.context == context1 {
-            
-            for act in cbl.activities {
-                
-                if act.project != proj2 {
-                    
-                }
-            }
-            
-        }
+        XCTAssertTrue(todayWeekday.contextBlocks[0].activities.count == 4)
+        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[0].project.name, proj2.name)
+        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[1].project.name, proj2.name)
+        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[2].project.name, proj2.name)
+        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[3].project.name, proj1.name)
+        
+        XCTAssertEqual(proj2.timeLeftEstimated, 0.0)
+        XCTAssertTrue(proj1.timeLeftEstimated > 0.0)
         
     }
     
