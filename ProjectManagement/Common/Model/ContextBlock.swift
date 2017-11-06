@@ -119,7 +119,10 @@ class ContextBlock {
         //discountEventsTimeIfApplicable(events: evts) // TODO: activate again
         
         //create the activity
-        for tbl in leftTimeBlocks {
+        var i = 0
+        while i < leftTimeBlocks.count {
+            
+            let tbl = leftTimeBlocks[i]
             
             guard let nextProject = User.sharedInstance.getNextProject(for: context) else { continue }
             
@@ -127,10 +130,11 @@ class ContextBlock {
                 activities.append(nextActivity)
                 _leftTimeBlocks = nil
                 _leftTime = nil
+                i = 0
+                continue
             }
+            i += 1
         }
-        
-
         
     }
     

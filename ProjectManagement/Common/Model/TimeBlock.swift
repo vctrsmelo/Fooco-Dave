@@ -36,16 +36,16 @@ struct TimeBlock {
      */
     static func split(timeBlock1 tb1: TimeBlock, timeBlock2 tb2: TimeBlock) -> [TimeBlock]? {
 
-        let tb1StartsDay = Calendar.current.component(.day, from: tb1.startsAt)
-        let tb1EndsDay = Calendar.current.component(.day, from: tb1.endsAt)
-
-        let tb2StartsDay = Calendar.current.component(.day, from: tb2.startsAt)
-        let tb2EndsDay = Calendar.current.component(.day, from: tb2.endsAt)
+//        let tb1StartsDay = Calendar.current.component(.day, from: tb1.startsAt)
+//        let tb1EndsDay = Calendar.current.component(.day, from: tb1.endsAt)
+//
+//        let tb2StartsDay = Calendar.current.component(.day, from: tb2.startsAt)
+//        let tb2EndsDay = Calendar.current.component(.day, from: tb2.endsAt)
 
         //if are not intersecting or are the same, return []
-        if tb1EndsDay <= tb2StartsDay ||
-            tb1StartsDay >= tb2EndsDay ||
-            (tb1StartsDay == tb2StartsDay && tb1EndsDay == tb2EndsDay) {
+        if tb1.endsAt <= tb2.startsAt ||
+            tb1.startsAt >= tb2.endsAt ||
+            (tb1.startsAt == tb2.startsAt && tb1.endsAt == tb2.endsAt) {
             return nil
         }
 
@@ -55,13 +55,10 @@ struct TimeBlock {
 
         var datesToRemove: [Int] = []
 
-        //remove duplicated days
+        //remove duplicated dates
         for i in 0 ..< dates.count-1 {
-
-            let day1 = Calendar.current.component(.day, from: dates[i])
-            let day2 = Calendar.current.component(.day, from: dates[i+1])
-
-            if day1 == day2 {
+            
+            if dates[i] == dates[i+1] {
                 datesToRemove.append(i)
             }
 

@@ -63,7 +63,7 @@ class FoocoTests: XCTestCase {
 //
 //    }
     
-    func testUserUpdateSchedule() {
+    func testUserUpdateSchedule1ActivityToBeAllocated() {
         
         let user = User.sharedInstance
         let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
@@ -78,7 +78,10 @@ class FoocoTests: XCTestCase {
         
         user.updateCurrentScheduleUntil(date: tomorrow)
         
-        let todayWeekday: Weekday = user.getSchedule(for: today)!
+        guard let todayWeekday: Weekday = user.getSchedule(for: today) else {
+            print("[Error] did not find todayWeekday")
+            return
+        }
         
         for cbl in todayWeekday.contextBlocks where cbl.context == context1 {
             
@@ -88,7 +91,93 @@ class FoocoTests: XCTestCase {
                     
                 }
                 
-                XCTAssertTrue(act.project == proj2)
+                XCTAssertTrue(act.project.name == proj2.name)
+            }
+            
+        }
+        
+    }
+    
+    //Should allocate both activities, prioritizing the proj2 activity.
+    func testUserUpdateSchedule2ActivitiesToBeAllocated() {
+        
+        let user = User.sharedInstance
+        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
+        user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
+        
+        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 3_800)
+        
+        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 8_000)
+        
+        
+        user.add(contexts: [context1])
+        user.add(projects: [proj1])
+        user.add(projects: [proj2])
+        
+        XCTAssert(user.getNextProject(for: context1) == proj2)
+        
+        
+        user.updateCurrentScheduleUntil(date: tomorrow)
+        
+        guard let todayWeekday: Weekday = user.getSchedule(for: today) else {
+            print("[Error] did not find todayWeekday")
+            return
+        }
+        
+        for cbl in todayWeekday.contextBlocks where cbl.context == context1 {
+            
+            for act in cbl.activities {
+                
+                if act.project != proj2 {
+                    
+                }
+                if cbl.activities.first!.project.name == act.project.name {
+                    
+                    XCTAssertTrue(act.project.name == proj2.name)
+                } else {
+                    
+                    XCTAssertTrue(act.project.name == proj1.name)
+                }
+            }
+            
+        }
+        
+    }
+    
+    func testUserUpdateSchedule2ActivitiesToBeAllocatedWithMaxTime() {
+        
+        let user = User.sharedInstance
+        context1 = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: 3_200)
+        
+        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
+        user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
+        
+        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 3_800)
+        
+        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 8_000)
+        
+        
+        user.add(contexts: [context1])
+        user.add(projects: [proj1])
+        user.add(projects: [proj2])
+        
+        XCTAssert(user.getNextProject(for: context1) == proj2)
+        
+        
+        user.updateCurrentScheduleUntil(date: tomorrow)
+        
+        guard let todayWeekday: Weekday = user.getSchedule(for: today) else {
+            print("[Error] did not find todayWeekday")
+            return
+        }
+        
+        for cbl in todayWeekday.contextBlocks where cbl.context == context1 {
+            
+            for act in cbl.activities {
+                
+                if act.project != proj2 {
+                    
+                }
             }
             
         }
