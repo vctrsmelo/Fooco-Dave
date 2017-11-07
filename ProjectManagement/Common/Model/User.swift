@@ -114,19 +114,19 @@ class User: NSObject {
         currentSchedule[date.getDay()] = weekday
     }
     
-    func getNextProject(for ctx: Context) -> Project? {
+    func getNextProject(for timeBlock: TimeBlock, and context: Context) -> Project? {
     
         for i in 0 ..< projects.count {
-            if projects[i].context == ctx && projects[i].timeLeftEstimated > 0 {
-                return projects[i]
+            if projects[i].context == context && projects[i].timeLeftEstimated > 0 {
+                if projects[i].canAllocateActivity(for: timeBlock) {
+                    return projects[i]
+                }
             }
-            
         }
         
         return nil
         
     }
-    
 
 }
 

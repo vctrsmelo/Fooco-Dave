@@ -15,6 +15,9 @@ class Project {
     var endingDate: Date
     var context: Context
     var priority: Int
+    
+    var secondsBetweenActivities: TimeInterval = 3_600 //default 1 hour. Maybe in the future we can make available for the user to change it.
+    
     var totalTimeEstimated: TimeInterval
     var timeLeftEstimated: TimeInterval {
         var timeLeft = totalTimeEstimated
@@ -52,9 +55,10 @@ class Project {
     }
 
     func getNextActivity(for tbl: TimeBlock) -> Activity? {
-
-        //if timeBlock is smaller than the minimal acceptable and the time left of project is bigger than this minimal acceptable value, should not create the activity.
-        if context.minProjectWorkingTime != nil && tbl.totalTime < context.minProjectWorkingTime! && self.timeLeftEstimated >= context.minProjectWorkingTime! {
+    
+        
+        //if can not allocate more activity or timeBlock is smaller than the minimal acceptable and the time left of project is bigger than this minimal acceptable value, should not create the activity.
+        if !canAllocateActivity(for: tbl) || (context.minProjectWorkingTime != nil && tbl.totalTime < context.minProjectWorkingTime! && self.timeLeftEstimated >= context.minProjectWorkingTime!) {
             return nil
         }
         
@@ -67,14 +71,74 @@ class Project {
     private func allocateActivity(for tbl: TimeBlock) -> Activity {
         
         let maxTime = context.maxProjectWorkingTime
+        
+        var subTimeBlock = getSubTimeBlockForNewActivity(from: tbl)
 
-        var activityTime = (tbl.totalTime <= self.timeLeftEstimated) ? tbl.totalTime : self.timeLeftEstimated
+        var activityTime = (subTimeBlock.totalTime <= self.timeLeftEstimated) ? subTimeBlock.totalTime : self.timeLeftEstimated
         if maxTime != nil && activityTime > maxTime! {
             activityTime = maxTime!
         }
 
-        let endsAt = tbl.startsAt.addingTimeInterval(activityTime)
-        return Activity(withProject: self, at: TimeBlock(startsAt: tbl.startsAt, endsAt: endsAt))
+        return Activity(withProject: self, at: TimeBlock.init(startsAt: subTimeBlock.startsAt, endsAt: subTimeBlock.startsAt.addingTimeInterval(activityTime)))
+        
+    }
+    
+    /**
+     Precondition: self.canAllocateActivity(for: tbl) == true
+     */
+    private func getSubTimeBlockForNewActivity(from tbl: TimeBlock) -> TimeBlock {
+        
+        for activity in scheduledActivities {
+            
+            if tbl.startsAt < activity.timeBlock.startsAt && tbl.endsAt.addingTimeInterval(secondsBetweenActivities) >= activity.timeBlock.startsAt {
+                
+                let newEnding = activity.timeBlock.startsAt.addingTimeInterval(-secondsBetweenActivities)
+                if newEnding > tbl.startsAt {
+                    return TimeBlock(startsAt: tbl.startsAt, endsAt: newEnding)
+                }
+                
+            } else if activity.timeBlock.startsAt < tbl.startsAt && activity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities) >= tbl.startsAt {
+                
+                //detect if tbl can be resized to support the distance between tbl and activity
+                let newStarting = activity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities)
+                if newStarting < tbl.endsAt {
+                    return TimeBlock(startsAt: newStarting, endsAt: tbl.endsAt)
+                }
+                
+            }
+            
+        }
+        
+        return tbl
+        
+    }
+    
+    func canAllocateActivity(for tbl: TimeBlock) -> Bool {
+        
+        for activity in scheduledActivities {
+            
+            //if the time distance between the timeblock tbl and the activity is smaller than the allowed, should not allocate the activity for this timeblock
+            if tbl.startsAt < activity.timeBlock.startsAt && tbl.endsAt.addingTimeInterval(secondsBetweenActivities) >= activity.timeBlock.startsAt {
+                
+                //detect if tbl can be resized to support the distance between tbl and activity
+                let newEnding = activity.timeBlock.startsAt.addingTimeInterval(-secondsBetweenActivities)
+                if newEnding <= tbl.startsAt {
+                    return false
+                }
+                
+            } else if activity.timeBlock.startsAt < tbl.startsAt && activity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities) >= tbl.startsAt {
+
+                //detect if tbl can be resized to support the distance between tbl and activity
+                let newStarting = activity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities)
+                if newStarting >= tbl.endsAt {
+                    return false
+                }
+                
+            }
+            
+        }
+        
+        return true
         
     }
     

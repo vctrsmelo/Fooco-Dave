@@ -73,8 +73,6 @@ class FoocoTests: XCTestCase {
         user.add(projects: [proj1])
         user.add(projects: [proj2])
         
-        XCTAssert(user.getNextProject(for: context1) == proj2)
-        
         
         user.updateCurrentScheduleUntil(date: tomorrow)
         
@@ -114,8 +112,6 @@ class FoocoTests: XCTestCase {
         user.add(projects: [proj1])
         user.add(projects: [proj2])
         
-        XCTAssert(user.getNextProject(for: context1) == proj2)
-        
         
         user.updateCurrentScheduleUntil(date: tomorrow)
         
@@ -149,7 +145,14 @@ class FoocoTests: XCTestCase {
         let user = User.sharedInstance
         context1 = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: 3_200)
         
-        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
+        let todayComponents = Calendar.current.dateComponents([.day,.month,.year], from: Date())
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let morningCblStart = dateFormatter.date(from: "\(todayComponents.day!)-\(todayComponents.month!)-\(todayComponents.year!) 06:00:00")!
+        let morningCblEnds = dateFormatter.date(from: "\(todayComponents.day!)-\(todayComponents.month!)-\(todayComponents.year!) 10:00:00")!
+        
+        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: morningCblStart, endsAt: morningCblEnds), context: context1)])
         user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
         
         proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 3_800)
@@ -160,9 +163,6 @@ class FoocoTests: XCTestCase {
         user.add(contexts: [context1])
         user.add(projects: [proj1])
         user.add(projects: [proj2])
-        
-        XCTAssert(user.getNextProject(for: context1) == proj2)
-        
         
         user.updateCurrentScheduleUntil(date: tomorrow)
         
@@ -215,7 +215,6 @@ class FoocoTests: XCTestCase {
         user.add(projects: [collegeProject,workProject])
         
         user.updateCurrentScheduleUntil(date: tomorrow)
-        
         
     }
     
