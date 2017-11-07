@@ -136,10 +136,12 @@ extension Date {
      Set hours, minutes and seconds to zero, returning only the day.
     */
     func getDay() -> Date {
-        let hours = Calendar.current.component(.hour, from: self)
-        let minutes = Calendar.current.component(.minute, from: self)
-        let seconds = Calendar.current.component(.second, from: self)
-        let subtractTime: Double = TimeInterval(hours * 60 * 60 + minutes * 60 + seconds)
-        return self.addingTimeInterval(-subtractTime)
+        
+        let today = Calendar.current.dateComponents([.day,.month,.year], from: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        
+        return dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 00:00:00")!
+        
     }
 }

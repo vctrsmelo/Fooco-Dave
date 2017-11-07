@@ -182,6 +182,43 @@ class FoocoTests: XCTestCase {
         
     }
     
+    func testTwoContextBlocksAndTwoProjects() {
+        
+        let user = User.sharedInstance
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+
+        let today = Calendar.current.dateComponents([.day,.month,.year], from: Date())
+        
+        let morningCblStart = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 06:00:00")
+        let morningCblEnds = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 10:00:00")
+
+        let afternoonCblStarts = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 11:00:00")
+        let afternoonCblEnds = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 15:00:00")
+        
+        let college = Context(named: "college", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
+        let work = Context(named: "work", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
+        
+        let morningCbl = ContextBlock(timeBlock: TimeBlock.init(startsAt: morningCblStart!, endsAt: morningCblEnds!), context: college)
+        let afternoonCbl = ContextBlock(timeBlock: TimeBlock.init(startsAt: afternoonCblStarts!, endsAt: afternoonCblEnds!), context: work)
+        
+        let defaultWeekday = Weekday(contextBlocks: [morningCbl,afternoonCbl])
+        
+        user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
+        
+        let sixHours: TimeInterval = 21_600
+        let fourDays: TimeInterval = 345_600
+        let collegeProject = Project(named: "College Project", startsAt: Date(), endsAt: Date().addingTimeInterval(fourDays), withContext: college, andPriority: 2, totalTimeEstimated: sixHours)
+        let workProject = Project(named: "Work Project", startsAt: Date(), endsAt: Date().addingTimeInterval(fourDays), withContext: work, andPriority: 3, totalTimeEstimated: sixHours)
+        
+        user.add(contexts: [college,work])
+        user.add(projects: [collegeProject,workProject])
+        
+        user.updateCurrentScheduleUntil(date: tomorrow)
+        
+        
+    }
+    
 }
 
 

@@ -124,7 +124,7 @@ class ContextBlock {
             
             let tbl = leftTimeBlocks[i]
             
-            guard let nextProject = User.sharedInstance.getNextProject(for: context) else { continue }
+            guard let nextProject = User.sharedInstance.getNextProject(for: context) else { return }
             
             if let nextActivity = nextProject.getNextActivity(for: tbl) {
                 activities.append(nextActivity)

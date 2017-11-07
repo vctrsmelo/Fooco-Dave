@@ -22,7 +22,7 @@ struct TimeBlock {
     init(startsAt starting: Date, endsAt ending: Date) {
         
         if Calendar.current.compare(starting, to: ending, toGranularity: .hour) == ComparisonResult.orderedDescending {
-            fatalError("[Timeblock init] tried to create a timeblock with starting date after ending date")
+            fatalError("[Timeblock init] tried to create a timeblock with starting date after ending date. Starting date is \(starting) and ending date is \(ending)")
             
         }
 
