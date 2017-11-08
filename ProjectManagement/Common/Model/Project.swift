@@ -14,7 +14,7 @@ class Project {
     var startingDate: Date
     var endingDate: Date
     var context: Context
-    var priority: Int
+    var importance: Int
     
     var secondsBetweenActivities: TimeInterval = 3_600 //default 1 hour. Maybe in the future we can make available for the user to change it.
     
@@ -30,19 +30,19 @@ class Project {
     
     private var scheduledActivities: [Activity] = []
     
-    init(named: String, startsAt: Date, endsAt: Date, withContext ctxt: Context, andPriority prior: Int = 1, totalTimeEstimated totalTime: TimeInterval) {
+    init(named: String, startsAt: Date, endsAt: Date, withContext ctxt: Context, importance imp: Int = 1, totalTimeEstimated totalTime: TimeInterval) {
         name = named
         startingDate = startsAt
         endingDate = endsAt
         context = ctxt
-        priority = prior
+        importance = imp
         totalTimeEstimated = totalTime
     }
 
     func getPriorityValue() -> Double {
 
         let tl = timeLeftEstimated
-        let p: Double = Double(priority)
+        let p: Double = Double(importance)
         let ta = User.sharedInstance.weekSchedule.getWorkingSeconds(for: self.context, from: Date(), to: endingDate, consideringEvents: true)
         //let sf = 1.0 - User.sharedInstance.safetyMargin
         //return ((ta * sf) / (tl*p))

@@ -20,9 +20,9 @@ class FoocoTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         context1 = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
-        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 7_200)
+        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 7_200)
         
-        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 10_800)
+        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 10_800)
         
     }
     
@@ -103,9 +103,9 @@ class FoocoTests: XCTestCase {
         let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
         user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
         
-        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 3_800)
+        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 3_800)
         
-        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 8_000)
+        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 8_000)
         
         
         user.add(contexts: [context1])
@@ -155,9 +155,9 @@ class FoocoTests: XCTestCase {
         let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: morningCblStart, endsAt: morningCblEnds), context: context1)])
         user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
         
-        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 3_800)
+        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 3_800)
         
-        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, andPriority: 1, totalTimeEstimated: 8_000)
+        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 8_000)
         
         
         user.add(contexts: [context1])
@@ -208,8 +208,8 @@ class FoocoTests: XCTestCase {
         
         let sixHours: TimeInterval = 21_600
         let fourDays: TimeInterval = 345_600
-        let collegeProject = Project(named: "College Project", startsAt: Date(), endsAt: Date().addingTimeInterval(fourDays), withContext: college, andPriority: 2, totalTimeEstimated: sixHours)
-        let workProject = Project(named: "Work Project", startsAt: Date(), endsAt: Date().addingTimeInterval(fourDays), withContext: work, andPriority: 3, totalTimeEstimated: sixHours)
+        let collegeProject = Project(named: "College Project", startsAt: Date(), endsAt: Date().addingTimeInterval(fourDays), withContext: college, importance: 2, totalTimeEstimated: sixHours)
+        let workProject = Project(named: "Work Project", startsAt: Date(), endsAt: Date().addingTimeInterval(fourDays), withContext: work, importance: 3, totalTimeEstimated: sixHours)
         
         user.add(contexts: [college,work])
         user.add(projects: [collegeProject,workProject])
