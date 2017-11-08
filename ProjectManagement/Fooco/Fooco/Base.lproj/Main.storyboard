@@ -209,6 +209,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fzf-FU-b0v"/>
                     <connections>
+                        <outlet property="activityCenterConstraint" destination="kVu-rV-vgy" id="fR1-MT-pdH"/>
                         <outlet property="activityView" destination="9rO-JB-msb" id="RtF-cL-i9b"/>
                         <outlet property="leftView" destination="5q5-QA-lZt" id="JnW-7M-saN"/>
                         <outlet property="rightView" destination="DDq-g6-KEx" id="60I-dq-seF"/>
