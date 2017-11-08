@@ -9,20 +9,9 @@ import XCTest
 
 class FoocoTests: XCTestCase {
     
-    let today: Date! = Date()
-    let tomorrow: Date! = Date().addingTimeInterval(86_400)
-    var context1: Context!
-    var proj1: Project!
-    var proj2: Project!
-    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        context1 = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
-        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 7_200)
-        
-        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 10_800)
         
     }
     
@@ -45,19 +34,19 @@ class FoocoTests: XCTestCase {
     
 //    func testUserGetNextProject() {
 //        let user = User.sharedInstance
-//        user.add(contexts: [context1])
-//        user.add(projects: [proj1])
+//        user.add(contexts: [Mocado.context1])
+//        user.add(projects: [Mocado.projects[0]])
 //
-//        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock.init(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
+//        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock.init(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: Mocado.context1)])
 //        user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
 //
 //
 //        //1 project
-//        XCTAssert(user.getNextProject(for: context1) == proj1)
+//        XCTAssert(user.getNextProject(for: Mocado.context1) == Mocado.projects[0])
 //
 //        //2 projects
-//        user.add(projects: [proj2])
-//        XCTAssert(user.getNextProject(for: context1) == proj2)
+//        user.add(projects: [Mocado.projects[1]])
+//        XCTAssert(user.getNextProject(for: Mocado.context1) == Mocado.projects[1])
 //
 //
 //
@@ -66,73 +55,71 @@ class FoocoTests: XCTestCase {
     func testUserUpdateSchedule1ActivityToBeAllocated() {
         
         let user = User.sharedInstance
-        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
-        user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
         
-        user.add(contexts: [context1])
-        user.add(projects: [proj1])
-        user.add(projects: [proj2])
+        user.add(contexts: [Mocado.context1])
+        user.add(projects: [Mocado.projects[0]])
+        user.add(projects: [Mocado.projects[1]])
         
         
-        user.updateCurrentScheduleUntil(date: tomorrow)
+        user.updateCurrentScheduleUntil(date: Mocado.tomorrow)
         
-        guard let todayWeekday: Weekday = user.getSchedule(for: today) else {
-            print("[Error] did not find todayWeekday")
+        guard let todayWeekday: Weekday = user.getSchedule(for: Mocado.today) else {
+            print("[Error] did not find Mocado.todayWeekday")
             return
         }
         
-        for cbl in todayWeekday.contextBlocks where cbl.context == context1 {
+        for cbl in todayWeekday.contextBlocks where cbl.context == Mocado.context1 {
             
             for act in cbl.activities {
                 
-                if act.project != proj2 {
+                if act.project != Mocado.projects[1] {
                     
                 }
                 
-                XCTAssertTrue(act.project.name == proj2.name)
+                XCTAssertTrue(act.project.name == Mocado.projects[1].name)
             }
             
         }
         
     }
     
-    //Should allocate both activities, prioritizing the proj2 activity.
+    //Should allocate both activities, prioritizing the Mocado.projects[1] activity.
     func testUserUpdateSchedule2ActivitiesToBeAllocated() {
         
         let user = User.sharedInstance
-        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
+        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: Mocado.context1)])
         user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
         
-        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 3_800)
+        Mocado.projects[0] = Project(named: "Mocado.projects[0]", startsAt: Mocado.today, endsAt: Mocado.tomorrow, withContext: Mocado.context1, importance: 1, totalTimeEstimated: 3_800)
         
-        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 8_000)
-        
-        
-        user.add(contexts: [context1])
-        user.add(projects: [proj1])
-        user.add(projects: [proj2])
+        Mocado.projects[1] = Project(named: "Mocado.projects[1]", startsAt: Mocado.today, endsAt: Mocado.tomorrow, withContext: Mocado.context1, importance: 1, totalTimeEstimated: 8_000)
         
         
-        user.updateCurrentScheduleUntil(date: tomorrow)
+        user.add(contexts: [Mocado.context1])
+        user.add(projects: [Mocado.projects[0]])
+        user.add(projects: [Mocado.projects[1]])
         
-        guard let todayWeekday: Weekday = user.getSchedule(for: today) else {
-            print("[Error] did not find todayWeekday")
+        
+        user.updateCurrentScheduleUntil(date: Mocado.tomorrow)
+        
+        guard let todayWeekday: Weekday = user.getSchedule(for: Mocado.today) else {
+            print("[Error] did not find Mocado.todayWeekday")
             return
         }
         
-        for cbl in todayWeekday.contextBlocks where cbl.context == context1 {
+        for cbl in todayWeekday.contextBlocks where cbl.context == Mocado.context1 {
             
             for act in cbl.activities {
                 
-                if act.project != proj2 {
+                if act.project != Mocado.projects[1] {
                     
                 }
                 if cbl.activities.first!.project.name == act.project.name {
                     
-                    XCTAssertTrue(act.project.name == proj2.name)
+                    XCTAssertTrue(act.project.name == Mocado.projects[1].name)
                 } else {
                     
-                    XCTAssertTrue(act.project.name == proj1.name)
+                    XCTAssertTrue(act.project.name == Mocado.projects[0].name)
                 }
             }
             
@@ -143,42 +130,37 @@ class FoocoTests: XCTestCase {
     func testUserUpdateSchedule2ActivitiesToBeAllocatedWithMaxTime() {
         
         let user = User.sharedInstance
-        context1 = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: 3_200)
+        Mocado.context1 = Context(named: "Mocado.context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: 3_200)
         
         let todayComponents = Calendar.current.dateComponents([.day,.month,.year], from: Date())
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        let morningCblStart = dateFormatter.date(from: "\(todayComponents.day!)-\(todayComponents.month!)-\(todayComponents.year!) 06:00:00")!
-        let morningCblEnds = dateFormatter.date(from: "\(todayComponents.day!)-\(todayComponents.month!)-\(todayComponents.year!) 10:00:00")!
+        let morningCblStart = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 06:00:00")!
+        let morningCblEnds = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 10:00:00")!
         
-        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: morningCblStart, endsAt: morningCblEnds), context: context1)])
+        let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: morningCblStart, endsAt: morningCblEnds), context: Mocado.context1)])
         user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
         
-        proj1 = Project(named: "proj1", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 3_800)
+        Mocado.projects[0] = Project(named: "Mocado.projects[0]", startsAt: Mocado.today, endsAt: Mocado.tomorrow, withContext: Mocado.context1, importance: 1, totalTimeEstimated: 3_800)
         
-        proj2 = Project(named: "proj2", startsAt: today, endsAt: tomorrow, withContext: context1, importance: 1, totalTimeEstimated: 8_000)
+        Mocado.projects[1] = Project(named: "Mocado.projects[1]", startsAt: Mocado.today, endsAt: Mocado.tomorrow, withContext: Mocado.context1, importance: 1, totalTimeEstimated: 8_000)
         
         
-        user.add(contexts: [context1])
-        user.add(projects: [proj1])
-        user.add(projects: [proj2])
+        user.add(contexts: [Mocado.context1])
+        user.add(projects: [Mocado.projects[0]])
+        user.add(projects: [Mocado.projects[1]])
         
-        user.updateCurrentScheduleUntil(date: tomorrow)
+        user.updateCurrentScheduleUntil(date: Mocado.tomorrow)
         
-        guard let todayWeekday: Weekday = user.getSchedule(for: today) else {
-            print("[Error] did not find todayWeekday")
-            return
-        }
+        XCTAssertTrue(Mocado.todayWeekday.contextBlocks[0].activities.count == 4)
+        XCTAssertEqual(Mocado.todayWeekday.contextBlocks[0].activities[0].project.name, Mocado.projects[1].name)
+        XCTAssertEqual(Mocado.todayWeekday.contextBlocks[0].activities[1].project.name, Mocado.projects[1].name)
+        XCTAssertEqual(Mocado.todayWeekday.contextBlocks[0].activities[2].project.name, Mocado.projects[1].name)
+        XCTAssertEqual(Mocado.todayWeekday.contextBlocks[0].activities[3].project.name, Mocado.projects[0].name)
         
-        XCTAssertTrue(todayWeekday.contextBlocks[0].activities.count == 4)
-        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[0].project.name, proj2.name)
-        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[1].project.name, proj2.name)
-        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[2].project.name, proj2.name)
-        XCTAssertEqual(todayWeekday.contextBlocks[0].activities[3].project.name, proj1.name)
-        
-        XCTAssertEqual(proj2.timeLeftEstimated, 0.0)
-        XCTAssertTrue(proj1.timeLeftEstimated > 0.0)
+        XCTAssertEqual(Mocado.projects[1].timeLeftEstimated, 0.0)
+        XCTAssertTrue(Mocado.projects[0].timeLeftEstimated > 0.0)
         
     }
     
@@ -190,11 +172,11 @@ class FoocoTests: XCTestCase {
 
         let today = Calendar.current.dateComponents([.day,.month,.year], from: Date())
         
-        let morningCblStart = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 06:00:00")
-        let morningCblEnds = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 10:00:00")
+        let morningCblStart = dateFormatter.date(from: "\(Mocado.today.day!)-\(Mocado.today.month!)-\(Mocado.today.year!) 06:00:00")
+        let morningCblEnds = dateFormatter.date(from: "\(Mocado.today.day!)-\(Mocado.today.month!)-\(Mocado.today.year!) 10:00:00")
 
-        let afternoonCblStarts = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 11:00:00")
-        let afternoonCblEnds = dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 15:00:00")
+        let afternoonCblStarts = dateFormatter.date(from: "\(Mocado.today.day!)-\(Mocado.today.month!)-\(Mocado.today.year!) 11:00:00")
+        let afternoonCblEnds = dateFormatter.date(from: "\(Mocado.today.day!)-\(Mocado.today.month!)-\(Mocado.today.year!) 15:00:00")
         
         let college = Context(named: "college", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
         let work = Context(named: "work", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
@@ -214,7 +196,7 @@ class FoocoTests: XCTestCase {
         user.add(contexts: [college,work])
         user.add(projects: [collegeProject,workProject])
         
-        user.updateCurrentScheduleUntil(date: tomorrow)
+        user.updateCurrentScheduleUntil(date: Mocado.tomorrow)
         
     }
     

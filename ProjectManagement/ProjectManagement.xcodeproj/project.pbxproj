@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */; };
+		BE6E111E1FB37356004B5B9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111D1FB37356004B5B9E /* Extensions.swift */; };
+		BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */; };
+		BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11211FB38C3E004B5B9E /* Mocado.swift */; };
+		BE6E11241FB38DE9004B5B9E /* Mocado.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11211FB38C3E004B5B9E /* Mocado.swift */; };
+		BE6E11261FB390A0004B5B9E /* EditProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewController.swift */; };
+		BE6E11281FB39150004B5B9E /* EditProjectContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11271FB39150004B5B9E /* EditProjectContainerView.swift */; };
 		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
 		EE1493F31FAA4E69004750DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1493F21FAA4E69004750DC /* Event.swift */; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
@@ -66,6 +73,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewControllerFooco.swift; sourceTree = "<group>"; };
+		BE6E111D1FB37356004B5B9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectContextCell.swift; sourceTree = "<group>"; };
+		BE6E11211FB38C3E004B5B9E /* Mocado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocado.swift; sourceTree = "<group>"; };
+		BE6E11251FB390A0004B5B9E /* EditProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectTableViewController.swift; sourceTree = "<group>"; };
+		BE6E11271FB39150004B5B9E /* EditProjectContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectContainerView.swift; sourceTree = "<group>"; };
 		BEDE6C721FB0D0DE00ABD6D8 /* FoocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoTests.swift; sourceTree = "<group>"; };
 		BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,9 +216,15 @@
 			isa = PBXGroup;
 			children = (
 				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
+				BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */,
+				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
+				BE6E11251FB390A0004B5B9E /* EditProjectTableViewController.swift */,
+				BE6E11271FB39150004B5B9E /* EditProjectContainerView.swift */,
 				EEA46B6A1F9A36CA00851D5D /* Main.storyboard */,
 				EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */,
 				FC37F4471FB0CEEB0003738E /* Supporting Files */,
+				BE6E111D1FB37356004B5B9E /* Extensions.swift */,
+				BE6E11211FB38C3E004B5B9E /* Mocado.swift */,
 			);
 			path = Fooco;
 			sourceTree = "<group>";
@@ -508,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6E11241FB38DE9004B5B9E /* Mocado.swift in Sources */,
 				BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,17 +537,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */,
+				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
 				EE1493F31FAA4E69004750DC /* Event.swift in Sources */,
 				FC2F29C31F9A3EA100984409 /* Context.swift in Sources */,
+				BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */,
 				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
 				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
+				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
+				BE6E11261FB390A0004B5B9E /* EditProjectTableViewController.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */,
 				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
 				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
+				BE6E11281FB39150004B5B9E /* EditProjectContainerView.swift in Sources */,
+				BE6E111E1FB37356004B5B9E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,132 +712,6 @@
 			};
 			name = Debug;
 		};
-		EEA46B8B1F9A36CA00851D5D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Fooco;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		EEA46B8D1F9A36CA00851D5D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = Y93HUJS49V;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = FoocoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.FoocoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fooco.app/Fooco";
-			};
-			name = Debug;
-		};
 		BEDE6C7B1FB0D0DE00ABD6D8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -937,7 +837,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -996,7 +896,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Fooco;
