@@ -10,7 +10,6 @@
 		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
 		EE1493F31FAA4E69004750DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1493F21FAA4E69004750DC /* Event.swift */; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
-		EEA46B691F9A36CA00851D5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B681F9A36CA00851D5D /* ViewController.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
 		EEA46B6E1F9A36CA00851D5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */; };
 		EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */; };
@@ -37,6 +36,9 @@
 		FC2F29CF1F9A3EA200984409 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB901F9A37E70051B33B /* User.swift */; };
 		FC2F29D01F9A3EA200984409 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB911F9A37E70051B33B /* Week.swift */; };
 		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
+		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
+		FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
+		FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +80,6 @@
 		EE99BB921F9A37E70051B33B /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B661F9A36CA00851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEA46B681F9A36CA00851D5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EEA46B6B1F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEA46B701F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,6 +99,8 @@
 		EEA46BB41F9A36D600851D5D /* DaveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
+		FCCD97671FACEA340068DB28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,7 @@
 		EE99BB8A1F9A37E70051B33B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FCCD97661FACEA1A0068DB28 /* Extensions */,
 				EE99BB931F9A383E0051B33B /* Model */,
 			);
 			path = Common;
@@ -198,12 +202,10 @@
 		EEA46B651F9A36CA00851D5D /* Fooco */ = {
 			isa = PBXGroup;
 			children = (
-				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
-				EEA46B681F9A36CA00851D5D /* ViewController.swift */,
+				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
 				EEA46B6A1F9A36CA00851D5D /* Main.storyboard */,
 				EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */,
-				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
-				EEA46B721F9A36CA00851D5D /* Info.plist */,
+				FC37F4471FB0CEEB0003738E /* Supporting Files */,
 			);
 			path = Fooco;
 			sourceTree = "<group>";
@@ -220,12 +222,10 @@
 		EEA46B971F9A36D600851D5D /* Dave */ = {
 			isa = PBXGroup;
 			children = (
-				EEA46B981F9A36D600851D5D /* AppDelegate.swift */,
 				EEA46B9A1F9A36D600851D5D /* ViewController.swift */,
 				EEA46B9C1F9A36D600851D5D /* Main.storyboard */,
 				EEA46B9F1F9A36D600851D5D /* Assets.xcassets */,
-				EEA46BA11F9A36D600851D5D /* LaunchScreen.storyboard */,
-				EEA46BA41F9A36D600851D5D /* Info.plist */,
+				FC37F4461FB0CECB0003738E /* Supporting Files */,
 			);
 			path = Dave;
 			sourceTree = "<group>";
@@ -265,6 +265,34 @@
 				EEA46B851F9A36CA00851D5D /* FoocoUITests */,
 			);
 			path = Fooco;
+			sourceTree = "<group>";
+		};
+		FC37F4461FB0CECB0003738E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEA46B981F9A36D600851D5D /* AppDelegate.swift */,
+				EEA46BA11F9A36D600851D5D /* LaunchScreen.storyboard */,
+				EEA46BA41F9A36D600851D5D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC37F4471FB0CEEB0003738E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
+				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
+				EEA46B721F9A36CA00851D5D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCCD97661FACEA1A0068DB28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCCD97671FACEA340068DB28 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,12 +520,13 @@
 				EE1493F31FAA4E69004750DC /* Event.swift in Sources */,
 				FC2F29C31F9A3EA100984409 /* Context.swift in Sources */,
 				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
-				EEA46B691F9A36CA00851D5D /* ViewController.swift in Sources */,
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
+				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */,
+				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
 				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +537,7 @@
 			files = (
 				FC2F29CA1F9A3EA200984409 /* Activity.swift in Sources */,
 				FC2F29CB1F9A3EA200984409 /* Context.swift in Sources */,
+				FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29CE1F9A3EA200984409 /* TimeBlock.swift in Sources */,
 				EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */,
 				FC2F29CF1F9A3EA200984409 /* User.swift in Sources */,
@@ -594,6 +624,130 @@
 		BEDE6C7A1FB0D0DE00ABD6D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Fooco;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EEA46B8B1F9A36CA00851D5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Fooco;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EEA46B8D1F9A36CA00851D5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -906,7 +1060,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -965,7 +1119,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Dave/Dave/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Dave;
