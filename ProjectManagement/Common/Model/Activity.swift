@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Activity: NSObject{
+class Activity: NSObject {
     
     var project: Project
     var timeBlock: TimeBlock
