@@ -11,15 +11,36 @@ class HomeViewControllerFooco: UIViewController {
 
 	private enum MovementState {
 		case atCenter, atRight, atLeft, goingRight, goingLeft
+		
+		static prefix func ! (value: MovementState) -> MovementState {
+			switch value {
+			case .atCenter:
+				return .atCenter
+			
+			case .atRight:
+				return .atLeft
+				
+			case .atLeft:
+				return .atRight
+				
+			case .goingRight:
+				return .goingLeft
+				
+			case .goingLeft:
+				return .goingRight
+			}
+		}
 	}
 	
 	// MARK: - Properties
 
 	private var activities = [Activity]()
 	
-	private let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeOut)
+	private let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear)
 	
 	private var state: MovementState = .atCenter
+	
+	private var previousActivityViewCenter: CGFloat = 0
 	
 	private var movement: CGFloat {
 		return self.leftView.frame.width.rounded() // leftView and rightView should have the same size
@@ -97,14 +118,14 @@ class HomeViewControllerFooco: UIViewController {
 	@IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
 		
 		let translation = sender.translation(in: sender.view)
-		let direction = sender.velocity(in: sender.view)
+		let velocity = sender.velocity(in: sender.view)
 		
 		switch sender.state {
 		case .began:
-			if direction.x > 0 && (self.state == .atCenter || self.state == .atLeft) {
+			if velocity.x > 0 && (self.state == .atCenter || self.state == .atLeft) {
 				self.moveRight()
 				
-			} else if direction.x < 0 && (self.state == .atCenter || self.state == .atRight) {
+			} else if velocity.x < 0 && (self.state == .atCenter || self.state == .atRight) {
 				self.moveLeft()
 			}
 			
@@ -117,6 +138,14 @@ class HomeViewControllerFooco: UIViewController {
 			}
 			
 		case .ended, .cancelled:
+			print(velocity.x)
+			if (self.state == .goingRight && velocity.x <= 0) ||
+				(self.state == .goingLeft && velocity.x >= 0) ||
+				(self.animator.fractionComplete < 0.3 && abs(velocity.x) < 0) {
+				self.animator.isReversed = !self.animator.isReversed
+				self.state = !self.state
+			}
+			
 			self.animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			
 		case .failed, .possible:
@@ -141,6 +170,7 @@ class HomeViewControllerFooco: UIViewController {
 	
 	private func moveRight() {
 		animator.addAnimations {
+			self.previousActivityViewCenter = self.activityCenterConstraint.constant
 			self.activityCenterConstraint.constant += self.movement
 			self.view.layoutIfNeeded()
 			
@@ -154,6 +184,7 @@ class HomeViewControllerFooco: UIViewController {
 	
 	private func moveLeft() {
 		animator.addAnimations {
+			self.previousActivityViewCenter = self.activityCenterConstraint.constant
 			self.activityCenterConstraint.constant -= self.movement
 			self.view.layoutIfNeeded()
 			
@@ -167,11 +198,13 @@ class HomeViewControllerFooco: UIViewController {
 	
 	private func animationCommon() {
 		self.animator.addCompletion { position in
-			if position == .end {
-				self.switchState()
+			if position == .start {
+				self.activityCenterConstraint.constant = self.previousActivityViewCenter
 			}
+			
+			self.switchState()
 		}
-		
+		self.animator.isInterruptible = true
 		self.animator.pauseAnimation()
 	}
 	
