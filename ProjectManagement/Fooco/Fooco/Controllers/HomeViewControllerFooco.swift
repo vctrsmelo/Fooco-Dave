@@ -43,7 +43,7 @@ class HomeViewControllerFooco: UIViewController {
 	private var previousActivityViewCenter: CGFloat = 0
 	
 	private var movement: CGFloat {
-		return self.leftView.frame.width.rounded() // leftView and rightView should have the same size
+		return (self.activityView.bounds.width / 2).rounded()
 	}
 	
 	// MARK: Outlets
@@ -138,7 +138,6 @@ class HomeViewControllerFooco: UIViewController {
 			}
 			
 		case .ended, .cancelled:
-			print(velocity.x)
 			if (self.state == .goingRight && velocity.x <= 0) ||
 				(self.state == .goingLeft && velocity.x >= 0) ||
 				(self.animator.fractionComplete < 0.3 && abs(velocity.x) < 0) {
