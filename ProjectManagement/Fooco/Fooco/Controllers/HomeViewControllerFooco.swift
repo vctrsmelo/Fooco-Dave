@@ -13,29 +13,28 @@ class HomeViewControllerFooco: UIViewController {
 		case atCenter, atRight, atLeft, goingRight, goingLeft
 	}
 	
+	// MARK: - Properties
+
 	private var activities = [Activity]()
 	
 	private let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeOut)
 	
-	private var state: MovementState = .atCenter {
-		didSet {
-			print("old")
-			print(oldValue)
-			print("new")
-			print(state)
-		}
-	}
+	private var state: MovementState = .atCenter
 	
 	private var movement: CGFloat {
 		return self.leftView.frame.width.rounded() // leftView and rightView should have the same size
 	}
 	
+	// MARK: Outlets
+
 	@IBOutlet private weak var activityCenterConstraint: NSLayoutConstraint!
 	@IBOutlet private weak var topLabel: UILabel!
 	@IBOutlet private weak var activityView: UIView!
 	@IBOutlet private weak var leftView: UIView!
 	@IBOutlet private weak var rightView: UIView!
 	
+	// MARK: - View Handling
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -43,22 +42,6 @@ class HomeViewControllerFooco: UIViewController {
 		
 		self.topLabel.text = self.chooseTopLabelText()
     }
-	
-	private func switchState() {
-		switch self.activityCenterConstraint.constant {
-		case 0:
-			self.state = .atCenter
-			
-		case 0...:
-			self.state = .atRight
-			
-		case ...0:
-			self.state = .atLeft
-			
-		default:
-			fatalError("Should be unreachable")
-		}
-	}
 	
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
@@ -91,6 +74,26 @@ class HomeViewControllerFooco: UIViewController {
 		return greeting
 	}
 	
+	// MARK: - General Methods
+
+	
+	private func switchState() {
+		switch self.activityCenterConstraint.constant {
+		case 0:
+			self.state = .atCenter
+			
+		case 0...:
+			self.state = .atRight
+			
+		case ...0:
+			self.state = .atLeft
+			
+		default:
+			fatalError("Should be unreachable")
+		}
+	}
+	
+	
 	@IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
 		
 		let translation = sender.translation(in: sender.view)
@@ -98,15 +101,17 @@ class HomeViewControllerFooco: UIViewController {
 		
 		switch sender.state {
 		case .began:
-			if (self.state == .atCenter || self.state == .atLeft) && direction.x > 0 {
+			if direction.x > 0 && (self.state == .atCenter || self.state == .atLeft) {
 				self.moveRight()
-			} else if (self.state == .atCenter || self.state == .atRight) && direction.x < 0 {
+				
+			} else if direction.x < 0 && (self.state == .atCenter || self.state == .atRight) {
 				self.moveLeft()
 			}
 			
 		case.changed:
 			if self.state == .goingRight {
 				self.animator.fractionComplete = translation.x / self.movement
+				
 			} else if self.state == .goingLeft {
 				self.animator.fractionComplete = -translation.x / self.movement
 			}
@@ -119,13 +124,27 @@ class HomeViewControllerFooco: UIViewController {
 		}
 	}
 	
+	// MARK: - Animation
+	
+	private func showCorrectViews() {
+		if self.activityCenterConstraint.constant > 0 {
+			self.leftView.alpha = 1
+			self.rightView.alpha = 0
+		} else if self.activityCenterConstraint.constant < 0 {
+			self.leftView.alpha = 0
+			self.rightView.alpha = 1
+		} else {
+			self.leftView.alpha = 0
+			self.rightView.alpha = 0
+		}
+	}
+	
 	private func moveRight() {
 		animator.addAnimations {
 			self.activityCenterConstraint.constant += self.movement
 			self.view.layoutIfNeeded()
-
-			self.leftView.alpha = 1
-			self.rightView.alpha = 0
+			
+			self.showCorrectViews()
 		}
 		
 		self.state = .goingRight
@@ -138,8 +157,7 @@ class HomeViewControllerFooco: UIViewController {
 			self.activityCenterConstraint.constant -= self.movement
 			self.view.layoutIfNeeded()
 			
-			self.leftView.alpha = 0
-			self.rightView.alpha = 1
+			self.showCorrectViews()
 		}
 		
 		self.state = .goingLeft
