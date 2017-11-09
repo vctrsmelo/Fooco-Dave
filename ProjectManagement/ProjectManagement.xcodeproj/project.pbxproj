@@ -45,6 +45,8 @@
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
 		FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
+		FCE536B71FB4C5A50010BA63 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE536B61FB4C5A50010BA63 /* MathUtils.swift */; };
+		FCE536B81FB4C5A50010BA63 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE536B61FB4C5A50010BA63 /* MathUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,7 @@
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FCCD97671FACEA340068DB28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		FCE536B61FB4C5A50010BA63 /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				FCCD97671FACEA340068DB28 /* UIViewExtension.swift */,
+				FCE536B61FB4C5A50010BA63 /* MathUtils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -563,6 +567,7 @@
 				EE1493F31FAA4E69004750DC /* Event.swift in Sources */,
 				FC2F29C31F9A3EA100984409 /* Context.swift in Sources */,
 				BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */,
+				FCE536B71FB4C5A50010BA63 /* MathUtils.swift in Sources */,
 				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
 				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
@@ -592,6 +597,7 @@
 				FC2F29D01F9A3EA200984409 /* Week.swift in Sources */,
 				FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */,
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
+				FCE536B81FB4C5A50010BA63 /* MathUtils.swift in Sources */,
 				FC2F29CC1F9A3EA200984409 /* ContextBlock.swift in Sources */,
 				FC2F29CD1F9A3EA200984409 /* Project.swift in Sources */,
 			);
@@ -842,7 +848,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -907,7 +913,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

@@ -26,22 +26,11 @@ class HomeViewControllerFooco: UIViewController {
 		}
 	}
 	
-//	private var centerViewInitialX: CGFloat = 0
-//	private var leftViewInitialX: CGFloat = 0
-//	private var rightViewInitialX: CGFloat = 0
-	
 	private var movement: CGFloat {
 		return self.leftView.frame.width.rounded() // leftView and rightView should have the same size
 	}
 	
-//	var centerViewRightX: CGFloat {
-//		return self.centerViewInitialX + self.movement
-//	}
-	
-//	var centerViewLeftX: CGFloat {
-//		return self.centerViewInitialX - self.movement
-//	}
-	
+	@IBOutlet private weak var activityCenterConstraint: NSLayoutConstraint!
 	@IBOutlet private weak var topLabel: UILabel!
 	@IBOutlet private weak var activityView: UIView!
 	@IBOutlet private weak var leftView: UIView!
@@ -49,10 +38,6 @@ class HomeViewControllerFooco: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		
-//		self.centerViewInitialX = self.activityView.frame.origin.x
-//		self.leftViewInitialX = self.leftView.frame.origin.x
-//		self.rightViewInitialX = self.rightView.frame.origin.x
 		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
@@ -69,12 +54,6 @@ class HomeViewControllerFooco: UIViewController {
 			
 		case ...0:
 			self.state = .atLeft
-			
-//		case 0..<self.movement:
-//			self.state = .goingRight
-//
-//		case -self.movement..<0:
-//			self.state = .goingLeft
 			
 		default:
 			fatalError("Should be unreachable")
@@ -111,7 +90,6 @@ class HomeViewControllerFooco: UIViewController {
 		
 		return greeting
 	}
-	@IBOutlet weak var activityCenterConstraint: NSLayoutConstraint!
 	
 	@IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
 		
@@ -120,12 +98,9 @@ class HomeViewControllerFooco: UIViewController {
 		
 		switch sender.state {
 		case .began:
-			print(translation)
-//			print(sender.velocity(in: sender.view))
-//			print(self.state)
-			if (self.state == .atCenter || self.state == .atLeft) && translation.x > 0 {
+			if (self.state == .atCenter || self.state == .atLeft) && direction.x > 0 {
 				self.moveRight()
-			} else if (self.state == .atCenter || self.state == .atRight) && translation.x < 0 {
+			} else if (self.state == .atCenter || self.state == .atRight) && direction.x < 0 {
 				self.moveLeft()
 			}
 			
@@ -137,9 +112,6 @@ class HomeViewControllerFooco: UIViewController {
 			}
 			
 		case .ended, .cancelled:
-//			if self.animator.fractionComplete < 0.3 {
-//				self.animator.isReversed = !self.animator.isReversed
-//			}
 			self.animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			
 		case .failed, .possible:
@@ -151,19 +123,9 @@ class HomeViewControllerFooco: UIViewController {
 		animator.addAnimations {
 			self.activityCenterConstraint.constant += self.movement
 			self.view.layoutIfNeeded()
-//			self.activityView.frame = self.activityView.frame.offsetBy(dx: self.movement, dy: 0)
-			
-//			self.leftView.frame.origin.x = self.leftViewInitialX + self.movement
+
 			self.leftView.alpha = 1
-			
-//			self.rightView.frame.origin.x = self.rightViewInitialX
 			self.rightView.alpha = 0
-		}
-		
-		animator.addCompletion { position in
-			if position ==  .start {
-				self.activityCenterConstraint.constant = 0
-			}
 		}
 		
 		self.state = .goingRight
@@ -175,19 +137,9 @@ class HomeViewControllerFooco: UIViewController {
 		animator.addAnimations {
 			self.activityCenterConstraint.constant -= self.movement
 			self.view.layoutIfNeeded()
-//			self.activityView.frame = self.activityView.frame.offsetBy(dx: -self.movement, dy: 0)
 			
-//			self.leftView.frame.origin.x = self.leftViewInitialX
 			self.leftView.alpha = 0
-			
-//			self.rightView.frame.origin.x = self.rightViewInitialX - self.movement
 			self.rightView.alpha = 1
-		}
-		
-		animator.addCompletion { position in
-			if position == .start {
-				self.activityCenterConstraint.constant = 0
-			}
 		}
 		
 		self.state = .goingLeft
@@ -197,11 +149,9 @@ class HomeViewControllerFooco: UIViewController {
 	
 	private func animationCommon() {
 		self.animator.addCompletion { position in
-//			if position == .end {
+			if position == .end {
 				self.switchState()
-//			}
-			
-			self.view.layoutIfNeeded()
+			}
 		}
 		
 		self.animator.pauseAnimation()
@@ -217,10 +167,4 @@ class HomeViewControllerFooco: UIViewController {
     }
     */
 
-}
-
-extension CGPoint {
-	static func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
-		return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
-	}
 }
