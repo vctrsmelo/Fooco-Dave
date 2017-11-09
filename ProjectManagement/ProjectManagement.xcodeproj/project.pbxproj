@@ -195,7 +195,6 @@
 				EE99BB8A1F9A37E70051B33B /* Common */,
 				EEA46BC51F9A370600851D5D /* Dave */,
 				FC2F29C11F9A3D8200984409 /* Fooco */,
-				BEDE6C731FB0D0DE00ABD6D8 /* FoocoTests */,
 				EEA46B641F9A36CA00851D5D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -281,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA46B651F9A36CA00851D5D /* Fooco */,
+				BEDE6C731FB0D0DE00ABD6D8 /* FoocoTests */,
 				EEA46B851F9A36CA00851D5D /* FoocoUITests */,
 			);
 			path = Fooco;
