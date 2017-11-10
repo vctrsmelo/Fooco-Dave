@@ -14,10 +14,10 @@
 		BE6E11261FB390A0004B5B9E /* EditProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewController.swift */; };
 		BE6E11281FB39150004B5B9E /* EditProjectContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11271FB39150004B5B9E /* EditProjectContainerView.swift */; };
 		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
+		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
 		EE1493F31FAA4E69004750DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1493F21FAA4E69004750DC /* Event.swift */; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
-		EEA46B6E1F9A36CA00851D5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */; };
 		EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */; };
 		EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B981F9A36D600851D5D /* AppDelegate.swift */; };
 		EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B9A1F9A36D600851D5D /* ViewController.swift */; };
@@ -81,6 +81,8 @@
 		BEDE6C721FB0D0DE00ABD6D8 /* FoocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoTests.swift; sourceTree = "<group>"; };
 		BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF900921FB63974007FB677 /* EditProjectContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCell.xib; sourceTree = "<group>"; };
+		BEF900941FB6424C007FB677 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE1493F21FAA4E69004750DC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EE99BB8B1F9A37E70051B33B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		EE99BB8C1F9A37E70051B33B /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
@@ -93,7 +95,6 @@
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B661F9A36CA00851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA46B6B1F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEA46B701F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEA46B721F9A36CA00851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEA46B861F9A36CA00851D5D /* FoocoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoUITests.swift; sourceTree = "<group>"; };
@@ -217,7 +218,7 @@
 				FCE536B31FB4C2FC0010BA63 /* Controllers */,
 				FCE536B51FB4C3340010BA63 /* Views */,
 				EEA46B6A1F9A36CA00851D5D /* Main.storyboard */,
-				EEA46B6D1F9A36CA00851D5D /* Assets.xcassets */,
+				BEF900941FB6424C007FB677 /* Assets.xcassets */,
 				FC37F4471FB0CEEB0003738E /* Supporting Files */,
 			);
 			path = Fooco;
@@ -325,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
+				BEF900921FB63974007FB677 /* EditProjectContextCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -498,7 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */,
-				EEA46B6E1F9A36CA00851D5D /* Assets.xcassets in Resources */,
+				BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */,
 				EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

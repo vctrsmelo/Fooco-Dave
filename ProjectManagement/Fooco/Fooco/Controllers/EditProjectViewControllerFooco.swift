@@ -16,8 +16,8 @@ class EditProjectViewControllerFooco: UIViewController {
     
     
     @IBOutlet weak var editProjectContainerView: EditProjectContainerView!
-    
-    
+    weak var tableView: UITableView!
+    weak var contextsCollectionView: UICollectionView!
     
     
     var project: Project?
@@ -43,22 +43,14 @@ class EditProjectViewControllerFooco: UIViewController {
         
     }
     
-}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "projectTableViewSegue" {
+            let editProjTableViewController = segue.destination as! EditProjectTableViewController
+            
+            contextsCollectionView = editProjTableViewController.contextsCollectionView
+            tableView = editProjTableViewController.tableView
 
-extension EditProjectViewControllerFooco: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 0, height: 0)
-        
-    }
-    
+
 }
