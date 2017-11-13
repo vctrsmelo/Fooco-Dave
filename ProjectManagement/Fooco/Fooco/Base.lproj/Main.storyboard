@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller Fooco-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Home View Controller" customClass="HomeViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -317,15 +317,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fzf-FU-b0v"/>
                     <connections>
-                        <outlet property="activityCenterConstraint" destination="kVu-rV-vgy" id="fR1-MT-pdH"/>
-                        <outlet property="activityView" destination="9rO-JB-msb" id="RtF-cL-i9b"/>
-                        <outlet property="leftView" destination="5q5-QA-lZt" id="JnW-7M-saN"/>
-                        <outlet property="rightView" destination="DDq-g6-KEx" id="60I-dq-seF"/>
                         <outlet property="topLabel" destination="r3U-pL-xjE" id="8AB-Jg-yMG"/>
+                        <outlet property="viewSwiper" destination="sdy-jd-IWC" id="nXV-bi-Unw"/>
                         <segue destination="52a-gu-zMx" kind="show" id="1k7-U0-1if"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="sdy-jd-IWC" customClass="ViewSwiper" customModule="Fooco" customModuleProvider="target">
+                    <connections>
+                        <outlet property="centerView" destination="9rO-JB-msb" id="5hV-Y7-Mf1"/>
+                        <outlet property="centerViewCenterConstraint" destination="kVu-rV-vgy" id="7eT-fe-ivd"/>
+                        <outlet property="controller" destination="BYZ-38-t0r" id="dp5-Eg-ehK"/>
+                        <outlet property="leftView" destination="5q5-QA-lZt" id="W1s-1h-Tux"/>
+                        <outlet property="rightView" destination="DDq-g6-KEx" id="R2T-Sx-a19"/>
+                    </connections>
+                </customObject>
                 <panGestureRecognizer cancelsTouchesInView="NO" minimumNumberOfTouches="1" id="cLz-6t-qUx">
                     <connections>
                         <action selector="handlePanGesture:" destination="BYZ-38-t0r" id="iX6-lM-6xS"/>

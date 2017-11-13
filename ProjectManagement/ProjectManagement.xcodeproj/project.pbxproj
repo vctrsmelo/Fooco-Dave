@@ -43,6 +43,7 @@
 		FC2F29D01F9A3EA200984409 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB911F9A37E70051B33B /* Week.swift */; };
 		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
+		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
 		FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
 		FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
 		FCE536B71FB4C5A50010BA63 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE536B61FB4C5A50010BA63 /* MathUtils.swift */; };
@@ -114,6 +115,7 @@
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
+		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
 		FCCD97671FACEA340068DB28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		FCE536B61FB4C5A50010BA63 /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				BE6E11211FB38C3E004B5B9E /* Mocado.swift */,
+				FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */,
 				BE6E111D1FB37356004B5B9E /* Extensions.swift */,
 				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
 				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
@@ -573,6 +576,7 @@
 				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
+				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewController.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
