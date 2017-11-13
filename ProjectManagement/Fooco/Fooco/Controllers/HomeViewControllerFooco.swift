@@ -43,7 +43,7 @@ class HomeViewControllerFooco: UIViewController {
 	private var previousActivityViewCenter: CGFloat = 0
 	
 	private var movement: CGFloat {
-		return (self.activityView.bounds.width / 2).rounded()
+		return (self.activityView.bounds.width * 3 / 4).rounded()
 	}
 	
 	// MARK: Outlets
