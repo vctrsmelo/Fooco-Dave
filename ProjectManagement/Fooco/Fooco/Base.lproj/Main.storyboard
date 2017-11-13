@@ -255,6 +255,9 @@
                                             <constraint firstItem="a47-JG-hX8" firstAttribute="leading" secondItem="64S-rf-Apl" secondAttribute="leading" constant="28" id="Rmx-X4-qGC"/>
                                             <constraint firstItem="pwN-8e-AQE" firstAttribute="centerX" secondItem="a47-JG-hX8" secondAttribute="centerX" id="khz-4B-vj0"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Rl9-K8-gvZ" appends="YES" id="zc6-ZG-iLM"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-ym-KDp" userLabel="Skip View">
                                         <rect key="frame" x="15" y="0.0" width="15" height="351.5"/>
@@ -276,6 +279,9 @@
                                             <constraint firstItem="xId-cW-E6u" firstAttribute="top" secondItem="ksJ-pb-wBD" secondAttribute="bottom" constant="19" id="lhn-eZ-D9S"/>
                                             <constraint firstItem="ksJ-pb-wBD" firstAttribute="centerX" secondItem="xId-cW-E6u" secondAttribute="centerX" id="vgf-87-JjM"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Rl9-K8-gvZ" appends="YES" id="yJh-1v-hUM"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.42051130533218384" green="0.61492890119552612" blue="0.69045358896255493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -337,6 +343,11 @@
                         <action selector="handlePanGesture:" destination="BYZ-38-t0r" id="iX6-lM-6xS"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="Rl9-K8-gvZ">
+                    <connections>
+                        <action selector="handleTapGesture:" destination="BYZ-38-t0r" id="3QZ-i0-Fh9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="476" y="133.5832083958021"/>
         </scene>

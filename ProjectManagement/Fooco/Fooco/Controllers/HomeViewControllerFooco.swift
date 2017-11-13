@@ -15,7 +15,7 @@ class HomeViewControllerFooco: UIViewController {
 	
 	// MARK: Outlets
 
-	@IBOutlet private var viewSwiper: ViewSwiper!
+	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
 	
 	// MARK: - View Handling
@@ -63,6 +63,10 @@ class HomeViewControllerFooco: UIViewController {
 	
 	@IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
 		self.viewSwiper.gestureController(sender)
+	}
+	
+	@IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
+		print(sender)
 	}
 	
 	/*
