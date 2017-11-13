@@ -32,23 +32,44 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avh-ez-JyQ" userLabel="Done View">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="352"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-LY-C3i">
-                                                <rect key="frame" x="157" y="53" width="45" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-LY-C3i">
+                                                <rect key="frame" x="-67.5" y="112.5" width="45" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPU-ns-Q79">
-                                                <rect key="frame" x="0.0" y="184" width="240" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Done Icon" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-Lv-ufj">
+                                                <rect key="frame" x="-77" y="153" width="64" height="46"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.40980431437492371" green="0.67955714464187622" blue="0.66441154479980469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="XgI-Lv-ufj" secondAttribute="trailing" constant="28" id="WbF-Xd-nyM"/>
+                                            <constraint firstItem="hFt-LY-C3i" firstAttribute="centerX" secondItem="XgI-Lv-ufj" secondAttribute="centerX" id="udD-pm-FHI"/>
+                                            <constraint firstItem="XgI-Lv-ufj" firstAttribute="top" secondItem="hFt-LY-C3i" secondAttribute="bottom" constant="19" id="v2W-Ow-ACj"/>
+                                            <constraint firstItem="XgI-Lv-ufj" firstAttribute="centerY" secondItem="avh-ez-JyQ" secondAttribute="centerY" id="wyA-gi-CIe"/>
+                                        </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSQ-4c-98m" userLabel="Focus View">
                                         <rect key="frame" x="15" y="0.0" width="15" height="351.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdK-nM-9As">
+                                                <rect key="frame" x="-62" y="107.5" width="44" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yd2-ro-bPU">
+                                                <rect key="frame" x="-67" y="148" width="54" height="54"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.36298292875289917" green="0.61601978540420532" blue="0.64214742183685303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Yd2-ro-bPU" firstAttribute="top" secondItem="jdK-nM-9As" secondAttribute="bottom" constant="19" id="1Ar-1b-xkE"/>
+                                            <constraint firstItem="Yd2-ro-bPU" firstAttribute="centerY" secondItem="aSQ-4c-98m" secondAttribute="centerY" id="2Yd-DP-4KI"/>
+                                            <constraint firstItem="jdK-nM-9As" firstAttribute="centerX" secondItem="Yd2-ro-bPU" secondAttribute="centerX" id="bWm-6j-OqW"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yd2-ro-bPU" secondAttribute="trailing" constant="28" id="ro1-zc-uMh"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4253954291343689" green="0.69918102025985718" blue="0.68405985832214355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -216,11 +237,45 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64S-rf-Apl" userLabel="Enough View">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="351.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enough" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-8e-AQE">
+                                                <rect key="frame" x="22" y="107.5" width="66" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pie Progress Icon" translatesAutoresizingMaskIntoConstraints="NO" id="a47-JG-hX8">
+                                                <rect key="frame" x="28" y="148" width="54" height="54"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.42048871517181396" green="0.61484462022781372" blue="0.69450318813323975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="a47-JG-hX8" firstAttribute="centerY" secondItem="64S-rf-Apl" secondAttribute="centerY" id="6ad-mM-EaU"/>
+                                            <constraint firstItem="a47-JG-hX8" firstAttribute="top" secondItem="pwN-8e-AQE" secondAttribute="bottom" constant="19" id="Dqb-nc-LSs"/>
+                                            <constraint firstItem="a47-JG-hX8" firstAttribute="leading" secondItem="64S-rf-Apl" secondAttribute="leading" constant="28" id="Rmx-X4-qGC"/>
+                                            <constraint firstItem="pwN-8e-AQE" firstAttribute="centerX" secondItem="a47-JG-hX8" secondAttribute="centerX" id="khz-4B-vj0"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-ym-KDp" userLabel="Skip View">
                                         <rect key="frame" x="15" y="0.0" width="15" height="351.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksJ-pb-wBD">
+                                                <rect key="frame" x="34" y="110.5" width="38.5" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Skip Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xId-cW-E6u">
+                                                <rect key="frame" x="28" y="151" width="50" height="48"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.54806363582611084" green="0.69743615388870239" blue="0.76039749383926392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="xId-cW-E6u" firstAttribute="leading" secondItem="IF8-ym-KDp" secondAttribute="leading" constant="28" id="jTi-yM-VJm"/>
+                                            <constraint firstItem="xId-cW-E6u" firstAttribute="centerY" secondItem="IF8-ym-KDp" secondAttribute="centerY" id="kiJ-Lf-HLH"/>
+                                            <constraint firstItem="xId-cW-E6u" firstAttribute="top" secondItem="ksJ-pb-wBD" secondAttribute="bottom" constant="19" id="lhn-eZ-D9S"/>
+                                            <constraint firstItem="ksJ-pb-wBD" firstAttribute="centerX" secondItem="xId-cW-E6u" secondAttribute="centerX" id="vgf-87-JjM"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.42051130533218384" green="0.61492890119552612" blue="0.69045358896255493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -491,6 +546,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Clock Icon" width="54" height="54"/>
+        <image name="Done Icon" width="64" height="46"/>
+        <image name="Pie Progress Icon" width="54" height="54"/>
+        <image name="Skip Icon" width="50" height="48"/>
         <image name="activitityDecoration" width="314" height="82"/>
     </resources>
 </document>
