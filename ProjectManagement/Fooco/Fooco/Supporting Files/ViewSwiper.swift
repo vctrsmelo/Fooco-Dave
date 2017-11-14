@@ -50,7 +50,8 @@ class ViewSwiper: NSObject {
 
 	// MARK: - Properties
 	
-	private let animator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
+	private let centerAnimator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
+	private let sideAnimator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
 	
 	private var movementState: MovementState = .atCenter
 	
@@ -83,7 +84,8 @@ class ViewSwiper: NSObject {
 	// MARK: - Init
 	
 	func load() {
-		self.animator.isInterruptible = true
+		self.centerAnimator.isInterruptible = true
+		self.sideAnimator.isInterruptible = true
 		
 		self.addPanGestureRecognizer()
 		self.addPanGestureRecognizers()
@@ -118,17 +120,17 @@ class ViewSwiper: NSObject {
 			self.skipViewAnimation()
 		
 		case (.changed, self.doneView), (.changed, self.focusView):
-			self.animator.fractionComplete = translation.x * 2 / self.controller.view.frame.maxX
+			self.sideAnimator.fractionComplete = translation.x * 2 / self.controller.view.frame.maxX
 			
 		case (.changed, self.skipView), (.changed, self.enoughView):
-			self.animator.fractionComplete = -translation.x * 2 / self.controller.view.frame.maxX
+			self.sideAnimator.fractionComplete = -translation.x * 2 / self.controller.view.frame.maxX
 			
 		case (.ended, _), (.cancelled, _):
-			if self.animator.fractionComplete <= 0.3 {
-				self.animator.isReversed = !self.animator.isReversed
+			if self.sideAnimator.fractionComplete <= 0.3 {
+				self.sideAnimator.isReversed = !self.sideAnimator.isReversed
 			}
 			
-			self.animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+			self.sideAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			
 		default:
 			break
@@ -151,21 +153,33 @@ class ViewSwiper: NSObject {
 			
 		case.changed:
 			if self.movementState == .goingRight {
-				self.animator.fractionComplete = translation.x / self.movement
+				self.centerAnimator.fractionComplete = translation.x / self.movement
 				
+				if centerAnimator.fractionComplete >= 1 && self.sideAnimator.state == .active {
+					self.sideAnimator.fractionComplete = (translation.x - self.movement) * 3 / self.controller.view.frame.maxX
+				}
+				
+				if centerAnimator.fractionComplete >= 1 && self.sideAnimator.state == .inactive {
+					self.doneViewAnimation()
+				} else if centerAnimator.fractionComplete < 1 && self.sideAnimator.state == .active {
+//					self.sideAnimator.isReversed = true
+					self.sideAnimator.stopAnimation(false)
+					self.sideAnimator.finishAnimation(at: .start)
+				}
+			
 			} else if self.movementState == .goingLeft {
-				self.animator.fractionComplete = -translation.x / self.movement
+				self.centerAnimator.fractionComplete = -translation.x / self.movement
 			}
 			
 		case .ended, .cancelled:
 			if (self.movementState == .goingRight && velocity.x <= 0) ||
 				(self.movementState == .goingLeft && velocity.x >= 0) ||
-				(self.animator.fractionComplete < 0.3 && abs(velocity.x) < 0) {
-				self.animator.isReversed = !self.animator.isReversed
+				(self.centerAnimator.fractionComplete < 0.3 && abs(velocity.x) < 0) {
+				self.centerAnimator.isReversed = !self.centerAnimator.isReversed
 				self.movementState = !self.movementState
 			}
 			
-			self.animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+			self.centerAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			
 		case .failed, .possible:
 			break
@@ -188,7 +202,7 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func moveRight() {
-		self.animator.addAnimations {
+		self.centerAnimator.addAnimations {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant += self.movement
 			self.controller.view.layoutIfNeeded()
@@ -202,7 +216,7 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func moveLeft() {
-		self.animator.addAnimations {
+		self.centerAnimator.addAnimations {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant -= self.movement
 			self.controller.view.layoutIfNeeded()
@@ -216,7 +230,7 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func animationCommon() {
-		self.animator.addCompletion { position in
+		self.centerAnimator.addCompletion { position in
 			if position == .start {
 				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
 			}
@@ -224,48 +238,52 @@ class ViewSwiper: NSObject {
 			self.movementState = MovementState.state(for: self.centerViewCenterConstraint.constant)
 		}
 		
-		self.animator.pauseAnimation()
+		self.centerAnimator.pauseAnimation()
 	}
 	
 	private func doneViewAnimation() {
-		self.animator.addAnimations {
+		self.sideAnimator.addAnimations {
 			self.doneViewHalfWidth.isActive = false
 			self.doneViewFullWidth.isActive = true
-		}
-		
-		self.animator.addAnimations {
-			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
-			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
 			
 			self.controller.view.layoutIfNeeded()
 		}
 		
-		self.animator.addCompletion { position in
+//		self.sideAnimator.addAnimations {
+//			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
+//			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
+//
+//			self.controller.view.layoutIfNeeded()
+//		}
+		
+		self.sideAnimator.addCompletion { position in
 			if position == .start {
-				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
+//				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
 				
 				self.doneViewFullWidth.isActive = false
 				self.doneViewHalfWidth.isActive = true
+				
+				self.controller.view.layoutIfNeeded()
 			}
 		}
 		
-		self.animator.pauseAnimation()
+		self.sideAnimator.pauseAnimation()
 	}
 	
 	private func skipViewAnimation() {
-		self.animator.addAnimations {
+		self.sideAnimator.addAnimations {
 			self.skipViewHalfWidth.isActive = false
 			self.skipViewFullWidth.isActive = true
 		}
 		
-		self.animator.addAnimations {
+		self.sideAnimator.addAnimations {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant = -self.controller.view.frame.maxX
 			
 			self.controller.view.layoutIfNeeded()
 		}
 		
-		self.animator.addCompletion { position in
+		self.sideAnimator.addCompletion { position in
 			if position == .start {
 				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
 				
@@ -274,7 +292,7 @@ class ViewSwiper: NSObject {
 			}
 		}
 		
-		self.animator.pauseAnimation()
+		self.sideAnimator.pauseAnimation()
 	}
 	
 }
