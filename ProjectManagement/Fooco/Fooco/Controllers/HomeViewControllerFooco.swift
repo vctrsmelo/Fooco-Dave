@@ -8,78 +8,26 @@
 import UIKit
 
 class HomeViewControllerFooco: UIViewController {
-
-	private enum MovementState {
-		case atCenter, atRight, atLeft, goingRight, goingLeft
-	}
 	
+	// MARK: - Properties
+
 	private var activities = [Activity]()
 	
-	private let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeOut)
-	
-	private var state: MovementState = .atCenter {
-		didSet {
-			print("old")
-			print(oldValue)
-			print("new")
-			print(state)
-		}
-	}
-	
-//	private var centerViewInitialX: CGFloat = 0
-//	private var leftViewInitialX: CGFloat = 0
-//	private var rightViewInitialX: CGFloat = 0
-	
-	private var movement: CGFloat {
-		return self.leftView.frame.width.rounded() // leftView and rightView should have the same size
-	}
-	
-//	var centerViewRightX: CGFloat {
-//		return self.centerViewInitialX + self.movement
-//	}
-	
-//	var centerViewLeftX: CGFloat {
-//		return self.centerViewInitialX - self.movement
-//	}
-	
+	// MARK: Outlets
+	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
-	@IBOutlet private weak var activityView: UIView!
-	@IBOutlet private weak var leftView: UIView!
-	@IBOutlet private weak var rightView: UIView!
 	
+	// MARK: - View Handling
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-//		self.centerViewInitialX = self.activityView.frame.origin.x
-//		self.leftViewInitialX = self.leftView.frame.origin.x
-//		self.rightViewInitialX = self.rightView.frame.origin.x
+		self.viewSwiper.load()
 		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
-		self.topLabel.text = self.chooseTopLabelText()
+		self.topLabel.text = self.chooseTopLabelText()		
     }
-	
-	private func switchState() {
-		switch self.activityCenterConstraint.constant {
-		case 0:
-			self.state = .atCenter
-			
-		case 0...:
-			self.state = .atRight
-			
-		case ...0:
-			self.state = .atLeft
-			
-//		case 0..<self.movement:
-//			self.state = .goingRight
-//
-//		case -self.movement..<0:
-//			self.state = .goingLeft
-			
-		default:
-			fatalError("Should be unreachable")
-		}
-	}
 	
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
@@ -111,101 +59,6 @@ class HomeViewControllerFooco: UIViewController {
 		
 		return greeting
 	}
-	@IBOutlet weak var activityCenterConstraint: NSLayoutConstraint!
-	
-	@IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-		
-		let translation = sender.translation(in: sender.view)
-		let direction = sender.velocity(in: sender.view)
-		
-		switch sender.state {
-		case .began:
-			print(translation)
-//			print(sender.velocity(in: sender.view))
-//			print(self.state)
-			if (self.state == .atCenter || self.state == .atLeft) && translation.x > 0 {
-				self.moveRight()
-			} else if (self.state == .atCenter || self.state == .atRight) && translation.x < 0 {
-				self.moveLeft()
-			}
-			
-		case.changed:
-			if self.state == .goingRight {
-				self.animator.fractionComplete = translation.x / self.movement
-			} else if self.state == .goingLeft {
-				self.animator.fractionComplete = -translation.x / self.movement
-			}
-			
-		case .ended, .cancelled:
-//			if self.animator.fractionComplete < 0.3 {
-//				self.animator.isReversed = !self.animator.isReversed
-//			}
-			self.animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-			
-		case .failed, .possible:
-			break
-		}
-	}
-	
-	private func moveRight() {
-		animator.addAnimations {
-			self.activityCenterConstraint.constant += self.movement
-			self.view.layoutIfNeeded()
-//			self.activityView.frame = self.activityView.frame.offsetBy(dx: self.movement, dy: 0)
-			
-//			self.leftView.frame.origin.x = self.leftViewInitialX + self.movement
-			self.leftView.alpha = 1
-			
-//			self.rightView.frame.origin.x = self.rightViewInitialX
-			self.rightView.alpha = 0
-		}
-		
-		animator.addCompletion { position in
-			if position ==  .start {
-				self.activityCenterConstraint.constant = 0
-			}
-		}
-		
-		self.state = .goingRight
-		
-		self.animationCommon()
-	}
-	
-	private func moveLeft() {
-		animator.addAnimations {
-			self.activityCenterConstraint.constant -= self.movement
-			self.view.layoutIfNeeded()
-//			self.activityView.frame = self.activityView.frame.offsetBy(dx: -self.movement, dy: 0)
-			
-//			self.leftView.frame.origin.x = self.leftViewInitialX
-			self.leftView.alpha = 0
-			
-//			self.rightView.frame.origin.x = self.rightViewInitialX - self.movement
-			self.rightView.alpha = 1
-		}
-		
-		animator.addCompletion { position in
-			if position == .start {
-				self.activityCenterConstraint.constant = 0
-			}
-		}
-		
-		self.state = .goingLeft
-		
-		self.animationCommon()
-	}
-	
-	private func animationCommon() {
-		self.animator.addCompletion { position in
-//			if position == .end {
-				self.switchState()
-//			}
-			
-			self.view.layoutIfNeeded()
-		}
-		
-		self.animator.pauseAnimation()
-	}
 	
 	/*
     // MARK: - Navigation
@@ -217,10 +70,4 @@ class HomeViewControllerFooco: UIViewController {
     }
     */
 
-}
-
-extension CGPoint {
-	static func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
-		return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
-	}
 }
