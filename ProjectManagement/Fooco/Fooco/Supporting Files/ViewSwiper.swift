@@ -57,12 +57,19 @@ class ViewSwiper: NSObject {
 	private var previousCenterViewConstraint: CGFloat = 0
 	
 	private var movement: CGFloat {
-		return (self.centerView.bounds.width * 3 / 4).rounded()
+		return (self.centerView.bounds.width / 2).rounded()
 	}
 	
 	// MARK: Outlets
 	@IBOutlet private weak var controller: UIViewController!
+	
 	@IBOutlet private weak var centerViewCenterConstraint: NSLayoutConstraint!
+	
+	@IBOutlet private weak var doneViewHalfWidth: NSLayoutConstraint!
+	@IBOutlet private weak var doneViewFullWidth: NSLayoutConstraint!
+	@IBOutlet private weak var focusViewFullWidth: NSLayoutConstraint!
+	@IBOutlet private weak var skipViewHalfWidth: NSLayoutConstraint!
+	
 	@IBOutlet private weak var centerView: UIView!
 	@IBOutlet private weak var leftView: UIView!
 	@IBOutlet private weak var rightView: UIView!
@@ -75,21 +82,23 @@ class ViewSwiper: NSObject {
 	// MARK: - Init
 	
 	func load() {
+		self.animator.isInterruptible = true
+		
 		self.addPanGestureRecognizer()
-		self.addTapGestureRecognizers()
+		self.addPanGestureRecognizers()
 	}
 	
 	// MARK: - Gestures
 	
-	private func tapGestureCreator() -> UITapGestureRecognizer {
-		return UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+	private func panGestureCreator() -> UIPanGestureRecognizer {
+		return UIPanGestureRecognizer(target: self, action: #selector(handleSubviewsPanGesture))
 	}
 	
-	private func addTapGestureRecognizers() {
-		self.doneView.addGestureRecognizer(self.tapGestureCreator())
-		self.focusView.addGestureRecognizer(self.tapGestureCreator())
-		self.enoughView.addGestureRecognizer(self.tapGestureCreator())
-		self.skipView.addGestureRecognizer(self.tapGestureCreator())
+	private func addPanGestureRecognizers() {
+		self.doneView.addGestureRecognizer(self.panGestureCreator())
+//		self.focusView.addGestureRecognizer(self.panGestureCreator())
+//		self.enoughView.addGestureRecognizer(self.panGestureCreator())
+//		self.skipView.addGestureRecognizer(self.panGestureCreator())
 	}
 	
 	private func addPanGestureRecognizer() {
@@ -97,22 +106,25 @@ class ViewSwiper: NSObject {
 	}
 	
 	@objc
-	private func handleTapGesture(_ sender: UITapGestureRecognizer) {
-		switch sender.view! {
-		case self.doneView:
-			print("Done")
+	private func handleSubviewsPanGesture(_ sender: UIPanGestureRecognizer) {
+		let translation = sender.translation(in: sender.view)
+		
+		switch sender.state {
+		case .began:
+			self.doneAnimation()
+		
+		case .changed:
+			self.animator.fractionComplete = translation.x * 2 / self.controller.view.frame.maxX
 			
-		case self.focusView:
-			print("Focus")
+		case .ended, .cancelled:
+			if self.animator.fractionComplete <= 0.3 {
+				self.animator.isReversed = !self.animator.isReversed
+			}
 			
-		case self.enoughView:
-			print("Enough")
+			self.animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			
-		case self.skipView:
-			print("Skip")
-			
-		default:
-			fatalError("Shouldn't be reachable")
+		case .failed, .possible:
+			break
 		}
 	}
 	
@@ -169,7 +181,7 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func moveRight() {
-		animator.addAnimations {
+		self.animator.addAnimations {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant += self.movement
 			self.controller.view.layoutIfNeeded()
@@ -183,7 +195,7 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func moveLeft() {
-		animator.addAnimations {
+		self.animator.addAnimations {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant -= self.movement
 			self.controller.view.layoutIfNeeded()
@@ -204,7 +216,31 @@ class ViewSwiper: NSObject {
 			
 			self.movementState = MovementState.state(for: self.centerViewCenterConstraint.constant)
 		}
-		self.animator.isInterruptible = true
+		
+		self.animator.pauseAnimation()
+	}
+	
+	private func doneAnimation() {
+		self.animator.addAnimations {
+			self.doneViewHalfWidth.isActive = false
+			self.doneViewFullWidth.isActive = true
+		}
+		self.animator.addAnimations {
+			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
+			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX// + self.centerView.frame.width / 2
+			
+			self.controller.view.layoutIfNeeded()
+		}
+		
+		self.animator.addCompletion { position in
+			if position == .start {
+				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
+				
+				self.doneViewFullWidth.isActive = false
+				self.doneViewHalfWidth.isActive = true
+			}
+		}
+		
 		self.animator.pauseAnimation()
 	}
 	
