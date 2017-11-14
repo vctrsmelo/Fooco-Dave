@@ -237,6 +237,8 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkk-ue-ljx">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="2D9-xS-GaZ"/>
+                                    <constraint firstAttribute="height" constant="44" id="6Or-9h-HVV"/>
                                     <constraint firstAttribute="height" constant="44" id="Khm-us-CQ9"/>
                                     <constraint firstAttribute="width" constant="375" id="eZG-Jr-q0w"/>
                                 </constraints>
@@ -252,10 +254,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="Knu-jQ-bpn"/>
                                     <constraint firstAttribute="height" constant="102" id="fWY-Gk-qmf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="102" id="vsb-ae-3fb"/>
                                 </constraints>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-T2-usN" customClass="EditProjectContainerView" customModule="Fooco" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-T2-usN" customClass="EditProjectContainerView" customModule="Fooco" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="519"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="ms8-Ga-Gck" kind="embed" identifier="projectTableViewSegue" id="M9O-wb-I1m"/>
                                 </connections>
@@ -263,62 +267,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="top" secondItem="Lkk-ue-ljx" secondAttribute="bottom" id="0aB-7y-Ir5"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="leading" secondItem="Czo-CP-HEO" secondAttribute="leading" id="0mJ-TL-7aM"/>
-                            <constraint firstAttribute="trailing" secondItem="QUI-T2-usN" secondAttribute="trailing" id="1eS-Rr-CMH"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="trailing" secondItem="Lkk-ue-ljx" secondAttribute="trailing" id="1nL-zi-cap"/>
-                            <constraint firstAttribute="bottom" secondItem="QUI-T2-usN" secondAttribute="bottom" constant="84" id="2CE-EX-hq0"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="top" secondItem="y5y-61-yOs" secondAttribute="top" constant="591" id="3xo-2Q-ksW"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="trailing" secondItem="ZMz-UB-vmq" secondAttribute="trailing" id="44C-ha-NBL"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="leading" secondItem="Czo-CP-HEO" secondAttribute="leading" id="46B-0r-kYK"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="trailing" secondItem="QUI-T2-usN" secondAttribute="trailing" id="4Uk-6F-3uF"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="top" secondItem="Czo-CP-HEO" secondAttribute="top" id="6MA-2L-hH7"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="top" secondItem="y5y-61-yOs" secondAttribute="top" constant="20" id="6jv-sq-YA0"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="trailing" secondItem="Lkk-ue-ljx" secondAttribute="trailing" id="8oH-TU-YWQ"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="9mK-rQ-u5J"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="leading" secondItem="Lkk-ue-ljx" secondAttribute="leading" id="AOP-xj-Rzv"/>
-                            <constraint firstAttribute="trailing" secondItem="Lkk-ue-ljx" secondAttribute="trailing" id="AcF-I9-rWa"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="top" secondItem="Lkk-ue-ljx" secondAttribute="bottom" id="Ahe-AR-DeQ"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="bottom" secondItem="QUI-T2-usN" secondAttribute="top" id="BdJ-zV-uMr"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="top" secondItem="QUI-T2-usN" secondAttribute="bottom" constant="8" id="GJv-Bi-0Mm"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="centerX" secondItem="y5y-61-yOs" secondAttribute="centerX" id="HOG-qd-Pjz"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="Iij-qP-C1l"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="leading" secondItem="Lkk-ue-ljx" secondAttribute="leading" id="LtP-5E-ZLT"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="top" secondItem="y5y-61-yOs" secondAttribute="top" constant="20" id="MqF-TH-ofh"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="centerX" secondItem="Lkk-ue-ljx" secondAttribute="centerX" id="NGC-ak-P6y"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="top" secondItem="y5y-61-yOs" secondAttribute="topMargin" id="Nwk-Ph-IQc"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="trailing" secondItem="Czo-CP-HEO" secondAttribute="trailing" id="OjU-tc-ZuF"/>
-                            <constraint firstAttribute="trailing" secondItem="ZMz-UB-vmq" secondAttribute="trailing" id="PZb-9g-NZW"/>
-                            <constraint firstAttribute="trailing" secondItem="QUI-T2-usN" secondAttribute="trailing" id="Pn6-aZ-GRo"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="Rhz-C3-CcR"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="centerX" secondItem="QUI-T2-usN" secondAttribute="centerX" id="SZ1-f1-qiv"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="centerX" secondItem="y5y-61-yOs" secondAttribute="centerX" id="SdU-g0-mxm"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="centerX" secondItem="y5y-61-yOs" secondAttribute="centerX" id="VV3-9t-ruR"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="trailing" secondItem="QUI-T2-usN" secondAttribute="trailing" id="Vjs-bj-6fH"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="XjO-Fj-jwU"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="leading" secondItem="QUI-T2-usN" secondAttribute="leading" id="Xso-gh-imf"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="Xus-Zr-crh"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="Zua-H5-oBE"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="afx-bH-0to"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ZMz-UB-vmq" secondAttribute="bottom" constant="-26" id="bDv-d7-52N"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="top" secondItem="Lkk-ue-ljx" secondAttribute="bottom" id="bX8-Fj-WXV"/>
-                            <constraint firstItem="Czo-CP-HEO" firstAttribute="trailing" secondItem="QUI-T2-usN" secondAttribute="trailing" id="bda-Gb-YoI"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="leading" secondItem="Czo-CP-HEO" secondAttribute="leading" id="bwR-Z7-mtQ"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="leading" secondItem="ZMz-UB-vmq" secondAttribute="leading" id="dz4-Vh-1uB"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="leading" secondItem="Czo-CP-HEO" secondAttribute="leading" id="iOo-LE-6GY"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="centerX" secondItem="Lkk-ue-ljx" secondAttribute="centerX" id="jfr-as-pv3"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="jjL-bq-nfI"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="leading" secondItem="y5y-61-yOs" secondAttribute="leading" id="l0a-sC-DcD"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="leading" secondItem="QUI-T2-usN" secondAttribute="leading" id="mBg-jO-Qok"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="top" secondItem="y5y-61-yOs" secondAttribute="top" constant="64" id="mZ0-4V-422"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="top" secondItem="Lkk-ue-ljx" secondAttribute="bottom" id="nEf-Vf-8hA"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="centerX" secondItem="ZMz-UB-vmq" secondAttribute="centerX" id="nZW-km-ewh"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="trailing" secondItem="Czo-CP-HEO" secondAttribute="trailing" id="pUq-Px-Bd7"/>
-                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="top" secondItem="y5y-61-yOs" secondAttribute="top" constant="591" id="q9P-v1-3Go"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="centerX" secondItem="ZMz-UB-vmq" secondAttribute="centerX" id="qrl-1U-TOy"/>
-                            <constraint firstItem="QUI-T2-usN" firstAttribute="top" secondItem="y5y-61-yOs" secondAttribute="top" constant="64" id="rlp-wO-bQG"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="top" secondItem="Czo-CP-HEO" secondAttribute="top" id="tlB-Mx-bKE"/>
-                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="trailing" secondItem="Czo-CP-HEO" secondAttribute="trailing" id="yNo-NR-UOp"/>
+                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="top" secondItem="Czo-CP-HEO" secondAttribute="top" id="Egy-P0-XfP"/>
+                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="trailing" secondItem="Czo-CP-HEO" secondAttribute="trailing" id="TQs-xD-tmn"/>
+                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="trailing" secondItem="Czo-CP-HEO" secondAttribute="trailing" id="WS6-ox-G60"/>
+                            <constraint firstItem="Lkk-ue-ljx" firstAttribute="leading" secondItem="Czo-CP-HEO" secondAttribute="leading" id="ZjX-oX-7f7"/>
+                            <constraint firstAttribute="bottom" secondItem="ZMz-UB-vmq" secondAttribute="bottom" constant="-26" id="ZzS-rz-2PC"/>
+                            <constraint firstItem="ZMz-UB-vmq" firstAttribute="leading" secondItem="Czo-CP-HEO" secondAttribute="leading" id="z1n-pe-Xk4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Czo-CP-HEO"/>
                     </view>
@@ -353,25 +307,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RyF-Nc-i4r">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RyF-Nc-i4r">
                                                     <rect key="frame" x="0.0" y="-0.5" width="375" height="150"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FPN-tY-Bm6">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FPN-tY-Bm6">
+                                                        <size key="itemSize" width="146" height="99"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="z7g-DU-CPo" customClass="ContextCellEditProject" customModule="Fooco" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                            </view>
-                                                        </collectionViewCell>
-                                                    </cells>
+                                                    <cells/>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
@@ -412,7 +357,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9c-Rb-reM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="1008"/>
+            <point key="canvasLocation" x="1549.5999999999999" y="1007.9460269865068"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KBc-Ww-Vue">

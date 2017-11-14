@@ -16,6 +16,7 @@
 		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
 		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
 		EE1493F31FAA4E69004750DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1493F21FAA4E69004750DC /* Event.swift */; };
+		EE61F1FE1FB9F771005D6668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF900941FB6424C007FB677 /* Assets.xcassets */; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
 		EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */; };
@@ -501,6 +502,7 @@
 			files = (
 				EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */,
 				BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */,
+				EE61F1FE1FB9F771005D6668 /* Assets.xcassets in Resources */,
 				EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
