@@ -12,7 +12,7 @@ class EditProjectTableViewController: UITableViewController {
     
     @IBOutlet weak var contextsCollectionView: UICollectionView!
     
-    var selectedContext: Context? = nil
+    var selectedContext: Context?
     
     override func viewDidLoad() {
         
@@ -21,12 +21,14 @@ class EditProjectTableViewController: UITableViewController {
         contextsCollectionView.dataSource = self
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = contextsCollectionView.frame.size
         layout.minimumInteritemSpacing = 80
         layout.minimumLineSpacing = 80
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         contextsCollectionView.collectionViewLayout = layout
+        contextsCollectionView.showsHorizontalScrollIndicator = false
+        contextsCollectionView.decelerationRate = 0.0
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,7 +42,7 @@ class EditProjectTableViewController: UITableViewController {
 extension EditProjectTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return User.sharedInstance.contexts.count+3
+        return User.sharedInstance.contexts.count + 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,7 +85,9 @@ extension EditProjectTableViewController: UICollectionViewDelegate, UICollection
         if scrollView == contextsCollectionView {
             for cell in contextsCollectionView.visibleCells {
                 
-                guard let contextCell = cell as? EditProjectContextCell else { return }
+                guard let contextCell = cell as? EditProjectContextCell else {
+                    return
+                }
                 let cellFrame = contextsCollectionView.convert(contextCell.frame, to: contextsCollectionView.superview)
                 contextCell.updateSize(cellFrame: cellFrame, container: contextsCollectionView.frame)
                 
@@ -93,14 +97,11 @@ extension EditProjectTableViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        let totalCellWidth = EditProjectContextCell.originalSize.width * CGFloat(collectionView.visibleCells.count)
-        let totalSpacingWidth = 10 * (collectionView.visibleCells.count - 1)
 
         let leftInset = (collectionView.frame.size.width - CGFloat(EditProjectContextCell.originalSize.width + 10)) / 2
         let rightInset = leftInset
 
-        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
+        return UIEdgeInsets(top: 40, left: leftInset, bottom: 0, right: rightInset)
     
     }
     
@@ -118,9 +119,11 @@ extension EditProjectTableViewController: UICollectionViewDelegate, UICollection
     
     private func focusContextCell() {
         
-        let screenCenterX: CGFloat = contextsCollectionView.frame.origin.x + contextsCollectionView.frame.size.width/2.0
+        let screenCenterX: CGFloat = contextsCollectionView.frame.origin.x + contextsCollectionView.frame.size.width / 2.0
         
-        guard var focusedCell: EditProjectContextCell = contextsCollectionView.visibleCells.first as? EditProjectContextCell else { return }
+        guard var focusedCell: EditProjectContextCell = contextsCollectionView.visibleCells.first as? EditProjectContextCell else {
+            return
+        }
         
         let focusedCellAttributes = contextsCollectionView.layoutAttributesForItem(at: contextsCollectionView.indexPath(for: focusedCell)!)
         let focusedCellFrame = contextsCollectionView.convert(focusedCellAttributes!.frame, to: contextsCollectionView.superview!)
