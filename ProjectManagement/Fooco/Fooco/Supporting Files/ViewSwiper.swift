@@ -67,8 +67,9 @@ class ViewSwiper: NSObject {
 	
 	@IBOutlet private weak var doneViewHalfWidth: NSLayoutConstraint!
 	@IBOutlet private weak var doneViewFullWidth: NSLayoutConstraint!
-	@IBOutlet private weak var focusViewFullWidth: NSLayoutConstraint!
+	
 	@IBOutlet private weak var skipViewHalfWidth: NSLayoutConstraint!
+	@IBOutlet private weak var skipViewFullWidth: NSLayoutConstraint!
 	
 	@IBOutlet private weak var centerView: UIView!
 	@IBOutlet private weak var leftView: UIView!
@@ -96,9 +97,9 @@ class ViewSwiper: NSObject {
 	
 	private func addPanGestureRecognizers() {
 		self.doneView.addGestureRecognizer(self.panGestureCreator())
-//		self.focusView.addGestureRecognizer(self.panGestureCreator())
-//		self.enoughView.addGestureRecognizer(self.panGestureCreator())
-//		self.skipView.addGestureRecognizer(self.panGestureCreator())
+		self.focusView.addGestureRecognizer(self.panGestureCreator())
+		self.enoughView.addGestureRecognizer(self.panGestureCreator())
+		self.skipView.addGestureRecognizer(self.panGestureCreator())
 	}
 	
 	private func addPanGestureRecognizer() {
@@ -109,21 +110,27 @@ class ViewSwiper: NSObject {
 	private func handleSubviewsPanGesture(_ sender: UIPanGestureRecognizer) {
 		let translation = sender.translation(in: sender.view)
 		
-		switch sender.state {
-		case .began:
+		switch (sender.state, sender.view!) {
+		case (.began, self.doneView), (.began, self.focusView):
 			self.doneAnimation()
+			
+		case (.began, self.skipView), (.began, self.enoughView):
+			self.skipAnimation()
 		
-		case .changed:
+		case (.changed, self.doneView), (.changed, self.focusView):
 			self.animator.fractionComplete = translation.x * 2 / self.controller.view.frame.maxX
 			
-		case .ended, .cancelled:
+		case (.changed, self.skipView), (.changed, self.enoughView):
+			self.animator.fractionComplete = -translation.x * 2 / self.controller.view.frame.maxX
+			
+		case (.ended, _), (.cancelled, _):
 			if self.animator.fractionComplete <= 0.3 {
 				self.animator.isReversed = !self.animator.isReversed
 			}
 			
 			self.animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			
-		case .failed, .possible:
+		default:
 			break
 		}
 	}
@@ -225,9 +232,10 @@ class ViewSwiper: NSObject {
 			self.doneViewHalfWidth.isActive = false
 			self.doneViewFullWidth.isActive = true
 		}
+		
 		self.animator.addAnimations {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
-			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX// + self.centerView.frame.width / 2
+			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
 			
 			self.controller.view.layoutIfNeeded()
 		}
@@ -238,6 +246,31 @@ class ViewSwiper: NSObject {
 				
 				self.doneViewFullWidth.isActive = false
 				self.doneViewHalfWidth.isActive = true
+			}
+		}
+		
+		self.animator.pauseAnimation()
+	}
+	
+	private func skipAnimation() {
+		self.animator.addAnimations {
+			self.skipViewHalfWidth.isActive = false
+			self.skipViewFullWidth.isActive = true
+		}
+		
+		self.animator.addAnimations {
+			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
+			self.centerViewCenterConstraint.constant = -self.controller.view.frame.maxX
+			
+			self.controller.view.layoutIfNeeded()
+		}
+		
+		self.animator.addCompletion { position in
+			if position == .start {
+				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
+				
+				self.skipViewFullWidth.isActive = false
+				self.skipViewHalfWidth.isActive = true
 			}
 		}
 		

@@ -33,15 +33,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="352"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-LY-C3i">
-                                                <rect key="frame" x="-59.5" y="112.5" width="45" height="21.5"/>
+                                                <rect key="frame" x="-54.5" y="112.5" width="45" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Done Icon" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-Lv-ufj">
-                                                <rect key="frame" x="-69" y="153" width="64" height="46"/>
+                                                <rect key="frame" x="-59" y="153" width="54" height="46"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="64" id="n42-vn-jWu"/>
+                                                    <constraint firstAttribute="width" constant="54" id="n42-vn-jWu"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -90,7 +90,6 @@
                                     <constraint firstAttribute="trailing" secondItem="aSQ-4c-98m" secondAttribute="trailing" id="SIn-Y6-CuS"/>
                                     <constraint firstItem="aSQ-4c-98m" firstAttribute="leading" secondItem="avh-ez-JyQ" secondAttribute="trailing" id="gkm-AM-9Dm"/>
                                     <constraint firstItem="avh-ez-JyQ" firstAttribute="leading" secondItem="5q5-QA-lZt" secondAttribute="leading" id="l1s-Vi-eOd"/>
-                                    <constraint firstItem="aSQ-4c-98m" firstAttribute="width" secondItem="5q5-QA-lZt" secondAttribute="width" identifier="focusViewFullWidth" id="lAD-8Y-wCC"/>
                                     <constraint firstAttribute="bottom" secondItem="avh-ez-JyQ" secondAttribute="bottom" id="p00-Wu-BYY"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -101,7 +100,6 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="J8O-va-9hx"/>
-                                        <exclude reference="lAD-8Y-wCC"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -277,15 +275,15 @@
                                         <rect key="frame" x="15" y="0.0" width="15" height="351.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksJ-pb-wBD">
-                                                <rect key="frame" x="26" y="110.5" width="38.5" height="21.5"/>
+                                                <rect key="frame" x="28" y="110.5" width="38.5" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Skip Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xId-cW-E6u">
-                                                <rect key="frame" x="20" y="151" width="50" height="48"/>
+                                                <rect key="frame" x="20" y="151" width="54" height="48"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="PYI-A8-1Xp"/>
+                                                    <constraint firstAttribute="width" constant="54" id="PYI-A8-1Xp"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -309,12 +307,18 @@
                                     <constraint firstItem="64S-rf-Apl" firstAttribute="leading" secondItem="DDq-g6-KEx" secondAttribute="leading" id="fQf-TV-FXs"/>
                                     <constraint firstAttribute="bottom" secondItem="IF8-ym-KDp" secondAttribute="bottom" id="iCc-I0-3tX"/>
                                     <constraint firstItem="IF8-ym-KDp" firstAttribute="width" secondItem="DDq-g6-KEx" secondAttribute="width" multiplier="0.5" identifier="skipViewHalfWidth" id="nLc-9W-hcf"/>
+                                    <constraint firstItem="IF8-ym-KDp" firstAttribute="width" secondItem="DDq-g6-KEx" secondAttribute="width" identifier="skipViewFullWidth" id="wG9-Eh-fOf"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="wG9-Eh-fOf"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.3193800151348114" green="0.56341999769210815" blue="0.6679847240447998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -354,10 +358,10 @@
                         <outlet property="doneViewHalfWidth" destination="6V0-5D-d8f" id="T7H-6T-I7t"/>
                         <outlet property="enoughView" destination="64S-rf-Apl" id="qQL-fm-kcB"/>
                         <outlet property="focusView" destination="aSQ-4c-98m" id="nX0-Oc-WD3"/>
-                        <outlet property="focusViewFullWidth" destination="lAD-8Y-wCC" id="Kbo-Mf-Ck9"/>
                         <outlet property="leftView" destination="5q5-QA-lZt" id="W1s-1h-Tux"/>
                         <outlet property="rightView" destination="DDq-g6-KEx" id="R2T-Sx-a19"/>
                         <outlet property="skipView" destination="IF8-ym-KDp" id="0Zg-Vq-NmY"/>
+                        <outlet property="skipViewFullWidth" destination="wG9-Eh-fOf" id="3Nx-GF-gaa"/>
                         <outlet property="skipViewHalfWidth" destination="nLc-9W-hcf" id="GU2-t2-rhI"/>
                     </connections>
                 </customObject>
