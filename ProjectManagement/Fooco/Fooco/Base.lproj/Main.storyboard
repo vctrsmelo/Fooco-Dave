@@ -228,9 +228,6 @@
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="cLz-6t-qUx" appends="YES" id="JpL-IP-Wvl"/>
-                                </connections>
                             </view>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDq-g6-KEx" userLabel="Right View">
                                 <rect key="frame" x="355" y="125" width="30" height="351.5"/>
@@ -255,9 +252,6 @@
                                             <constraint firstItem="a47-JG-hX8" firstAttribute="leading" secondItem="64S-rf-Apl" secondAttribute="leading" constant="28" id="Rmx-X4-qGC"/>
                                             <constraint firstItem="pwN-8e-AQE" firstAttribute="centerX" secondItem="a47-JG-hX8" secondAttribute="centerX" id="khz-4B-vj0"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Rl9-K8-gvZ" appends="YES" id="zc6-ZG-iLM"/>
-                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-ym-KDp" userLabel="Skip View">
                                         <rect key="frame" x="15" y="0.0" width="15" height="351.5"/>
@@ -279,9 +273,6 @@
                                             <constraint firstItem="xId-cW-E6u" firstAttribute="top" secondItem="ksJ-pb-wBD" secondAttribute="bottom" constant="19" id="lhn-eZ-D9S"/>
                                             <constraint firstItem="ksJ-pb-wBD" firstAttribute="centerX" secondItem="xId-cW-E6u" secondAttribute="centerX" id="vgf-87-JjM"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Rl9-K8-gvZ" appends="YES" id="yJh-1v-hUM"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.42051130533218384" green="0.61492890119552612" blue="0.69045358896255493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -334,20 +325,14 @@
                         <outlet property="centerView" destination="9rO-JB-msb" id="5hV-Y7-Mf1"/>
                         <outlet property="centerViewCenterConstraint" destination="kVu-rV-vgy" id="7eT-fe-ivd"/>
                         <outlet property="controller" destination="BYZ-38-t0r" id="dp5-Eg-ehK"/>
+                        <outlet property="doneView" destination="avh-ez-JyQ" id="dz3-Ka-P5i"/>
+                        <outlet property="enoughView" destination="64S-rf-Apl" id="qQL-fm-kcB"/>
+                        <outlet property="focusView" destination="aSQ-4c-98m" id="nX0-Oc-WD3"/>
                         <outlet property="leftView" destination="5q5-QA-lZt" id="W1s-1h-Tux"/>
                         <outlet property="rightView" destination="DDq-g6-KEx" id="R2T-Sx-a19"/>
+                        <outlet property="skipView" destination="IF8-ym-KDp" id="0Zg-Vq-NmY"/>
                     </connections>
                 </customObject>
-                <panGestureRecognizer cancelsTouchesInView="NO" minimumNumberOfTouches="1" id="cLz-6t-qUx">
-                    <connections>
-                        <action selector="handlePanGesture:" destination="BYZ-38-t0r" id="iX6-lM-6xS"/>
-                    </connections>
-                </panGestureRecognizer>
-                <tapGestureRecognizer id="Rl9-K8-gvZ">
-                    <connections>
-                        <action selector="handleTapGesture:" destination="BYZ-38-t0r" id="3QZ-i0-Fh9"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="476" y="133.5832083958021"/>
         </scene>

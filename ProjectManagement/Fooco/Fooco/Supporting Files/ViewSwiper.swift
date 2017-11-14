@@ -49,6 +49,7 @@ class ViewSwiper: NSObject {
 	}
 
 	// MARK: - Properties
+	
 	private let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear)
 	
 	private var movementState: MovementState = .atCenter
@@ -60,14 +61,63 @@ class ViewSwiper: NSObject {
 	}
 	
 	// MARK: Outlets
-	
 	@IBOutlet private weak var controller: UIViewController!
 	@IBOutlet private weak var centerViewCenterConstraint: NSLayoutConstraint!
 	@IBOutlet private weak var centerView: UIView!
 	@IBOutlet private weak var leftView: UIView!
 	@IBOutlet private weak var rightView: UIView!
 	
-	func gestureController(_ sender: UIPanGestureRecognizer) {
+	@IBOutlet private weak var doneView: UIView!
+	@IBOutlet private weak var focusView: UIView!
+	@IBOutlet private weak var enoughView: UIView!
+	@IBOutlet private weak var skipView: UIView!
+	
+	// MARK: - Init
+	
+	func load() {
+		self.addPanGestureRecognizer()
+		self.addTapGestureRecognizers()
+	}
+	
+	// MARK: - Gestures
+	
+	private func tapGestureCreator() -> UITapGestureRecognizer {
+		return UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+	}
+	
+	private func addTapGestureRecognizers() {
+		self.doneView.addGestureRecognizer(self.tapGestureCreator())
+		self.focusView.addGestureRecognizer(self.tapGestureCreator())
+		self.enoughView.addGestureRecognizer(self.tapGestureCreator())
+		self.skipView.addGestureRecognizer(self.tapGestureCreator())
+	}
+	
+	private func addPanGestureRecognizer() {
+		self.centerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture)))
+	}
+	
+	@objc
+	private func handleTapGesture(_ sender: UITapGestureRecognizer) {
+		switch sender.view! {
+		case self.doneView:
+			print("Done")
+			
+		case self.focusView:
+			print("Focus")
+			
+		case self.enoughView:
+			print("Enough")
+			
+		case self.skipView:
+			print("Skip")
+			
+		default:
+			fatalError("Shouldn't be reachable")
+		}
+	}
+	
+	@objc
+	private func handlePanGesture(_ sender: UIPanGestureRecognizer) {
 		let translation = sender.translation(in: sender.view)
 		let velocity = sender.velocity(in: sender.view)
 		

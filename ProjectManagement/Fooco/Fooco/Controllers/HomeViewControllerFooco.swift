@@ -14,7 +14,6 @@ class HomeViewControllerFooco: UIViewController {
 	private var activities = [Activity]()
 	
 	// MARK: Outlets
-
 	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
 	
@@ -23,9 +22,11 @@ class HomeViewControllerFooco: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		self.viewSwiper.load()
+		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
-		self.topLabel.text = self.chooseTopLabelText()
+		self.topLabel.text = self.chooseTopLabelText()		
     }
 	
 	private func chooseTopLabelText() -> String {
@@ -57,16 +58,6 @@ class HomeViewControllerFooco: UIViewController {
 		}
 		
 		return greeting
-	}
-	
-	// MARK: - General Methods
-	
-	@IBAction func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-		self.viewSwiper.gestureController(sender)
-	}
-	
-	@IBAction func handleTapGesture(_ sender: UITapGestureRecognizer) {
-		print(sender)
 	}
 	
 	/*
