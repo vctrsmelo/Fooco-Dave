@@ -50,7 +50,7 @@ class ViewSwiper: NSObject {
 
 	// MARK: - Properties
 	
-	private let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear)
+	private let animator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
 	
 	private var movementState: MovementState = .atCenter
 	
@@ -112,10 +112,10 @@ class ViewSwiper: NSObject {
 		
 		switch (sender.state, sender.view!) {
 		case (.began, self.doneView), (.began, self.focusView):
-			self.doneAnimation()
+			self.doneViewAnimation()
 			
 		case (.began, self.skipView), (.began, self.enoughView):
-			self.skipAnimation()
+			self.skipViewAnimation()
 		
 		case (.changed, self.doneView), (.changed, self.focusView):
 			self.animator.fractionComplete = translation.x * 2 / self.controller.view.frame.maxX
@@ -227,7 +227,7 @@ class ViewSwiper: NSObject {
 		self.animator.pauseAnimation()
 	}
 	
-	private func doneAnimation() {
+	private func doneViewAnimation() {
 		self.animator.addAnimations {
 			self.doneViewHalfWidth.isActive = false
 			self.doneViewFullWidth.isActive = true
@@ -252,7 +252,7 @@ class ViewSwiper: NSObject {
 		self.animator.pauseAnimation()
 	}
 	
-	private func skipAnimation() {
+	private func skipViewAnimation() {
 		self.animator.addAnimations {
 			self.skipViewHalfWidth.isActive = false
 			self.skipViewFullWidth.isActive = true

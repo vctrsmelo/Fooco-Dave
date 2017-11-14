@@ -212,7 +212,7 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activitityDecoration" translatesAutoresizingMaskIntoConstraints="NO" id="Yeo-8h-txp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activitityDecoration" translatesAutoresizingMaskIntoConstraints="NO" id="Yeo-8h-txp">
                                         <rect key="frame" x="0.0" y="271.5" width="315" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="VEw-8S-cfB"/>
