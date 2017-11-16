@@ -70,7 +70,7 @@ whitelist_rules:
   - object_literal
 
   # Prefer private over fileprivate declarations.
-  - private_over_fileprivate
+#  - private_over_fileprivate
 
   # nil coalescing operator is only evaluated if the lhs is nil, coalescing operator with nil as rhs is redundant
   - redundant_nil_coalescing
@@ -85,7 +85,7 @@ whitelist_rules:
   - redundant_void_return
 
   # fileprivate should be avoided.
-  - strict_fileprivate
+#  - strict_fileprivate
 
   # Shorthand syntactic sugar should be used, i.e. [Int] instead of Array
   - syntactic_sugar

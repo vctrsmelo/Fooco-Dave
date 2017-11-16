@@ -7,51 +7,51 @@
 
 import UIKit
 
-class ViewSwiper: NSObject {
+fileprivate enum MovementState {
+	case atCenter, atRight, atLeft, goingRight, goingLeft
 	
-	private enum MovementState {
-		case atCenter, atRight, atLeft, goingRight, goingLeft
-		
-		static prefix func ! (value: MovementState) -> MovementState {
-			switch value {
-			case .atCenter:
-				return .atCenter
-				
-			case .atRight:
-				return .atLeft
-				
-			case .atLeft:
-				return .atRight
-				
-			case .goingRight:
-				return .goingLeft
-				
-			case .goingLeft:
-				return .goingRight
-			}
-		}
-		
-		static func state(for position: CGFloat) -> MovementState {
-			switch position {
-			case 0:
-				return .atCenter
-				
-			case 0...:
-				return .atRight
-				
-			case ...0:
-				return .atLeft
-				
-			default:
-				fatalError("Should be unreachable")
-			}
+	static prefix func ! (value: MovementState) -> MovementState {
+		switch value {
+		case .atCenter:
+			return .atCenter
+			
+		case .atRight:
+			return .atLeft
+			
+		case .atLeft:
+			return .atRight
+			
+		case .goingRight:
+			return .goingLeft
+			
+		case .goingLeft:
+			return .goingRight
 		}
 	}
+	
+	static func state(for position: CGFloat) -> MovementState {
+		switch position {
+		case 0:
+			return .atCenter
+			
+		case 0...:
+			return .atRight
+			
+		case ...0:
+			return .atLeft
+			
+		default:
+			fatalError("Should be unreachable")
+		}
+	}
+}
+
+class ViewSwiper: NSObject {
 
 	// MARK: - Properties
 	
-	private let centerAnimator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
-	private let sideAnimator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
+	private let centerAnimator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.7)
+	private let sideAnimator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.7)
 	private let swipeAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.7)
 	
 	private var movementState: MovementState = .atCenter
