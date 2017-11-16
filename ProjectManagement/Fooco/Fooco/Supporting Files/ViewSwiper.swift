@@ -154,18 +154,6 @@ class ViewSwiper: NSObject {
 		case.changed:
 			if self.movementState == .goingRight {
 				self.centerAnimator.fractionComplete = translation.x / self.movement
-				
-				if centerAnimator.fractionComplete >= 1 && self.sideAnimator.state == .active {
-					self.sideAnimator.fractionComplete = (translation.x - self.movement) * 3 / self.controller.view.frame.maxX
-				}
-				
-				if centerAnimator.fractionComplete >= 1 && self.sideAnimator.state == .inactive {
-					self.doneViewAnimation()
-				} else if centerAnimator.fractionComplete < 1 && self.sideAnimator.state == .active {
-//					self.sideAnimator.isReversed = true
-					self.sideAnimator.stopAnimation(false)
-					self.sideAnimator.finishAnimation(at: .start)
-				}
 			
 			} else if self.movementState == .goingLeft {
 				self.centerAnimator.fractionComplete = -translation.x / self.movement
@@ -245,25 +233,21 @@ class ViewSwiper: NSObject {
 		self.sideAnimator.addAnimations {
 			self.doneViewHalfWidth.isActive = false
 			self.doneViewFullWidth.isActive = true
-			
+		}
+		
+		self.sideAnimator.addAnimations {
+			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
+			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
+
 			self.controller.view.layoutIfNeeded()
 		}
 		
-//		self.sideAnimator.addAnimations {
-//			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
-//			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
-//
-//			self.controller.view.layoutIfNeeded()
-//		}
-		
 		self.sideAnimator.addCompletion { position in
 			if position == .start {
-//				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
+				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
 				
 				self.doneViewFullWidth.isActive = false
 				self.doneViewHalfWidth.isActive = true
-				
-				self.controller.view.layoutIfNeeded()
 			}
 		}
 		
