@@ -40,7 +40,7 @@ class User: NSObject {
     
     private init(projects projs: [Project] = [], contexts ctxs: [Context] = [], week: Week = Week()) {
         projects = projs
-        contexts = ctxs
+        contexts = [Mocado.context1] //TODO: editar
         weekSchedule = week
 		
         projects.sort()

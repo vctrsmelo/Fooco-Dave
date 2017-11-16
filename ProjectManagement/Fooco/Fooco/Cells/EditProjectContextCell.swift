@@ -117,7 +117,7 @@ class EditProjectContextCell: UICollectionViewCell {
             
             nameLabel.text = "Add"
             iconImageView.image = #imageLiteral(resourceName: "AddIcon")
-            nameLabel.backgroundColor = UIColor.blue
+            nameLabel.backgroundColor = UIColor.colorOfAddContext()
             return
             
         }
