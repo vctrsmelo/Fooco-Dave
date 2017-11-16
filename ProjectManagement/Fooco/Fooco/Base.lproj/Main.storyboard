@@ -325,14 +325,15 @@
                         <constraints>
                             <constraint firstItem="DDq-g6-KEx" firstAttribute="height" secondItem="9rO-JB-msb" secondAttribute="height" id="4Y1-fQ-735"/>
                             <constraint firstItem="9rO-JB-msb" firstAttribute="leading" secondItem="5q5-QA-lZt" secondAttribute="trailing" priority="750" constant="10" identifier="leftViewSpacingToActivity" id="7Gh-ki-nde"/>
-                            <constraint firstAttribute="trailing" secondItem="DDq-g6-KEx" secondAttribute="trailing" priority="750" constant="-10" identifier="rightViewTrailingToSuper" id="AdH-Mh-92j"/>
-                            <constraint firstItem="DDq-g6-KEx" firstAttribute="leading" secondItem="9rO-JB-msb" secondAttribute="trailing" constant="10" identifier="rightViewSpacingToActivity" id="B8o-gD-on9"/>
+                            <constraint firstAttribute="trailing" secondItem="DDq-g6-KEx" secondAttribute="trailing" priority="750" constant="-10" identifier="rightViewTrailing" id="AdH-Mh-92j"/>
+                            <constraint firstItem="DDq-g6-KEx" firstAttribute="leading" secondItem="9rO-JB-msb" secondAttribute="trailing" priority="750" constant="10" identifier="rightViewSpacingToActivity" id="B8o-gD-on9"/>
                             <constraint firstItem="r3U-pL-xjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cn6-0K-lsk"/>
                             <constraint firstItem="r3U-pL-xjE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="ExZ-q0-PWh"/>
                             <constraint firstItem="5q5-QA-lZt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="750" constant="-10" identifier="leftViewLeading" id="HmX-Hv-8Kl"/>
                             <constraint firstAttribute="trailing" secondItem="5q5-QA-lZt" secondAttribute="trailing" priority="760" constant="-10" identifier="leftViewTrailing" id="OKZ-rj-UyX"/>
                             <constraint firstItem="5q5-QA-lZt" firstAttribute="centerY" secondItem="9rO-JB-msb" secondAttribute="centerY" id="WEi-eu-IWU"/>
                             <constraint firstItem="5q5-QA-lZt" firstAttribute="height" secondItem="9rO-JB-msb" secondAttribute="height" id="XRx-0e-0FY"/>
+                            <constraint firstItem="DDq-g6-KEx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="760" constant="-10" identifier="rightViewLeading" id="cs7-WG-eBI"/>
                             <constraint firstItem="9rO-JB-msb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-60" identifier="activityViewWidth" id="d7f-EB-rSN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9rO-JB-msb" secondAttribute="bottom" constant="127" id="hj2-6q-7An"/>
                             <constraint firstItem="9rO-JB-msb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" identifier="activityCenterConstraint" id="kVu-rV-vgy"/>
@@ -343,6 +344,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="OKZ-rj-UyX"/>
+                                <exclude reference="cs7-WG-eBI"/>
                             </mask>
                         </variation>
                     </view>
@@ -368,6 +370,8 @@
                         <outlet property="leftViewLeading" destination="HmX-Hv-8Kl" id="SAS-2Z-CAq"/>
                         <outlet property="leftViewTrailing" destination="OKZ-rj-UyX" id="ADn-YD-OiI"/>
                         <outlet property="rightView" destination="DDq-g6-KEx" id="R2T-Sx-a19"/>
+                        <outlet property="rightViewLeading" destination="cs7-WG-eBI" id="V1m-1K-Gr4"/>
+                        <outlet property="rightViewTrailing" destination="AdH-Mh-92j" id="meQ-KK-fo9"/>
                         <outlet property="skipView" destination="IF8-ym-KDp" id="0Zg-Vq-NmY"/>
                         <outlet property="skipViewFullWidth" destination="wG9-Eh-fOf" id="3Nx-GF-gaa"/>
                         <outlet property="skipViewHalfWidth" destination="nLc-9W-hcf" id="GU2-t2-rhI"/>

@@ -73,9 +73,11 @@ class ViewSwiper: NSObject {
 	@IBOutlet private weak var leftViewLeading: NSLayoutConstraint!
 	@IBOutlet private weak var leftViewTrailing: NSLayoutConstraint!
 	
-	
 	@IBOutlet private weak var skipViewHalfWidth: NSLayoutConstraint!
 	@IBOutlet private weak var skipViewFullWidth: NSLayoutConstraint!
+	
+	@IBOutlet private weak var rightViewLeading: NSLayoutConstraint!
+	@IBOutlet private weak var rightViewTrailing: NSLayoutConstraint!
 	
 	@IBOutlet private weak var centerView: UIView!
 	@IBOutlet private weak var leftView: UIView!
@@ -93,24 +95,57 @@ class ViewSwiper: NSObject {
 		self.sideAnimator.isInterruptible = true
 		
 		self.addPanGestureRecognizer()
-		self.addPanGestureRecognizers()
+		self.addGestureRecognizers()
 	}
 	
 	// MARK: - Gestures
+	
+	private func tapGestureRecognizer() -> UITapGestureRecognizer {
+		return UITapGestureRecognizer(target: self, action: #selector(handleSubviewsTapGesture))
+	}
 	
 	private func panGestureCreator() -> UIPanGestureRecognizer {
 		return UIPanGestureRecognizer(target: self, action: #selector(handleSubviewsPanGesture))
 	}
 	
-	private func addPanGestureRecognizers() {
+	private func addGestureRecognizers() {
+		self.doneView.addGestureRecognizer(self.tapGestureRecognizer())
 		self.doneView.addGestureRecognizer(self.panGestureCreator())
+		
+		self.focusView.addGestureRecognizer(self.tapGestureRecognizer())
 		self.focusView.addGestureRecognizer(self.panGestureCreator())
+		
+		self.enoughView.addGestureRecognizer(self.tapGestureRecognizer())
 		self.enoughView.addGestureRecognizer(self.panGestureCreator())
+		
+		self.skipView.addGestureRecognizer(self.tapGestureRecognizer())
 		self.skipView.addGestureRecognizer(self.panGestureCreator())
 	}
 	
 	private func addPanGestureRecognizer() {
 		self.centerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture)))
+	}
+	
+	@objc
+	private func handleSubviewsTapGesture(_ sender: UITapGestureRecognizer) {
+		switch sender.view! {
+		case self.doneView:
+			self.doneViewAnimation()
+			self.sideAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+		
+		case self.focusView:
+			break
+			
+		case self.enoughView:
+			break
+			
+		case self.skipView:
+			self.skipViewAnimation()
+			self.sideAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+		
+		default:
+			break
+		}
 	}
 	
 	@objc
@@ -309,12 +344,16 @@ class ViewSwiper: NSObject {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant = -self.controller.view.frame.maxX
 			
+			self.rightViewLeading.isActive = true
+			
 			self.controller.view.layoutIfNeeded()
 		}
 		
 		self.sideAnimator.addCompletion { position in
 			if position == .start {
 				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
+				
+				self.rightViewLeading.isActive = false
 				
 				self.skipViewWidthSwitch()
 				
@@ -327,7 +366,29 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func cardFromRightAnimation() {
+		self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
+		self.controller.view.layoutIfNeeded()
 		
+		self.swipeAnimator.addAnimations {
+			self.centerViewCenterConstraint.constant = 0
+			
+			self.showCorrectViews()
+			
+			self.rightViewTrailing.isActive = false
+			
+			self.controller.view.layoutIfNeeded()
+		}
+		
+		self.swipeAnimator.addCompletion { _ in
+			self.rightViewTrailing.isActive = true
+			self.rightViewLeading.isActive = false
+			
+			self.skipViewWidthSwitch()
+			
+			self.movementState = MovementState.state(for: self.centerViewCenterConstraint.constant)
+		}
+		
+		self.swipeAnimator.startAnimation()
 	}
 	
 }
