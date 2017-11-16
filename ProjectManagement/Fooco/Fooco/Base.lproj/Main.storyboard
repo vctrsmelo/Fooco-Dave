@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-QA-lZt" userLabel="Left View">
-                                <rect key="frame" x="-10" y="125" width="30" height="351.5"/>
+                                <rect key="frame" x="-10" y="125" width="30" height="352"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avh-ez-JyQ" userLabel="Done View">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="352"/>
@@ -324,12 +324,13 @@
                         <color key="backgroundColor" red="0.3193800151348114" green="0.56341999769210815" blue="0.6679847240447998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DDq-g6-KEx" firstAttribute="height" secondItem="9rO-JB-msb" secondAttribute="height" id="4Y1-fQ-735"/>
-                            <constraint firstItem="9rO-JB-msb" firstAttribute="leading" secondItem="5q5-QA-lZt" secondAttribute="trailing" constant="10" identifier="leftViewSpacingToActivity" id="7Gh-ki-nde"/>
+                            <constraint firstItem="9rO-JB-msb" firstAttribute="leading" secondItem="5q5-QA-lZt" secondAttribute="trailing" priority="750" constant="10" identifier="leftViewSpacingToActivity" id="7Gh-ki-nde"/>
                             <constraint firstAttribute="trailing" secondItem="DDq-g6-KEx" secondAttribute="trailing" priority="750" constant="-10" identifier="rightViewTrailingToSuper" id="AdH-Mh-92j"/>
                             <constraint firstItem="DDq-g6-KEx" firstAttribute="leading" secondItem="9rO-JB-msb" secondAttribute="trailing" constant="10" identifier="rightViewSpacingToActivity" id="B8o-gD-on9"/>
                             <constraint firstItem="r3U-pL-xjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cn6-0K-lsk"/>
                             <constraint firstItem="r3U-pL-xjE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="ExZ-q0-PWh"/>
-                            <constraint firstItem="5q5-QA-lZt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="750" constant="-10" identifier="leftViewLeadingToSuper" id="HmX-Hv-8Kl"/>
+                            <constraint firstItem="5q5-QA-lZt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" priority="750" constant="-10" identifier="leftViewLeading" id="HmX-Hv-8Kl"/>
+                            <constraint firstAttribute="trailing" secondItem="5q5-QA-lZt" secondAttribute="trailing" priority="760" constant="-10" identifier="leftViewTrailing" id="OKZ-rj-UyX"/>
                             <constraint firstItem="5q5-QA-lZt" firstAttribute="centerY" secondItem="9rO-JB-msb" secondAttribute="centerY" id="WEi-eu-IWU"/>
                             <constraint firstItem="5q5-QA-lZt" firstAttribute="height" secondItem="9rO-JB-msb" secondAttribute="height" id="XRx-0e-0FY"/>
                             <constraint firstItem="9rO-JB-msb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-60" identifier="activityViewWidth" id="d7f-EB-rSN"/>
@@ -339,6 +340,11 @@
                             <constraint firstItem="DDq-g6-KEx" firstAttribute="centerY" secondItem="9rO-JB-msb" secondAttribute="centerY" id="qJu-VJ-csX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OKZ-rj-UyX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Fzf-FU-b0v"/>
                     <connections>
@@ -359,6 +365,8 @@
                         <outlet property="enoughView" destination="64S-rf-Apl" id="qQL-fm-kcB"/>
                         <outlet property="focusView" destination="aSQ-4c-98m" id="nX0-Oc-WD3"/>
                         <outlet property="leftView" destination="5q5-QA-lZt" id="W1s-1h-Tux"/>
+                        <outlet property="leftViewLeading" destination="HmX-Hv-8Kl" id="SAS-2Z-CAq"/>
+                        <outlet property="leftViewTrailing" destination="OKZ-rj-UyX" id="ADn-YD-OiI"/>
                         <outlet property="rightView" destination="DDq-g6-KEx" id="R2T-Sx-a19"/>
                         <outlet property="skipView" destination="IF8-ym-KDp" id="0Zg-Vq-NmY"/>
                         <outlet property="skipViewFullWidth" destination="wG9-Eh-fOf" id="3Nx-GF-gaa"/>

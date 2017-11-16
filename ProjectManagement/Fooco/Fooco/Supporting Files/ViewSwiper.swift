@@ -52,6 +52,7 @@ class ViewSwiper: NSObject {
 	
 	private let centerAnimator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
 	private let sideAnimator = UIViewPropertyAnimator(duration: 0.4, dampingRatio: 0.7)
+	private let swipeAnimator = UIViewPropertyAnimator(duration: 1, dampingRatio: 0.7)
 	
 	private var movementState: MovementState = .atCenter
 	
@@ -68,6 +69,10 @@ class ViewSwiper: NSObject {
 	
 	@IBOutlet private weak var doneViewHalfWidth: NSLayoutConstraint!
 	@IBOutlet private weak var doneViewFullWidth: NSLayoutConstraint!
+	
+	@IBOutlet private weak var leftViewLeading: NSLayoutConstraint!
+	@IBOutlet private weak var leftViewTrailing: NSLayoutConstraint!
+	
 	
 	@IBOutlet private weak var skipViewHalfWidth: NSLayoutConstraint!
 	@IBOutlet private weak var skipViewFullWidth: NSLayoutConstraint!
@@ -229,15 +234,21 @@ class ViewSwiper: NSObject {
 		self.centerAnimator.pauseAnimation()
 	}
 	
+	private func doneViewWidthSwitch() {
+		self.doneViewHalfWidth.isActive = !self.doneViewHalfWidth.isActive
+		self.doneViewFullWidth.isActive = !self.doneViewFullWidth.isActive
+	}
+	
 	private func doneViewAnimation() {
 		self.sideAnimator.addAnimations {
-			self.doneViewHalfWidth.isActive = false
-			self.doneViewFullWidth.isActive = true
+			self.doneViewWidthSwitch()
 		}
 		
 		self.sideAnimator.addAnimations {
 			self.previousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
+			
+			self.leftViewTrailing.isActive = true
 
 			self.controller.view.layoutIfNeeded()
 		}
@@ -246,18 +257,52 @@ class ViewSwiper: NSObject {
 			if position == .start {
 				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
 				
-				self.doneViewFullWidth.isActive = false
-				self.doneViewHalfWidth.isActive = true
+				self.leftViewTrailing.isActive = false
+				
+				self.doneViewWidthSwitch()
+				
+			} else if position == .end {
+				self.cardFromLeftAnimation()
 			}
 		}
 		
 		self.sideAnimator.pauseAnimation()
 	}
 	
+	private func cardFromLeftAnimation() {
+		self.centerViewCenterConstraint.constant = -self.controller.view.frame.maxX
+		self.controller.view.layoutIfNeeded()
+		
+		self.swipeAnimator.addAnimations {
+			self.centerViewCenterConstraint.constant = 0
+			
+			self.showCorrectViews()
+			
+			self.leftViewLeading.isActive = false
+			
+			self.controller.view.layoutIfNeeded()
+		}
+		
+		self.swipeAnimator.addCompletion { _ in
+			self.leftViewLeading.isActive = true
+			self.leftViewTrailing.isActive = false
+			
+			self.doneViewWidthSwitch()
+			
+			self.movementState = MovementState.state(for: self.centerViewCenterConstraint.constant)
+		}
+		
+		self.swipeAnimator.startAnimation()
+	}
+	
+	private func skipViewWidthSwitch() {
+		self.skipViewHalfWidth.isActive = !self.skipViewHalfWidth.isActive
+		self.skipViewFullWidth.isActive = !self.skipViewFullWidth.isActive
+	}
+	
 	private func skipViewAnimation() {
 		self.sideAnimator.addAnimations {
-			self.skipViewHalfWidth.isActive = false
-			self.skipViewFullWidth.isActive = true
+			self.skipViewWidthSwitch()
 		}
 		
 		self.sideAnimator.addAnimations {
@@ -271,12 +316,18 @@ class ViewSwiper: NSObject {
 			if position == .start {
 				self.centerViewCenterConstraint.constant = self.previousCenterViewConstraint
 				
-				self.skipViewFullWidth.isActive = false
-				self.skipViewHalfWidth.isActive = true
+				self.skipViewWidthSwitch()
+				
+			} else if position == .end {
+				self.cardFromRightAnimation()
 			}
 		}
 		
 		self.sideAnimator.pauseAnimation()
+	}
+	
+	private func cardFromRightAnimation() {
+		
 	}
 	
 }
