@@ -91,6 +91,7 @@
                                     <constraint firstItem="aSQ-4c-98m" firstAttribute="leading" secondItem="avh-ez-JyQ" secondAttribute="trailing" id="gkm-AM-9Dm"/>
                                     <constraint firstItem="avh-ez-JyQ" firstAttribute="leading" secondItem="5q5-QA-lZt" secondAttribute="leading" id="l1s-Vi-eOd"/>
                                     <constraint firstAttribute="bottom" secondItem="avh-ez-JyQ" secondAttribute="bottom" id="p00-Wu-BYY"/>
+                                    <constraint firstItem="aSQ-4c-98m" firstAttribute="width" secondItem="5q5-QA-lZt" secondAttribute="width" identifier="focusViewFullWidth" id="r4I-89-yTk"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -100,6 +101,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="J8O-va-9hx"/>
+                                        <exclude reference="r4I-89-yTk"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -299,6 +301,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.42051130533218384" green="0.61492890119552612" blue="0.69045358896255493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="64S-rf-Apl" firstAttribute="width" secondItem="DDq-g6-KEx" secondAttribute="width" identifier="enoughViewFullWidth" id="1Yh-PC-Smq"/>
                                     <constraint firstAttribute="bottom" secondItem="64S-rf-Apl" secondAttribute="bottom" id="HtD-GF-K63"/>
                                     <constraint firstItem="64S-rf-Apl" firstAttribute="top" secondItem="DDq-g6-KEx" secondAttribute="top" id="LB6-YF-nvE"/>
                                     <constraint firstItem="IF8-ym-KDp" firstAttribute="top" secondItem="DDq-g6-KEx" secondAttribute="top" id="TOX-q6-yKB"/>
@@ -316,6 +319,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="1Yh-PC-Smq"/>
                                         <exclude reference="wG9-Eh-fOf"/>
                                     </mask>
                                 </variation>
@@ -365,7 +369,9 @@
                         <outlet property="doneViewFullWidth" destination="J8O-va-9hx" id="5BX-z9-wTo"/>
                         <outlet property="doneViewHalfWidth" destination="6V0-5D-d8f" id="T7H-6T-I7t"/>
                         <outlet property="enoughView" destination="64S-rf-Apl" id="qQL-fm-kcB"/>
+                        <outlet property="enoughViewFullWidth" destination="1Yh-PC-Smq" id="tLd-6N-W4c"/>
                         <outlet property="focusView" destination="aSQ-4c-98m" id="nX0-Oc-WD3"/>
+                        <outlet property="focusViewFullWidth" destination="r4I-89-yTk" id="t4w-hG-z7X"/>
                         <outlet property="leftView" destination="5q5-QA-lZt" id="W1s-1h-Tux"/>
                         <outlet property="leftViewLeading" destination="HmX-Hv-8Kl" id="SAS-2Z-CAq"/>
                         <outlet property="leftViewTrailing" destination="OKZ-rj-UyX" id="ADn-YD-OiI"/>

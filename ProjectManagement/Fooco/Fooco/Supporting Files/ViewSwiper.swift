@@ -68,14 +68,20 @@ class ViewSwiper: NSObject {
 	
 	@IBOutlet private weak var centerViewCenterConstraint: NSLayoutConstraint!
 	
+	// MARK: Left Constraints
 	@IBOutlet private weak var doneViewHalfWidth: NSLayoutConstraint!
 	@IBOutlet private weak var doneViewFullWidth: NSLayoutConstraint!
+	
+	@IBOutlet private weak var focusViewFullWidth: NSLayoutConstraint!
 	
 	@IBOutlet private weak var leftViewLeading: NSLayoutConstraint!
 	@IBOutlet private weak var leftViewTrailing: NSLayoutConstraint!
 	
+	// MARK: Right Constraints
 	@IBOutlet private weak var skipViewHalfWidth: NSLayoutConstraint!
 	@IBOutlet private weak var skipViewFullWidth: NSLayoutConstraint!
+	
+	@IBOutlet private weak var enoughViewFullWidth: NSLayoutConstraint!
 	
 	@IBOutlet private weak var rightViewLeading: NSLayoutConstraint!
 	@IBOutlet private weak var rightViewTrailing: NSLayoutConstraint!
@@ -92,9 +98,6 @@ class ViewSwiper: NSObject {
 	// MARK: - Init
 	
 	func load() {
-//		self.centerAnimator.isInterruptible = true
-//		self.sideAnimator.isInterruptible = true
-		
 		self.addPanGestureRecognizer()
 		self.addGestureRecognizers()
 	}
@@ -135,7 +138,7 @@ class ViewSwiper: NSObject {
 			self.sideAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 		
 		case self.focusView:
-			break
+			self.focusViewAnimation()
 			
 		case self.enoughView:
 			break
@@ -195,6 +198,7 @@ class ViewSwiper: NSObject {
 				self.centerAnimator.fractionComplete = translation.x / self.movement
 				
 				if self.centerAnimator.fractionComplete >= 1 {
+					self.centerAnimator.stopAnimation(true)
                     self.doneViewAnimation()
 				}
 				
@@ -245,6 +249,7 @@ class ViewSwiper: NSObject {
 		}
 	}
 	
+	// MARK: Center Animator
 	private func moveRight() {
 		self.centerAnimator.addAnimations {
 			self.centerPreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
@@ -285,6 +290,7 @@ class ViewSwiper: NSObject {
 		self.centerAnimator.pauseAnimation()
 	}
 	
+	// MARK: Left animation
 	private func doneViewWidthSwitch() {
 		self.doneViewHalfWidth.isActive = !self.doneViewHalfWidth.isActive
 		self.doneViewFullWidth.isActive = !self.doneViewFullWidth.isActive
@@ -296,7 +302,7 @@ class ViewSwiper: NSObject {
             
             self.sidePreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
             self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
-            
+			
             self.leftViewTrailing.isActive = true
 
 			self.controller.view.layoutIfNeeded()
@@ -316,6 +322,40 @@ class ViewSwiper: NSObject {
 		}
 		
 		self.sideAnimator.pauseAnimation()
+	}
+	
+	private func focusViewWidthSwitch() {
+		self.doneViewHalfWidth.isActive = !self.doneViewHalfWidth.isActive
+		self.focusViewFullWidth.isActive = !self.focusViewFullWidth.isActive
+	}
+	
+	private func focusViewAnimation() {
+		let keyFrameAnimator = UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.7)
+		
+		keyFrameAnimator.addAnimations {
+			UIView.animateKeyframes(withDuration: 0, delay: 0, animations: {
+				UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
+					self.focusViewWidthSwitch()
+					self.controller.view.layoutIfNeeded()
+				}
+				
+				UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.3) {
+					self.centerPreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
+					self.centerViewCenterConstraint.constant -= self.movement
+					
+					self.showCorrectViews()
+					self.controller.view.layoutIfNeeded()
+				}
+			})
+		}
+		
+		keyFrameAnimator.addCompletion { _ in
+			self.focusViewWidthSwitch()
+			
+			self.movementState = MovementState.state(for: self.centerViewCenterConstraint.constant)
+		}
+		
+		keyFrameAnimator.startAnimation()
 	}
 	
 	private func cardFromLeftAnimation() {
@@ -344,6 +384,7 @@ class ViewSwiper: NSObject {
 		self.swipeAnimator.startAnimation()
 	}
 	
+	// MARK: Right animation
 	private func skipViewWidthSwitch() {
 		self.skipViewHalfWidth.isActive = !self.skipViewHalfWidth.isActive
 		self.skipViewFullWidth.isActive = !self.skipViewFullWidth.isActive
