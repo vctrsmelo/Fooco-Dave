@@ -9,6 +9,6 @@ import UIKit
 
 extension UIColor {
     static func colorOfAddContext() -> UIColor {
-        return #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        return #colorLiteral(red: 0.5843137255, green: 0.5843137255, blue: 0.5843137255, alpha: 1)
     }
 }
