@@ -28,6 +28,8 @@
 		EEA46BA31F9A36D600851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46BA11F9A36D600851D5D /* LaunchScreen.storyboard */; };
 		EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BAD1F9A36D600851D5D /* DaveTests.swift */; };
 		EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BB81F9A36D600851D5D /* DaveUITests.swift */; };
+		EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */; };
+		EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */; };
 		FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8B1F9A37E70051B33B /* Activity.swift */; };
 		FC2F29C31F9A3EA100984409 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8C1F9A37E70051B33B /* Context.swift */; };
 		FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8D1F9A37E70051B33B /* ContextBlock.swift */; };
@@ -115,6 +117,8 @@
 		EEA46BB41F9A36D600851D5D /* DaveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerAlertView.xib; sourceTree = "<group>"; };
+		EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertView.swift; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FCCD97671FACEA340068DB28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -339,6 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				BE6E11271FB39150004B5B9E /* EditProjectContainerView.swift */,
+				EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */,
+				EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */,
+				EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */,
 				BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */,
 				EE61F1FE1FB9F771005D6668 /* Assets.xcassets in Resources */,
 				EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */,
@@ -584,6 +591,7 @@
 				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
 				BE6E11281FB39150004B5B9E /* EditProjectContainerView.swift in Sources */,
 				BE6E111E1FB37356004B5B9E /* Extensions.swift in Sources */,
+				EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
