@@ -329,21 +329,21 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func focusViewAnimation() {
-		let keyFrameAnimator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 1)
+		let temporaryAnimator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 1)
 		
-		keyFrameAnimator.addAnimations {
+		temporaryAnimator.addAnimations {
 			self.focusViewWidthSwitch()
 			self.controller.view.layoutIfNeeded()
 		}
 		
-		keyFrameAnimator.addCompletion { _ in
+		temporaryAnimator.addCompletion { _ in
 			self.focusViewWidthSwitch()
 			
 			self.moveLeft()
 			self.centerAnimator.startAnimation()
 		}
 		
-		keyFrameAnimator.startAnimation()
+		temporaryAnimator.startAnimation()
 	}
 	
 	private func cardFromLeftAnimation() {

@@ -80,7 +80,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.37254901959999998" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="avh-ez-JyQ" firstAttribute="width" secondItem="5q5-QA-lZt" secondAttribute="width" multiplier="0.5" identifier="doneViewHalfWidth" id="6V0-5D-d8f"/>
                                     <constraint firstItem="avh-ez-JyQ" firstAttribute="top" secondItem="5q5-QA-lZt" secondAttribute="top" id="ClG-h2-l8E"/>
@@ -299,7 +299,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.42051130533218384" green="0.61492890119552612" blue="0.69045358896255493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="64S-rf-Apl" firstAttribute="width" secondItem="DDq-g6-KEx" secondAttribute="width" identifier="enoughViewFullWidth" id="1Yh-PC-Smq"/>
                                     <constraint firstAttribute="bottom" secondItem="64S-rf-Apl" secondAttribute="bottom" id="HtD-GF-K63"/>
