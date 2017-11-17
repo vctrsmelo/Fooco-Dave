@@ -206,24 +206,7 @@ class ViewSwiper: NSObject {
 			self.moveLeft()
 			
 		case (.changed, .goingRight):
-			if self.sideAnimator.state == .inactive {
-				self.centerAnimator.fractionComplete = translation.x / self.movement
-				
-				if self.centerAnimator.fractionComplete >= 1 {
-					self.centerAnimator.stopAnimation(true)
-                    self.doneViewAnimation()
-				}
-				
-			}
-            
-            if self.sideAnimator.state == .active {
-				self.sideAnimator.fractionComplete = (translation.x - self.movement) * 2 / self.controller.view.frame.maxX
-				
-				if self.sideAnimator.fractionComplete <= 0 {
-					self.sideAnimator.stopAnimation(false)
-					self.sideAnimator.finishAnimation(at: .start)
-				}
-			}
+			self.centerAnimator.fractionComplete = translation.x / self.movement
 			
 		case (.changed, .goingLeft):
 			self.centerAnimator.fractionComplete = -translation.x / self.movement
