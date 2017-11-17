@@ -329,29 +329,18 @@ class ViewSwiper: NSObject {
 	}
 	
 	private func focusViewAnimation() {
-		let keyFrameAnimator = UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.7)
+		let keyFrameAnimator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 1)
 		
 		keyFrameAnimator.addAnimations {
-			UIView.animateKeyframes(withDuration: 0, delay: 0, animations: { // swiftlint:disable:this trailing_closure
-				UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
-					self.focusViewWidthSwitch()
-					self.controller.view.layoutIfNeeded()
-				}
-				
-				UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.3) {
-					self.centerPreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
-					self.centerViewCenterConstraint.constant -= self.movement
-					
-					self.showCorrectViews()
-					self.controller.view.layoutIfNeeded()
-				}
-			})
+			self.focusViewWidthSwitch()
+			self.controller.view.layoutIfNeeded()
 		}
 		
 		keyFrameAnimator.addCompletion { _ in
 			self.focusViewWidthSwitch()
 			
-			self.movementState = MovementState.state(for: self.centerViewCenterConstraint.constant)
+			self.moveLeft()
+			self.centerAnimator.startAnimation()
 		}
 		
 		keyFrameAnimator.startAnimation()
