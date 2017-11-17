@@ -263,6 +263,11 @@
                                     <segue destination="ms8-Ga-Gck" kind="embed" identifier="projectTableViewSegue" id="M9O-wb-I1m"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-Ry-zF8" customClass="DatePickerAlertView" customModule="Fooco" customModuleProvider="target">
+                                <rect key="frame" x="67" y="215" width="240" height="190"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.01016705018" green="0.98928922409999998" blue="0.0263005197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -281,6 +286,7 @@
                         <outlet property="bottomBg2ImageView" destination="p67-jv-5Fi" id="9hd-ON-Xtx"/>
                         <outlet property="cancelBarButton" destination="l2P-Dx-YVq" id="tM5-gv-fzz"/>
                         <outlet property="contextsCollectionView" destination="RyF-Nc-i4r" id="IFo-Rt-2US"/>
+                        <outlet property="datePickerAlertView" destination="PN2-Ry-zF8" id="fo1-cm-ddR"/>
                         <outlet property="doneBarButton" destination="JHc-0x-7b9" id="Ut6-Xl-Deb"/>
                         <outlet property="editProjectContainerView" destination="QUI-T2-usN" id="Uto-eK-nas"/>
                         <outlet property="navigationBar" destination="Lkk-ue-ljx" id="G6p-q0-3PC"/>

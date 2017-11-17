@@ -9,6 +9,10 @@ import UIKit
 
 class DatePickerAlertView: UIView {
 
+    private var _view: UIView!
+    
+    @IBOutlet var viewContainer: DatePickerAlertView!
+    
     @IBOutlet weak var calendarIconImageView: UIImageView!
     @IBOutlet weak var clockIconImageView: UIImageView!
     
@@ -33,13 +37,25 @@ class DatePickerAlertView: UIView {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        
+    }
+    
     private func setDatePicker() {
+        if datePicker == nil {
+            return
+        }
         datePicker.datePickerMode = .date
         updateIcon()
         
     }
     
     private func setTimePicker() {
+        if datePicker == nil {
+            return
+        }
         datePicker.datePickerMode = .time
         updateIcon()
     }
@@ -50,3 +66,21 @@ class DatePickerAlertView: UIView {
     }
     
 }
+
+extension DatePickerAlertView: XibLoader {
+    var nibName: String {
+        return "DatePickerAlertView"
+    }
+    
+    var view: UIView! {
+        get {
+            return _view
+        }
+        set {
+            _view = newValue
+        }
+    }
+    
+    
+}
+

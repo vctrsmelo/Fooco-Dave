@@ -15,6 +15,7 @@ class EditProjectViewControllerFooco: UIViewController, EditProjectContextUpdate
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
+    @IBOutlet weak var datePickerAlertView: DatePickerAlertView!
     
     @IBOutlet weak var editProjectContainerView: EditProjectContainerView!
     weak var tableView: UITableView!
@@ -26,7 +27,13 @@ class EditProjectViewControllerFooco: UIViewController, EditProjectContextUpdate
     var project: Project?
     
     override func viewDidLoad() {
-
+        super.viewDidLoad()
+        
+        datePickerAlertView.initialSetup()
+        datePickerAlertView.isTime = false
+        datePickerAlertView.setNeedsLayout()
+        
+        
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
         //delegates and data sources
