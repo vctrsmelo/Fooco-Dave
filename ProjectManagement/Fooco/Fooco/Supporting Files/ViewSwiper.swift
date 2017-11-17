@@ -132,6 +132,10 @@ class ViewSwiper: NSObject {
 	
 	@objc
 	private func handleSubviewsTapGesture(_ sender: UITapGestureRecognizer) {
+		if self.isAnyAnimationRunning() {
+			return
+		}
+		
 		switch sender.view! {
 		case self.doneView:
 			self.doneViewAnimation()
@@ -141,7 +145,7 @@ class ViewSwiper: NSObject {
 			self.focusViewAnimation()
 			
 		case self.enoughView:
-			break
+			self.enoughViewAnimation()
 			
 		case self.skipView:
 			self.skipViewAnimation()
@@ -154,6 +158,10 @@ class ViewSwiper: NSObject {
 	
 	@objc
 	private func handleSubviewsPanGesture(_ sender: UIPanGestureRecognizer) {
+		if sender.state == .began && self.isAnyAnimationRunning() {
+			return
+		}
+		
 		let translation = sender.translation(in: sender.view)
 		
 		switch (sender.state, sender.view!) {
@@ -183,6 +191,10 @@ class ViewSwiper: NSObject {
 	
 	@objc
 	private func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+		if sender.state == .began && self.isAnyAnimationRunning() {
+			return
+		}
+		
 		let translation = sender.translation(in: sender.view)
 		let velocity = sender.velocity(in: sender.view)
 		
@@ -236,6 +248,11 @@ class ViewSwiper: NSObject {
 	
 	// MARK: - Animation
 	
+	private func isAnyAnimationRunning() -> Bool {
+		return self.centerAnimator.state == .active || self.sideAnimator.state == .active || self.swipeAnimator.state == .active
+	}
+	
+	// MARK: Center Animator
 	private func showCorrectViews() {
 		if self.centerViewCenterConstraint.constant > 0 {
 			self.leftView.alpha = 1
@@ -249,7 +266,6 @@ class ViewSwiper: NSObject {
 		}
 	}
 	
-	// MARK: Center Animator
 	private func moveRight() {
 		self.centerAnimator.addAnimations {
 			self.centerPreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
@@ -290,7 +306,7 @@ class ViewSwiper: NSObject {
 		self.centerAnimator.pauseAnimation()
 	}
 	
-	// MARK: Left animation
+	// MARK: Left animations
 	private func doneViewWidthSwitch() {
 		self.doneViewHalfWidth.isActive = !self.doneViewHalfWidth.isActive
 		self.doneViewFullWidth.isActive = !self.doneViewFullWidth.isActive
@@ -333,7 +349,7 @@ class ViewSwiper: NSObject {
 		let keyFrameAnimator = UIViewPropertyAnimator(duration: 0.6, dampingRatio: 0.7)
 		
 		keyFrameAnimator.addAnimations {
-			UIView.animateKeyframes(withDuration: 0, delay: 0, animations: {
+			UIView.animateKeyframes(withDuration: 0, delay: 0, animations: { // swiftlint:disable:this trailing_closure
 				UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
 					self.focusViewWidthSwitch()
 					self.controller.view.layoutIfNeeded()
@@ -384,7 +400,7 @@ class ViewSwiper: NSObject {
 		self.swipeAnimator.startAnimation()
 	}
 	
-	// MARK: Right animation
+	// MARK: Right animations
 	private func skipViewWidthSwitch() {
 		self.skipViewHalfWidth.isActive = !self.skipViewHalfWidth.isActive
 		self.skipViewFullWidth.isActive = !self.skipViewFullWidth.isActive
@@ -393,9 +409,7 @@ class ViewSwiper: NSObject {
 	private func skipViewAnimation() {
 		self.sideAnimator.addAnimations {
 			self.skipViewWidthSwitch()
-		}
-		
-		self.sideAnimator.addAnimations {
+
 			self.centerPreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
 			self.centerViewCenterConstraint.constant = -self.controller.view.frame.maxX
 			
@@ -414,10 +428,39 @@ class ViewSwiper: NSObject {
 				
 			} else if position == .end {
 				self.cardFromRightAnimation()
+				self.swipeAnimator.addCompletion { _ in
+					self.skipViewWidthSwitch()
+				}
 			}
 		}
 		
 		self.sideAnimator.pauseAnimation()
+	}
+	
+	private func enoughViewWidthSwitch() {
+		self.skipViewHalfWidth.isActive = !self.skipViewHalfWidth.isActive
+		self.enoughViewFullWidth.isActive = !self.enoughViewFullWidth.isActive
+	}
+	
+	private func enoughViewAnimation() {
+		self.sideAnimator.addAnimations {
+			self.enoughViewWidthSwitch()
+			
+			self.centerViewCenterConstraint.constant = -self.controller.view.frame.maxX
+			
+			self.rightViewLeading.isActive = true
+			
+			self.controller.view.layoutIfNeeded()
+		}
+		
+		self.sideAnimator.addCompletion { _ in
+			self.cardFromRightAnimation()
+			self.swipeAnimator.addCompletion { _ in
+				self.enoughViewWidthSwitch()
+			}
+		}
+		
+		self.sideAnimator.startAnimation()
 	}
 	
 	private func cardFromRightAnimation() {
@@ -437,8 +480,6 @@ class ViewSwiper: NSObject {
 		self.swipeAnimator.addCompletion { _ in
 			self.rightViewTrailing.isActive = true
 			self.rightViewLeading.isActive = false
-			
-			self.skipViewWidthSwitch()
 			
 			self.movementState = MovementState.state(for: self.centerViewCenterConstraint.constant)
 		}

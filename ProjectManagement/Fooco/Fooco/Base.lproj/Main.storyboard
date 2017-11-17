@@ -27,10 +27,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-QA-lZt" userLabel="Left View">
-                                <rect key="frame" x="-10" y="125" width="30" height="352"/>
+                                <rect key="frame" x="-10" y="125" width="30" height="351.5"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avh-ez-JyQ" userLabel="Done View">
-                                        <rect key="frame" x="0.0" y="0.0" width="15" height="352"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="15" height="351.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFt-LY-C3i">
                                                 <rect key="frame" x="-54.5" y="112.5" width="45" height="21.5"/>
@@ -55,7 +55,7 @@
                                         </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSQ-4c-98m" userLabel="Focus View">
-                                        <rect key="frame" x="15" y="0.0" width="15" height="351.5"/>
+                                        <rect key="frame" x="15" y="0.0" width="15" height="351"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdK-nM-9As">
                                                 <rect key="frame" x="-54" y="107.5" width="44" height="21.5"/>
@@ -106,7 +106,7 @@
                                 </variation>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rO-JB-msb" userLabel="Activity View">
-                                <rect key="frame" x="30" y="125" width="315" height="351.5"/>
+                                <rect key="frame" x="30" y="125" width="315" height="351"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yq-Vh-ACo" userLabel="Time View">
                                         <rect key="frame" x="18" y="18" width="279" height="51"/>
@@ -176,7 +176,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1yW-Jp-KfM" userLabel="Project Stack">
-                                        <rect key="frame" x="18" y="105" width="279" height="141.5"/>
+                                        <rect key="frame" x="18" y="105" width="279" height="141"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cmN-ZR-7Oi" userLabel="Project Stack">
                                                 <rect key="frame" x="98" y="0.0" width="83" height="54"/>
@@ -196,7 +196,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CCN-R8-A8G" userLabel="Duration Stack">
-                                                <rect key="frame" x="79.5" y="87.5" width="120.5" height="54"/>
+                                                <rect key="frame" x="79.5" y="87" width="120.5" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Focus During" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxF-X0-ycH">
                                                         <rect key="frame" x="3.5" y="0.0" width="113" height="24"/>
@@ -215,7 +215,7 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activitityDecoration" translatesAutoresizingMaskIntoConstraints="NO" id="Yeo-8h-txp">
-                                        <rect key="frame" x="0.0" y="271.5" width="315" height="80"/>
+                                        <rect key="frame" x="0.0" y="271" width="315" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="VEw-8S-cfB"/>
                                         </constraints>
@@ -246,10 +246,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDq-g6-KEx" userLabel="Right View">
-                                <rect key="frame" x="355" y="125" width="30" height="351.5"/>
+                                <rect key="frame" x="355" y="125" width="30" height="351"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64S-rf-Apl" userLabel="Enough View">
-                                        <rect key="frame" x="0.0" y="0.0" width="15" height="351.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="15" height="351"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enough" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-8e-AQE">
                                                 <rect key="frame" x="14" y="107.5" width="66" height="21.5"/>
@@ -274,7 +274,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-ym-KDp" userLabel="Skip View">
-                                        <rect key="frame" x="15" y="0.0" width="15" height="351.5"/>
+                                        <rect key="frame" x="15" y="0.0" width="15" height="351"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksJ-pb-wBD">
                                                 <rect key="frame" x="28" y="110.5" width="38.5" height="21.5"/>
