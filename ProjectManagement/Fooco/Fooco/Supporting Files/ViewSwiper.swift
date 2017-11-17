@@ -183,43 +183,39 @@ class ViewSwiper: NSObject {
 		let translation = sender.translation(in: sender.view)
 		let velocity = sender.velocity(in: sender.view)
 		
-		switch sender.state {
-		case .began:
-			if velocity.x > 0 && (self.movementState == .atCenter || self.movementState == .atLeft) {
-				self.moveRight()
+		switch (sender.state, self.movementState) {
+		case (.began, .atCenter) where velocity.x > 0, (.began, .atLeft) where velocity.x > 0:
+			self.moveRight()
+			
+		case (.began, .atCenter) where velocity.x < 0, (.began, .atRight) where velocity.x < 0:
+			self.moveLeft()
+			
+		case (.changed, .goingRight):
+			if self.sideAnimator.state == .inactive {
+				self.centerAnimator.fractionComplete = translation.x / self.movement
 				
-			} else if velocity.x < 0 && (self.movementState == .atCenter || self.movementState == .atRight) {
-				self.moveLeft()
-			}
-			
-		case.changed:
-			if self.movementState == .goingRight {
-				if self.sideAnimator.state == .inactive {
-					self.centerAnimator.fractionComplete = translation.x / self.movement
-					
-					if self.centerAnimator.fractionComplete >= 1 {
-						self.doneViewAnimation()
-					}
-					
-				} else {
-					self.sideAnimator.fractionComplete = (translation.x - self.movement) * 2 / self.controller.view.frame.maxX
-					
-					if self.sideAnimator.fractionComplete <= 0 {
-						self.sideAnimator.stopAnimation(false)
-						self.sideAnimator.finishAnimation(at: .start)
-					}
+				if self.centerAnimator.fractionComplete >= 1 {
+                    self.doneViewAnimation()
 				}
-			
-			} else if self.movementState == .goingLeft {
-				self.centerAnimator.fractionComplete = -translation.x / self.movement
+				
+			}
+            
+            if self.sideAnimator.state == .active {
+				self.sideAnimator.fractionComplete = (translation.x - self.movement) * 2 / self.controller.view.frame.maxX
+				
+				if self.sideAnimator.fractionComplete <= 0 {
+					self.sideAnimator.stopAnimation(false)
+					self.sideAnimator.finishAnimation(at: .start)
+				}
 			}
 			
-		case .ended, .cancelled:
+		case (.changed, .goingLeft):
+			self.centerAnimator.fractionComplete = -translation.x / self.movement
+			
+		case (.ended, _), (.cancelled, _):
 			if (self.movementState == .goingRight && velocity.x <= 0) ||
-				(self.movementState == .goingLeft && velocity.x >= 0) ||
-				(self.centerAnimator.fractionComplete < 0.3 && abs(velocity.x) < 0) {
+				(self.movementState == .goingLeft && velocity.x >= 0) {
 				self.centerAnimator.isReversed = !self.centerAnimator.isReversed
-//				self.movementState = !self.movementState
 				
 				if self.sideAnimator.state == .active {
 					self.sideAnimator.isReversed = !self.sideAnimator.isReversed
@@ -229,7 +225,7 @@ class ViewSwiper: NSObject {
 			self.centerAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			self.sideAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 			
-		case .failed, .possible:
+		default:
 			break
 		}
 	}
@@ -297,27 +293,22 @@ class ViewSwiper: NSObject {
 	private func doneViewAnimation() {
 		self.sideAnimator.addAnimations {
 			self.doneViewWidthSwitch()
-		}
-		
-		self.sideAnimator.addAnimations {
-			self.sidePreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
-			self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
-			
-			self.leftViewTrailing.isActive = true
+            
+            self.sidePreviousCenterViewConstraint = self.centerViewCenterConstraint.constant
+            self.centerViewCenterConstraint.constant = self.controller.view.frame.maxX
+            
+            self.leftViewTrailing.isActive = true
 
 			self.controller.view.layoutIfNeeded()
 		}
 		
 		self.sideAnimator.addCompletion { position in
-			print(position.rawValue)
 			if position == .start {
-				self.centerViewCenterConstraint.constant = self.sidePreviousCenterViewConstraint
-				
-				self.leftViewTrailing.isActive = false
+                self.centerViewCenterConstraint.constant = self.sidePreviousCenterViewConstraint
+
+                self.leftViewTrailing.isActive = false
 				
 				self.doneViewWidthSwitch()
-				
-//				self.controller.view.layoutIfNeeded()
 				
 			} else if position == .end {
 				self.cardFromLeftAnimation()
