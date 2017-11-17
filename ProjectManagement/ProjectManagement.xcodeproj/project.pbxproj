@@ -28,6 +28,7 @@
 		EEA46BA31F9A36D600851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46BA11F9A36D600851D5D /* LaunchScreen.storyboard */; };
 		EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BAD1F9A36D600851D5D /* DaveTests.swift */; };
 		EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BB81F9A36D600851D5D /* DaveUITests.swift */; };
+		EED935561FBF615C00177FCC /* XibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED935551FBF615C00177FCC /* XibLoader.swift */; };
 		EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */; };
 		EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */; };
 		FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8B1F9A37E70051B33B /* Activity.swift */; };
@@ -117,6 +118,7 @@
 		EEA46BB41F9A36D600851D5D /* DaveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EED935551FBF615C00177FCC /* XibLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoader.swift; sourceTree = "<group>"; };
 		EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerAlertView.xib; sourceTree = "<group>"; };
 		EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertView.swift; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
 				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
 				EEA46B721F9A36CA00851D5D /* Info.plist */,
+				EED935551FBF615C00177FCC /* XibLoader.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
 				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
+				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewController.swift in Sources */,
