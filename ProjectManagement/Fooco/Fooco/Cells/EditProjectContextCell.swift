@@ -18,6 +18,7 @@ class EditProjectContextCell: UICollectionViewCell {
     static let originalSize = CGSize(width: 150, height: 100)
     private var featuredPercentage: CGFloat?
     
+    
     private var _context: Context!
     var context: Context! {
         set {
@@ -109,7 +110,9 @@ class EditProjectContextCell: UICollectionViewCell {
         
         iconImageView.layer.masksToBounds = true
         self.iconImageView.layer.cornerRadius = 50 / 100 * iconImageView.frame.size.width
+        
     }
+
 
     private func updatedContext() {
         

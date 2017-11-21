@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class EditProjectViewControllerFooco: UIViewController, EditProjectContextUpdated {
+class EditProjectViewControllerFooco: UIViewController {
     
     
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -24,20 +24,25 @@ class EditProjectViewControllerFooco: UIViewController, EditProjectContextUpdate
     @IBOutlet weak var bottomBg1ImageView: UIImageView!
     @IBOutlet weak var bottomBg2ImageView: UIImageView!
     
+    var currentButtonBeingUpdated: UIButton!
+    
     var project: Project?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         datePickerAlertView.initialSetup()
-        datePickerAlertView.isTime = false
+        datePickerAlertView.configure()
         datePickerAlertView.setNeedsLayout()
-        
+        datePickerAlertView.delegate = self
         
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
         //delegates and data sources
         formatNavigationBar()
+        
+        //hide keyboard when view is tapped
+        hideKeyboardWhenTappedAround()
         
     }
     
@@ -66,14 +71,58 @@ class EditProjectViewControllerFooco: UIViewController, EditProjectContextUpdate
         }
     }
     
-    func contextUpdated(for context: Context?) {
+    
 
+}
+
+extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
+    
+    func estimatedHoursTouched(_ sender: UIButton) {
+        datePickerAlertView.present(.estimatedTime)
+        currentButtonBeingUpdated = sender
+    }
+    
+    func startingDateTouched(_ sender: UIButton) {
+        datePickerAlertView.present(.startingDate)
+        currentButtonBeingUpdated = sender
+    }
+    
+    func deadlineDateTouched(_ sender: UIButton) {
+        datePickerAlertView.present(.deadlineDate)
+        currentButtonBeingUpdated = sender
+    }
+    
+    func contextUpdated(for context: Context?) {
+        
         let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
         cancelBarButton.tintColor = color
         bottomBg1ImageView.tintColor = color.withAlphaComponent(0.46)
         bottomBg2ImageView.tintColor = color.withAlphaComponent(0.36)
-   
         
     }
-
 }
+
+extension EditProjectViewControllerFooco: DatePickerAlertViewDelegate {
+    func confirmTouchedWith(_ sender: UIDatePicker) {
+
+        let date = sender.date
+        switch sender.datePickerMode {
+        case .time:
+            let components = Calendar.current.dateComponents([.hour], from: date)
+            currentButtonBeingUpdated.setTitle("\(components.hour!) hours")
+            
+            break
+        default:
+            let components = Calendar.current.dateComponents([.day,.month,.year], from: date)
+            let string = DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .none)
+            currentButtonBeingUpdated.setTitle(string)
+
+        }
+        
+        currentButtonBeingUpdated = nil
+        
+    }
+    
+    
+}
+

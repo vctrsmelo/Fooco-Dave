@@ -8,15 +8,18 @@
 import Foundation
 import UIKit
 
-protocol EditProjectContextUpdated {
+protocol EditProjectTableViewControllerDelegate {
     func contextUpdated(for context: Context?)
+    func estimatedHoursTouched(_ sender: UIButton)
+    func startingDateTouched(_ sender: UIButton)
+    func deadlineDateTouched(_ sender: UIButton)
 }
 
 class EditProjectTableViewController: UITableViewController {
     
     @IBOutlet weak var contextsCollectionView: UICollectionView!
     
-    var delegate: EditProjectContextUpdated?
+    var delegate: EditProjectTableViewControllerDelegate?
     
     private var _selectedContext: Context?
     var selectedContext: Context? {
@@ -40,7 +43,16 @@ class EditProjectTableViewController: UITableViewController {
         }
     }
     
-    var importance: Int = 1
+    private var _importance: Int = 1
+    var importance: Int {
+        set {
+            _importance = newValue
+            updateImportanceColor(to: newValue)
+        }
+        get{
+            return _importance
+        }
+    }
     
     //name cell
     @IBOutlet weak var nameIconImageView: UIImageView!
@@ -51,14 +63,15 @@ class EditProjectTableViewController: UITableViewController {
     //estimated time cell
     @IBOutlet weak var clockIconImageView: UIImageView!
     @IBOutlet weak var estimatedTimeLabel: UILabel!
-    @IBOutlet weak var editableEstimatedHours: UILabel!
+    @IBOutlet weak var estimatedHoursButton: UIButton!
     
     //calendar cell
     @IBOutlet weak var calendarIconImageView: UIImageView!
     @IBOutlet weak var startsLabel: UILabel!
-    @IBOutlet weak var startingDateLabel: UILabel!
+    @IBOutlet weak var startingDateButton: UIButton!
     @IBOutlet weak var deadlineLabel: UILabel!
-    @IBOutlet weak var deadlineDateLabel: UILabel!
+    @IBOutlet weak var deadlineDateButton: UIButton!
+    
     @IBOutlet weak var datesBarView: UIView!
     
     //importance cell
@@ -78,6 +91,9 @@ class EditProjectTableViewController: UITableViewController {
         contextsCollectionView.dataSource = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //disable table scrolling
+        tableView.alwaysBounceVertical = false
         
         //design contextCollectionView layout
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -133,65 +149,90 @@ class EditProjectTableViewController: UITableViewController {
         
         clockIconImageView.tintColor = contextColor
         estimatedTimeLabel.textColor = contextColor
-        editableEstimatedHours.textColor = contextColor
+        estimatedHoursButton.setTitleColor(contextColor)
         
         calendarIconImageView.tintColor = contextColor
         startsLabel.textColor = contextColor
         deadlineLabel.textColor = contextColor
-        startingDateLabel.textColor = contextColor
-        deadlineDateLabel.textColor = contextColor
+        startingDateButton.setTitleColor(contextColor)
+        deadlineDateButton.setTitleColor(contextColor)
         datesBarView.backgroundColor = contextColor
-        
         
         importanceIconImageView.tintColor = contextColor
         importanceLabel.textColor = contextColor
+       
         lowImportanceButton.layer.borderColor = contextColor.cgColor
-        lowImportanceButton.setTitleColor(contextColor, for: UIControlState.normal)
         mediumImportanceButton.layer.borderColor = contextColor.cgColor
-        mediumImportanceButton.setTitleColor(contextColor, for: UIControlState.normal)
         highImportanceButton.layer.borderColor = contextColor.cgColor
-        highImportanceButton.setTitleColor(contextColor, for: UIControlState.normal)
+        updateImportanceColor(to: importance)
         
-        switch importance {
+        
+        
+    }
+    
+    private func updateImportanceColor(to value: Int) {
+        switch value {
         case 1:
-            lowImportanceButton.isSelected = true
             lowImportanceButton.backgroundColor = contextColor
+            lowImportanceButton.setTitleColor(UIColor.white)
+            mediumImportanceButton.backgroundColor = UIColor.clear
+            mediumImportanceButton.setTitleColor(contextColor)
+            highImportanceButton.backgroundColor = UIColor.clear
+            highImportanceButton.setTitleColor(contextColor)
             break
         case 2:
+            lowImportanceButton.backgroundColor = UIColor.clear
+            lowImportanceButton.setTitleColor(contextColor)
             mediumImportanceButton.backgroundColor = contextColor
-            mediumImportanceButton.titleLabel?.textColor = UIColor.white
+            mediumImportanceButton.setTitleColor(UIColor.white)
+            highImportanceButton.backgroundColor = UIColor.clear
+            highImportanceButton.setTitleColor(contextColor)
             break
         case 3:
+            lowImportanceButton.backgroundColor = UIColor.clear
+            lowImportanceButton.setTitleColor(contextColor)
+            mediumImportanceButton.backgroundColor = UIColor.clear
+            mediumImportanceButton.setTitleColor(contextColor)
             highImportanceButton.backgroundColor = contextColor
-            highImportanceButton.titleLabel?.textColor = UIColor.white
+            highImportanceButton.setTitleColor(UIColor.white)
             break
         default:
             break
         }
-        
-        
+    }
+    
+    @IBAction func estimatedHoursTouched(_ sender: UIButton) {
+        self.delegate?.estimatedHoursTouched(sender)
+    }
+    
+    @IBAction func startingDateTouched(_ sender: UIButton) {
+        self.delegate?.startingDateTouched(sender)
+    }
+
+    @IBAction func deadlineDateTouched(_ sender: UIButton) {
+        self.delegate?.deadlineDateTouched(sender)
     }
     
     @IBAction func lowImportanceTouched(_ sender: UIButton) {
-        lowImportanceButton.backgroundColor = contextColor
-        mediumImportanceButton.backgroundColor = UIColor.clear
-        highImportanceButton.backgroundColor = UIColor.clear
         importance = 1
+        lowImportanceButton.isSelected = true
+        mediumImportanceButton.isSelected = false
+        highImportanceButton.isSelected = false
     }
     
     
     @IBAction func mediumImportanceTouched(_ sender: UIButton) {
-        lowImportanceButton.backgroundColor = UIColor.clear
-        mediumImportanceButton.backgroundColor = contextColor
-        highImportanceButton.backgroundColor = UIColor.clear
         importance = 2
+        lowImportanceButton.isSelected = false
+        mediumImportanceButton.isSelected = true
+        highImportanceButton.isSelected = false
     }
     
     @IBAction func highImportanceTouched(_ sender: Any) {
-        lowImportanceButton.backgroundColor = UIColor.clear
-        mediumImportanceButton.backgroundColor = UIColor.clear
-        highImportanceButton.backgroundColor = contextColor
         importance = 3
+        lowImportanceButton.isSelected = false
+        mediumImportanceButton.isSelected = false
+        highImportanceButton.isSelected = true
     }
     
 }
@@ -308,7 +349,5 @@ extension EditProjectTableViewController {
         contextsCollectionView.scrollToItem(at: contextsCollectionView.indexPath(for: focusedCell)!, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
         
     }
-    
-    
-    
+
 }
