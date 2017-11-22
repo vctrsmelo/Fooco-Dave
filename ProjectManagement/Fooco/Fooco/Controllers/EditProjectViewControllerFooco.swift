@@ -24,8 +24,6 @@ class EditProjectViewControllerFooco: UIViewController {
     @IBOutlet weak var bottomBg1ImageView: UIImageView!
     @IBOutlet weak var bottomBg2ImageView: UIImageView!
     
-    var currentButtonBeingUpdated: UIButton!
-    
     var project: Project?
     
     override func viewDidLoad() {
@@ -34,10 +32,12 @@ class EditProjectViewControllerFooco: UIViewController {
         datePickerAlertView.initialSetup()
         datePickerAlertView.configure()
         datePickerAlertView.setNeedsLayout()
-        datePickerAlertView.delegate = self
         
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
+        bottomBg1ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        bottomBg2ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        
         //delegates and data sources
         formatNavigationBar()
         
@@ -67,6 +67,7 @@ class EditProjectViewControllerFooco: UIViewController {
             contextsCollectionView = editProjTableViewController.contextsCollectionView
             tableView = editProjTableViewController.tableView
             editProjTableViewController.delegate = self
+            datePickerAlertView.delegate = editProjTableViewController
 
         }
     }
@@ -76,69 +77,30 @@ class EditProjectViewControllerFooco: UIViewController {
 }
 
 extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
-    
-    func estimatedHoursTouched(_ sender: UIButton) {
-        datePickerAlertView.present(.estimatedTime)
-        currentButtonBeingUpdated = sender
+   
+    func estimatedHoursTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
+        alertView(datePickerAlertView)
     }
     
-    func startingDateTouched(_ sender: UIButton) {
-        datePickerAlertView.present(.startingDate)
-        currentButtonBeingUpdated = sender
+    func startingDateTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
+        alertView(datePickerAlertView)
     }
     
-    func deadlineDateTouched(_ sender: UIButton) {
-        datePickerAlertView.present(.deadlineDate)
-        currentButtonBeingUpdated = sender
+    func deadlineDateTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
+        alertView(datePickerAlertView)
     }
     
     func contextUpdated(for context: Context?) {
         
         let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
         cancelBarButton.tintColor = color
-        bottomBg1ImageView.tintColor = color.withAlphaComponent(0.46)
-        bottomBg2ImageView.tintColor = color.withAlphaComponent(0.36)
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
+        doneBarButton.tintColor = color
+
+//        bottomBg1ImageView.tintColor = color.withAlphaComponent(0.46)
+//        bottomBg2ImageView.tintColor = color.withAlphaComponent(0.36)
         
     }
-}
-
-extension EditProjectViewControllerFooco: DatePickerAlertViewDelegate {
-    func startingDate() -> Date? {
-        return
-    }
-    
-    func deadlineDate() -> Date? {
-        <#code#>
-    }
-    
-    func estimatedTime() -> TimeInterval? {
-        <#code#>
-    }
-    
-    func name() -> String? {
-        <#code#>
-    }
-    
-    func confirmTouchedWith(_ sender: UIDatePicker) {
-
-        let date = sender.date
-        switch sender.datePickerMode {
-        case .time:
-            let components = Calendar.current.dateComponents([.hour], from: date)
-            currentButtonBeingUpdated.setTitle("\(components.hour!) hours")
-            
-            break
-        default:
-            let components = Calendar.current.dateComponents([.day,.month,.year], from: date)
-            let string = DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .none)
-            currentButtonBeingUpdated.setTitle(string)
-
-        }
-        
-        currentButtonBeingUpdated = nil
-        
-    }
-    
     
 }
 

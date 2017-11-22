@@ -10,9 +10,9 @@ import UIKit
 
 protocol EditProjectTableViewControllerDelegate {
     func contextUpdated(for context: Context?)
-    func estimatedHoursTouched(_ sender: UIButton)
-    func startingDateTouched(_ sender: UIButton)
-    func deadlineDateTouched(_ sender: UIButton)
+    func estimatedHoursTouched(_ alertView : ((DatePickerAlertView) -> Void))
+    func startingDateTouched(_ alertView : ((DatePickerAlertView) -> Void))
+    func deadlineDateTouched(_ alertView : ((DatePickerAlertView) -> Void))
 }
 
 class EditProjectTableViewController: UITableViewController {
@@ -80,6 +80,10 @@ class EditProjectTableViewController: UITableViewController {
     @IBOutlet weak var lowImportanceButton: UIButton!
     @IBOutlet weak var mediumImportanceButton: UIButton!
     @IBOutlet weak var highImportanceButton: UIButton!
+    
+    private var startingDate: Date!
+    private var deadlineDate: Date!
+    private var estimatedTime: TimeInterval!
     
     override func viewDidLoad() {
         
@@ -202,15 +206,70 @@ class EditProjectTableViewController: UITableViewController {
     }
     
     @IBAction func estimatedHoursTouched(_ sender: UIButton) {
-        self.delegate?.estimatedHoursTouched(sender)
+        delegate?.estimatedHoursTouched({ alertView in
+            
+            alertView.present(.estimatedTime)
+            
+            let contextName = (selectedContext != nil) ? selectedContext!.name : ""
+            let days = alertView.hoursPicker.selectedRow(inComponent: 0)
+            let hours = alertView.hoursPicker.selectedRow(inComponent: 1)
+            
+            alertView.overTitleLabel.text = "\(contextName) Project"
+            alertView.titleLabel.text = "Estimated Time"
+            alertView.underTitleLabel.text = "\(days) days and \(hours) hours"
+            
+        })
     }
     
     @IBAction func startingDateTouched(_ sender: UIButton) {
-        self.delegate?.startingDateTouched(sender)
+        delegate?.startingDateTouched({ alertView in
+            
+            alertView.present(.startingDate, initialDate: startingDate)
+           
+            let contextName = (selectedContext != nil) ? selectedContext!.name : ""
+            let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
+            
+            let currentDate = alertView.datePicker.date
+
+            alertView.underTitleLabel.text = ""
+            alertView.overTitleLabel.text = "\(contextName) \(projectName)"
+            alertView.titleLabel.text = "Starting Date"
+            
+            if deadlineDate != nil {
+                let daysBetween = Calendar.current.dateComponents([.day], from: currentDate, to: deadlineDate)
+                if daysBetween.day != nil {
+                    alertView.underTitleLabel.text = "\(daysBetween.day!) days until deadline"
+                }
+            }
+            
+        })
+
     }
 
     @IBAction func deadlineDateTouched(_ sender: UIButton) {
-        self.delegate?.deadlineDateTouched(sender)
+        delegate?.deadlineDateTouched({ alertView in
+            
+            alertView.present(.deadlineDate, initialDate: deadlineDate)
+            
+            let contextName = (selectedContext != nil) ? selectedContext!.name : ""
+            let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
+            
+            let currentDate = alertView.datePicker.date
+            
+            alertView.underTitleLabel.text = ""
+            
+            if startingDate != nil {
+                let daysBetween = Calendar.current.dateComponents([.day], from: startingDate, to: currentDate)
+                if daysBetween.day != nil {
+                    alertView.underTitleLabel.text = "\(daysBetween.day!) days since starting date"
+                }
+            }
+            
+            
+            alertView.overTitleLabel.text = "\(contextName) \(projectName)"
+            alertView.titleLabel.text = "Ending Date"
+            
+        })
     }
     
     @IBAction func lowImportanceTouched(_ sender: UIButton) {
@@ -350,4 +409,79 @@ extension EditProjectTableViewController {
         
     }
 
+}
+
+extension EditProjectTableViewController: DatePickerAlertViewDelegate {
+    
+    func dateChanged(_ sender: UIDatePicker, at alertView: DatePickerAlertView, for mode: AlertPickerViewMode) {
+        
+        let currentDate = alertView.datePicker.date
+        var newUnderTitleString = ""
+        
+        switch mode {
+        case .startingDate:
+            
+            if deadlineDate != nil {
+                let daysBetween = Calendar.current.dateComponents([.day], from: currentDate, to: deadlineDate)
+                
+                if daysBetween.day != nil{
+                    newUnderTitleString = "\(daysBetween.day!) days until deadline"
+                }
+            }
+            
+            break
+        case .deadlineDate:
+            
+            if startingDate != nil {
+                let daysBetween = Calendar.current.dateComponents([.day], from: startingDate, to: currentDate)
+                
+                if daysBetween.day != nil {
+                    newUnderTitleString = "\(daysBetween.day!) days since starting date"
+                }
+            }
+            
+            break
+        default:
+            break
+        }
+        
+        alertView.underTitleLabel.text = newUnderTitleString
+    }
+    
+    func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode) {
+        sender.isHidden = true
+        
+        if mode != .estimatedTime {
+            return
+        }
+        
+        let days = sender.selectedRow(inComponent: 0)
+        let hours = sender.selectedRow(inComponent: 1)
+        estimatedHoursButton.setTitle("\(days) days and \(hours) hours")
+        
+        estimatedTime = TimeInterval(days * 24 * 60 * 60)
+        estimatedTime = estimatedTime!+TimeInterval(hours*60*60)
+    }
+    
+    func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode) {
+        sender.isHidden = true
+    
+        
+        //necessary to keep the dates as date (makes it easier to display the value later into alert view, if needed)
+        switch mode {
+            case .startingDate:
+                startingDate = sender.date
+                startingDateButton.setTitle(DateFormatter.localizedString(from: sender.date, dateStyle: .short, timeStyle: .none))
+                
+                break
+            case .deadlineDate:
+                deadlineDate = sender.date
+                deadlineDateButton.setTitle(DateFormatter.localizedString(from: sender.date, dateStyle: .short, timeStyle: .none))
+                break
+            default:
+                break
+        }
+        
+    }
+    
 }

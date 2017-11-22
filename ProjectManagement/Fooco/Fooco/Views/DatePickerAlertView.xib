@@ -91,6 +91,9 @@
                                                     <real key="value" value="8"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="dateChanged:" destination="-1" eventType="valueChanged" id="q2q-mc-Uc3"/>
+                                            </connections>
                                         </datePicker>
                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNZ-ME-aKv">
                                             <rect key="frame" x="0.0" y="114" width="277" height="166"/>
