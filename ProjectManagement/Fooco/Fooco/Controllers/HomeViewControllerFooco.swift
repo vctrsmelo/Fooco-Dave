@@ -10,8 +10,10 @@ import UIKit
 class HomeViewControllerFooco: UIViewController {
 	
 	// MARK: - Properties
+	
+	private var currentContext: Context?
 
-	private var activities = [Activity]()
+	private var contextBlocks = [ContextBlock]()
 	
 	private var addButton: FloatingAddButton!
 	
@@ -19,10 +21,19 @@ class HomeViewControllerFooco: UIViewController {
 	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
 	
+	private func dataPopulation() {
+		User.sharedInstance.add(contexts: [Mocado.context1])
+		User.sharedInstance.add(projects: Mocado.projects)
+		
+		self.contextBlocks = User.sharedInstance.getSchedule(for: Date())?.contextBlocks ?? []
+	}
+	
 	// MARK: - View Handling
 
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.dataPopulation()
 		
 		self.viewSwiper.load()
 		
@@ -36,7 +47,7 @@ class HomeViewControllerFooco: UIViewController {
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
 		
-		if self.activities.isEmpty {
+		if self.contextBlocks.isEmpty {
 			topLabelText = NSLocalizedString("You Have Finished for Now", comment: "Home screen top label for empty activities queue")
 		} else {
 			topLabelText = NSLocalizedString("Your Next Activity", comment: "Home screen default top label")

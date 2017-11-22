@@ -137,11 +137,11 @@ extension Date {
     */
     func getDay() -> Date {
         
-        let today = Calendar.current.dateComponents([.day,.month,.year], from: self)
+        let today = Calendar.current.dateComponents([.day, .month, .year], from: self)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
-        return dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!) 00:00:00")!
+        return dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!)")!
         
     }
 }
