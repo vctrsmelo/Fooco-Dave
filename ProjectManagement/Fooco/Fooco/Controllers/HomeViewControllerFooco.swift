@@ -13,6 +13,8 @@ class HomeViewControllerFooco: UIViewController {
 
 	private var activities = [Activity]()
 	
+	private var addButton: FloatingAddButton!
+	
 	// MARK: Outlets
 	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
@@ -23,6 +25,8 @@ class HomeViewControllerFooco: UIViewController {
         super.viewDidLoad()
 		
 		self.viewSwiper.load()
+		
+		self.addButton = FloatingAddButton(to: self, inside: self.view, performing: #selector(addButtonTapped))
 		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
@@ -58,6 +62,11 @@ class HomeViewControllerFooco: UIViewController {
 		}
 		
 		return greeting
+	}
+	
+	@objc
+	private func addButtonTapped(sender: UIButton) {
+		print(#function)
 	}
 	
 	/*
