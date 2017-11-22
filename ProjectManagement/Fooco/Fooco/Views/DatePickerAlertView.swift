@@ -16,6 +16,10 @@ enum AlertPickerViewMode {
 
 protocol DatePickerAlertViewDelegate {
     func confirmTouchedWith(_ sender: UIDatePicker)
+    func startingDate() -> Date?
+    func deadlineDate() -> Date?
+    func estimatedTime() -> TimeInterval?
+    func name() -> String?
 }
 
 class DatePickerAlertView: UIView {
@@ -148,6 +152,12 @@ extension DatePickerAlertView: XibLoader {
         }
     }
     
+}
+
+extension DatePickerAlertView {
+    func didChange<Value>(_ changeKind: NSKeyValueChange, valuesAt indexes: IndexSet, for keyPath: KeyPath<DatePickerAlertView, Value>) {
+        print("mudou")
+    }
 }
 
 extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {

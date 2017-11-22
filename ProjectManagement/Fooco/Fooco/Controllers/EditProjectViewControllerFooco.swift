@@ -103,6 +103,22 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
 }
 
 extension EditProjectViewControllerFooco: DatePickerAlertViewDelegate {
+    func startingDate() -> Date? {
+        return
+    }
+    
+    func deadlineDate() -> Date? {
+        <#code#>
+    }
+    
+    func estimatedTime() -> TimeInterval? {
+        <#code#>
+    }
+    
+    func name() -> String? {
+        <#code#>
+    }
+    
     func confirmTouchedWith(_ sender: UIDatePicker) {
 
         let date = sender.date

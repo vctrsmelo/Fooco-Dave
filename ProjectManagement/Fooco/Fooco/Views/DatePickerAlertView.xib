@@ -78,7 +78,7 @@
                                             <color key="textColor" red="0.23529411759999999" green="0.36078431370000003" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="tub-iQ-1vS">
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="tub-iQ-1vS">
                                             <rect key="frame" x="0.0" y="112" width="277" height="166"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="166" id="Rnn-Wp-qcP"/>
