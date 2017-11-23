@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol EditProjectTableViewControllerDelegate {
+protocol EditProjectTableViewControllerDelegate: AnyObject {
     func contextUpdated(for context: Context?)
-    func estimatedHoursTouched(_ alertView : ((DatePickerAlertView) -> Void))
-    func startingDateTouched(_ alertView : ((DatePickerAlertView) -> Void))
-    func deadlineDateTouched(_ alertView : ((DatePickerAlertView) -> Void))
+    func estimatedHoursTouched(_ alertView: ((DatePickerAlertView) -> Void))
+    func startingDateTouched(_ alertView: ((DatePickerAlertView) -> Void))
+    func deadlineDateTouched(_ alertView: ((DatePickerAlertView) -> Void))
 }
 
 class EditProjectTableViewController: UITableViewController {
     
     @IBOutlet weak var contextsCollectionView: UICollectionView!
     
-    var delegate: EditProjectTableViewControllerDelegate?
+    weak var delegate: EditProjectTableViewControllerDelegate?
     
     private var _selectedContext: Context?
     var selectedContext: Context? {
@@ -31,24 +31,22 @@ class EditProjectTableViewController: UITableViewController {
             return _selectedContext
         }
     }
-    
-    var contextColor: UIColor {
-        get {
-            if _selectedContext == nil {
-                return UIColor.colorOfAddContext()
-            }
-
-            return _selectedContext!.color
-        }
-    }
-    
+	
+	var contextColor: UIColor {
+		if _selectedContext == nil {
+			return UIColor.colorOfAddContext()
+		}
+		
+		return _selectedContext!.color
+	}
+	
     private var _importance: Int = 1
     var importance: Int {
         set {
             _importance = newValue
             updateImportanceColor(to: newValue)
         }
-        get{
+        get {
             return _importance
         }
     }
