@@ -364,7 +364,7 @@
                         <outlet property="activityCard" destination="9rO-JB-msb" id="j5g-PJ-Zwf"/>
                         <outlet property="topLabel" destination="r3U-pL-xjE" id="8AB-Jg-yMG"/>
                         <outlet property="viewSwiper" destination="sdy-jd-IWC" id="nXV-bi-Unw"/>
-                        <segue destination="52a-gu-zMx" kind="show" identifier="fromHomeToEdit" id="1k7-U0-1if"/>
+                        <segue destination="52a-gu-zMx" kind="presentation" identifier="fromHomeToEdit" id="1k7-U0-1if"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -407,7 +407,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Add Project for" id="McK-Xb-79d">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="l2P-Dx-YVq"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="l2P-Dx-YVq">
+                                            <connections>
+                                                <segue destination="jTr-Fr-tti" kind="unwind" identifier="unwindFromEditToHome" unwindAction="unwindToHomeWith:" id="3RY-ov-HSX"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="JHc-0x-7b9"/>
                                     </navigationItem>
                                 </items>
@@ -463,6 +467,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URX-R8-jRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jTr-Fr-tti" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="476" y="988.15592203898063"/>
         </scene>
