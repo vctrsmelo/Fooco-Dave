@@ -24,9 +24,9 @@ class HomeViewControllerFooco: UIViewController {
 	
 	private func dataPopulation() {
 		let context = Context(named: "TestContext", minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
-		let project = Project(named: "TestProject", startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 60 * 60 * 24 * 10), withContext: context, totalTimeEstimated: 40 * 60 * 60)
+		let project = Project(named: "TestProject", startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 10.days), withContext: context, totalTimeEstimated: 40.hours)
 		
-		let timeBlock = TimeBlock(startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 60 * 60 * 3))
+		let timeBlock = TimeBlock(startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 3.hours))
 		let activity = Activity(withProject: project, at: timeBlock)
 		
 		self.currentActivities.append(activity)

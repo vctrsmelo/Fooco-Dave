@@ -9,6 +9,42 @@ import UIKit
 
 // MARK: - Math
 
+extension Int {
+	var timeInterval: TimeInterval {
+		return TimeInterval(self)
+	}
+	
+	var seconds: TimeInterval {
+		return self.timeInterval
+	}
+	var second: TimeInterval {
+		return self.seconds
+	}
+	
+	var minutes: TimeInterval {
+		return self.timeInterval * 60.seconds
+	}
+	var minute: TimeInterval {
+		return self.minutes
+	}
+	
+	var hours: TimeInterval {
+		return self.timeInterval * 60.minutes
+	}
+	var hour: TimeInterval {
+		return self.hours
+	}
+	
+	var days: TimeInterval {
+		return self.timeInterval * 24.hours
+	}
+	var day: TimeInterval {
+		return self.days
+	}
+}
+
+// MARK: - Core Graphics
+
 extension CGPoint {
 	static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
 		return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
@@ -66,6 +102,12 @@ extension Date {
 }
 
 extension TimeInterval {
+	
+//	fileprivate static let second: TimeInterval = 1
+//	fileprivate static let minute: TimeInterval = 60 * second
+//	fileprivate static let hour: TimeInterval = 60 * minute
+//	fileprivate static let day: TimeInterval = 24 * hour
+	
 	func toString() -> String {
 		let formatter = DateComponentsFormatter()
 		formatter.allowedUnits = [.day, .hour, .minute]
