@@ -14,7 +14,7 @@ enum AlertPickerViewMode {
     case totalFocusingTime
 }
 
-protocol DatePickerAlertViewDelegate {
+protocol DatePickerAlertViewDelegate: AnyObject {
     func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode)
     func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode)
     func dateChanged(_ sender: UIDatePicker, at alertView: DatePickerAlertView, for mode: AlertPickerViewMode)
@@ -24,12 +24,12 @@ class DatePickerAlertView: UIView {
 
     private var _view: UIView!
     
-    @IBOutlet var viewContainer: DatePickerAlertView!
+    @IBOutlet private weak var viewContainer: DatePickerAlertView!
     
-    @IBOutlet weak var calendarIconImageView: UIImageView!
-    @IBOutlet weak var clockIconImageView: UIImageView!
+    @IBOutlet private weak var calendarIconImageView: UIImageView!
+    @IBOutlet private weak var clockIconImageView: UIImageView!
     
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet private weak var backgroundView: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overTitleLabel: UILabel!
@@ -38,11 +38,11 @@ class DatePickerAlertView: UIView {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var hoursPicker: UIPickerView!
     
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private weak var confirmButton: UIButton!
     
-    @IBOutlet weak var overlayView: UIView!
+    @IBOutlet private weak var overlayView: UIView!
     
-    var delegate: DatePickerAlertViewDelegate?
+    weak var delegate: DatePickerAlertViewDelegate?
     
     var currentMode: AlertPickerViewMode!
     

@@ -8,20 +8,19 @@
 import UIKit
 
 class EditProjectViewControllerFooco: UIViewController {
+	
+    @IBOutlet private weak var navigationBar: UINavigationBar!
+    @IBOutlet private weak var cancelBarButton: UIBarButtonItem!
+    @IBOutlet private weak var doneBarButton: UIBarButtonItem!
     
+    @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
-    @IBOutlet weak var doneBarButton: UIBarButtonItem!
-    
-    @IBOutlet weak var datePickerAlertView: DatePickerAlertView!
-    
-    @IBOutlet weak var editProjectContainerView: EditProjectContainerView!
+    @IBOutlet private weak var editProjectContainerView: EditProjectContainerView!
     weak var tableView: UITableView!
     weak var contextsCollectionView: UICollectionView!
     
-    @IBOutlet weak var bottomBg1ImageView: UIImageView!
-    @IBOutlet weak var bottomBg2ImageView: UIImageView!
+    @IBOutlet private weak var bottomBg1ImageView: UIImageView!
+    @IBOutlet private weak var bottomBg2ImageView: UIImageView!
     
     var project: Project?
     

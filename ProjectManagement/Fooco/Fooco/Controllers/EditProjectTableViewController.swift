@@ -52,31 +52,31 @@ class EditProjectTableViewController: UITableViewController {
     }
     
     //name cell
-    @IBOutlet weak var nameIconImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet private weak var nameIconImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameTextField: UITextField!
     private var nameTextFieldBorder: CALayer!
     
     //estimated time cell
-    @IBOutlet weak var clockIconImageView: UIImageView!
-    @IBOutlet weak var estimatedTimeLabel: UILabel!
-    @IBOutlet weak var estimatedHoursButton: UIButton!
+    @IBOutlet private weak var clockIconImageView: UIImageView!
+    @IBOutlet private weak var estimatedTimeLabel: UILabel!
+    @IBOutlet private weak var estimatedHoursButton: UIButton!
     
     //calendar cell
-    @IBOutlet weak var calendarIconImageView: UIImageView!
-    @IBOutlet weak var startsLabel: UILabel!
-    @IBOutlet weak var startingDateButton: UIButton!
-    @IBOutlet weak var deadlineLabel: UILabel!
-    @IBOutlet weak var deadlineDateButton: UIButton!
+    @IBOutlet private weak var calendarIconImageView: UIImageView!
+    @IBOutlet private weak var startsLabel: UILabel!
+    @IBOutlet private weak var startingDateButton: UIButton!
+    @IBOutlet private weak var deadlineLabel: UILabel!
+    @IBOutlet private weak var deadlineDateButton: UIButton!
     
-    @IBOutlet weak var datesBarView: UIView!
+    @IBOutlet private weak var datesBarView: UIView!
     
     //importance cell
-    @IBOutlet weak var importanceIconImageView: UIImageView!
-    @IBOutlet weak var importanceLabel: UILabel!
-    @IBOutlet weak var lowImportanceButton: UIButton!
-    @IBOutlet weak var mediumImportanceButton: UIButton!
-    @IBOutlet weak var highImportanceButton: UIButton!
+    @IBOutlet private weak var importanceIconImageView: UIImageView!
+    @IBOutlet private weak var importanceLabel: UILabel!
+    @IBOutlet private weak var lowImportanceButton: UIButton!
+    @IBOutlet private weak var mediumImportanceButton: UIButton!
+    @IBOutlet private weak var highImportanceButton: UIButton!
     
     private var startingDate: Date!
     private var deadlineDate: Date!
