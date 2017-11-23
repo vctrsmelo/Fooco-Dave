@@ -10,22 +10,39 @@ import Foundation
 
 class EditProjectViewControllerFooco: UIViewController {
     
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
+    @IBOutlet weak var datePickerAlertView: DatePickerAlertView!
     
     @IBOutlet weak var editProjectContainerView: EditProjectContainerView!
+    weak var tableView: UITableView!
+    weak var contextsCollectionView: UICollectionView!
     
-    
-    
+    @IBOutlet weak var bottomBg1ImageView: UIImageView!
+    @IBOutlet weak var bottomBg2ImageView: UIImageView!
     
     var project: Project?
     
     override func viewDidLoad() {
-
+        super.viewDidLoad()
+        
+        datePickerAlertView.initialSetup()
+        datePickerAlertView.configure()
+        datePickerAlertView.setNeedsLayout()
+        
+        bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
+        bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
+        bottomBg1ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        bottomBg2ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        
         //delegates and data sources
         formatNavigationBar()
+        
+        //hide keyboard when view is tapped
+        hideKeyboardWhenTappedAround()
         
     }
     
@@ -43,22 +60,47 @@ class EditProjectViewControllerFooco: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "projectTableViewSegue" {
+            let editProjTableViewController = segue.destination as! EditProjectTableViewController
+            
+            contextsCollectionView = editProjTableViewController.contextsCollectionView
+            tableView = editProjTableViewController.tableView
+            editProjTableViewController.delegate = self
+            datePickerAlertView.delegate = editProjTableViewController
+
+        }
+    }
+    
+    
+
 }
 
-extension EditProjectViewControllerFooco: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
+   
+    func estimatedHoursTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
+        alertView(datePickerAlertView)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+    func startingDateTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
+        alertView(datePickerAlertView)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func deadlineDateTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
+        alertView(datePickerAlertView)
+    }
+    
+    func contextUpdated(for context: Context?) {
         
-        return CGSize(width: 0, height: 0)
+        let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
+        cancelBarButton.tintColor = color
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
+        doneBarButton.tintColor = color
+
+//        bottomBg1ImageView.tintColor = color.withAlphaComponent(0.46)
+//        bottomBg2ImageView.tintColor = color.withAlphaComponent(0.36)
         
     }
     
 }
+

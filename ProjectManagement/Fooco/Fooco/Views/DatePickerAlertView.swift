@@ -1,0 +1,187 @@
+//
+//  DatePickerAlertView.swift
+//  Fooco
+//
+//  Created by Victor S Melo on 17/11/17.
+//
+
+import UIKit
+
+enum AlertPickerViewMode {
+    case estimatedTime
+    case startingDate
+    case deadlineDate
+    case totalFocusingTime
+}
+
+protocol DatePickerAlertViewDelegate {
+    func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode)
+    func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode)
+    func dateChanged(_ sender: UIDatePicker, at alertView: DatePickerAlertView, for mode: AlertPickerViewMode)
+}
+
+class DatePickerAlertView: UIView {
+
+    private var _view: UIView!
+    
+    @IBOutlet var viewContainer: DatePickerAlertView!
+    
+    @IBOutlet weak var calendarIconImageView: UIImageView!
+    @IBOutlet weak var clockIconImageView: UIImageView!
+    
+    @IBOutlet weak var backgroundView: UIView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var overTitleLabel: UILabel!
+    @IBOutlet weak var underTitleLabel: UILabel!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var hoursPicker: UIPickerView!
+    
+    @IBOutlet weak var confirmButton: UIButton!
+    
+    @IBOutlet weak var overlayView: UIView!
+    
+    var delegate: DatePickerAlertViewDelegate?
+    
+    var currentMode: AlertPickerViewMode!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+    }
+    
+    func present(_ mode: AlertPickerViewMode, initialDate: Date? = nil, estimatedTime: TimeInterval? = nil) {
+        
+        currentMode = mode
+        
+        hoursPicker.delegate = self
+        hoursPicker.dataSource = self
+        
+        if currentMode == .estimatedTime || currentMode == .totalFocusingTime {
+            hoursPicker.isHidden = false
+            datePicker.isHidden = true
+            
+            if estimatedTime != nil {
+                var hours: Int = Int(estimatedTime!/(60*60))
+                var days: Int = Int(estimatedTime!/(60*60*24))
+                
+                hoursPicker.selectRow(days, inComponent: 0, animated: false)
+                hoursPicker.selectRow(hours, inComponent: 1, animated: false)
+                
+            }
+            
+        } else {
+            hoursPicker.isHidden = true
+            datePicker.isHidden = false
+            
+            if initialDate != nil {
+                datePicker.setDate(initialDate!, animated: false)
+            }
+            
+        }
+        
+        updateIcon()
+        self.isHidden = false
+        
+    }
+    
+    func configure() {
+        guard let superview = self.superview else {
+            return
+            
+        }
+        
+        overlayView.frame = superview.frame
+        
+        //shadow
+        
+        backgroundView.layer.shadowOpacity = 0.30
+        backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        backgroundView.layer.shadowRadius = 6
+        backgroundView.layer.shadowColor = UIColor.black.cgColor
+        backgroundView.layer.masksToBounds = false
+        
+        confirmButton.layer.shadowOpacity = 0.30
+        confirmButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        confirmButton.layer.shadowRadius = 6
+        confirmButton.layer.shadowColor = UIColor.black.cgColor
+        confirmButton.layer.masksToBounds = false
+        
+        self.isHidden = true
+
+    }
+
+    private func updateIcon() {
+        clockIconImageView.isHidden = (datePicker.datePickerMode != .time)
+        calendarIconImageView.isHidden = (datePicker.datePickerMode != .date)
+    }
+    
+    @IBAction func confirmTouched(_ sender: UIButton) {
+        self.isHidden = true
+        
+        if currentMode == .estimatedTime || currentMode == .totalFocusingTime {
+            delegate?.confirmTouched(hoursPicker, for: currentMode)
+        } else {
+            delegate?.confirmTouched(datePicker, for: currentMode)
+        }
+        
+    }
+    
+    @IBAction func dateChanged(_ sender: UIDatePicker) {
+        delegate?.dateChanged(sender, at: self, for: currentMode)
+        
+    }
+    
+    
+}
+
+extension DatePickerAlertView: XibLoader {
+    var nibName: String {
+        return "DatePickerAlertView"
+    }
+    
+    var view: UIView! {
+        get {
+            return _view
+        }
+        set {
+            _view = newValue
+        }
+    }
+    
+}
+
+extension DatePickerAlertView {
+    
+}
+
+extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch component {
+        case 0:
+            return 1000
+        case 1:
+            return 24
+        default:
+            return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        var value = row
+        return "\(row)"
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        underTitleLabel.text = "\(pickerView.selectedRow(inComponent: 0)) days and \(pickerView.selectedRow(inComponent: 1)) hours"
+        
+    }
+    
+}
+
