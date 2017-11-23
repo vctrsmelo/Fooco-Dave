@@ -17,6 +17,10 @@ class ContextBlock {
     var events: [Event]
     
     private var _leftTimeBlocks: [TimeBlock]?
+    
+    /**
+     leftTimeBlocks are the timeblocks still left (without events or activities) in the contextblock.
+    */
     var leftTimeBlocks: [TimeBlock] {
         
         if _leftTimeBlocks != nil {
@@ -130,14 +134,106 @@ class ContextBlock {
             }
             
             if let nextActivity = nextProject.getNextActivity(for: tbl) {
-                activities.append(nextActivity)
-                _leftTimeBlocks = nil
-                _leftTime = nil
-                i = 0
-                continue
+                
+                //verifies if can add activity into self
+                
+                if canAdd(activity: nextActivity) {
+                    nextProject.scheduledActivities.append(nextActivity)
+                    activities.append(nextActivity)
+                    nextActivity.timeBlock.contextBlock = self
+
+                    _leftTimeBlocks = nil
+                    _leftTime = nil
+                    i = 0
+                    continue
+                }
             }
             i += 1
         }
+        
+        setDeadlineOfActivities()
+        
+    }
+    
+    /**
+     Define the deadline of all activities, considering the events in context block
+    */
+    func setDeadlineOfActivities() {
+        
+        //sort activities and define the deadline of an activity act1 as the starting date of the next activity act2.
+        //if there is an event after the ending of act1 and before the starting date of act2, the deadline of act1 will be the starting date of this event.
+        
+        activities.sort()
+       
+        for i in 0 ..< activities.count-1 {
+            
+            if activities[i] == activities.last {
+                
+                for event in events {
+                    //if the event is occupying the ending of this timeBlock
+                    if event.timeBlock.contains(date: self.timeBlock.endsAt) {
+                        
+                        activities[i].deadline = event.timeBlock.startsAt
+                        break
+                        
+                    }
+                }
+                
+                activities[i].deadline = self.timeBlock.endsAt
+                break
+                
+            }
+            
+            activities[i].deadline = activities[i+1].timeBlock.startsAt
+            
+            for event in events {
+                
+                //if the event starts before the next activity
+                let activityTbUntilDeadline = TimeBlock(startsAt: activities[i].timeBlock.startsAt, endsAt: activities[i].deadline)
+                
+                if activityTbUntilDeadline.contains(date: event.timeBlock.startsAt)  {
+                    
+                    activities[i].deadline = event.timeBlock.startsAt
+                    
+                }
+            }
+        
+            
+        }
+        
+    }
+    
+    /**
+     Verifies if there is free space to add the activity into context block, considering the respective free time that should exist between two activities.
+    */
+    func canAdd(activity act: Activity) -> Bool {
+        for currentActivity in activities {
+            let actSecondsBetAct = act.project.secondsBetweenActivities
+            let currActSecondsBetAct = currentActivity.project.secondsBetweenActivities
+            let secondsBetweenActivities = (actSecondsBetAct > currActSecondsBetAct) ? actSecondsBetAct : currActSecondsBetAct
+        
+            //if the time distance between the activity and currentActivity is smaller than the allowed, should not allocate the activity
+            if act.timeBlock.startsAt < currentActivity.timeBlock.startsAt && act.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities) >= currentActivity.timeBlock.startsAt {
+                
+                //detect if tbl can be resized to support the distance between tbl and activity
+                let newEnding = currentActivity.timeBlock.startsAt.addingTimeInterval(-secondsBetweenActivities)
+                if newEnding <= act.timeBlock.startsAt {
+                    return false
+                }
+                
+            } else if currentActivity.timeBlock.startsAt < act.timeBlock.startsAt && currentActivity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities) >= act.timeBlock.startsAt {
+                
+                //detect if tbl can be resized to support the distance between tbl and activity
+                let newStarting = currentActivity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities)
+                if newStarting >= act.timeBlock.endsAt {
+                    return false
+                }
+                
+            }
+            
+        }
+        
+        return true
         
     }
     

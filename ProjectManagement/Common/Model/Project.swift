@@ -24,11 +24,14 @@ class Project {
         for activity in scheduledActivities {
             timeLeft -= activity.timeBlock.totalTime
         }
+        
         return timeLeft
         
     }
     
-    private var scheduledActivities: [Activity] = []
+    private var completedActivities: [Activity] = []
+    
+    var scheduledActivities: [Activity] = []
     
     init(named: String, startsAt: Date, endsAt: Date, withContext ctxt: Context, importance imp: Int = 1, totalTimeEstimated totalTime: TimeInterval) {
         name = named
@@ -37,6 +40,20 @@ class Project {
         context = ctxt
         importance = imp
         totalTimeEstimated = totalTime
+    }
+    
+    /**
+     Return how much of the project was already done, according to the estimated time and already worked time
+    */
+    func getDonePercentage() -> Double {
+        
+        var totalTimeDone: TimeInterval = 0
+        for activity in completedActivities {
+            totalTimeDone += activity.timeBlock.totalTime
+        }
+        
+        return 100.0*(totalTimeDone/totalTimeEstimated)
+        
     }
 
     func getPriorityValue() -> Double {
@@ -68,8 +85,11 @@ class Project {
         return activity
     }
     
+    /**
+     Creates a new activity for the timeblock tb1 if it is possible to.
+    */
     private func allocateActivity(for tbl: TimeBlock) -> Activity {
-        
+    
         let maxTime = context.maxProjectWorkingTime
         
         var subTimeBlock = getSubTimeBlockForNewActivity(from: tbl)
@@ -84,23 +104,31 @@ class Project {
     }
     
     /**
+     Is a safety verifier for the timeblock parameter. If the timeblock does not respect the margin time between two activities, the return will be a reduced version of itself.
      Precondition: self.canAllocateActivity(for: tbl) == true
      */
     private func getSubTimeBlockForNewActivity(from tbl: TimeBlock) -> TimeBlock {
         
         for activity in scheduledActivities {
             
+            //if the tbl starts before the activity variable but does not respect the defined time between two activities
             if tbl.startsAt < activity.timeBlock.startsAt && tbl.endsAt.addingTimeInterval(secondsBetweenActivities) >= activity.timeBlock.startsAt {
                 
+                //make the timeblock smaller, to respect the time between itself and activity variable
                 let newEnding = activity.timeBlock.startsAt.addingTimeInterval(-secondsBetweenActivities)
+                
+                //if the new ending of tbl1 is after the tbl1 starting (in other words, is not a "negative time"), returns it
                 if newEnding > tbl.startsAt {
                     return TimeBlock(startsAt: tbl.startsAt, endsAt: newEnding)
                 }
                 
+            //considering that the activity is before tbl, if it does not respect the defined time between two activities
             } else if activity.timeBlock.startsAt < tbl.startsAt && activity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities) >= tbl.startsAt {
                 
                 //detect if tbl can be resized to support the distance between tbl and activity
                 let newStarting = activity.timeBlock.endsAt.addingTimeInterval(secondsBetweenActivities)
+
+                //if the new starting is not after the ending (is not "negative time"), returns the new time block
                 if newStarting < tbl.endsAt {
                     return TimeBlock(startsAt: newStarting, endsAt: tbl.endsAt)
                 }
@@ -113,6 +141,9 @@ class Project {
         
     }
     
+    /**
+     Detect if can allocate a new activity for the timeblock tbl, considering the current activities and the
+    */
     func canAllocateActivity(for tbl: TimeBlock) -> Bool {
         
         for activity in scheduledActivities {
