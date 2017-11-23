@@ -364,7 +364,7 @@
                         <outlet property="activityCard" destination="9rO-JB-msb" id="j5g-PJ-Zwf"/>
                         <outlet property="topLabel" destination="r3U-pL-xjE" id="8AB-Jg-yMG"/>
                         <outlet property="viewSwiper" destination="sdy-jd-IWC" id="nXV-bi-Unw"/>
-                        <segue destination="52a-gu-zMx" kind="show" id="1k7-U0-1if"/>
+                        <segue destination="52a-gu-zMx" kind="show" identifier="fromHomeToEdit" id="1k7-U0-1if"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -806,14 +806,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Clock Icon" width="54" height="54"/>
-        <image name="Done Icon" width="64" height="46"/>
-        <image name="Pie Progress Icon" width="54" height="54"/>
-        <image name="Skip Icon" width="50" height="48"/>
         <image name="CalendarIcon" width="197" height="199"/>
+        <image name="Clock Icon" width="54" height="54"/>
         <image name="ClockIcon" width="200" height="206"/>
+        <image name="Done Icon" width="64" height="46"/>
         <image name="EditIcon" width="201" height="201"/>
         <image name="ImportanceIcon" width="200" height="200"/>
+        <image name="Pie Progress Icon" width="54" height="54"/>
+        <image name="Skip Icon" width="50" height="48"/>
         <image name="activitityDecoration" width="314" height="82"/>
         <image name="bottomBg1" width="1392" height="185"/>
         <image name="bottomBg2" width="1384" height="143"/>
