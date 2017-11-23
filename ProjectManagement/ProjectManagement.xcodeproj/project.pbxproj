@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */; };
-		BE6E111E1FB37356004B5B9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111D1FB37356004B5B9E /* Extensions.swift */; };
 		BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */; };
 		BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11211FB38C3E004B5B9E /* Mocado.swift */; };
 		BE6E11261FB390A0004B5B9E /* EditProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewController.swift */; };
 		BE6E11281FB39150004B5B9E /* EditProjectContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11271FB39150004B5B9E /* EditProjectContainerView.swift */; };
 		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
-		E7AE61EF1FC66B2B00F0BE62 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61EE1FC66B2B00F0BE62 /* DateExtension.swift */; };
-		E7AE61F01FC66B2B00F0BE62 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61EE1FC66B2B00F0BE62 /* DateExtension.swift */; };
+		E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
+		E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
 		E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
 		EE1493F31FAA4E69004750DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1493F21FAA4E69004750DC /* Event.swift */; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
@@ -48,10 +47,6 @@
 		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
-		FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
-		FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD97671FACEA340068DB28 /* UIViewExtension.swift */; };
-		FCE536B71FB4C5A50010BA63 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE536B61FB4C5A50010BA63 /* MathUtils.swift */; };
-		FCE536B81FB4C5A50010BA63 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE536B61FB4C5A50010BA63 /* MathUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +75,6 @@
 
 /* Begin PBXFileReference section */
 		BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewControllerFooco.swift; sourceTree = "<group>"; };
-		BE6E111D1FB37356004B5B9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectContextCell.swift; sourceTree = "<group>"; };
 		BE6E11211FB38C3E004B5B9E /* Mocado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocado.swift; sourceTree = "<group>"; };
 		BE6E11251FB390A0004B5B9E /* EditProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectTableViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +82,7 @@
 		BEDE6C721FB0D0DE00ABD6D8 /* FoocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoTests.swift; sourceTree = "<group>"; };
 		BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7AE61EE1FC66B2B00F0BE62 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		EE1493F21FAA4E69004750DC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EE99BB8B1F9A37E70051B33B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -123,8 +117,6 @@
 		FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
-		FCCD97671FACEA340068DB28 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		FCE536B61FB4C5A50010BA63 /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +170,7 @@
 		EE99BB8A1F9A37E70051B33B /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FCCD97661FACEA1A0068DB28 /* Extensions */,
+				E7AE61F11FC6784200F0BE62 /* Extensions.swift */,
 				EE99BB931F9A383E0051B33B /* Model */,
 			);
 			path = Common;
@@ -308,22 +300,11 @@
 			children = (
 				BE6E11211FB38C3E004B5B9E /* Mocado.swift */,
 				FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */,
-				BE6E111D1FB37356004B5B9E /* Extensions.swift */,
 				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
 				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
 				EEA46B721F9A36CA00851D5D /* Info.plist */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FCCD97661FACEA1A0068DB28 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				FCCD97671FACEA340068DB28 /* UIViewExtension.swift */,
-				E7AE61EE1FC66B2B00F0BE62 /* DateExtension.swift */,
-				FCE536B61FB4C5A50010BA63 /* MathUtils.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FCE536B31FB4C2FC0010BA63 /* Controllers */ = {
@@ -582,22 +563,19 @@
 				FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */,
 				FC2F29C31F9A3EA100984409 /* Context.swift in Sources */,
 				BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */,
-				FCE536B71FB4C5A50010BA63 /* MathUtils.swift in Sources */,
 				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
-				FCCD97681FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
-				E7AE61EF1FC66B2B00F0BE62 /* DateExtension.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewController.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */,
+				E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */,
 				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
 				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
 				BE6E11281FB39150004B5B9E /* EditProjectContainerView.swift in Sources */,
-				BE6E111E1FB37356004B5B9E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,17 +585,15 @@
 			files = (
 				FC2F29CA1F9A3EA200984409 /* Activity.swift in Sources */,
 				FC2F29CB1F9A3EA200984409 /* Context.swift in Sources */,
-				FCCD97691FACEA340068DB28 /* UIViewExtension.swift in Sources */,
 				FC2F29CE1F9A3EA200984409 /* TimeBlock.swift in Sources */,
 				EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */,
-				E7AE61F01FC66B2B00F0BE62 /* DateExtension.swift in Sources */,
 				FC2F29CF1F9A3EA200984409 /* User.swift in Sources */,
 				FC2F29D01F9A3EA200984409 /* Week.swift in Sources */,
 				FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */,
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
-				FCE536B81FB4C5A50010BA63 /* MathUtils.swift in Sources */,
 				FC2F29CC1F9A3EA200984409 /* ContextBlock.swift in Sources */,
 				FC2F29CD1F9A3EA200984409 /* Project.swift in Sources */,
+				E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
