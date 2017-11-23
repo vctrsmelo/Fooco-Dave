@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewControllerFooco: UIViewController {
+class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	
 	// MARK: - Properties
 	
@@ -44,6 +44,7 @@ class HomeViewControllerFooco: UIViewController {
 		self.activityCard.data = self.currentActivities.first
 		
 		self.viewSwiper.load()
+		self.viewSwiper.delegate = self
 		
 		self.addButton = FloatingAddButton(to: self, inside: self.view, performing: #selector(addButtonTapped))
 		
@@ -85,6 +86,24 @@ class HomeViewControllerFooco: UIViewController {
 	
 	@objc
 	private func addButtonTapped(sender: UIButton) {
+		print(#function)
+	}
+	
+	// MARK: - ViewSwiperDelegate
+	
+	func doneExecuted() {
+		print(#function)
+	}
+	
+	func focusExecuted() {
+		print(#function)
+	}
+	
+	func enoughExecuted() {
+		print(#function)
+	}
+	
+	func skipExecuted() {
 		print(#function)
 	}
 	
