@@ -5,18 +5,19 @@
 //  Created by Victor Melo on 08/11/17.
 //
 
-import Foundation
 import UIKit
 
 class Mocado {
     
-	static let context1: Context = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: 3200)
+	static var context1: Context = Context(named: "context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: 3200)
     static var projects: [Project] = Mocado.populateProjects()
 	
-    private static let today: Date! = Date()
-    private static let tomorrow: Date! = Date().addingTimeInterval(86_400)
+    static let today: Date! = Date()
+    static let tomorrow: Date! = Date().addingTimeInterval(86_400)
+	
+	static let todayComponents = Calendar.current.dateComponents([.day, .month, .year], from: Date())
     
-    private static let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
+    static let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
     
     static let defaultWeek = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
     
