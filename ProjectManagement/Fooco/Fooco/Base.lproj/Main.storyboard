@@ -63,7 +63,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yd2-ro-bPU">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIconNoColor" translatesAutoresizingMaskIntoConstraints="NO" id="Yd2-ro-bPU">
                                                 <rect key="frame" x="-59" y="148" width="54" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="54" id="6EW-2E-fHm"/>
@@ -555,7 +555,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIcon" translatesAutoresizingMaskIntoConstraints="NO" id="0Hl-O8-Ugw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIconTemplate" translatesAutoresizingMaskIntoConstraints="NO" id="0Hl-O8-Ugw">
                                                     <rect key="frame" x="18" y="17" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="i6s-RQ-j2g"/>
@@ -598,7 +598,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalendarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="91f-2m-KOm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalendarIconTemplate" translatesAutoresizingMaskIntoConstraints="NO" id="91f-2m-KOm">
                                                     <rect key="frame" x="17" y="18" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Th9-0E-cnf"/>
@@ -811,9 +811,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CalendarIcon" width="197" height="199"/>
-        <image name="Clock Icon" width="54" height="54"/>
-        <image name="ClockIcon" width="200" height="206"/>
+        <image name="CalendarIconTemplate" width="197" height="199"/>
+        <image name="ClockIconNoColor" width="54" height="54"/>
+        <image name="ClockIconTemplate" width="200" height="206"/>
         <image name="Done Icon" width="64" height="46"/>
         <image name="EditIcon" width="201" height="201"/>
         <image name="ImportanceIcon" width="200" height="200"/>

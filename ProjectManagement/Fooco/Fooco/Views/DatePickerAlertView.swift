@@ -152,10 +152,6 @@ extension DatePickerAlertView: XibLoader {
     
 }
 
-extension DatePickerAlertView {
-    
-}
-
 extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -175,12 +171,10 @@ extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 //        var value = row
         return "\(row)"
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         underTitleLabel.text = "\(pickerView.selectedRow(inComponent: 0)) days and \(pickerView.selectedRow(inComponent: 1)) hours"
-        
     }
     
 }

@@ -66,7 +66,6 @@ class EditProjectViewControllerFooco: UIViewController {
             tableView = editProjTableViewController.tableView
             editProjTableViewController.delegate = self
             datePickerAlertView.delegate = editProjTableViewController
-
         }
     }
     

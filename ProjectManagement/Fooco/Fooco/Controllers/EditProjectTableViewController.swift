@@ -167,9 +167,6 @@ class EditProjectTableViewController: UITableViewController {
         mediumImportanceButton.layer.borderColor = contextColor.cgColor
         highImportanceButton.layer.borderColor = contextColor.cgColor
         updateImportanceColor(to: importance)
-        
-        
-        
     }
     
     private func updateImportanceColor(to value: Int) {
