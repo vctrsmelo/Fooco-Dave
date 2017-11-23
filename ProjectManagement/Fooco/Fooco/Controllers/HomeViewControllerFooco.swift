@@ -13,19 +13,23 @@ class HomeViewControllerFooco: UIViewController {
 	
 	private var currentContext: Context?
 
-	private var contextBlocks = [ContextBlock]()
+	private var currentActivities = [Activity]()
 	
 	private var addButton: FloatingAddButton!
 	
 	// MARK: Outlets
 	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
+	@IBOutlet private weak var activityCard: ActivityCardView!
 	
 	private func dataPopulation() {
-		User.sharedInstance.add(contexts: [Mocado.context1])
-		User.sharedInstance.add(projects: Mocado.projects)
+		let context = Context(named: "TestContext", minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
+		let project = Project(named: "TestProject", startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 60 * 60 * 24 * 10), withContext: context, totalTimeEstimated: 40 * 60 * 60)
 		
-		self.contextBlocks = User.sharedInstance.getSchedule(for: Date())?.contextBlocks ?? []
+		let timeBlock = TimeBlock(startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 60 * 60 * 3))
+		let activity = Activity(withProject: project, at: timeBlock)
+		
+		self.currentActivities.append(activity)
 	}
 	
 	// MARK: - View Handling
@@ -33,7 +37,11 @@ class HomeViewControllerFooco: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		self.navigationController?.navigationBar.removeBackground()
+		
 		self.dataPopulation()
+		
+		self.activityCard.data = self.currentActivities.first
 		
 		self.viewSwiper.load()
 		
@@ -47,7 +55,7 @@ class HomeViewControllerFooco: UIViewController {
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
 		
-		if self.contextBlocks.isEmpty {
+		if self.currentActivities.isEmpty {
 			topLabelText = NSLocalizedString("You Have Finished for Now", comment: "Home screen top label for empty activities queue")
 		} else {
 			topLabelText = NSLocalizedString("Your Next Activity", comment: "Home screen default top label")

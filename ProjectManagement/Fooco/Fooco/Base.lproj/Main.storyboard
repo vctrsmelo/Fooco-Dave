@@ -361,6 +361,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fzf-FU-b0v"/>
                     <connections>
+                        <outlet property="activityCard" destination="9rO-JB-msb" id="j5g-PJ-Zwf"/>
                         <outlet property="topLabel" destination="r3U-pL-xjE" id="8AB-Jg-yMG"/>
                         <outlet property="viewSwiper" destination="sdy-jd-IWC" id="nXV-bi-Unw"/>
                         <segue destination="52a-gu-zMx" kind="show" id="1k7-U0-1if"/>
