@@ -105,7 +105,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rO-JB-msb" userLabel="Activity View">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rO-JB-msb" userLabel="Activity View" customClass="ActivityCardView" customModule="Fooco" customModuleProvider="target">
                                 <rect key="frame" x="30" y="125" width="315" height="351"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yq-Vh-ACo" userLabel="Time View">
@@ -244,6 +244,13 @@
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="context" destination="DPH-1X-JZG" id="Qmb-oj-vY9"/>
+                                    <outlet property="deadlineTime" destination="uWv-nr-F9j" id="TCR-vf-AWN"/>
+                                    <outlet property="focusTime" destination="QJO-0M-hbB" id="aep-V3-A9V"/>
+                                    <outlet property="project" destination="2x2-BH-Eag" id="brp-Do-Z1x"/>
+                                    <outlet property="startTime" destination="ryt-Iw-706" id="mTx-f9-f6J"/>
+                                </connections>
                             </view>
                             <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDq-g6-KEx" userLabel="Right View">
                                 <rect key="frame" x="355" y="125" width="30" height="351"/>
@@ -354,6 +361,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fzf-FU-b0v"/>
                     <connections>
+                        <outlet property="activityCard" destination="9rO-JB-msb" id="j5g-PJ-Zwf"/>
                         <outlet property="topLabel" destination="r3U-pL-xjE" id="8AB-Jg-yMG"/>
                         <outlet property="viewSwiper" destination="sdy-jd-IWC" id="nXV-bi-Unw"/>
                         <segue destination="52a-gu-zMx" kind="show" id="1k7-U0-1if"/>

@@ -10,19 +10,42 @@ import UIKit
 class HomeViewControllerFooco: UIViewController {
 	
 	// MARK: - Properties
+	
+	private var currentContext: Context?
 
-	private var activities = [Activity]()
+	private var currentActivities = [Activity]()
+	
+	private var addButton: FloatingAddButton!
 	
 	// MARK: Outlets
 	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
+	@IBOutlet private weak var activityCard: ActivityCardView!
+	
+	private func dataPopulation() {
+		let context = Context(named: "TestContext", minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
+		let project = Project(named: "TestProject", startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 10.days), withContext: context, totalTimeEstimated: 40.hours)
+		
+		let timeBlock = TimeBlock(startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 3.hours))
+		let activity = Activity(withProject: project, at: timeBlock)
+		
+		self.currentActivities.append(activity)
+	}
 	
 	// MARK: - View Handling
 
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		self.navigationController?.navigationBar.removeBackground()
+		
+		self.dataPopulation()
+		
+		self.activityCard.data = self.currentActivities.first
+		
 		self.viewSwiper.load()
+		
+		self.addButton = FloatingAddButton(to: self, inside: self.view, performing: #selector(addButtonTapped))
 		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
@@ -32,7 +55,7 @@ class HomeViewControllerFooco: UIViewController {
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
 		
-		if self.activities.isEmpty {
+		if self.currentActivities.isEmpty {
 			topLabelText = NSLocalizedString("You Have Finished for Now", comment: "Home screen top label for empty activities queue")
 		} else {
 			topLabelText = NSLocalizedString("Your Next Activity", comment: "Home screen default top label")
@@ -58,6 +81,11 @@ class HomeViewControllerFooco: UIViewController {
 		}
 		
 		return greeting
+	}
+	
+	@objc
+	private func addButtonTapped(sender: UIButton) {
+		print(#function)
 	}
 	
 	/*
