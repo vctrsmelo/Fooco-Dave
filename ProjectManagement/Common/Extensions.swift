@@ -43,6 +43,20 @@ extension Int {
 	}
 }
 
+extension TimeInterval {
+    func inHours() -> Double {
+        return self / 1.hour
+    }
+    
+    func inDays() -> Double {
+        return self / 1.day
+    }
+    
+    func inMinutes() -> Double {
+        return self / 1.minute
+    }
+}
+
 // MARK: - Core Graphics
 
 extension UIColor {

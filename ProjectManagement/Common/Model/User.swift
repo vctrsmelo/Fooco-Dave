@@ -16,7 +16,7 @@ class User: NSObject {
     var contexts: [Context]
     var weekSchedule: Week
     //var safetyMargin = 0.2 //20%
-    
+
     private var currentSchedule: [Date: Weekday] = [:]
     
     private var _isCurrentScheduleUpdated: Bool = false
@@ -127,5 +127,45 @@ class User: NSObject {
         return nil
         
     }
+    
+    func getNextActivity() -> Activity? {
+        
+        let rightNow = Date()
+        
+        guard let todaySchedule = self.currentSchedule[Date().getDay()] else {
+            return nil
+        }
+        
+        for cbl in todaySchedule.contextBlocks {
+            
+            //if contexBlock is not defind for right now (it is later today or it has already ended)
+            if cbl.timeBlock.startsAt > rightNow || cbl.timeBlock.endsAt < rightNow {
+                continue
+            }
+            
+            //the cbl is the current context block
+            
+            for activity in cbl.activities {
+                
+                if activity.timeBlock.startsAt > rightNow || activity.timeBlock.endsAt < rightNow {
+                    continue
+                }
+                
+                if activity.done {
+                    continue
+                }
+                
+                return activity
+                
+                
+            }
+            
+            
+        }
+        
+        return nil
+        
+    }
+    
 
 }

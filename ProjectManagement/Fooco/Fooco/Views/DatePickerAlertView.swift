@@ -63,8 +63,9 @@ class DatePickerAlertView: UIView {
             datePicker.isHidden = true
             
             if estimatedTime != nil {
-                var hours: Int = Int(estimatedTime!/(60*60))
-                var days: Int = Int(estimatedTime!/(60*60*24))
+                var hours: Int = Int(estimatedTime!/1.hour)
+                var days: Int = Int(estimatedTime!/1.day)
+                
                 
                 hoursPicker.selectRow(days, inComponent: 0, animated: false)
                 hoursPicker.selectRow(hours, inComponent: 1, animated: false)

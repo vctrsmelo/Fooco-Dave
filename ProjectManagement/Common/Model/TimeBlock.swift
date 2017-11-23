@@ -12,6 +12,7 @@ struct TimeBlock {
 
     var startsAt: Date
     var endsAt: Date
+    var contextBlock: ContextBlock?
     
     var totalTime: TimeInterval {
         get {
@@ -90,6 +91,12 @@ struct TimeBlock {
         return (self.startsAt <= tbl.startsAt && self.endsAt >= tbl.endsAt)
     }
     
+    func contains(date dte: Date) -> Bool {
+        
+        return (self.startsAt <= dte && self.endsAt >= dte)
+    
+    }
+    
 }
 
 extension TimeBlock {
@@ -134,7 +141,11 @@ extension TimeBlock {
 
 }
 
-extension TimeBlock: Equatable {
+extension TimeBlock: Equatable, Comparable {
+    static func <(lhs: TimeBlock, rhs: TimeBlock) -> Bool {
+        return (lhs.startsAt < rhs.startsAt)
+    }
+    
     
     static func ==(lhs: TimeBlock, rhs: TimeBlock) -> Bool {
         
@@ -147,6 +158,7 @@ extension TimeBlock: Equatable {
         return (beginHourLhs == beginHourRhs && endsHourLhs == endsHourRhs)
         
     }
+
     
 }
 
