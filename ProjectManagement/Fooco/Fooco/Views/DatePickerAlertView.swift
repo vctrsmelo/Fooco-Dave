@@ -113,8 +113,8 @@ class DatePickerAlertView: UIView {
     }
 
     private func updateIcon() {
-        clockIconImageView.isHidden = (datePicker.datePickerMode != .time)
-        calendarIconImageView.isHidden = (datePicker.datePickerMode != .date)
+        clockIconImageView.isHidden = hoursPicker.isHidden
+        calendarIconImageView.isHidden = datePicker.isHidden
     }
     
     @IBAction func confirmTouched(_ sender: UIButton) {
@@ -125,15 +125,11 @@ class DatePickerAlertView: UIView {
         } else {
             delegate?.confirmTouched(datePicker, for: currentMode)
         }
-        
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         delegate?.dateChanged(sender, at: self, for: currentMode)
-        
     }
-    
-    
 }
 
 extension DatePickerAlertView: XibLoader {
