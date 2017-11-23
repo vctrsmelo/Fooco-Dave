@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol ViewSwiperDelegate: AnyObject {
+	func doneExecuted()
+	func focusExecuted()
+	func enoughExecuted()
+	func skipExecuted()
+}
+
 fileprivate enum MovementState {
 	case atCenter, atRight, atLeft, goingRight, goingLeft
 	
@@ -49,6 +56,8 @@ fileprivate enum MovementState {
 class ViewSwiper: NSObject {
 
 	// MARK: - Properties
+	
+	weak var delegate: ViewSwiperDelegate?
 	
 	private let centerAnimator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.7)
 	private let sideAnimator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.7)
@@ -317,6 +326,8 @@ class ViewSwiper: NSObject {
 				
 			} else if position == .end {
 				self.cardFromLeftAnimation()
+				
+				self.delegate?.doneExecuted() // Delegate call
 			}
 		}
 		
@@ -341,6 +352,8 @@ class ViewSwiper: NSObject {
 			
 			self.moveLeft()
 			self.centerAnimator.startAnimation()
+			
+			self.delegate?.focusExecuted() // Delegate call
 		}
 		
 		temporaryAnimator.startAnimation()
@@ -400,9 +413,12 @@ class ViewSwiper: NSObject {
 				
 			} else if position == .end {
 				self.cardFromRightAnimation()
+				
 				self.swipeAnimator.addCompletion { _ in
 					self.skipViewWidthSwitch()
 				}
+				
+				self.delegate?.skipExecuted() // Delegate call
 			}
 		}
 		
@@ -427,9 +443,12 @@ class ViewSwiper: NSObject {
 		
 		self.sideAnimator.addCompletion { _ in
 			self.cardFromRightAnimation()
+			
 			self.swipeAnimator.addCompletion { _ in
 				self.enoughViewWidthSwitch()
 			}
+			
+			self.delegate?.enoughExecuted() // Delegate call
 		}
 		
 		self.sideAnimator.startAnimation()
