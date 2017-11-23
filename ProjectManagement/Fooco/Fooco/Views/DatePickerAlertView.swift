@@ -173,7 +173,7 @@ extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var value = row
+//        var value = row
         return "\(row)"
         
     }
@@ -184,4 +184,3 @@ extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
 }
-

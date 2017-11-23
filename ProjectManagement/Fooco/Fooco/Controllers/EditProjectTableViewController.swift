@@ -5,7 +5,6 @@
 //  Created by Victor Melo on 08/11/17.
 //
 
-import Foundation
 import UIKit
 
 protocol EditProjectTableViewControllerDelegate {
@@ -86,6 +85,7 @@ class EditProjectTableViewController: UITableViewController {
     private var estimatedTime: TimeInterval!
     
     override func viewDidLoad() {
+		super.viewDidLoad()
         
         convertIconsToTemplate()
         designElements()
@@ -206,7 +206,7 @@ class EditProjectTableViewController: UITableViewController {
     }
     
     @IBAction func estimatedHoursTouched(_ sender: UIButton) {
-        delegate?.estimatedHoursTouched({ alertView in
+        delegate?.estimatedHoursTouched { alertView in
             
             alertView.present(.estimatedTime)
             
@@ -218,11 +218,11 @@ class EditProjectTableViewController: UITableViewController {
             alertView.titleLabel.text = "Estimated Time"
             alertView.underTitleLabel.text = "\(days) days and \(hours) hours"
             
-        })
+        }
     }
     
     @IBAction func startingDateTouched(_ sender: UIButton) {
-        delegate?.startingDateTouched({ alertView in
+        delegate?.startingDateTouched { alertView in
             
             alertView.present(.startingDate, initialDate: startingDate)
            
@@ -242,12 +242,12 @@ class EditProjectTableViewController: UITableViewController {
                 }
             }
             
-        })
+        }
 
     }
 
     @IBAction func deadlineDateTouched(_ sender: UIButton) {
-        delegate?.deadlineDateTouched({ alertView in
+        delegate?.deadlineDateTouched { alertView in
             
             alertView.present(.deadlineDate, initialDate: deadlineDate)
             
@@ -269,7 +269,7 @@ class EditProjectTableViewController: UITableViewController {
             alertView.overTitleLabel.text = "\(contextName) \(projectName)"
             alertView.titleLabel.text = "Ending Date"
             
-        })
+        }
     }
     
     @IBAction func lowImportanceTouched(_ sender: UIButton) {
@@ -390,15 +390,15 @@ extension EditProjectTableViewController {
         
         let focusedCellAttributes = contextsCollectionView.layoutAttributesForItem(at: contextsCollectionView.indexPath(for: focusedCell)!)
         let focusedCellFrame = contextsCollectionView.convert(focusedCellAttributes!.frame, to: contextsCollectionView.superview!)
-        var focusedCellCenterX = focusedCellFrame.origin.x + focusedCellFrame.size.width/2.0
+        var focusedCellCenterX = focusedCellFrame.origin.x + focusedCellFrame.size.width / 2.0
         
         for cell in contextsCollectionView.visibleCells {
             
             let cellAttributes = contextsCollectionView.layoutAttributesForItem(at: contextsCollectionView.indexPath(for: cell)!)
             let cellFrame = contextsCollectionView.convert(cellAttributes!.frame, to: contextsCollectionView.superview!)
-            let cellCenterX = cellFrame.origin.x + cellFrame.size.width/2.0
+            let cellCenterX = cellFrame.origin.x + cellFrame.size.width / 2.0
             
-            if (abs(screenCenterX-focusedCellCenterX) > abs(screenCenterX-cellCenterX)) {
+            if abs(screenCenterX - focusedCellCenterX) > abs(screenCenterX - cellCenterX) {
                 focusedCell = cell as! EditProjectContextCell
                 focusedCellCenterX = cellCenterX
             }
@@ -424,7 +424,7 @@ extension EditProjectTableViewController: DatePickerAlertViewDelegate {
             if deadlineDate != nil {
                 let daysBetween = Calendar.current.dateComponents([.day], from: currentDate, to: deadlineDate)
                 
-                if daysBetween.day != nil{
+                if daysBetween.day != nil {
                     newUnderTitleString = "\(daysBetween.day!) days until deadline"
                 }
             }
@@ -460,7 +460,7 @@ extension EditProjectTableViewController: DatePickerAlertViewDelegate {
         estimatedHoursButton.setTitle("\(days) days and \(hours) hours")
         
         estimatedTime = TimeInterval(days * 24 * 60 * 60)
-        estimatedTime = estimatedTime!+TimeInterval(hours*60*60)
+        estimatedTime = estimatedTime! + TimeInterval(hours * 60 * 60)
     }
     
     func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode) {

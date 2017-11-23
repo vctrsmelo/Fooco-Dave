@@ -178,9 +178,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="isTime" value="YES"/>
-            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="-35.5" y="-386.5"/>
         </view>
     </objects>

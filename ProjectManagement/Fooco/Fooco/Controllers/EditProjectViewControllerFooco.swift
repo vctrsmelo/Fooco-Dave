@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 
 class EditProjectViewControllerFooco: UIViewController {
     
@@ -35,8 +34,8 @@ class EditProjectViewControllerFooco: UIViewController {
         
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
-        bottomBg1ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
-        bottomBg2ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        bottomBg1ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        bottomBg2ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         
         //delegates and data sources
         formatNavigationBar()
@@ -103,4 +102,3 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     }
     
 }
-
