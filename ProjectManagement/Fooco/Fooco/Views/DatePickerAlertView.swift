@@ -23,6 +23,8 @@ protocol DatePickerAlertViewDelegate: AnyObject {
 class DatePickerAlertView: UIView {
 
     private var _view: UIView!
+	
+	private var originalStatusColor: UIColor?
     
     @IBOutlet private weak var viewContainer: DatePickerAlertView!
     
@@ -80,7 +82,11 @@ class DatePickerAlertView: UIView {
             }
             
         }
-        
+		
+		let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+		self.originalStatusColor = statusBar.backgroundColor
+		statusBar.backgroundColor = self.overlayView.backgroundColor
+		
         updateIcon()
         self.isHidden = false
         
@@ -118,7 +124,10 @@ class DatePickerAlertView: UIView {
     }
     
     @IBAction func confirmTouched(_ sender: UIButton) {
-        self.isHidden = true
+		let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+		statusBar.backgroundColor = self.originalStatusColor
+		
+		self.isHidden = true
         
         if currentMode == .estimatedTime || currentMode == .totalFocusingTime {
             delegate?.confirmTouched(hoursPicker, for: currentMode)

@@ -87,15 +87,10 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     }
     
     func contextUpdated(for context: Context?) {
-        
         let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
         cancelBarButton.tintColor = color
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
         doneBarButton.tintColor = color
-
-//        bottomBg1ImageView.tintColor = color.withAlphaComponent(0.46)
-//        bottomBg2ImageView.tintColor = color.withAlphaComponent(0.36)
-        
     }
     
 }
