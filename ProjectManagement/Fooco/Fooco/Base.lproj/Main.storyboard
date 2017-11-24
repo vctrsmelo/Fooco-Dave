@@ -428,7 +428,7 @@
                                     <constraint firstAttribute="height" constant="50" id="yj8-ME-QYh"/>
                                 </constraints>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-T2-usN" customClass="EditProjectContainerView" customModule="Fooco" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-T2-usN">
                                 <rect key="frame" x="0.0" y="64" width="375" height="528"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -462,7 +462,6 @@
                         <outlet property="contextsCollectionView" destination="RyF-Nc-i4r" id="IFo-Rt-2US"/>
                         <outlet property="datePickerAlertView" destination="PN2-Ry-zF8" id="fo1-cm-ddR"/>
                         <outlet property="doneBarButton" destination="JHc-0x-7b9" id="Ut6-Xl-Deb"/>
-                        <outlet property="editProjectContainerView" destination="QUI-T2-usN" id="Uto-eK-nas"/>
                         <outlet property="navigationBar" destination="Lkk-ue-ljx" id="G6p-q0-3PC"/>
                     </connections>
                 </viewController>
@@ -811,12 +810,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CalendarIconTemplate" width="197" height="199"/>
+        <image name="CalendarIconTemplate" width="452" height="457"/>
         <image name="ClockIconNoColor" width="54" height="54"/>
         <image name="ClockIconTemplate" width="200" height="206"/>
         <image name="Done Icon" width="64" height="46"/>
-        <image name="EditIcon" width="201" height="201"/>
-        <image name="ImportanceIcon" width="200" height="200"/>
+        <image name="EditIcon" width="146" height="146"/>
+        <image name="ImportanceIcon" width="146" height="146"/>
         <image name="Pie Progress Icon" width="54" height="54"/>
         <image name="Skip Icon" width="50" height="48"/>
         <image name="activitityDecoration" width="314" height="82"/>

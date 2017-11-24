@@ -15,7 +15,6 @@ class EditProjectViewControllerFooco: UIViewController {
     
     @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
     
-    @IBOutlet private weak var editProjectContainerView: EditProjectContainerView!
     weak var tableView: UITableView!
     weak var contextsCollectionView: UICollectionView!
     
