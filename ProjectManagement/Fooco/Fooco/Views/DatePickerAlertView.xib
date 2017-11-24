@@ -39,21 +39,21 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhX-NP-720">
                                     <rect key="frame" x="0.0" y="0.0" width="277" height="280"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetailsBg1" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-ZH-KFl" userLabel="background details">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetailsBg" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-ZH-KFl" userLabel="background details">
                                             <rect key="frame" x="3" y="5" width="98" height="88"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="98" id="B4U-Sa-wxv"/>
                                                 <constraint firstAttribute="height" constant="88" id="yzY-q6-QDq"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalendarIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="cWg-QL-MKD">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalendarIconColor" translatesAutoresizingMaskIntoConstraints="NO" id="cWg-QL-MKD">
                                             <rect key="frame" x="24" y="12" width="53" height="55"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="55" id="2AG-QH-bCy"/>
                                                 <constraint firstAttribute="width" constant="53" id="KoQ-fK-fkD"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="2QW-a0-61y" userLabel="ClockIcon">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIconColor" translatesAutoresizingMaskIntoConstraints="NO" id="2QW-a0-61y" userLabel="ClockIcon">
                                             <rect key="frame" x="26" y="16" width="48.5" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="87s-Yf-k1m"/>
@@ -84,7 +84,7 @@
                                                 <constraint firstAttribute="height" constant="166" id="Rnn-Wp-qcP"/>
                                             </constraints>
                                             <date key="date" timeIntervalSinceReferenceDate="532634867.58372498">
-                                                <!--2017-11-17 18:07:47 +0000-->
+                                                <!--2017-11-17 6:07:47 PM +0000-->
                                             </date>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -178,15 +178,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="isTime" value="YES"/>
-            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="-35.5" y="-386.5"/>
         </view>
     </objects>
     <resources>
-        <image name="CalendarIcon2" width="449" height="456"/>
-        <image name="ClockIcon2" width="413" height="428"/>
-        <image name="DetailsBg1" width="703" height="618"/>
+        <image name="CalendarIconColor" width="449" height="456"/>
+        <image name="ClockIconColor" width="413" height="428"/>
+        <image name="DetailsBg" width="703" height="618"/>
     </resources>
 </document>

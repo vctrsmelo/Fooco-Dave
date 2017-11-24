@@ -6,23 +6,20 @@
 //
 
 import UIKit
-import Foundation
 
 class EditProjectViewControllerFooco: UIViewController {
+	
+    @IBOutlet private weak var navigationBar: UINavigationBar!
+    @IBOutlet private weak var cancelBarButton: UIBarButtonItem!
+    @IBOutlet private weak var doneBarButton: UIBarButtonItem!
     
+    @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
-    @IBOutlet weak var doneBarButton: UIBarButtonItem!
-    
-    @IBOutlet weak var datePickerAlertView: DatePickerAlertView!
-    
-    @IBOutlet weak var editProjectContainerView: EditProjectContainerView!
     weak var tableView: UITableView!
     weak var contextsCollectionView: UICollectionView!
     
-    @IBOutlet weak var bottomBg1ImageView: UIImageView!
-    @IBOutlet weak var bottomBg2ImageView: UIImageView!
+    @IBOutlet private weak var bottomBg1ImageView: UIImageView!
+    @IBOutlet private weak var bottomBg2ImageView: UIImageView!
     
     var project: Project?
     
@@ -35,8 +32,8 @@ class EditProjectViewControllerFooco: UIViewController {
         
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
-        bottomBg1ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
-        bottomBg2ImageView.tintColor = UIColor(displayP3Red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        bottomBg1ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
+        bottomBg2ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         
         //delegates and data sources
         formatNavigationBar()
@@ -68,7 +65,6 @@ class EditProjectViewControllerFooco: UIViewController {
             tableView = editProjTableViewController.tableView
             editProjTableViewController.delegate = self
             datePickerAlertView.delegate = editProjTableViewController
-
         }
     }
     
@@ -91,16 +87,10 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     }
     
     func contextUpdated(for context: Context?) {
-        
         let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
         cancelBarButton.tintColor = color
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
         doneBarButton.tintColor = color
-
-//        bottomBg1ImageView.tintColor = color.withAlphaComponent(0.46)
-//        bottomBg2ImageView.tintColor = color.withAlphaComponent(0.36)
-        
     }
     
 }
-

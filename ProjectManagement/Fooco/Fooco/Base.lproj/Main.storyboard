@@ -38,7 +38,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Done Icon" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-Lv-ufj">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DoneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-Lv-ufj">
                                                 <rect key="frame" x="-59" y="153" width="54" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="54" id="n42-vn-jWu"/>
@@ -63,7 +63,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Yd2-ro-bPU">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIconNoColor" translatesAutoresizingMaskIntoConstraints="NO" id="Yd2-ro-bPU">
                                                 <rect key="frame" x="-59" y="148" width="54" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="54" id="6EW-2E-fHm"/>
@@ -264,7 +264,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pie Progress Icon" translatesAutoresizingMaskIntoConstraints="NO" id="a47-JG-hX8">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PieProgressIcon" translatesAutoresizingMaskIntoConstraints="NO" id="a47-JG-hX8">
                                                 <rect key="frame" x="20" y="148" width="54" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="54" id="nVj-kd-OQT"/>
@@ -289,7 +289,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Skip Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xId-cW-E6u">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SkipIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xId-cW-E6u">
                                                 <rect key="frame" x="20" y="151" width="54" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="54" id="PYI-A8-1Xp"/>
@@ -416,19 +416,19 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBg2" translatesAutoresizingMaskIntoConstraints="NO" id="p67-jv-5Fi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBgRight" translatesAutoresizingMaskIntoConstraints="NO" id="p67-jv-5Fi">
                                 <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wND-RP-yGa"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBg1" translatesAutoresizingMaskIntoConstraints="NO" id="ZMz-UB-vmq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBgLeft" translatesAutoresizingMaskIntoConstraints="NO" id="ZMz-UB-vmq">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yj8-ME-QYh"/>
                                 </constraints>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-T2-usN" customClass="EditProjectContainerView" customModule="Fooco" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-T2-usN">
                                 <rect key="frame" x="0.0" y="64" width="375" height="528"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -462,7 +462,6 @@
                         <outlet property="contextsCollectionView" destination="RyF-Nc-i4r" id="IFo-Rt-2US"/>
                         <outlet property="datePickerAlertView" destination="PN2-Ry-zF8" id="fo1-cm-ddR"/>
                         <outlet property="doneBarButton" destination="JHc-0x-7b9" id="Ut6-Xl-Deb"/>
-                        <outlet property="editProjectContainerView" destination="QUI-T2-usN" id="Uto-eK-nas"/>
                         <outlet property="navigationBar" destination="Lkk-ue-ljx" id="G6p-q0-3PC"/>
                     </connections>
                 </viewController>
@@ -555,7 +554,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIcon" translatesAutoresizingMaskIntoConstraints="NO" id="0Hl-O8-Ugw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIconTemplate" translatesAutoresizingMaskIntoConstraints="NO" id="0Hl-O8-Ugw">
                                                     <rect key="frame" x="18" y="17" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="i6s-RQ-j2g"/>
@@ -598,7 +597,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalendarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="91f-2m-KOm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalendarIconTemplate" translatesAutoresizingMaskIntoConstraints="NO" id="91f-2m-KOm">
                                                     <rect key="frame" x="17" y="18" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Th9-0E-cnf"/>
@@ -811,16 +810,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CalendarIcon" width="197" height="199"/>
-        <image name="Clock Icon" width="54" height="54"/>
-        <image name="ClockIcon" width="200" height="206"/>
-        <image name="Done Icon" width="64" height="46"/>
-        <image name="EditIcon" width="201" height="201"/>
-        <image name="ImportanceIcon" width="200" height="200"/>
-        <image name="Pie Progress Icon" width="54" height="54"/>
-        <image name="Skip Icon" width="50" height="48"/>
+        <image name="CalendarIconTemplate" width="452" height="457"/>
+        <image name="ClockIconNoColor" width="54" height="54"/>
+        <image name="ClockIconTemplate" width="200" height="206"/>
+        <image name="DoneIcon" width="64" height="46"/>
+        <image name="EditIcon" width="146" height="146"/>
+        <image name="ImportanceIcon" width="146" height="146"/>
+        <image name="PieProgressIcon" width="54" height="54"/>
+        <image name="SkipIcon" width="50" height="48"/>
         <image name="activitityDecoration" width="314" height="82"/>
-        <image name="bottomBg1" width="1392" height="185"/>
-        <image name="bottomBg2" width="1384" height="143"/>
+        <image name="bottomBgLeft" width="1392" height="185"/>
+        <image name="bottomBgRight" width="1384" height="143"/>
     </resources>
 </document>

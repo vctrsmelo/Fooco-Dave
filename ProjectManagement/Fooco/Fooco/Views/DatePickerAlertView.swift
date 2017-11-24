@@ -14,7 +14,7 @@ enum AlertPickerViewMode {
     case totalFocusingTime
 }
 
-protocol DatePickerAlertViewDelegate {
+protocol DatePickerAlertViewDelegate: AnyObject {
     func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode)
     func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode)
     func dateChanged(_ sender: UIDatePicker, at alertView: DatePickerAlertView, for mode: AlertPickerViewMode)
@@ -23,13 +23,15 @@ protocol DatePickerAlertViewDelegate {
 class DatePickerAlertView: UIView {
 
     private var _view: UIView!
+	
+	private var originalStatusColor: UIColor?
     
-    @IBOutlet var viewContainer: DatePickerAlertView!
+    @IBOutlet private weak var viewContainer: DatePickerAlertView!
     
-    @IBOutlet weak var calendarIconImageView: UIImageView!
-    @IBOutlet weak var clockIconImageView: UIImageView!
+    @IBOutlet private weak var calendarIconImageView: UIImageView!
+    @IBOutlet private weak var clockIconImageView: UIImageView!
     
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet private weak var backgroundView: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overTitleLabel: UILabel!
@@ -38,11 +40,11 @@ class DatePickerAlertView: UIView {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var hoursPicker: UIPickerView!
     
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private weak var confirmButton: UIButton!
     
-    @IBOutlet weak var overlayView: UIView!
+    @IBOutlet private weak var overlayView: UIView!
     
-    var delegate: DatePickerAlertViewDelegate?
+    weak var delegate: DatePickerAlertViewDelegate?
     
     var currentMode: AlertPickerViewMode!
     
@@ -81,7 +83,11 @@ class DatePickerAlertView: UIView {
             }
             
         }
-        
+		
+		let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+		self.originalStatusColor = statusBar.backgroundColor
+		statusBar.backgroundColor = self.overlayView.backgroundColor
+		
         updateIcon()
         self.isHidden = false
         
@@ -114,27 +120,26 @@ class DatePickerAlertView: UIView {
     }
 
     private func updateIcon() {
-        clockIconImageView.isHidden = (datePicker.datePickerMode != .time)
-        calendarIconImageView.isHidden = (datePicker.datePickerMode != .date)
+        clockIconImageView.isHidden = hoursPicker.isHidden
+        calendarIconImageView.isHidden = datePicker.isHidden
     }
     
     @IBAction func confirmTouched(_ sender: UIButton) {
-        self.isHidden = true
+		let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+		statusBar.backgroundColor = self.originalStatusColor
+		
+		self.isHidden = true
         
         if currentMode == .estimatedTime || currentMode == .totalFocusingTime {
             delegate?.confirmTouched(hoursPicker, for: currentMode)
         } else {
             delegate?.confirmTouched(datePicker, for: currentMode)
         }
-        
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         delegate?.dateChanged(sender, at: self, for: currentMode)
-        
     }
-    
-    
 }
 
 extension DatePickerAlertView: XibLoader {
@@ -150,10 +155,6 @@ extension DatePickerAlertView: XibLoader {
             _view = newValue
         }
     }
-    
-}
-
-extension DatePickerAlertView {
     
 }
 
@@ -174,15 +175,12 @@ extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var value = row
+//        var value = row
         return "\(row)"
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         underTitleLabel.text = "\(pickerView.selectedRow(inComponent: 0)) days and \(pickerView.selectedRow(inComponent: 1)) hours"
-        
     }
     
 }
-
