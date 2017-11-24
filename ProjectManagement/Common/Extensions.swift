@@ -103,7 +103,6 @@ extension UINavigationBar {
 	func removeBackground() {
 		self.setBackgroundImage(UIImage(), for: .default)
 		self.shadowImage = UIImage()
-		self.isTranslucent = true
 	}
 }
 

@@ -15,8 +15,8 @@ class MenuTableViewControllerFooco: UITableViewController {
 		self.navigationController?.navigationBar.removeBackground()
     }
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		
 		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
 	}
