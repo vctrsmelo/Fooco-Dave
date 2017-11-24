@@ -22,36 +22,29 @@ protocol DatePickerAlertViewDelegate: AnyObject {
 
 class DatePickerAlertView: UIView {
 
-    private var _view: UIView!
+	weak var delegate: DatePickerAlertViewDelegate?
 	
+	var currentMode: AlertPickerViewMode!
+	
+    private var _view: UIView!
 	private var originalStatusColor: UIColor?
-    
+	
     @IBOutlet private weak var viewContainer: DatePickerAlertView!
-    
+	
     @IBOutlet private weak var calendarIconImageView: UIImageView!
     @IBOutlet private weak var clockIconImageView: UIImageView!
-    
+	
+	@IBOutlet private weak var overlayView: UIView!
     @IBOutlet private weak var backgroundView: UIView!
-    
+	
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overTitleLabel: UILabel!
     @IBOutlet weak var underTitleLabel: UILabel!
-    
+	
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var hoursPicker: UIPickerView!
-    
+	
     @IBOutlet private weak var confirmButton: UIButton!
-    
-    @IBOutlet private weak var overlayView: UIView!
-    
-    weak var delegate: DatePickerAlertViewDelegate?
-    
-    var currentMode: AlertPickerViewMode!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-    }
     
     func present(_ mode: AlertPickerViewMode, initialDate: Date? = nil, estimatedTime: TimeInterval? = nil) {
         
@@ -94,7 +87,6 @@ class DatePickerAlertView: UIView {
     func configure() {
         guard let superview = self.superview else {
             return
-            
         }
         
         overlayView.frame = superview.frame
@@ -114,7 +106,6 @@ class DatePickerAlertView: UIView {
         confirmButton.layer.masksToBounds = false
         
         self.isHidden = true
-
     }
 
     private func updateIcon() {
@@ -173,7 +164,6 @@ extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        var value = row
         return "\(row)"
     }
     

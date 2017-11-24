@@ -92,7 +92,7 @@ class Project {
     
         let maxTime = context.maxProjectWorkingTime
         
-        var subTimeBlock = getSubTimeBlockForNewActivity(from: tbl)
+        let subTimeBlock = getSubTimeBlockForNewActivity(from: tbl)
 
         var activityTime = (subTimeBlock.totalTime <= self.timeLeftEstimated) ? subTimeBlock.totalTime : self.timeLeftEstimated
         if maxTime != nil && activityTime > maxTime! {

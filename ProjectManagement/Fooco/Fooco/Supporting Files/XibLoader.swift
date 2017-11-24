@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol XibLoader : class {
-    var nibName : String { get }
-    var view : UIView! { get set}
+protocol XibLoader: AnyObject {
+    var nibName: String { get }
+    var view: UIView! { get set }
     
     func initialSetup()
     func xibSetup()
     func loadViewFromNib() -> UIView
 }
 
-extension XibLoader where Self : UIView{
+extension XibLoader where Self: UIView {
     func initialSetup() {
         self.xibSetup()
     }

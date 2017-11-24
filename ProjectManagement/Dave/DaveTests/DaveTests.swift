@@ -5,8 +5,8 @@
 //  Created by Victor S Melo on 20/10/17.
 //
 
-import XCTest
 @testable import Dave
+import XCTest
 
 class DaveTests: XCTestCase {
     
