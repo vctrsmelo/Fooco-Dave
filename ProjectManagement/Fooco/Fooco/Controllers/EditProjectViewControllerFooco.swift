@@ -49,9 +49,9 @@ class EditProjectViewControllerFooco: UIViewController {
     private func formatNavigationBar() {
         
         //TODO: edit here to get the current context selected color
-        guard let mainColor = UIColor.contextColors().first else {
-            return
-        }
+//        guard let mainColor = UIColor.contextColors().first else {
+//            return
+//        }
         
         navigationBar.removeBackground()
         

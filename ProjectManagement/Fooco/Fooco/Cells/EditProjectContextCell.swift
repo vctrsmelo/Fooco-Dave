@@ -11,10 +11,10 @@ class EditProjectContextCell: UICollectionViewCell {
     
     var icon: UIImage!
     
-    @IBOutlet weak var mainBackground: UIView!
-    @IBOutlet weak var shadowLayer: UIView!
+    @IBOutlet private weak var mainBackground: UIView!
+    @IBOutlet private weak var shadowLayer: UIView!
     
-    private let heightIncreaseFactor : CGFloat = 40.0
+    private let heightIncreaseFactor: CGFloat = 40.0
     static let originalSize = CGSize(width: 150, height: 100)
     private var featuredPercentage: CGFloat?
     
@@ -30,26 +30,26 @@ class EditProjectContextCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet private weak var iconImageView: UIImageView!
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
     
-    public func updateSize(cellFrame: CGRect, container: CGRect){
+	func updateSize(cellFrame: CGRect, container: CGRect) {
         
         let originalSize = EditProjectContextCell.originalSize
         
-        let containerXCenter : CGFloat = container.origin.x + container.width/2
+        let containerXCenter: CGFloat = container.origin.x + container.width / 2
         
-        let cellXCenter : CGFloat = cellFrame.origin.x + cellFrame.width/2
+        let cellXCenter: CGFloat = cellFrame.origin.x + cellFrame.width / 2
         
-        let distance : CGFloat = abs(containerXCenter - cellXCenter)
+        let distance: CGFloat = abs(containerXCenter - cellXCenter)
         
         
         //entre 0 e 100, sendo 100 = maior tamanho e 0 = menor tamanho
-        featuredPercentage = (1 - (distance/container.width))*100
+        featuredPercentage = (1 - (distance / container.width)) * 100
         
-        let newHeight = originalSize.height+(featuredPercentage!*heightIncreaseFactor)/100
-        let newWidth = (originalSize.width/originalSize.height) * newHeight
+        let newHeight = originalSize.height + (featuredPercentage! * heightIncreaseFactor) / 100
+        let newWidth = (originalSize.width / originalSize.height) * newHeight
         
         
         //size changes relating to current size
@@ -58,7 +58,7 @@ class EditProjectContextCell: UICollectionViewCell {
         
         
         //position changes relating to current position
-        let newX = (self.frame.width < newWidth) ? self.frame.origin.x - increasedWidth/2 : self.frame.origin.x + increasedWidth/2
+        let newX = (self.frame.width < newWidth) ? self.frame.origin.x - increasedWidth / 2 : self.frame.origin.x + increasedWidth / 2
         let newY = (self.frame.height < newHeight) ? self.frame.origin.y - increasedHeight : self.frame.origin.y + increasedHeight
         
         self.frame.size.width = CGFloat(newWidth)
@@ -71,15 +71,14 @@ class EditProjectContextCell: UICollectionViewCell {
     
     }
     
-    public func adjustShadow(){
-        
+	func adjustShadow() {
         let ft = (featuredPercentage != nil) ? featuredPercentage! : 0.0
         let defaultShadowRadius: CGFloat = 2
         var finalShadowRadius: CGFloat = 4
         
-        if(ft != 0.0){
+        if ft != 0.0 {
             
-            finalShadowRadius = defaultShadowRadius * ft / (defaultShadowRadius*10)
+            finalShadowRadius = defaultShadowRadius * ft / (defaultShadowRadius * 10)
             
         }
         
