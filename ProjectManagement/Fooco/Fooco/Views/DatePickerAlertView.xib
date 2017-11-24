@@ -39,7 +39,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhX-NP-720">
                                     <rect key="frame" x="0.0" y="0.0" width="277" height="280"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetailsBg1" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-ZH-KFl" userLabel="background details">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetailsBg" translatesAutoresizingMaskIntoConstraints="NO" id="GRw-ZH-KFl" userLabel="background details">
                                             <rect key="frame" x="3" y="5" width="98" height="88"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="98" id="B4U-Sa-wxv"/>
@@ -184,6 +184,6 @@
     <resources>
         <image name="CalendarIconColor" width="449" height="456"/>
         <image name="ClockIconColor" width="413" height="428"/>
-        <image name="DetailsBg1" width="703" height="618"/>
+        <image name="DetailsBg" width="703" height="618"/>
     </resources>
 </document>
