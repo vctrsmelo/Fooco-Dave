@@ -108,13 +108,14 @@ class FoocoTests: XCTestCase {
         
         let user = User.sharedInstance
         Mocado.context1 = Context(named: "Mocado.context1", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: 3200)
-        
-//        let todayComponents = Calendar.current.dateComponents([.day,.month,.year], from: Date())
 		
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        let morningCblStart = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 06:00:00")!
-        let morningCblEnds = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 10:00:00")!
+        var dateComponents = DateComponents(calendar: Mocado.todayComponents.calendar!, year: Mocado.todayComponents.year!, month: Mocado.todayComponents.month!, day: Mocado.todayComponents.day!)
+		
+		dateComponents.hour = 6
+        let morningCblStart = dateComponents.date!
+		
+		dateComponents.hour = 10
+        let morningCblEnds = dateComponents.date!
         
         let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: morningCblStart, endsAt: morningCblEnds), context: Mocado.context1)])
         user.weekSchedule = Week(sunday: defaultWeekday, monday: defaultWeekday, tuesday: defaultWeekday, wednesday: defaultWeekday, thursday: defaultWeekday, friday: defaultWeekday, saturday: defaultWeekday)
@@ -135,7 +136,7 @@ class FoocoTests: XCTestCase {
         XCTAssertEqual(Mocado.defaultWeekday.contextBlocks[0].activities[1].project.name, Mocado.projects[1].name)
         XCTAssertEqual(Mocado.defaultWeekday.contextBlocks[0].activities[2].project.name, Mocado.projects[1].name)
         XCTAssertEqual(Mocado.defaultWeekday.contextBlocks[0].activities[3].project.name, Mocado.projects[0].name)
-        
+		
         XCTAssertEqual(Mocado.projects[1].timeLeftEstimated, 0.0)
         XCTAssertTrue(Mocado.projects[0].timeLeftEstimated > 0.0)
         
@@ -144,22 +145,26 @@ class FoocoTests: XCTestCase {
     func testTwoContextBlocksAndTwoProjects() {
         
         let user = User.sharedInstance
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-//        let today = Calendar.current.dateComponents([.day,.month,.year], from: Date())
 		
-        let morningCblStart = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 06:00:00")
-        let morningCblEnds = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 10:00:00")
+		var dateComponents = DateComponents(calendar: Mocado.todayComponents.calendar!, year: Mocado.todayComponents.year!, month: Mocado.todayComponents.month!, day: Mocado.todayComponents.day!)
+		
+		dateComponents.hour = 6
+		let morningCblStart = dateComponents.date!
+		
+		dateComponents.hour = 10
+        let morningCblEnds = dateComponents.date!
 
-        let afternoonCblStarts = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 11:00:00")
-        let afternoonCblEnds = dateFormatter.date(from: "\(Mocado.todayComponents.day!)-\(Mocado.todayComponents.month!)-\(Mocado.todayComponents.year!) 15:00:00")
+		dateComponents.hour = 11
+        let afternoonCblStarts = dateComponents.date!
+		
+		dateComponents.hour = 15
+        let afternoonCblEnds = dateComponents.date!
         
         let college = Context(named: "college", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
         let work = Context(named: "work", color: UIColor.contextColors().first!, projects: nil, minProjectWorkingTime: nil, maximumWorkingHoursPerProject: nil)
         
-        let morningCbl = ContextBlock(timeBlock: TimeBlock(startsAt: morningCblStart!, endsAt: morningCblEnds!), context: college)
-        let afternoonCbl = ContextBlock(timeBlock: TimeBlock(startsAt: afternoonCblStarts!, endsAt: afternoonCblEnds!), context: work)
+        let morningCbl = ContextBlock(timeBlock: TimeBlock(startsAt: morningCblStart, endsAt: morningCblEnds), context: college)
+        let afternoonCbl = ContextBlock(timeBlock: TimeBlock(startsAt: afternoonCblStarts, endsAt: afternoonCblEnds), context: work)
         
         let defaultWeekday = Weekday(contextBlocks: [morningCbl, afternoonCbl])
         

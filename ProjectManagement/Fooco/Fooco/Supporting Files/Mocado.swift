@@ -15,7 +15,7 @@ class Mocado {
     static let today: Date! = Date()
     static let tomorrow: Date! = Date().addingTimeInterval(86_400)
 	
-	static let todayComponents = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+	static let todayComponents = Calendar.current.dateComponents([.day, .month, .year, .calendar], from: Date())
     
     static let defaultWeekday = Weekday(contextBlocks: [ContextBlock(timeBlock: TimeBlock(startsAt: Date(), endsAt: Date().addingTimeInterval(10_800)), context: context1)])
     
