@@ -13,8 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+		let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+		let homeViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
 		
+		let navigationController = self.window?.rootViewController as! UINavigationController
+		navigationController.pushViewController(homeViewController, animated: false)
+		
+		navigationController.navigationBar.removeBackground()
         return true
     }
 

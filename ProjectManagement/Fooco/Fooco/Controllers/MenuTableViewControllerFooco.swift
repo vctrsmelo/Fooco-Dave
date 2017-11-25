@@ -9,12 +9,6 @@ import UIKit
 
 class MenuTableViewControllerFooco: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		
-		self.navigationController?.navigationBar.removeBackground()
-    }
-	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
