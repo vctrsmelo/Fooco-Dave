@@ -35,9 +35,9 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	var contextColor: UIColor {
 		if _selectedContext == nil {
 			return UIColor.colorOfAddContext()
+		} else {
+			return _selectedContext!.color
 		}
-		
-		return _selectedContext!.color
 	}
 	
     private var _importance: Int = 1
@@ -123,7 +123,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
     }
     
     private func designElements() {
-        //textfield
+        // Textfield
         let border = CALayer()
         let width = CGFloat(1.0)
         border.frame = CGRect(x: 0, y: nameTextField.frame.size.height - width, width:  nameTextField.frame.size.width, height: nameTextField.frame.size.height)

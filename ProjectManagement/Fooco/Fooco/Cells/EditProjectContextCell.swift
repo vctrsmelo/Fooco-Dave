@@ -117,21 +117,20 @@ class EditProjectContextCell: UICollectionViewCell {
         
         if let someContext = _context {
 			nameLabel.text = someContext.name
-			iconImageView.image = someContext.icon
+			nameLabel.backgroundColor = someContext.color
 			
+			iconImageView.image = someContext.icon
 			iconImageView.backgroundColor = someContext.color
-			self.backgroundColor = someContext.color
 			
 		} else {
 			nameLabel.text = NSLocalizedString("Add", comment: "Add Context Text")
-			iconImageView.image = #imageLiteral(resourceName: "AddIcon")
+			nameLabel.backgroundColor = UIColor.colorOfAddContext()
 			
-			iconImageView.contentMode = .scaleAspectFit
+			iconImageView.image = #imageLiteral(resourceName: "AddIcon")
+			iconImageView.backgroundColor = UIColor.colorOfAddContext()
 			
 			iconImageView.layer.borderWidth = 10
 			iconImageView.layer.borderColor = UIColor.colorOfAddContext().cgColor
-			iconImageView.backgroundColor = UIColor.colorOfAddContext()
-			nameLabel.backgroundColor = UIColor.colorOfAddContext()
 		}
     }
 }
