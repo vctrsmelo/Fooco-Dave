@@ -59,7 +59,7 @@ class EditProjectViewControllerFooco: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "projectTableViewSegue" {
-            let editProjTableViewController = segue.destination as! EditProjectTableViewController
+            let editProjTableViewController = segue.destination as! EditProjectTableViewControllerFooco
             
             contextsCollectionView = editProjTableViewController.contextsCollectionView
             tableView = editProjTableViewController.tableView

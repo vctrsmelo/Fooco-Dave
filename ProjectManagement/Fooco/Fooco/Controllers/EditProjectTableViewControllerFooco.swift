@@ -14,7 +14,7 @@ protocol EditProjectTableViewControllerDelegate: AnyObject {
     func deadlineDateTouched(_ alertView: ((DatePickerAlertView) -> Void))
 }
 
-class EditProjectTableViewController: UITableViewController {
+class EditProjectTableViewControllerFooco: UITableViewController {
     
     @IBOutlet weak var contextsCollectionView: UICollectionView!
     
@@ -291,7 +291,7 @@ class EditProjectTableViewController: UITableViewController {
     
 }
 
-extension EditProjectTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return User.sharedInstance.contexts.count + 1
@@ -360,7 +360,7 @@ extension EditProjectTableViewController: UICollectionViewDelegate, UICollection
     
 }
 
-extension EditProjectTableViewController {
+extension EditProjectTableViewControllerFooco {
     
     override func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         scrollView.setContentOffset(scrollView.contentOffset, animated: true)
@@ -406,7 +406,7 @@ extension EditProjectTableViewController {
 
 }
 
-extension EditProjectTableViewController: DatePickerAlertViewDelegate {
+extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
     
     func dateChanged(_ sender: UIDatePicker, at alertView: DatePickerAlertView, for mode: AlertPickerViewMode) {
         

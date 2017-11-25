@@ -19,12 +19,13 @@ class MenuTableViewControllerFooco: UITableViewController {
 		super.viewWillAppear(animated)
 		
 		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+		self.navigationController?.navigationBar.barStyle = .default
 	}
 
     // MARK: - Navigation
 	
 	@IBAction func unwindToMenu(with unwindSegue: UIStoryboardSegue) {
-		print(#function)
+		
 	}
 
 }

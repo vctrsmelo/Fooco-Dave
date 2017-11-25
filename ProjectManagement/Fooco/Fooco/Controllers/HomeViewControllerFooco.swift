@@ -55,6 +55,7 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 		super.viewWillAppear(animated)
 		
 		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		self.navigationController?.navigationBar.barStyle = .black
 	}
 	
 	private func chooseTopLabelText() -> String {
@@ -123,7 +124,7 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	}
 
 	@IBAction func unwindToHome(with unwindSegue: UIStoryboardSegue) {
-		print(#function)
+		
 	}
 
 }
