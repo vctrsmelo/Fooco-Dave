@@ -59,7 +59,7 @@ class EditProjectViewControllerFooco: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "projectTableViewSegue" {
-            let editProjTableViewController = segue.destination as! EditProjectTableViewController
+            let editProjTableViewController = segue.destination as! EditProjectTableViewControllerFooco
             
             contextsCollectionView = editProjTableViewController.contextsCollectionView
             tableView = editProjTableViewController.tableView
@@ -88,9 +88,7 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     
     func contextUpdated(for context: Context?) {
         let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
-        cancelBarButton.tintColor = color
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
-        doneBarButton.tintColor = color
+		self.navigationBar.changeFontAndTintColor(to: color)
     }
     
 }

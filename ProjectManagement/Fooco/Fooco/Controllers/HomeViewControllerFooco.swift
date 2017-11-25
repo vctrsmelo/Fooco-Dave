@@ -38,8 +38,6 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.navigationController?.navigationBar.removeBackground()
-		
 		self.dataPopulation()
 		
 		self.activityCard.data = self.currentActivities.first
@@ -53,6 +51,12 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 		
 		self.topLabel.text = self.chooseTopLabelText()		
     }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.navigationController?.navigationBar.changeFontAndTintColor(to: .white)
+		self.navigationController?.navigationBar.barStyle = .black
+	}
 	
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
@@ -120,7 +124,7 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	}
 
 	@IBAction func unwindToHome(with unwindSegue: UIStoryboardSegue) {
-		print(#function)
+		
 	}
 
 }

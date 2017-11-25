@@ -112,7 +112,8 @@ class DatePickerAlertView: UIView {
         clockIconImageView.isHidden = hoursPicker.isHidden
         calendarIconImageView.isHidden = datePicker.isHidden
     }
-    
+	
+	// TODO: hide view if touch outside it
     @IBAction func confirmTouched(_ sender: UIButton) {
 		let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
 		statusBar.backgroundColor = self.originalStatusColor
