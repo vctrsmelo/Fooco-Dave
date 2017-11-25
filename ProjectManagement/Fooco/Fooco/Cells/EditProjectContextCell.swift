@@ -14,8 +14,8 @@ class EditProjectContextCell: UICollectionViewCell {
     @IBOutlet private weak var mainBackground: UIView!
     @IBOutlet private weak var shadowLayer: UIView!
     
+	static let originalSize = CGSize(width: 150, height: 100)
     private let heightIncreaseFactor: CGFloat = 40.0
-    static let originalSize = CGSize(width: 150, height: 100)
     private var featuredPercentage: CGFloat?
     
     
@@ -115,20 +115,23 @@ class EditProjectContextCell: UICollectionViewCell {
 
     private func updatedContext() {
         
-        if _context == nil {
-            
-            nameLabel.text = "Add"
-            iconImageView.image = #imageLiteral(resourceName: "AddIcon")
-            iconImageView.backgroundColor = UIColor.colorOfAddContext()
-            nameLabel.backgroundColor = UIColor.colorOfAddContext()
-            return
-            
-        }
-        
-        nameLabel.text = _context.name
-        iconImageView.image = _context.icon
-        
-        iconImageView.backgroundColor = _context.color
-        self.backgroundColor = _context.color
+        if let someContext = _context {
+			nameLabel.text = someContext.name
+			iconImageView.image = someContext.icon
+			
+			iconImageView.backgroundColor = someContext.color
+			self.backgroundColor = someContext.color
+			
+		} else {
+			nameLabel.text = NSLocalizedString("Add", comment: "Add Context Text")
+			iconImageView.image = #imageLiteral(resourceName: "AddIcon")
+			
+			iconImageView.contentMode = .scaleAspectFit
+			
+			iconImageView.layer.borderWidth = 10
+			iconImageView.layer.borderColor = UIColor.colorOfAddContext().cgColor
+			iconImageView.backgroundColor = UIColor.colorOfAddContext()
+			nameLabel.backgroundColor = UIColor.colorOfAddContext()
+		}
     }
 }

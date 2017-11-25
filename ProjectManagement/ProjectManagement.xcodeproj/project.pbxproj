@@ -350,10 +350,10 @@
 		FCE536B51FB4C3340010BA63 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */,
 				EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */,
 				EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */,
 				FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */,
-				E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

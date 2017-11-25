@@ -8,11 +8,6 @@
 import UIKit
 
 class FloatingAddButton: UIButton {
-	override var isHighlighted: Bool {
-		didSet {
-			self.backgroundColor = self.isHighlighted ? #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-		}
-	}
 	
 	private let defaultSize = 50
 	
@@ -31,14 +26,15 @@ class FloatingAddButton: UIButton {
 	private func initializer() {
 		self.cornerRadius = self.frame.width / 2
 		
-		self.setTitle("+", for: .normal)
-		self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-		self.titleLabel?.font = self.titleLabel?.font.withSize(50)
-		self.titleLabel?.textAlignment = .center
+		self.setImage(#imageLiteral(resourceName: "AddIcon"), for: .normal)
+		self.imageView?.contentMode = .scaleAspectFit
+		
+		let edgeInset: CGFloat = 10
+		self.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
+		
+		self.adjustsImageWhenHighlighted = true
 		
 		self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-		
-		self.titleEdgeInsets.bottom = 8
 	}
 	
 	convenience init(to controller: UIViewController, inside parent: UIView, performing action: Selector) {
