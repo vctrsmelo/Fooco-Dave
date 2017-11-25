@@ -54,7 +54,7 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		self.navigationController?.navigationBar.changeFontAndTintColor(to: .white)
 		self.navigationController?.navigationBar.barStyle = .black
 	}
 	

@@ -309,12 +309,12 @@
 		FC37F4471FB0CEEB0003738E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
+				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
 				BE6E11211FB38C3E004B5B9E /* Mocado.swift */,
 				FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */,
-				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
-				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
-				EEA46B721F9A36CA00851D5D /* Info.plist */,
 				EED935551FBF615C00177FCC /* XibLoader.swift */,
+				EEA46B721F9A36CA00851D5D /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

@@ -104,6 +104,11 @@ extension UINavigationBar {
 		self.setBackgroundImage(UIImage(), for: .default)
 		self.shadowImage = UIImage()
 	}
+	
+	func changeFontAndTintColor(to color: UIColor) {
+		self.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
+		self.tintColor = color
+	}
 }
 
 extension UIButton {

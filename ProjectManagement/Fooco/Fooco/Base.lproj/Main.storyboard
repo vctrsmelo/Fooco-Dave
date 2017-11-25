@@ -72,7 +72,9 @@
                             <outlet property="delegate" destination="CvE-Lc-NeP" id="8oV-F9-28E"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Bh0-Gg-TAe"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Bh0-Gg-TAe">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Vk5-co-Q14"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shP-JK-dCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -425,14 +427,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Fzf-FU-b0v">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="N7M-ca-fIU">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="ZV6-nU-mnC" kind="unwind" unwindAction="unwindToMenuWith:" id="hkA-j4-BZ3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Fzf-FU-b0v"/>
                     <connections>
                         <outlet property="activityCard" destination="9rO-JB-msb" id="j5g-PJ-Zwf"/>
                         <outlet property="topLabel" destination="r3U-pL-xjE" id="8AB-Jg-yMG"/>
@@ -441,7 +436,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <exit id="ZV6-nU-mnC" userLabel="Exit" sceneMemberID="exit"/>
                 <customObject id="sdy-jd-IWC" customClass="ViewSwiper" customModule="Fooco" customModuleProvider="target">
                     <connections>
                         <outlet property="centerView" destination="9rO-JB-msb" id="5hV-Y7-Mf1"/>
@@ -491,16 +485,9 @@
                             <outlet property="delegate" destination="vI7-KB-unw" id="Z8q-1A-lVN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Projects" largeTitleDisplayMode="always" id="s4K-vM-Taf">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="UH8-sX-Hwx">
-                            <connections>
-                                <segue destination="bL2-LI-JUj" kind="unwind" unwindAction="unwindToMenuWith:" id="MMX-iW-ypC"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Projects" largeTitleDisplayMode="always" id="s4K-vM-Taf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPe-dg-2Zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="bL2-LI-JUj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="476" y="902"/>
         </scene>
@@ -522,7 +509,7 @@
                                                 <segue destination="jTr-Fr-tti" kind="unwind" identifier="unwindFromEditToHome" unwindAction="unwindToHomeWith:" id="3RY-ov-HSX"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="JHc-0x-7b9"/>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="JHc-0x-7b9"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
