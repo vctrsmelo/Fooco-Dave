@@ -15,11 +15,10 @@ class ProjectListTableViewControllerFooco: UITableViewController {
         super.viewDidLoad()
 
 		self.projects = Mocado.projects
-		
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
 		self.navigationItem.rightBarButtonItem = self.editButtonItem
+		
+		self.tableView.tableFooterView = UIView() // Makes empty cells not appear
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
