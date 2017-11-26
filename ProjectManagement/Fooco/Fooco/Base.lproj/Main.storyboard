@@ -699,7 +699,11 @@
                                                 <segue destination="jTr-Fr-tti" kind="unwind" identifier="unwindFromEditToHome" unwindAction="unwindToHomeWith:" id="3RY-ov-HSX"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="JHc-0x-7b9"/>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="JHc-0x-7b9">
+                                            <connections>
+                                                <action selector="saveProject:" destination="52a-gu-zMx" id="tbh-hR-nwd"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

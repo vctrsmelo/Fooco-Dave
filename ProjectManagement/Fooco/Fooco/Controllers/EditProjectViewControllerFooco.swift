@@ -9,7 +9,13 @@ import UIKit
 
 class EditProjectViewControllerFooco: UIViewController {
 	
-	var project: Project?
+	var project: Project? {
+		didSet {
+			self.tableViewController?.project = self.project
+		}
+	}
+	
+	weak var tableViewController: EditProjectTableViewControllerFooco?
 	
     @IBOutlet private weak var navigationBar: UINavigationBar!
 	
@@ -43,17 +49,30 @@ class EditProjectViewControllerFooco: UIViewController {
     private func formatNavigationBar() {
         navigationBar.removeShadowAndBackgroundImage()
     }
-    
+	
+	@IBAction func saveProject(_ sender: UIBarButtonItem) {
+		if let savedProject = self.tableViewController?.saveProject() {
+			self.project = savedProject
+			print("saved")
+			print(savedProject)
+		} else {
+			print("Error saving") // TODO: Tell the user that there is missing information etc...
+		}
+	}
+	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "projectTableViewSegue" {
             let editProjTableViewController = segue.destination as! EditProjectTableViewControllerFooco
 			
+			self.tableViewController = editProjTableViewController
             editProjTableViewController.delegate = self
             datePickerAlertView.delegate = editProjTableViewController
         }
     }
 
 }
+
+// MARK: - EditProjectTableViewControllerDelegate
 
 extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
    
