@@ -218,15 +218,15 @@ extension Date {
 }
 
 extension TimeInterval {
-	func inHours() -> Double {
+	var inHours: Double {
 		return self / 1.hour
 	}
 	
-	func inDays() -> Double {
+	var inDays: Double {
 		return self / 1.day
 	}
 	
-	func inMinutes() -> Double {
+	var inMinutes: Double {
 		return self / 1.minute
 	}
 	
