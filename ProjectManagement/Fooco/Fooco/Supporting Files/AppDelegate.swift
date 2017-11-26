@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let navigationController = self.window?.rootViewController as! UINavigationController
 		navigationController.pushViewController(homeViewController, animated: false)
 		
-		navigationController.navigationBar.removeBackground()
+		navigationController.navigationBar.removeShadowAndBackgroundImage()
         return true
     }
 

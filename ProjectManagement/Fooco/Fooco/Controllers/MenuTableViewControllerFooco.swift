@@ -12,6 +12,7 @@ class MenuTableViewControllerFooco: UITableViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		self.navigationController?.navigationBar.removeBackgroundImage()
 		self.navigationController?.navigationBar.changeFontAndTintColor(to: .black)
 		self.navigationController?.navigationBar.barStyle = .default
 	}

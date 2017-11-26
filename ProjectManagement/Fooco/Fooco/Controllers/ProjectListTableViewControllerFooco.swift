@@ -14,12 +14,18 @@ class ProjectListTableViewControllerFooco: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+		self.projects = Mocado.projects
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+		self.navigationItem.rightBarButtonItem = self.editButtonItem
+		
+		self.tableView.tableFooterView = UIView() // Makes empty cells not appear
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
+	}
 
     // MARK: - Table view data source
 
@@ -27,27 +33,23 @@ class ProjectListTableViewControllerFooco: UITableViewController {
         return self.projects.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: ProjectListTableViewCell.identifier, for: indexPath)
 
-        // Configure the cell...
+		if let someCell = cell as? ProjectListTableViewCell {
+			someCell.project = projects[indexPath.row]
+			cell = someCell
+		}
 
         return cell
     }
-    */
 
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+			self.projects.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
     }
-    */
 
     /*
     // MARK: - Navigation

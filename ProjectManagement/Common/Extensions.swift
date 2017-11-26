@@ -12,13 +12,13 @@ import UIKit
 extension Array {
 	func random(from: Int? = nil, to: Int? = nil) -> Element {
 		
-		let begin = ((from == nil || from! > to!) ? 0 : from)!              //if "from" is nil, begin = 0
-		let end = ((to == nil || to! > (self.count)) ? self.count : to)!    //if "to" is nil, end = self.count
+		let begin = ((from == nil || from! > to!) ? 0 : from)!              // if "from" is nil, begin = 0
+		let end = ((to == nil || to! > (self.count)) ? self.count : to)!    // if "to" is nil, end = self.count
 		
-		let i = end-begin   //difference between end and begin
+		let i = end - begin   // difference between end and begin
 		
 		var randomIndex = Int(arc4random_uniform(UInt32(i)))
-		randomIndex += begin    //move "begin" values to the right
+		randomIndex += begin    // move "begin" values to the right
 		
 		return self[randomIndex]
 		
@@ -77,9 +77,34 @@ extension UIColor {
 	}
 }
 
+extension UIImage {
+	convenience init?(from color: UIColor) {
+		let rect = CGRect(origin: .zero, size: CGSize.one)
+		
+		UIGraphicsBeginImageContext(rect.size)
+		color.setFill()
+		UIRectFill(rect)
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		guard let cgImage = image?.cgImage else { return nil }
+		self.init(cgImage: cgImage)
+	}
+}
+
 extension CGPoint {
+	static var one: CGPoint {
+		return CGPoint(x: 1, y: 1)
+	}
+	
 	static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
 		return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+	}
+}
+
+extension CGSize {
+	static var one: CGSize {
+		return CGSize(width: 1, height: 1)
 	}
 }
 
@@ -145,7 +170,7 @@ extension UIView {
 
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
 		tap.cancelsTouchesInView = false
 		view.addGestureRecognizer(tap)
 	}
@@ -157,8 +182,13 @@ extension UIViewController {
 }
 
 extension UINavigationBar {
-	func removeBackground() {
-		self.setBackgroundImage(UIImage(), for: .default)
+	func removeBackgroundImage() {
+		self.setBackgroundImage(UIImage(from: .clear), for: .default)
+	}
+	
+	func removeShadowAndBackgroundImage() {
+		self.removeBackgroundImage() // The background image cannot be the default for the shadow to be removed
+		
 		self.shadowImage = UIImage()
 	}
 	
@@ -218,15 +248,15 @@ extension Date {
 }
 
 extension TimeInterval {
-	func inHours() -> Double {
+	var inHours: Double {
 		return self / 1.hour
 	}
 	
-	func inDays() -> Double {
+	var inDays: Double {
 		return self / 1.day
 	}
 	
-	func inMinutes() -> Double {
+	var inMinutes: Double {
 		return self / 1.minute
 	}
 	

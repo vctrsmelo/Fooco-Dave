@@ -53,7 +53,7 @@ class EditProjectViewControllerFooco: UIViewController {
 //            return
 //        }
         
-        navigationBar.removeBackground()
+        navigationBar.removeShadowAndBackgroundImage()
         
     }
     
