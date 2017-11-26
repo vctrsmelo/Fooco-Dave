@@ -77,9 +77,34 @@ extension UIColor {
 	}
 }
 
+extension UIImage {
+	convenience init?(from color: UIColor) {
+		let rect = CGRect(origin: .zero, size: CGSize.one)
+		
+		UIGraphicsBeginImageContext(rect.size)
+		color.setFill()
+		UIRectFill(rect)
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		guard let cgImage = image?.cgImage else { return nil }
+		self.init(cgImage: cgImage)
+	}
+}
+
 extension CGPoint {
+	static var one: CGPoint {
+		return CGPoint(x: 1, y: 1)
+	}
+	
 	static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
 		return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+	}
+}
+
+extension CGSize {
+	static var one: CGSize {
+		return CGSize(width: 1, height: 1)
 	}
 }
 
@@ -145,7 +170,7 @@ extension UIView {
 
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
 		tap.cancelsTouchesInView = false
 		view.addGestureRecognizer(tap)
 	}
@@ -157,11 +182,12 @@ extension UIViewController {
 }
 
 extension UINavigationBar {
-	func removeBackground() {
-		self.setBackgroundImage(UIImage(), for: .default)
-		self.setBackgroundImage(UIImage(), for: .defaultPrompt)
-		self.setBackgroundImage(UIImage(), for: .compact)
-		self.setBackgroundImage(UIImage(), for: .compactPrompt)
+	func removeBackgroundImage() {
+		self.setBackgroundImage(UIImage(from: .clear), for: .default)
+	}
+	
+	func removeShadowAndBackgroundImage() {
+		self.removeBackgroundImage() // The background image cannot be the default for the shadow to be removed
 		
 		self.shadowImage = UIImage()
 	}

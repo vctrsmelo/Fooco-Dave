@@ -25,7 +25,7 @@ class ProjectListTableViewControllerFooco: UITableViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.navigationController?.navigationBar.backgroundColor = .white
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
 	}
 
     // MARK: - Table view data source
