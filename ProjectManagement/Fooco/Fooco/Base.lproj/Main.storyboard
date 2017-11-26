@@ -699,7 +699,7 @@
                                                 <segue destination="jTr-Fr-tti" kind="unwind" identifier="unwindFromEditToHome" unwindAction="unwindToHomeWith:" id="3RY-ov-HSX"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="JHc-0x-7b9"/>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="JHc-0x-7b9"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -745,11 +745,8 @@
                     <connections>
                         <outlet property="bottomBg1ImageView" destination="ZMz-UB-vmq" id="ftc-Lp-eHP"/>
                         <outlet property="bottomBg2ImageView" destination="p67-jv-5Fi" id="9hd-ON-Xtx"/>
-                        <outlet property="cancelBarButton" destination="l2P-Dx-YVq" id="tM5-gv-fzz"/>
-                        <outlet property="contextsCollectionView" destination="RyF-Nc-i4r" id="IFo-Rt-2US"/>
                         <outlet property="datePickerAlertView" destination="PN2-Ry-zF8" id="fo1-cm-ddR"/>
-                        <outlet property="doneBarButton" destination="JHc-0x-7b9" id="Ut6-Xl-Deb"/>
-                        <outlet property="navigationBar" destination="Lkk-ue-ljx" id="G6p-q0-3PC"/>
+                        <outlet property="navigationBar" destination="Lkk-ue-ljx" id="ISi-FO-5u6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URX-R8-jRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -761,7 +758,7 @@
         <scene sceneID="rrS-li-bBQ">
             <objects>
                 <tableViewController id="ms8-Ga-Gck" customClass="EditProjectTableViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="176-OD-bPA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="176-OD-bPA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -785,6 +782,10 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="ms8-Ga-Gck" id="uRY-YP-ayE"/>
+                                                        <outlet property="delegate" destination="ms8-Ga-Gck" id="glf-pW-WFa"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
