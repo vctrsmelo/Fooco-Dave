@@ -16,53 +16,47 @@ protocol EditProjectTableViewControllerDelegate: AnyObject {
 
 class EditProjectTableViewControllerFooco: UITableViewController {
     
-    @IBOutlet weak var contextsCollectionView: UICollectionView!
-    
-    weak var delegate: EditProjectTableViewControllerDelegate?
-    
-    private var _selectedContext: Context?
-    var selectedContext: Context? {
-        set {
-            _selectedContext = newValue
-            delegate?.contextUpdated(for: newValue)
-            
-        }
-        get {
-            return _selectedContext
-        }
-    }
+	weak var delegate: EditProjectTableViewControllerDelegate?
 	
-	var contextColor: UIColor {
-		if _selectedContext == nil {
-			return UIColor.colorOfAddContext()
-		} else {
-			return _selectedContext!.color
+	private var startingDate: Date!
+	private var deadlineDate: Date!
+	private var estimatedTime: TimeInterval!
+	
+	private var selectedContext: Context? {
+		willSet {
+			self.delegate?.contextUpdated(for: newValue)
 		}
 	}
 	
-    private var _importance: Int = 1
-    var importance: Int {
-        set {
-            _importance = newValue
-            updateImportanceColor(to: newValue)
-        }
-        get {
-            return _importance
-        }
-    }
-    
-    //name cell
+	private var contextColor: UIColor {
+		if let someSelectedContext = self.selectedContext {
+			return someSelectedContext.color
+		} else {
+			return UIColor.colorOfAddContext()
+		}
+	}
+	
+	private var importance: Int = 1 {
+		willSet {
+			self.updateImportanceColor(to: newValue)
+		}
+	}
+	
+	@IBOutlet private weak var contextsCollectionView: UICollectionView!
+	
+    // name cell
     @IBOutlet private weak var nameIconImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var nameTextField: UITextField!
-    private var nameTextFieldBorder: CALayer!
+	
+	private var nameTextFieldBorder: CALayer!
     
-    //estimated time cell
+    // estimated time cell
     @IBOutlet private weak var clockIconImageView: UIImageView!
     @IBOutlet private weak var estimatedTimeLabel: UILabel!
     @IBOutlet private weak var estimatedHoursButton: UIButton!
     
-    //calendar cell
+    // calendar cell
     @IBOutlet private weak var calendarIconImageView: UIImageView!
     @IBOutlet private weak var startsLabel: UILabel!
     @IBOutlet private weak var startingDateButton: UIButton!
@@ -71,16 +65,12 @@ class EditProjectTableViewControllerFooco: UITableViewController {
     
     @IBOutlet private weak var datesBarView: UIView!
     
-    //importance cell
+    // importance cell
     @IBOutlet private weak var importanceIconImageView: UIImageView!
     @IBOutlet private weak var importanceLabel: UILabel!
     @IBOutlet private weak var lowImportanceButton: UIButton!
     @IBOutlet private weak var mediumImportanceButton: UIButton!
     @IBOutlet private weak var highImportanceButton: UIButton!
-    
-    private var startingDate: Date!
-    private var deadlineDate: Date!
-    private var estimatedTime: TimeInterval!
     
     override func viewDidLoad() {
 		super.viewDidLoad()
@@ -88,16 +78,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
         convertIconsToTemplate()
         designElements()
         
-        //set delegate and data source
-        contextsCollectionView.delegate = self
-        contextsCollectionView.dataSource = self
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        //disable table scrolling
-        tableView.alwaysBounceVertical = false
-        
-        //design contextCollectionView layout
+        // design contextCollectionView layout
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = contextsCollectionView.frame.size
@@ -109,17 +90,13 @@ class EditProjectTableViewControllerFooco: UITableViewController {
         
         let nib = UINib(nibName: "EditProjectContextCell", bundle: nil)
         contextsCollectionView.register(nib, forCellWithReuseIdentifier: "contextCell")
-
-
     }
     
     private func convertIconsToTemplate() {
-        
         nameIconImageView.image = nameIconImageView.image!.withRenderingMode(.alwaysTemplate)
         clockIconImageView.image = clockIconImageView.image!.withRenderingMode(.alwaysTemplate)
         calendarIconImageView.image = calendarIconImageView.image!.withRenderingMode(.alwaysTemplate)
         importanceIconImageView.image = importanceIconImageView.image!.withRenderingMode(.alwaysTemplate)
-
     }
     
     private func designElements() {
@@ -141,7 +118,6 @@ class EditProjectTableViewControllerFooco: UITableViewController {
         lowImportanceButton.setTitleColor(UIColor.white, for: UIControlState.selected)
         
         updateColor()
-        
     }
     
     private func updateColor() {
@@ -178,7 +154,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
             mediumImportanceButton.setTitleColor(contextColor)
             highImportanceButton.backgroundColor = UIColor.clear
             highImportanceButton.setTitleColor(contextColor)
-            break
+
         case 2:
             lowImportanceButton.backgroundColor = UIColor.clear
             lowImportanceButton.setTitleColor(contextColor)
@@ -186,7 +162,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
             mediumImportanceButton.setTitleColor(UIColor.white)
             highImportanceButton.backgroundColor = UIColor.clear
             highImportanceButton.setTitleColor(contextColor)
-            break
+
         case 3:
             lowImportanceButton.backgroundColor = UIColor.clear
             lowImportanceButton.setTitleColor(contextColor)
@@ -194,7 +170,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
             mediumImportanceButton.setTitleColor(contextColor)
             highImportanceButton.backgroundColor = contextColor
             highImportanceButton.setTitleColor(UIColor.white)
-            break
+
         default:
             break
         }
@@ -202,7 +178,6 @@ class EditProjectTableViewControllerFooco: UITableViewController {
     
     @IBAction func estimatedHoursTouched(_ sender: UIButton) {
         delegate?.estimatedHoursTouched { alertView in
-            
             alertView.present(.estimatedTime)
             
             let contextName = (selectedContext != nil) ? selectedContext!.name : ""
@@ -243,7 +218,6 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 
     @IBAction func deadlineDateTouched(_ sender: UIButton) {
         delegate?.deadlineDateTouched { alertView in
-            
             alertView.present(.deadlineDate, initialDate: deadlineDate)
             
             let contextName = (selectedContext != nil) ? selectedContext!.name : ""
@@ -260,10 +234,8 @@ class EditProjectTableViewControllerFooco: UITableViewController {
                 }
             }
             
-            
             alertView.overTitleLabel.text = "\(contextName) \(projectName)"
             alertView.titleLabel.text = "Ending Date"
-            
         }
     }
     
@@ -288,7 +260,6 @@ class EditProjectTableViewControllerFooco: UITableViewController {
         mediumImportanceButton.isSelected = false
         highImportanceButton.isSelected = true
     }
-    
 }
 
 extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -298,7 +269,6 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "contextCell", for: indexPath) as! EditProjectContextCell
         
         let cellFrame = contextsCollectionView.convert(cell.frame, to: contextsCollectionView.superview)
@@ -315,18 +285,14 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
             if selectedContext == nil {
                 updateSelectedContext(with: cell.context)
             }
-
         }
         
         return cell
-        
     }
     
     private func updateSelectedContext(with context: Context?) {
-        
       selectedContext = context
       updateColor()
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -334,19 +300,17 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         if scrollView == contextsCollectionView {
             for cell in contextsCollectionView.visibleCells {
                 
                 guard let contextCell = cell as? EditProjectContextCell else {
                     return
                 }
+				
                 let cellFrame = contextsCollectionView.convert(contextCell.frame, to: contextsCollectionView.superview)
                 contextCell.updateSize(cellFrame: cellFrame, container: contextsCollectionView.frame)
-                
             }
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -355,24 +319,17 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
         let rightInset = leftInset
 
         return UIEdgeInsets(top: 40, left: leftInset, bottom: 0, right: rightInset)
-    
     }
-    
 }
 
 extension EditProjectTableViewControllerFooco {
-    
     override func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         scrollView.setContentOffset(scrollView.contentOffset, animated: true)
         focusContextCell()
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        focusContextCell()
-    }
-    
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-
+		focusContextCell()
     }
     
     private func focusContextCell() {
@@ -401,7 +358,6 @@ extension EditProjectTableViewControllerFooco {
         }
         updateSelectedContext(with: focusedCell.context)
         contextsCollectionView.scrollToItem(at: contextsCollectionView.indexPath(for: focusedCell)!, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-        
     }
 
 }
@@ -423,8 +379,7 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
                     newUnderTitleString = "\(daysBetween.day!) days until deadline"
                 }
             }
-            
-            break
+			
         case .deadlineDate:
             
             if startingDate != nil {
@@ -434,8 +389,7 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
                     newUnderTitleString = "\(daysBetween.day!) days since starting date"
                 }
             }
-            
-            break
+			
         default:
             break
         }
@@ -460,23 +414,19 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
     
     func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode) {
         sender.isHidden = true
-    
-        
-        //necessary to keep the dates as date (makes it easier to display the value later into alert view, if needed)
+		
+        // necessary to keep the dates as date (makes it easier to display the value later into alert view, if needed)
         switch mode {
             case .startingDate:
                 startingDate = sender.date
                 startingDateButton.setTitle(DateFormatter.localizedString(from: sender.date, dateStyle: .short, timeStyle: .none))
-                
-                break
+			
             case .deadlineDate:
                 deadlineDate = sender.date
                 deadlineDateButton.setTitle(DateFormatter.localizedString(from: sender.date, dateStyle: .short, timeStyle: .none))
-                break
+
             default:
                 break
         }
-        
     }
-    
 }
