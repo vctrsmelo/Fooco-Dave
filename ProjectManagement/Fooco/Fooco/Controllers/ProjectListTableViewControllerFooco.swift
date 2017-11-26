@@ -14,12 +14,19 @@ class ProjectListTableViewControllerFooco: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		self.projects = Mocado.projects
+		
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+		self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.navigationController?.navigationBar.backgroundColor = .white
+	}
 
     // MARK: - Table view data source
 
@@ -27,15 +34,16 @@ class ProjectListTableViewControllerFooco: UITableViewController {
         return self.projects.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: ProjectListTableViewCell.identifier, for: indexPath)
 
-        // Configure the cell...
+		if let someCell = cell as? ProjectListTableViewCell {
+			someCell.project = projects[indexPath.row]
+			cell = someCell
+		}
 
         return cell
     }
-    */
 
     /*
     // Override to support editing the table view.

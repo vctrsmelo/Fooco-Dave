@@ -12,13 +12,13 @@ import UIKit
 extension Array {
 	func random(from: Int? = nil, to: Int? = nil) -> Element {
 		
-		let begin = ((from == nil || from! > to!) ? 0 : from)!              //if "from" is nil, begin = 0
-		let end = ((to == nil || to! > (self.count)) ? self.count : to)!    //if "to" is nil, end = self.count
+		let begin = ((from == nil || from! > to!) ? 0 : from)!              // if "from" is nil, begin = 0
+		let end = ((to == nil || to! > (self.count)) ? self.count : to)!    // if "to" is nil, end = self.count
 		
-		let i = end-begin   //difference between end and begin
+		let i = end - begin   // difference between end and begin
 		
 		var randomIndex = Int(arc4random_uniform(UInt32(i)))
-		randomIndex += begin    //move "begin" values to the right
+		randomIndex += begin    // move "begin" values to the right
 		
 		return self[randomIndex]
 		
@@ -159,6 +159,10 @@ extension UIViewController {
 extension UINavigationBar {
 	func removeBackground() {
 		self.setBackgroundImage(UIImage(), for: .default)
+		self.setBackgroundImage(UIImage(), for: .defaultPrompt)
+		self.setBackgroundImage(UIImage(), for: .compact)
+		self.setBackgroundImage(UIImage(), for: .compactPrompt)
+		
 		self.shadowImage = UIImage()
 	}
 	

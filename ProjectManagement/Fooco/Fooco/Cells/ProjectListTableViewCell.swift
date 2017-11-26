@@ -9,13 +9,13 @@ import UIKit
 
 class ProjectListTableViewCell: UITableViewCell {
 
+	static let identifier = "projectCell"
+	
 	var project: Project? {
 		didSet {
 			self.fillProjectData()
 		}
 	}
-	
-	let identifier = "projectCell"
 	
 	@IBOutlet private weak var timeLeft: UILabel!
 	@IBOutlet private weak var projectName: UILabel!
