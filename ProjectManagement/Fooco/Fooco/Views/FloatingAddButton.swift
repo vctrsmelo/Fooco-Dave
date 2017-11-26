@@ -35,6 +35,11 @@ class FloatingAddButton: UIButton {
 		self.adjustsImageWhenHighlighted = true
 		
 		self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		
+		self.shadowColor = .black
+		self.shadowOffset = CGSize(width: 1, height: 1)
+		self.shadowRadius = 4
+		self.shadowOpacity = 0.5
 	}
 	
 	convenience init(to controller: UIViewController, inside parent: UIView, performing action: Selector) {

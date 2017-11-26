@@ -86,7 +86,52 @@ extension CGPoint {
 // MARK: - UIKit
 
 extension UIView {
+	// MARK: Shadows
+	@IBInspectable var shadowColor: UIColor? {
+		get {
+			if let currentShadowColor = self.layer.shadowColor {
+				return UIColor(cgColor: currentShadowColor)
+			} else {
+				return nil
+			}
+		}
+		set {
+			if let newColor = newValue {
+				self.layer.shadowColor = newColor.cgColor
+			} else {
+				self.layer.shadowColor = nil
+			}
+		}
+	}
 	
+	@IBInspectable var shadowOffset: CGSize {
+		get {
+			return self.layer.shadowOffset
+		}
+		set {
+			self.layer.shadowOffset = newValue
+		}
+	}
+	
+	@IBInspectable var shadowRadius: CGFloat {
+		get {
+			return self.layer.shadowRadius
+		}
+		set {
+			self.layer.shadowRadius = newValue
+		}
+	}
+	
+	@IBInspectable var shadowOpacity: Float {
+		get {
+			return self.layer.shadowOpacity
+		}
+		set {
+			self.layer.shadowOpacity = newValue
+		}
+	}
+	
+	// MARK: Corners
 	@IBInspectable var cornerRadius: CGFloat {
 		get {
 			return self.layer.cornerRadius
