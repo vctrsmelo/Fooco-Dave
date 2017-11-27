@@ -164,43 +164,36 @@ class ContextBlock {
         //if there is an event after the ending of act1 and before the starting date of act2, the deadline of act1 will be the starting date of this event.
         
         activities.sort()
-       
-        for i in 0 ..< activities.count-1 {
-            
-            if activities[i] == activities.last {
-                
-                for event in events {
-                    //if the event is occupying the ending of this timeBlock
-                    if event.timeBlock.contains(date: self.timeBlock.endsAt) {
-                        
-                        activities[i].deadline = event.timeBlock.startsAt
-                        break
-                        
-                    }
-                }
-                
-                activities[i].deadline = self.timeBlock.endsAt
-                break
-                
-            }
-            
-            activities[i].deadline = activities[i+1].timeBlock.startsAt
-            
-            for event in events {
-                
-                //if the event starts before the next activity
-                let activityTbUntilDeadline = TimeBlock(startsAt: activities[i].timeBlock.startsAt, endsAt: activities[i].deadline)
-                
-                if activityTbUntilDeadline.contains(date: event.timeBlock.startsAt)  {
-                    
-                    activities[i].deadline = event.timeBlock.startsAt
-                    
-                }
-            }
-        
-            
-        }
-        
+		
+		if !activities.isEmpty {
+			for i in 0 ..< activities.count - 1 {
+				
+				if activities[i] == activities.last {
+					
+					for event in events {
+						//if the event is occupying the ending of this timeBlock
+						if event.timeBlock.contains(date: self.timeBlock.endsAt) {
+							activities[i].deadline = event.timeBlock.startsAt
+							break
+						}
+					}
+					
+					activities[i].deadline = self.timeBlock.endsAt
+					break
+				}
+				
+				activities[i].deadline = activities[i + 1].timeBlock.startsAt
+				
+				for event in events {
+					//if the event starts before the next activity
+					let activityTbUntilDeadline = TimeBlock(startsAt: activities[i].timeBlock.startsAt, endsAt: activities[i].deadline)
+					
+					if activityTbUntilDeadline.contains(date: event.timeBlock.startsAt) {
+						activities[i].deadline = event.timeBlock.startsAt
+					}
+				}
+			}
+		}
     }
     
     /**

@@ -112,6 +112,15 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		self.updateProjectData()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		if let someContext = self.selectedContext, let index = User.sharedInstance.contexts.index(of: someContext) {
+			let indexPath = IndexPath(row: index, section: 0)
+			self.contextsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+		}
+	}
+	
 	private func convertIconsToTemplate() {
 		nameIconImageView.image = nameIconImageView.image!.withRenderingMode(.alwaysTemplate)
 		clockIconImageView.image = clockIconImageView.image!.withRenderingMode(.alwaysTemplate)
@@ -211,11 +220,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		self.importance = self.project?.importance ?? 1
 		self.estimatedTime = self.project?.totalTimeEstimated ?? 0
 		
-		if let someContext = self.selectedContext, let index = User.sharedInstance.contexts.index(of: someContext) {
-			let indexPath = IndexPath(row: index, section: 0)
-			self.contextsCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [.left, .centeredVertically])
-			self.updateColor()
-		}
+		self.updateColor()
 	}
 	
 	func saveProject() -> Project? {
@@ -396,13 +401,22 @@ extension EditProjectTableViewControllerFooco {
 		focusContextCell()
     }
     
-    private func focusContextCell() {
+	private func focusContextCell(chosenCell: EditProjectContextCell? = nil) {
         
         let screenCenterX: CGFloat = contextsCollectionView.frame.origin.x + contextsCollectionView.frame.size.width / 2.0
-        
-        guard var focusedCell: EditProjectContextCell = contextsCollectionView.visibleCells.first as? EditProjectContextCell else {
-            return
-        }
+		
+		var focusedCell: EditProjectContextCell
+		
+		if let aCell = chosenCell {
+			focusedCell = aCell
+			
+		} else if let anotherCell = contextsCollectionView.visibleCells.first as? EditProjectContextCell {
+			focusedCell = anotherCell
+			
+		} else {
+			return
+		}
+		
         
         let focusedCellAttributes = contextsCollectionView.layoutAttributesForItem(at: contextsCollectionView.indexPath(for: focusedCell)!)
         let focusedCellFrame = contextsCollectionView.convert(focusedCellAttributes!.frame, to: contextsCollectionView.superview!)
