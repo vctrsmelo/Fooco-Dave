@@ -205,7 +205,19 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 			let context = self.selectedContext,
 			let estimate = self.estimatedTime {
 			
-			return Project(named: name, startsAt: begin, endsAt: end, withContext: context, importance: self.importance, totalTimeEstimated: estimate)
+			if let someProject = self.project {
+				someProject.name = name
+				someProject.startingDate = begin
+				someProject.endingDate = end
+				someProject.context = context
+				someProject.importance = self.importance
+				someProject.totalTimeEstimated = estimate
+				
+				return someProject
+				
+			} else {
+				return Project(named: name, startsAt: begin, endsAt: end, withContext: context, importance: self.importance, totalTimeEstimated: estimate)
+			}
 			
 		} else {
 			return nil

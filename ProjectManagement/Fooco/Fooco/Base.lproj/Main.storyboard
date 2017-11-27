@@ -696,7 +696,7 @@
                                     <navigationItem title="Add Project for" id="McK-Xb-79d">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="l2P-Dx-YVq">
                                             <connections>
-                                                <segue destination="jTr-Fr-tti" kind="unwind" identifier="unwindFromEditToHome" unwindAction="unwindToHomeWith:" id="3RY-ov-HSX"/>
+                                                <segue destination="jTr-Fr-tti" kind="unwind" identifier="" unwindAction="unwindToHomeWith:" id="3RY-ov-HSX"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="JHc-0x-7b9">
@@ -751,6 +751,7 @@
                         <outlet property="bottomBg2ImageView" destination="p67-jv-5Fi" id="9hd-ON-Xtx"/>
                         <outlet property="datePickerAlertView" destination="PN2-Ry-zF8" id="fo1-cm-ddR"/>
                         <outlet property="navigationBar" destination="Lkk-ue-ljx" id="ISi-FO-5u6"/>
+                        <segue destination="jTr-Fr-tti" kind="unwind" identifier="unwindFromEditToHomeSaving" unwindAction="unwindToHomeWith:" id="8yP-i3-9yI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URX-R8-jRA" userLabel="First Responder" sceneMemberID="firstResponder"/>

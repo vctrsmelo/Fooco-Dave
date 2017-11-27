@@ -17,6 +17,8 @@ class EditProjectViewControllerFooco: UIViewController {
 	
 	weak var tableViewController: EditProjectTableViewControllerFooco?
 	
+	private let unwindFromEditToHomeSaving = "unwindFromEditToHomeSaving"
+	
     @IBOutlet private weak var navigationBar: UINavigationBar!
 	
     @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
@@ -52,9 +54,18 @@ class EditProjectViewControllerFooco: UIViewController {
 	
 	@IBAction func saveProject(_ sender: UIBarButtonItem) {
 		if let savedProject = self.tableViewController?.saveProject() {
-			self.project = savedProject
-			print("saved")
-			print(savedProject)
+			if self.project === savedProject { // Is editing Project
+				let index = User.sharedInstance.projects.index(of: savedProject) // TODO: Give id to projects and make this better
+				User.sharedInstance.projects[index!] = savedProject
+				
+			} else { // Is creating Project
+				User.sharedInstance.add(projects: [savedProject])
+			}
+			
+			User.sharedInstance.isCurrentScheduleUpdated = false
+			
+			self.performSegue(withIdentifier: self.unwindFromEditToHomeSaving, sender: self)
+			
 		} else {
 			print("Error saving") // TODO: Tell the user that there is missing information etc...
 		}
