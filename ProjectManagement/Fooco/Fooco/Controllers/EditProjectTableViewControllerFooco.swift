@@ -210,6 +210,12 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		self.selectedContext = self.project?.context
 		self.importance = self.project?.importance ?? 1
 		self.estimatedTime = self.project?.totalTimeEstimated ?? 0
+		
+		if let someContext = self.selectedContext, let index = User.sharedInstance.contexts.index(of: someContext) {
+			let indexPath = IndexPath(row: index, section: 0)
+			self.contextsCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [.left, .centeredVertically])
+			self.updateColor()
+		}
 	}
 	
 	func saveProject() -> Project? {
@@ -468,7 +474,6 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
         let hours = sender.selectedRow(inComponent: 1)
 		
         estimatedTime = TimeInterval(days.days + hours.hours)
-//        estimatedTime = estimatedTime! + TimeInterval(hours * 60 * 60)
     }
     
     func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode) {

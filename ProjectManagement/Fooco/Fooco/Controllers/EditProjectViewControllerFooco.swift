@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditProjectUnwindOption: AnyObject {
-	var unwindFromProjectSaving: String { get }
+	var unwindFromProject: String { get }
 }
 
 class EditProjectViewControllerFooco: UIViewController {
@@ -19,7 +19,7 @@ class EditProjectViewControllerFooco: UIViewController {
 	
 	private weak var tableViewController: EditProjectTableViewControllerFooco?
 	
-    @IBOutlet private weak var navigationBar: UINavigationBar!
+//    @IBOutlet private weak var navigationBar: UINavigationBar!
 	
     @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
 	
@@ -49,10 +49,13 @@ class EditProjectViewControllerFooco: UIViewController {
      Format navigation bar design
     */
     private func formatNavigationBar() {
-        navigationBar.removeShadowAndBackgroundImage()
+        self.navigationController?.navigationBar.removeShadowAndBackgroundImage()
     }
+	@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+		self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
+	}
 	
-	@IBAction func saveProject(_ sender: UIBarButtonItem) {
+	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
 		if let savedProject = self.tableViewController?.saveProject() {
 			if self.project === savedProject { // Is editing Project
 				let index = User.sharedInstance.projects.index(of: savedProject) // TODO: Give id to projects and make this better
@@ -102,7 +105,7 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     
     func contextUpdated(for context: Context?) {
         let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
-		self.navigationBar.changeFontAndTintColor(to: color)
+		self.navigationController?.navigationBar.changeFontAndTintColor(to: color)
     }
     
 }

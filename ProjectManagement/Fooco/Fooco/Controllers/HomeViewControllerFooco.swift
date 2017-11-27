@@ -11,7 +11,7 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 	
 	// MARK: - Properties
 	
-	let unwindFromProjectSaving = "unwindFromEditToHomeSaving"
+	let unwindFromProject = "unwindFromEditToHome"
 
 	private var currentActivity: Activity? {
 		didSet {
@@ -104,14 +104,16 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
     // MARK: - Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == self.segueFromHomeToEdit, let destinationVC = segue.destination as? EditProjectViewControllerFooco {
-			destinationVC.unwindSegueIdentifier = self.unwindFromProjectSaving
+		if segue.identifier == self.segueFromHomeToEdit,
+			let navigationVC = segue.destination as? UINavigationController,
+			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
+			destinationVC.unwindSegueIdentifier = self.unwindFromProject
 			destinationVC.project = self.projectToEdit // Is set to nil if it's supposed to add
 		}
 	}
 
 	@IBAction func unwindToHome(with unwindSegue: UIStoryboardSegue) {
-		if unwindSegue.identifier == self.unwindFromProjectSaving {
+		if unwindSegue.identifier == self.unwindFromProject {
 			self.dataUpdate()
 		}
 	}
