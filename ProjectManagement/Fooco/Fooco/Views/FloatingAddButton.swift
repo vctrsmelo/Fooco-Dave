@@ -11,7 +11,7 @@ class FloatingAddButton: UIButton {
 	
 	private let defaultSize = 50
 	
-	init() {
+	private init() {
 		super.init(frame: CGRect(x: 0, y: 0, width: self.defaultSize, height: self.defaultSize))
 		
 		self.initializer()

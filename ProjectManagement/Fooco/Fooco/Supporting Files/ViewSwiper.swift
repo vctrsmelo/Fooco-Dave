@@ -111,6 +111,12 @@ class ViewSwiper: NSObject {
 		self.addGestureRecognizers()
 	}
 	
+	// MARK: - Public Methods
+	
+	func viewsAreHidden(_ value: Bool) {
+		self.centerView.isHidden = value
+	}
+	
 	// MARK: - Gestures
 	
 	private func tapGestureRecognizer() -> UITapGestureRecognizer {

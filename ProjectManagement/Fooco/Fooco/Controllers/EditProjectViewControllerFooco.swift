@@ -7,22 +7,25 @@
 
 import UIKit
 
+protocol EditProjectUnwindOption: AnyObject {
+	var unwindFromProject: String { get }
+}
+
 class EditProjectViewControllerFooco: UIViewController {
 	
-    @IBOutlet private weak var navigationBar: UINavigationBar!
-    @IBOutlet private weak var cancelBarButton: UIBarButtonItem!
-    @IBOutlet private weak var doneBarButton: UIBarButtonItem!
-    
+	var project: Project?
+	
+	var unwindSegueIdentifier: String = ""
+	
+	private weak var tableViewController: EditProjectTableViewControllerFooco?
+	
+//    @IBOutlet private weak var navigationBar: UINavigationBar!
+	
     @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
-    
-    weak var tableView: UITableView!
-    weak var contextsCollectionView: UICollectionView!
-    
+	
     @IBOutlet private weak var bottomBg1ImageView: UIImageView!
     @IBOutlet private weak var bottomBg2ImageView: UIImageView!
-    
-    var project: Project?
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,42 +38,56 @@ class EditProjectViewControllerFooco: UIViewController {
         bottomBg1ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         bottomBg2ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         
-        //delegates and data sources
+        // delegates and data sources
         formatNavigationBar()
         
-        //hide keyboard when view is tapped
+        // hide keyboard when view is tapped
         hideKeyboardWhenTappedAround()
-        
     }
     
     /**
      Format navigation bar design
     */
     private func formatNavigationBar() {
-        
-        //TODO: edit here to get the current context selected color
-//        guard let mainColor = UIColor.contextColors().first else {
-//            return
-//        }
-        
-        navigationBar.removeShadowAndBackgroundImage()
-        
+        self.navigationController?.navigationBar.removeShadowAndBackgroundImage()
     }
-    
+	@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+		self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
+	}
+	
+	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
+		if let savedProject = self.tableViewController?.saveProject() {
+			if self.project === savedProject { // Is editing Project
+				let index = User.sharedInstance.projects.index(of: savedProject) // TODO: Give id to projects and make this better
+				User.sharedInstance.projects[index!] = savedProject
+				
+			} else { // Is creating Project
+				User.sharedInstance.add(projects: [savedProject])
+			}
+			
+			User.sharedInstance.isCurrentScheduleUpdated = false
+			
+			self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
+			
+		} else {
+			print("Error saving") // TODO: Tell the user that there is missing information etc...
+		}
+	}
+	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "projectTableViewSegue" {
             let editProjTableViewController = segue.destination as! EditProjectTableViewControllerFooco
-            
-            contextsCollectionView = editProjTableViewController.contextsCollectionView
-            tableView = editProjTableViewController.tableView
+			
+			self.tableViewController = editProjTableViewController
             editProjTableViewController.delegate = self
+			editProjTableViewController.project = self.project
             datePickerAlertView.delegate = editProjTableViewController
         }
     }
-    
-    
 
 }
+
+// MARK: - EditProjectTableViewControllerDelegate
 
 extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
    
@@ -88,7 +105,7 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     
     func contextUpdated(for context: Context?) {
         let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
-		self.navigationBar.changeFontAndTintColor(to: color)
+		self.navigationController?.navigationBar.changeFontAndTintColor(to: color)
     }
     
 }

@@ -346,8 +346,8 @@
 		FCE536B41FB4C32D0010BA63 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
 				E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */,
+				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
 				BEF900921FB63974007FB677 /* EditProjectContextCell.xib */,
 			);
 			path = Cells;

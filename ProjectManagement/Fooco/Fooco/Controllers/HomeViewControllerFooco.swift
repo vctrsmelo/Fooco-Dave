@@ -7,62 +7,66 @@
 
 import UIKit
 
-class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
+class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 	
 	// MARK: - Properties
+	
+	let unwindFromProject = "unwindFromEditToHome"
 
+	private let segueToEdit = "fromHomeToEdit"
+	
+	private var currentActivity: Activity? {
+		didSet {
+			self.activityCard.data = self.currentActivity
+		}
+	}
+	
 	private var projectToEdit: Project?
-	private var currentActivities = [Activity]()
 	
 	private var addButton: FloatingAddButton!
-	
-	private let segueFromHomeToEdit = "fromHomeToEdit"
 	
 	// MARK: Outlets
 	@IBOutlet private weak var viewSwiper: ViewSwiper!
 	@IBOutlet private weak var topLabel: UILabel!
 	@IBOutlet private weak var activityCard: ActivityCardView!
 	
-	private func dataPopulation() {
-		let context = Context(named: "TestContext", minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
-		let project = Project(named: "TestProject", startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 10.days), withContext: context, totalTimeEstimated: 40.hours)
-		
-		let timeBlock = TimeBlock(startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 3.hours))
-		let activity = Activity(withProject: project, at: timeBlock)
-		
-		self.currentActivities.append(activity)
-	}
-	
 	// MARK: - View Handling
 
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.dataPopulation()
-		
-		self.activityCard.data = self.currentActivities.first
-		
 		self.viewSwiper.load()
 		self.viewSwiper.delegate = self
 		
 		self.addButton = FloatingAddButton(to: self, inside: self.view, performing: #selector(addButtonTapped))
-		
-		self.navigationItem.title = self.chooseGreeting(for: Date())
-		
-		self.topLabel.text = self.chooseTopLabelText()		
     }
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		self.dataUpdate()
+		
+		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
 		self.navigationController?.navigationBar.changeFontAndTintColor(to: .white)
 		self.navigationController?.navigationBar.barStyle = .black
 	}
 	
+	private func dataUpdate() {
+		User.sharedInstance.updateCurrentScheduleUntil(date: Date().addingTimeInterval(2.days))
+		
+		self.currentActivity = User.sharedInstance.getNextActivity()
+		
+		self.viewSwiper.viewsAreHidden(self.currentActivity == nil)
+		
+		self.topLabel.text = self.chooseTopLabelText()
+	}
+	
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
 		
-		if self.currentActivities.isEmpty {
-			topLabelText = NSLocalizedString("You Have Finished for Now", comment: "Home screen top label for empty activities queue")
+		if self.currentActivity == nil {
+			topLabelText = NSLocalizedString("You Are Finished for Now", comment: "Home screen top label for empty activities queue")
 		} else {
 			topLabelText = NSLocalizedString("Your Next Activity", comment: "Home screen default top label")
 		}
@@ -94,13 +98,34 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	@objc
 	private func addButtonTapped(sender: UIButton) {
 		self.projectToEdit = nil
-		self.performSegue(withIdentifier: self.segueFromHomeToEdit, sender: self)
+		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
 	}
 	
-	// MARK: - ViewSwiperDelegate
+    // MARK: - Navigation
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == self.segueToEdit,
+			let navigationVC = segue.destination as? UINavigationController,
+			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
+			destinationVC.unwindSegueIdentifier = self.unwindFromProject
+			destinationVC.project = self.projectToEdit // Is set to nil if it's supposed to add
+		}
+	}
+
+	@IBAction func unwindToHome(with unwindSegue: UIStoryboardSegue) {
+		if unwindSegue.identifier == self.unwindFromProject {
+			self.dataUpdate()
+		}
+	}
+
+}
+
+// MARK: - ViewSwiperDelegate
+
+extension HomeViewControllerFooco: ViewSwiperDelegate {
 	func doneExecuted() {
-		print(#function)
+		User.sharedInstance.getNextActivity()?.done = true
+		self.dataUpdate()
 	}
 	
 	func focusExecuted() {
@@ -114,17 +139,4 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	func skipExecuted() {
 		print(#function)
 	}
-	
-    // MARK: - Navigation
-	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == self.segueFromHomeToEdit, let destinationVC = segue.destination as? EditProjectViewControllerFooco {
-			destinationVC.project = self.projectToEdit // Is set to nil if it's supposed to add
-		}
-	}
-
-	@IBAction func unwindToHome(with unwindSegue: UIStoryboardSegue) {
-		
-	}
-
 }

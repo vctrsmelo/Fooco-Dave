@@ -27,7 +27,7 @@ class DatePickerAlertView: UIView {
 	var currentMode: AlertPickerViewMode!
 	
     private var _view: UIView!
-	private var originalStatusColor: UIColor?
+	private var originalNavigationColor: UIColor?
 	
     @IBOutlet private weak var viewContainer: DatePickerAlertView!
 	
@@ -46,7 +46,7 @@ class DatePickerAlertView: UIView {
 	
     @IBOutlet private weak var confirmButton: UIButton!
     
-    func present(_ mode: AlertPickerViewMode, initialDate: Date? = nil, estimatedTime: TimeInterval? = nil) {
+	func present(_ mode: AlertPickerViewMode, initialDate: Date? = nil, limitDate: Date? = nil, estimatedTime: TimeInterval? = nil) {
         
         currentMode = mode
         
@@ -68,16 +68,20 @@ class DatePickerAlertView: UIView {
         } else {
             hoursPicker.isHidden = true
             datePicker.isHidden = false
-            
+			
+			if self.currentMode == .deadlineDate {
+				self.datePicker.minimumDate = limitDate
+				self.datePicker.maximumDate = nil
+			} else if self.currentMode == .startingDate {
+				self.datePicker.maximumDate = limitDate
+				self.datePicker.minimumDate = nil
+			}
+			
             if initialDate != nil {
                 datePicker.setDate(initialDate!, animated: false)
             }
             
         }
-		
-		let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-		self.originalStatusColor = statusBar.backgroundColor
-		statusBar.backgroundColor = self.overlayView.backgroundColor
 		
         updateIcon()
         self.isHidden = false
@@ -115,8 +119,6 @@ class DatePickerAlertView: UIView {
 	
 	// TODO: hide view if touch outside it
     @IBAction func confirmTouched(_ sender: UIButton) {
-		let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-		statusBar.backgroundColor = self.originalStatusColor
 		
 		self.isHidden = true
         

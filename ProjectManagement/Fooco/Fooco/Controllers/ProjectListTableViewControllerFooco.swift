@@ -7,22 +7,33 @@
 
 import UIKit
 
-class ProjectListTableViewControllerFooco: UITableViewController {
+class ProjectListTableViewControllerFooco: UITableViewController, EditProjectUnwindOption {
+	
+	let unwindFromProject = "unwindFromEditToProjectList"
+	
+	private let segueToEdit = "fromProjectListToEdit"
 
 	var projects = [Project]()
+	
+	private var selectedProject: Project?
+	
+	private var addButton: FloatingAddButton!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		self.projects = Mocado.projects
-
 		self.navigationItem.rightBarButtonItem = self.editButtonItem
 		
 		self.tableView.tableFooterView = UIView() // Makes empty cells not appear
+		
+		self.addButton = FloatingAddButton(to: self, inside: self.view, performing: #selector(addButtonTapped)) // TODO: Not working, probably because it's a UITableViewController
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		self.projects = User.sharedInstance.projects
+		self.tableView.reloadData()
 		
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
 	}
@@ -46,19 +57,38 @@ class ProjectListTableViewControllerFooco: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-			self.projects.remove(at: indexPath.row)
+			User.sharedInstance.projects.remove(at: indexPath.row)
+			self.projects = User.sharedInstance.projects
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		self.selectedProject = self.projects[indexPath.row]
+		
+		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
+	}
+	
+	// MARK: - Add Button
+	
+	@objc
+	private func addButtonTapped(sender: UIButton) {
+		self.selectedProject = nil
+		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
+	}
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+		if segue.identifier == self.segueToEdit,
+			let navigationVC = segue.destination as? UINavigationController,
+			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
+			destinationVC.unwindSegueIdentifier = self.unwindFromProject
+			destinationVC.project = self.selectedProject
+		}
     }
-    */
+	
+	@IBAction func unwindToProjectList(with unwindSegue: UIStoryboardSegue) {
+	}
 
 }
