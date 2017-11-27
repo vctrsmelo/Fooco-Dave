@@ -17,12 +17,16 @@ class ProjectListTableViewControllerFooco: UITableViewController, EditProjectUnw
 	
 	private var selectedProject: Project?
 	
+	private var addButton: FloatingAddButton!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		self.navigationItem.rightBarButtonItem = self.editButtonItem
 		
 		self.tableView.tableFooterView = UIView() // Makes empty cells not appear
+		
+		self.addButton = FloatingAddButton(to: self, inside: self.view, performing: #selector(addButtonTapped)) // TODO: Not working, probably because it's a UITableViewController
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +66,14 @@ class ProjectListTableViewControllerFooco: UITableViewController, EditProjectUnw
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		self.selectedProject = self.projects[indexPath.row]
 		
+		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
+	}
+	
+	// MARK: - Add Button
+	
+	@objc
+	private func addButtonTapped(sender: UIButton) {
+		self.selectedProject = nil
 		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
 	}
 

@@ -13,6 +13,8 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 	
 	let unwindFromProject = "unwindFromEditToHome"
 
+	private let segueToEdit = "fromHomeToEdit"
+	
 	private var currentActivity: Activity? {
 		didSet {
 			self.activityCard.data = self.currentActivity
@@ -22,8 +24,6 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 	private var projectToEdit: Project?
 	
 	private var addButton: FloatingAddButton!
-	
-	private let segueFromHomeToEdit = "fromHomeToEdit"
 	
 	// MARK: Outlets
 	@IBOutlet private weak var viewSwiper: ViewSwiper!
@@ -98,13 +98,13 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 	@objc
 	private func addButtonTapped(sender: UIButton) {
 		self.projectToEdit = nil
-		self.performSegue(withIdentifier: self.segueFromHomeToEdit, sender: self)
+		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
 	}
 	
     // MARK: - Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == self.segueFromHomeToEdit,
+		if segue.identifier == self.segueToEdit,
 			let navigationVC = segue.destination as? UINavigationController,
 			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
 			destinationVC.unwindSegueIdentifier = self.unwindFromProject
