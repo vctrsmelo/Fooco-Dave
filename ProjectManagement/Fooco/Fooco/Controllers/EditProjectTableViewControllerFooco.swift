@@ -16,21 +16,33 @@ protocol EditProjectTableViewControllerDelegate: AnyObject {
 
 class EditProjectTableViewControllerFooco: UITableViewController {
 	
-	var project: Project? {
-		didSet {
-			self.updateProjectData()
-		}
-	}
+	var project: Project?
 	
 	weak var delegate: EditProjectTableViewControllerDelegate?
 	
-	private var startingDate: Date!
-	private var deadlineDate: Date!
-	private var estimatedTime: TimeInterval!
+	private var startingDate: Date! {
+		didSet {
+			self.startingDateButton.setTitle(DateFormatter.localizedString(from: self.startingDate, dateStyle: .short, timeStyle: .none))
+		}
+	}
+	private var deadlineDate: Date! {
+		didSet {
+			self.deadlineDateButton.setTitle(DateFormatter.localizedString(from: self.deadlineDate, dateStyle: .short, timeStyle: .none))
+		}
+	}
+	private var estimatedTime: TimeInterval! {
+		didSet {
+			let days = Int(self.estimatedTime) / Int(1.day)
+			let hours = Int(self.estimatedTime.truncatingRemainder(dividingBy: 1.day) / 1.hour)
+			
+			let localizedTitle = String(format: NSLocalizedString("%d days and %d hours", comment: "Estimated time phrase"), days, hours)
+			self.estimatedHoursButton.setTitle(localizedTitle)
+		}
+	}
 	
 	private var selectedContext: Context? {
-		willSet {
-			self.delegate?.contextUpdated(for: newValue)
+		didSet {
+			self.delegate?.contextUpdated(for: self.selectedContext)
 		}
 	}
 	
@@ -96,6 +108,8 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		
 		let nib = UINib(nibName: "EditProjectContextCell", bundle: nil)
 		contextsCollectionView.register(nib, forCellWithReuseIdentifier: "contextCell")
+		
+		self.updateProjectData()
 	}
 	
 	private func convertIconsToTemplate() {
@@ -129,6 +143,8 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	private func updateColor() {
 		nameIconImageView.tintColor = contextColor
 		nameLabel.textColor = contextColor
+		nameTextField.textColor = contextColor
+		nameTextField.text = nameTextField.text // It's stupid but updates the color properly
 		nameTextFieldBorder.borderColor = contextColor.cgColor
 		
 		clockIconImageView.tintColor = contextColor
@@ -188,22 +204,16 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 	
 	private func updateProjectData() {
-		if let someProject = self.project {
-			self.nameTextField.text = someProject.name
-			self.startingDate = someProject.startingDate
-			self.deadlineDate = someProject.endingDate
-			self.selectedContext = someProject.context
-			self.importance = someProject.importance
-			self.estimatedTime = someProject.totalTimeEstimated
-		}
+		self.nameTextField.text = self.project?.name ?? ""
+		self.startingDate = self.project?.startingDate ?? Date()
+		self.deadlineDate = self.project?.endingDate ?? Date().addingTimeInterval(7.days)
+		self.selectedContext = self.project?.context
+		self.importance = self.project?.importance ?? 1
+		self.estimatedTime = self.project?.totalTimeEstimated ?? 0
 	}
 	
 	func saveProject() -> Project? {
-		if let name = self.nameTextField.text,
-			let begin = self.startingDate,
-			let end = self.deadlineDate,
-			let context = self.selectedContext,
-			let estimate = self.estimatedTime {
+		if let name = self.nameTextField.text, let begin = self.startingDate, let end = self.deadlineDate, let context = self.selectedContext, let estimate = self.estimatedTime {
 			
 			if let someProject = self.project {
 				someProject.name = name
@@ -237,14 +247,13 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 			alertView.overTitleLabel.text = "\(contextName) Project"
 			alertView.titleLabel.text = "Estimated Time"
 			alertView.underTitleLabel.text = "\(days) days and \(hours) hours"
-			
 		}
 	}
 	
 	@IBAction func startingDateTouched(_ sender: UIButton) {
 		delegate?.startingDateTouched { alertView in
 			
-			alertView.present(.startingDate, initialDate: startingDate)
+			alertView.present(.startingDate, initialDate: startingDate, limitDate: deadlineDate)
 			
 			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
 			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
@@ -268,7 +277,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	
 	@IBAction func deadlineDateTouched(_ sender: UIButton) {
 		delegate?.deadlineDateTouched { alertView in
-			alertView.present(.deadlineDate, initialDate: deadlineDate)
+			alertView.present(.deadlineDate, initialDate: deadlineDate, limitDate: startingDate)
 			
 			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
 			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
@@ -457,10 +466,9 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
         
         let days = sender.selectedRow(inComponent: 0)
         let hours = sender.selectedRow(inComponent: 1)
-        estimatedHoursButton.setTitle("\(days) days and \(hours) hours")
-        
-        estimatedTime = TimeInterval(days * 24 * 60 * 60)
-        estimatedTime = estimatedTime! + TimeInterval(hours * 60 * 60)
+		
+        estimatedTime = TimeInterval(days.days + hours.hours)
+//        estimatedTime = estimatedTime! + TimeInterval(hours * 60 * 60)
     }
     
     func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode) {
@@ -470,11 +478,9 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
         switch mode {
             case .startingDate:
                 startingDate = sender.date
-                startingDateButton.setTitle(DateFormatter.localizedString(from: sender.date, dateStyle: .short, timeStyle: .none))
 			
             case .deadlineDate:
                 deadlineDate = sender.date
-                deadlineDateButton.setTitle(DateFormatter.localizedString(from: sender.date, dateStyle: .short, timeStyle: .none))
 
             default:
                 break

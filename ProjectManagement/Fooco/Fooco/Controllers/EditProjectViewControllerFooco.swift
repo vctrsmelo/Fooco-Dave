@@ -13,11 +13,7 @@ protocol EditProjectUnwindOption: AnyObject {
 
 class EditProjectViewControllerFooco: UIViewController {
 	
-	var project: Project? {
-		didSet {
-			self.tableViewController?.project = self.project
-		}
-	}
+	var project: Project?
 	
 	var unwindSegueIdentifier: String = ""
 	
@@ -81,6 +77,7 @@ class EditProjectViewControllerFooco: UIViewController {
 			
 			self.tableViewController = editProjTableViewController
             editProjTableViewController.delegate = self
+			editProjTableViewController.project = self.project
             datePickerAlertView.delegate = editProjTableViewController
         }
     }

@@ -46,7 +46,7 @@ class DatePickerAlertView: UIView {
 	
     @IBOutlet private weak var confirmButton: UIButton!
     
-    func present(_ mode: AlertPickerViewMode, initialDate: Date? = nil, estimatedTime: TimeInterval? = nil) {
+	func present(_ mode: AlertPickerViewMode, initialDate: Date? = nil, limitDate: Date? = nil, estimatedTime: TimeInterval? = nil) {
         
         currentMode = mode
         
@@ -68,7 +68,15 @@ class DatePickerAlertView: UIView {
         } else {
             hoursPicker.isHidden = true
             datePicker.isHidden = false
-            
+			
+			if self.currentMode == .deadlineDate {
+				self.datePicker.minimumDate = limitDate
+				self.datePicker.maximumDate = nil
+			} else if self.currentMode == .startingDate {
+				self.datePicker.maximumDate = limitDate
+				self.datePicker.minimumDate = nil
+			}
+			
             if initialDate != nil {
                 datePicker.setDate(initialDate!, animated: false)
             }

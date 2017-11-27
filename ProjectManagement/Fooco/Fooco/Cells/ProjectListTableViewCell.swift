@@ -24,7 +24,7 @@ class ProjectListTableViewCell: UITableViewCell {
 	
 	private func fillProjectData() {
 		if let someProject = self.project {
-			self.timeLeft.text = String(format: NSLocalizedString("%dh left", comment: "Time left for projects"), someProject.timeLeftEstimated.inHours)
+			self.timeLeft.text = String(format: NSLocalizedString("%dh left", comment: "Time left for projects"), Int(someProject.timeLeftEstimated.inHours))
 			
 			self.projectName.text = someProject.name
 			self.contextName.text = someProject.context.name
