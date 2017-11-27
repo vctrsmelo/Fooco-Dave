@@ -14,8 +14,6 @@ class ProjectListTableViewControllerFooco: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		self.projects = Mocado.projects
-
 		self.navigationItem.rightBarButtonItem = self.editButtonItem
 		
 		self.tableView.tableFooterView = UIView() // Makes empty cells not appear
@@ -23,6 +21,8 @@ class ProjectListTableViewControllerFooco: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		self.projects = User.sharedInstance.projects
 		
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
 	}
