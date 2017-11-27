@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ProjectListTableViewControllerFooco: UITableViewController {
+class ProjectListTableViewControllerFooco: UITableViewController, EditProjectUnwindOption {
+	
+	let unwindFromProjectSaving = ""
 
 	var projects = [Project]()
 	

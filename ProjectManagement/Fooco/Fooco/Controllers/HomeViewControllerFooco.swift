@@ -7,9 +7,11 @@
 
 import UIKit
 
-class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
+class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate, EditProjectUnwindOption {
 	
 	// MARK: - Properties
+	
+	let unwindFromProjectSaving = "unwindFromEditToHomeSaving"
 
 	private var currentActivity: Activity? {
 		didSet {
@@ -28,12 +30,6 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	@IBOutlet private weak var topLabel: UILabel!
 	@IBOutlet private weak var activityCard: ActivityCardView!
 	
-	private func dataPopulation() {
-		User.sharedInstance.updateCurrentScheduleUntil(date: Date().addingTimeInterval(2.days))
-		
-		self.currentActivity = User.sharedInstance.getNextActivity()
-	}
-	
 	// MARK: - View Handling
 
 	override func viewDidLoad() {
@@ -48,15 +44,17 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.dataPopulation()
-		
-		self.interfaceUpdate()
+		self.dataUpdate()
 		
 		self.navigationController?.navigationBar.changeFontAndTintColor(to: .white)
 		self.navigationController?.navigationBar.barStyle = .black
 	}
 	
-	private func interfaceUpdate() {
+	private func dataUpdate() {
+		User.sharedInstance.updateCurrentScheduleUntil(date: Date().addingTimeInterval(2.days))
+		
+		self.currentActivity = User.sharedInstance.getNextActivity()
+		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
 		self.topLabel.text = self.chooseTopLabelText()
@@ -104,7 +102,8 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	// MARK: - ViewSwiperDelegate
 	
 	func doneExecuted() {
-		print(#function)
+		User.sharedInstance.getNextActivity()?.done = true
+		self.dataUpdate()
 	}
 	
 	func focusExecuted() {
@@ -123,12 +122,15 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == self.segueFromHomeToEdit, let destinationVC = segue.destination as? EditProjectViewControllerFooco {
+			destinationVC.unwindSegueIdentifier = self.unwindFromProjectSaving
 			destinationVC.project = self.projectToEdit // Is set to nil if it's supposed to add
 		}
 	}
 
 	@IBAction func unwindToHome(with unwindSegue: UIStoryboardSegue) {
-		
+		if unwindSegue.identifier == self.unwindFromProjectSaving {
+			self.dataUpdate()
+		}
 	}
 
 }

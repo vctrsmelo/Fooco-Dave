@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EditProjectUnwindOption: AnyObject {
+	var unwindFromProjectSaving: String { get }
+}
+
 class EditProjectViewControllerFooco: UIViewController {
 	
 	var project: Project? {
@@ -15,9 +19,9 @@ class EditProjectViewControllerFooco: UIViewController {
 		}
 	}
 	
-	weak var tableViewController: EditProjectTableViewControllerFooco?
+	var unwindSegueIdentifier: String = ""
 	
-	private let unwindFromEditToHomeSaving = "unwindFromEditToHomeSaving"
+	private weak var tableViewController: EditProjectTableViewControllerFooco?
 	
     @IBOutlet private weak var navigationBar: UINavigationBar!
 	
@@ -64,7 +68,7 @@ class EditProjectViewControllerFooco: UIViewController {
 			
 			User.sharedInstance.isCurrentScheduleUpdated = false
 			
-			self.performSegue(withIdentifier: self.unwindFromEditToHomeSaving, sender: self)
+			self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 			
 		} else {
 			print("Error saving") // TODO: Tell the user that there is missing information etc...
