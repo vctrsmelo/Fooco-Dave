@@ -11,8 +11,13 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	
 	// MARK: - Properties
 
+	private var currentActivity: Activity? {
+		didSet {
+			self.activityCard.data = self.currentActivity
+		}
+	}
+	
 	private var projectToEdit: Project?
-	private var currentActivities = [Activity]()
 	
 	private var addButton: FloatingAddButton!
 	
@@ -24,13 +29,9 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	@IBOutlet private weak var activityCard: ActivityCardView!
 	
 	private func dataPopulation() {
-		let context = Context(named: "TestContext", minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
-		let project = Project(named: "TestProject", startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 10.days), withContext: context, totalTimeEstimated: 40.hours)
+		User.sharedInstance.updateCurrentScheduleUntil(date: Date().addingTimeInterval(2.days))
 		
-		let timeBlock = TimeBlock(startsAt: Date(), endsAt: Date(timeIntervalSinceNow: 3.hours))
-		let activity = Activity(withProject: project, at: timeBlock)
-		
-		self.currentActivities.append(activity)
+		self.currentActivity = User.sharedInstance.getNextActivity()
 	}
 	
 	// MARK: - View Handling
@@ -38,30 +39,33 @@ class HomeViewControllerFooco: UIViewController, ViewSwiperDelegate {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.dataPopulation()
-		
-		self.activityCard.data = self.currentActivities.first
-		
 		self.viewSwiper.load()
 		self.viewSwiper.delegate = self
 		
 		self.addButton = FloatingAddButton(to: self, inside: self.view, performing: #selector(addButtonTapped))
-		
-		self.navigationItem.title = self.chooseGreeting(for: Date())
-		
-		self.topLabel.text = self.chooseTopLabelText()		
     }
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		self.dataPopulation()
+		
+		self.interfaceUpdate()
 		
 		self.navigationController?.navigationBar.changeFontAndTintColor(to: .white)
 		self.navigationController?.navigationBar.barStyle = .black
 	}
 	
+	private func interfaceUpdate() {
+		self.navigationItem.title = self.chooseGreeting(for: Date())
+		
+		self.topLabel.text = self.chooseTopLabelText()
+	}
+	
 	private func chooseTopLabelText() -> String {
 		let topLabelText: String
 		
-		if self.currentActivities.isEmpty {
+		if self.currentActivity == nil {
 			topLabelText = NSLocalizedString("You Have Finished for Now", comment: "Home screen top label for empty activities queue")
 		} else {
 			topLabelText = NSLocalizedString("Your Next Activity", comment: "Home screen default top label")
