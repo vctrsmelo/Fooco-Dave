@@ -13,11 +13,7 @@ class ProjectListTableViewControllerFooco: UITableViewController, EditProjectUnw
 	
 	private let segueToEdit = "fromProjectListToEdit"
 
-	var projects = [Project]() {
-		didSet {
-			self.tableView.reloadData()
-		}
-	}
+	var projects = [Project]()
 	
 	private var selectedProject: Project?
 	
@@ -33,6 +29,7 @@ class ProjectListTableViewControllerFooco: UITableViewController, EditProjectUnw
 		super.viewWillAppear(animated)
 		
 		self.projects = User.sharedInstance.projects
+		self.tableView.reloadData()
 		
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
 	}
@@ -56,7 +53,8 @@ class ProjectListTableViewControllerFooco: UITableViewController, EditProjectUnw
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-			self.projects.remove(at: indexPath.row)
+			User.sharedInstance.projects.remove(at: indexPath.row)
+			self.projects = User.sharedInstance.projects
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }

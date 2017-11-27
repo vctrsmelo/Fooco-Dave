@@ -83,11 +83,6 @@ class DatePickerAlertView: UIView {
             
         }
 		
-		let controller = self.delegate as? EditProjectTableViewControllerFooco
-		let navigationBar = controller?.navigationController?.navigationBar
-		self.originalNavigationColor = navigationBar?.backgroundColor
-		navigationBar?.backgroundColor = self.overlayView.backgroundColor
-		
         updateIcon()
         self.isHidden = false
         
@@ -124,9 +119,6 @@ class DatePickerAlertView: UIView {
 	
 	// TODO: hide view if touch outside it
     @IBAction func confirmTouched(_ sender: UIButton) {
-		let controller = self.delegate as? EditProjectTableViewControllerFooco
-		let navigationBar = controller?.navigationController?.navigationBar
-		navigationBar?.backgroundColor = self.originalNavigationColor
 		
 		self.isHidden = true
         
