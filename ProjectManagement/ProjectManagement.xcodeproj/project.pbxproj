@@ -13,7 +13,7 @@
 		BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */; };
 		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
 		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
-		E78393ED1FCA5C56000E3F8A /* ProjectListTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EC1FCA5C56000E3F8A /* ProjectListTableViewControllerFooco.swift */; };
+		E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */; };
 		E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */; };
 		E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
 		E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
@@ -89,7 +89,7 @@
 		BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoTests.swift; sourceTree = "<group>"; };
 		BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEF900921FB63974007FB677 /* EditProjectContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCell.xib; sourceTree = "<group>"; };
-		E78393EC1FCA5C56000E3F8A /* ProjectListTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewControllerFooco.swift; sourceTree = "<group>"; };
+		E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFooco.swift; sourceTree = "<group>"; };
 		E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewCell.swift; sourceTree = "<group>"; };
 		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
 				BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */,
 				BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */,
-				E78393EC1FCA5C56000E3F8A /* ProjectListTableViewControllerFooco.swift */,
+				E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -600,7 +600,7 @@
 				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
-				E78393ED1FCA5C56000E3F8A /* ProjectListTableViewControllerFooco.swift in Sources */,
+				E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */,
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
