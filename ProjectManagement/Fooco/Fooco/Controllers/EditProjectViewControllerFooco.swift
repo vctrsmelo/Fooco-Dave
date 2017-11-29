@@ -42,6 +42,8 @@ class EditProjectViewControllerFooco: UIViewController {
         hideKeyboardWhenTappedAround()
     }
     
+    // MARK: - Navigation
+    
 	@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
 		self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 	}

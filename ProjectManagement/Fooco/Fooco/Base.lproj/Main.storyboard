@@ -919,11 +919,42 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nvg-aP-7lI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="c7c-Dq-vyf"/>
+                    <navigationItem key="navigationItem" id="c7c-Dq-vyf">
+                        <barButtonItem key="backBarButtonItem" title="Previous" id="Sy1-Wh-aLb"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Gh8-NC-sBj">
+                            <connections>
+                                <segue destination="bgz-Yr-jIF" kind="unwind" unwindAction="unwindToContextListWith:" id="rlX-vO-cN3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="5he-UK-rxL">
+                            <connections>
+                                <action selector="nextTapped:" destination="cVk-SC-zzz" id="nr0-wi-WZK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="dtK-j8-lWb" kind="show" identifier="fromNewContextToEdit" id="On5-n9-asR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXt-5b-Izz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bgz-Yr-jIF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1620" y="1626.8365817091455"/>
+        </scene>
+        <!--EditContext-->
+        <scene sceneID="hmL-UW-0JI">
+            <objects>
+                <viewController title="EditContext" id="dtK-j8-lWb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n7T-6j-MUe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NUo-IR-xdq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OuW-bI-7Nb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2561" y="1627"/>
         </scene>
         <!--Add Project for-->
         <scene sceneID="zHt-6t-A6D">
@@ -1388,6 +1419,6 @@
         <image name="bottomBgRight" width="1384" height="143"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cbm-xf-14l"/>
+        <segue reference="1k7-U0-1if"/>
     </inferredMetricsTieBreakers>
 </document>

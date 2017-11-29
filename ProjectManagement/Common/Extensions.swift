@@ -10,10 +10,10 @@ import UIKit
 // MARK: - Foundation
 
 extension Array {
-	func random(from: Int? = nil, to: Int? = nil) -> Element {
+	func random(from initial: Int? = nil, to final: Int? = nil) -> Element {
 		
-		let begin = ((from == nil || from! > to!) ? 0 : from)!              // if "from" is nil, begin = 0
-		let end = ((to == nil || to! > (self.count)) ? self.count : to)!    // if "to" is nil, end = self.count
+		let begin = ((initial == nil || initial! > final!) ? 0 : initial)!              // if "initial" is nil, begin = 0
+		let end = ((final == nil || final! > (self.count)) ? self.count : final)!    // if "final" is nil, end = self.count
 		
 		let i = end - begin   // difference between end and begin
 		
@@ -64,12 +64,20 @@ extension Int {
 
 extension UIColor {
 	
-	static func interfaceColors() -> [UIColor] {
-		return [#colorLiteral(red: 0.2171623707, green: 0.4459149837, blue: 0.5379145741, alpha: 1), #colorLiteral(red: 0.3586075306, green: 0.7084770203, blue: 0.610791266, alpha: 1), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), #colorLiteral(red: 0.6141311526, green: 0.8158430457, blue: 0.5836192369, alpha: 1), #colorLiteral(red: 0.0337530449, green: 0.1313122213, blue: 0.2268140912, alpha: 1)]
-	}
+    struct InterfaceColors {
+        private init() {}
+        
+        static let white = #colorLiteral(red: 0.9677794576, green: 1, blue: 0.963481009, alpha: 1)
+        static let lightGreen = #colorLiteral(red: 0.7637994885, green: 0.948982656, blue: 0.7377385497, alpha: 1)
+        static let green = #colorLiteral(red: 0.3586075306, green: 0.7084770203, blue: 0.610791266, alpha: 1)
+        static let blue = #colorLiteral(red: 0.3035645783, green: 0.547811389, blue: 0.648229301, alpha: 1)
+        static let darkBlue = #colorLiteral(red: 0.1394162476, green: 0.3316068649, blue: 0.4398950338, alpha: 1)
+        static let purple = #colorLiteral(red: 0.2533134818, green: 0.2501349747, blue: 0.5410738587, alpha: 1)
+        static let black = #colorLiteral(red: 0.0337530449, green: 0.1313122213, blue: 0.2268140912, alpha: 1)
+    }
 	
 	static func contextColors() -> [UIColor] {
-		return [#colorLiteral(red: 0.002415449687, green: 0.5572095285, blue: 0.6159396701, alpha: 1), #colorLiteral(red: 0.5, green: 0, blue: 0.2020547865, alpha: 1), #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
+		return [#colorLiteral(red: 0.596470058, green: 0.8240941167, blue: 0.8377798796, alpha: 1), #colorLiteral(red: 0.2224018574, green: 0.7209109664, blue: 0.59053123, alpha: 1), #colorLiteral(red: 0.8436028361, green: 0.6334985495, blue: 0.6773697734, alpha: 1), #colorLiteral(red: 0.7921995521, green: 0.8247993588, blue: 0.4140916467, alpha: 1), #colorLiteral(red: 0.9068188071, green: 0.3804750741, blue: 0.3638587296, alpha: 1), #colorLiteral(red: 0.5450553298, green: 0.679359138, blue: 0.6552342772, alpha: 1), #colorLiteral(red: 0.4687731862, green: 0.4971648455, blue: 0.7168904543, alpha: 1)]
 	}
 	
 	static func colorOfAddContext() -> UIColor {
@@ -80,14 +88,15 @@ extension UIColor {
 extension UIImage {
 	convenience init?(from color: UIColor) {
 		let rect = CGRect(origin: .zero, size: CGSize.one)
-		
 		UIGraphicsBeginImageContext(rect.size)
 		color.setFill()
 		UIRectFill(rect)
 		let image = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 		
-		guard let cgImage = image?.cgImage else { return nil }
+		guard let cgImage = image?.cgImage else {
+            return nil
+        }
 		self.init(cgImage: cgImage)
 	}
 }
