@@ -11,7 +11,7 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 	
 	let unwindFromProject = "unwindFromEditToProjectList"
 	
-	private let segueToEdit = "fromProjectListToEdit"
+	private let segueToProject = "fromProjectListToEdit"
 
 	var projects = [Project]()
 	
@@ -51,13 +51,13 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 	@objc
 	private func addButtonTapped(sender: UIButton) {
 		self.selectedProject = nil
-		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
+		self.performSegue(withIdentifier: self.segueToProject, sender: self)
 	}
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == self.segueToEdit,
+		if segue.identifier == self.segueToProject,
 			let navigationVC = segue.destination as? UINavigationController,
 			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
 			destinationVC.unwindSegueIdentifier = self.unwindFromProject
@@ -99,6 +99,6 @@ extension ProjectListViewControllerFooco: UITableViewDataSource, UITableViewDele
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		self.selectedProject = self.projects[indexPath.row]
 		
-		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
+		self.performSegue(withIdentifier: self.segueToProject, sender: self)
 	}
 }
