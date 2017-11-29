@@ -37,7 +37,7 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 		self.projects = User.sharedInstance.projects
 		self.tableView.reloadData()
 		
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
+		self.navigationController?.navigationBar.removeBackgroundImage()
 	}
 	
 	override func setEditing(_ editing: Bool, animated: Bool) {

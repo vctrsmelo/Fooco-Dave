@@ -38,19 +38,10 @@ class EditProjectViewControllerFooco: UIViewController {
         bottomBg1ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         bottomBg2ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         
-        // delegates and data sources
-        formatNavigationBar()
-        
         // hide keyboard when view is tapped
         hideKeyboardWhenTappedAround()
     }
     
-    /**
-     Format navigation bar design
-    */
-    private func formatNavigationBar() {
-        self.navigationController?.navigationBar.removeShadowAndBackgroundImage()
-    }
 	@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
 		self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 	}

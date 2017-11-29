@@ -54,6 +54,7 @@
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
+		FC673FF91FCF48DD00D4E9D4 /* NewContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */; };
 		FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,7 @@
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
+		FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewController.swift; sourceTree = "<group>"; };
 		FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewControllerFooco.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -342,6 +344,7 @@
 				BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */,
 				E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */,
 				FC0BB2E21FCF32310031275B /* ContextListViewController.swift */,
+				FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
+				FC673FF91FCF48DD00D4E9D4 /* NewContextViewController.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,

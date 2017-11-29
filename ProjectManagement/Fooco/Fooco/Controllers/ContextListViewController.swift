@@ -22,7 +22,7 @@ class ContextListViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
+		self.navigationController?.navigationBar.removeBackgroundImage()
 	}
 	
 	// MARK: - Add Button
@@ -32,7 +32,6 @@ class ContextListViewController: UIViewController {
 		self.performSegue(withIdentifier: self.segueToContext, sender: nil)
 	}
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -40,6 +39,5 @@ class ContextListViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
