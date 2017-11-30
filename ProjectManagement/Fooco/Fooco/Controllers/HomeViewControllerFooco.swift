@@ -48,7 +48,7 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 		
 		self.navigationItem.title = self.chooseGreeting(for: Date())
 		
-		self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.InterfaceColors.icWhite)
+		self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.Interface.iWhite)
 		self.navigationController?.navigationBar.barStyle = .black
 	}
 	

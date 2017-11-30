@@ -13,7 +13,7 @@ class MenuTableViewControllerFooco: UITableViewController {
 		super.viewWillAppear(animated)
 		
 		self.navigationController?.navigationBar.removeBackgroundImage()
-		self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.InterfaceColors.icBlack)
+		self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.Interface.iBlack)
 		self.navigationController?.navigationBar.barStyle = .default
 	}
 
