@@ -19,6 +19,7 @@
 		EEBC21DB1FCF3DBA0032FE29 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */; };
 		EEBC21DD1FCF3DF10032FE29 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21DC1FCF3DF10032FE29 /* TimeBlock.swift */; };
 		EEBC21DF1FD069040032FE29 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21DE1FD069040032FE29 /* Extensions.swift */; };
+		EEBC21E11FD083D50032FE29 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21E01FD083D50032FE29 /* Context.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
 		EEBC21DC1FCF3DF10032FE29 /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
 		EEBC21DE1FD069040032FE29 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EEBC21E01FD083D50032FE29 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */,
 				EEBC21DC1FCF3DF10032FE29 /* TimeBlock.swift */,
 				EEBC21DE1FD069040032FE29 /* Extensions.swift */,
+				EEBC21E01FD083D50032FE29 /* Context.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				EEBC21D71FCF0CF80032FE29 /* Time.swift in Sources */,
 				EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */,
 				EEBC21DD1FCF3DF10032FE29 /* TimeBlock.swift in Sources */,
+				EEBC21E11FD083D50032FE29 /* Context.swift in Sources */,
 				EEBC21A81FCF0CDC0032FE29 /* AppDelegate.swift in Sources */,
 				EEBC21DF1FD069040032FE29 /* Extensions.swift in Sources */,
 			);
