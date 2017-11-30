@@ -142,9 +142,9 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		mediumImportanceButton.layer.borderWidth = 1
 		highImportanceButton.layer.borderWidth = 1
 		
-		lowImportanceButton.setTitleColor(UIColor.white, for: UIControlState.selected)
-		lowImportanceButton.setTitleColor(UIColor.white, for: UIControlState.selected)
-		lowImportanceButton.setTitleColor(UIColor.white, for: UIControlState.selected)
+		lowImportanceButton.setTitleColor(UIColor.InterfaceColors.icWhite, for: UIControlState.selected)
+		lowImportanceButton.setTitleColor(UIColor.InterfaceColors.icWhite, for: UIControlState.selected)
+		lowImportanceButton.setTitleColor(UIColor.InterfaceColors.icWhite, for: UIControlState.selected)
 		
 		updateColor()
 	}
@@ -180,7 +180,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		switch value {
 		case 1:
 			lowImportanceButton.backgroundColor = contextColor
-			lowImportanceButton.setTitleColor(UIColor.white)
+			lowImportanceButton.setTitleColor(UIColor.InterfaceColors.icWhite)
 			mediumImportanceButton.backgroundColor = UIColor.clear
 			mediumImportanceButton.setTitleColor(contextColor)
 			highImportanceButton.backgroundColor = UIColor.clear
@@ -190,7 +190,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 			lowImportanceButton.backgroundColor = UIColor.clear
 			lowImportanceButton.setTitleColor(contextColor)
 			mediumImportanceButton.backgroundColor = contextColor
-			mediumImportanceButton.setTitleColor(UIColor.white)
+			mediumImportanceButton.setTitleColor(UIColor.InterfaceColors.icWhite)
 			highImportanceButton.backgroundColor = UIColor.clear
 			highImportanceButton.setTitleColor(contextColor)
 			
@@ -200,7 +200,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 			mediumImportanceButton.backgroundColor = UIColor.clear
 			mediumImportanceButton.setTitleColor(contextColor)
 			highImportanceButton.backgroundColor = contextColor
-			highImportanceButton.setTitleColor(UIColor.white)
+			highImportanceButton.setTitleColor(UIColor.InterfaceColors.icWhite)
 			
 		default:
 			break

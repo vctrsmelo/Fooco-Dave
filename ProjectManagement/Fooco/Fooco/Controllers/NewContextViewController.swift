@@ -14,7 +14,7 @@ class NewContextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.InterfaceColors.darkBlue)
+        self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.InterfaceColors.icDarkBlue)
     }
     
 

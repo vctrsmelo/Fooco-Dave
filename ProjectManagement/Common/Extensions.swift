@@ -67,13 +67,13 @@ extension UIColor {
     struct InterfaceColors {
         private init() {}
         
-        static let white = #colorLiteral(red: 0.9677794576, green: 1, blue: 0.963481009, alpha: 1)
-        static let lightGreen = #colorLiteral(red: 0.7637994885, green: 0.948982656, blue: 0.7377385497, alpha: 1)
-        static let green = #colorLiteral(red: 0.3586075306, green: 0.7084770203, blue: 0.610791266, alpha: 1)
-        static let blue = #colorLiteral(red: 0.3035645783, green: 0.547811389, blue: 0.648229301, alpha: 1)
-        static let darkBlue = #colorLiteral(red: 0.1394162476, green: 0.3316068649, blue: 0.4398950338, alpha: 1)
-        static let purple = #colorLiteral(red: 0.2533134818, green: 0.2501349747, blue: 0.5410738587, alpha: 1)
-        static let black = #colorLiteral(red: 0.0337530449, green: 0.1313122213, blue: 0.2268140912, alpha: 1)
+        static let icWhite = #colorLiteral(red: 0.9677794576, green: 1, blue: 0.963481009, alpha: 1)
+        static let icLightGreen = #colorLiteral(red: 0.7637994885, green: 0.948982656, blue: 0.7377385497, alpha: 1)
+        static let icGreen = #colorLiteral(red: 0.3586075306, green: 0.7084770203, blue: 0.610791266, alpha: 1)
+        static let icBlue = #colorLiteral(red: 0.3035645783, green: 0.547811389, blue: 0.648229301, alpha: 1)
+        static let icDarkBlue = #colorLiteral(red: 0.1394162476, green: 0.3316068649, blue: 0.4398950338, alpha: 1)
+        static let icPurple = #colorLiteral(red: 0.2533134818, green: 0.2501349747, blue: 0.5410738587, alpha: 1)
+        static let icBlack = #colorLiteral(red: 0.0337530449, green: 0.1313122213, blue: 0.2268140912, alpha: 1)
     }
 	
 	static func contextColors() -> [UIColor] {
