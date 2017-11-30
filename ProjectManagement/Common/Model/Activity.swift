@@ -19,17 +19,11 @@ class Activity: NSObject {
 		project = proj
         timeBlock = tb
 		super.init()
-        
     }
-    
-    
-    
 }
 
 extension Activity: Comparable {
     static func <(lhs: Activity, rhs: Activity) -> Bool {
         return lhs.timeBlock < rhs.timeBlock
     }
-    
-    
 }
