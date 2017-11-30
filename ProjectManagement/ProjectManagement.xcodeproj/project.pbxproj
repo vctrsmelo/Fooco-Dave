@@ -56,6 +56,7 @@
 		FC5252B71FD0816400852FDB /* EditContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5252B61FD0816400852FDB /* EditContextViewModel.swift */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
 		FC673FF91FCF48DD00D4E9D4 /* NewContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */; };
+		FC713B471FD09B8D0016CEBF /* EditContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */; };
 		FCE6461E1FD07C7E008F65D6 /* NewContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */; };
 		FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,7 @@
 		FC5252B61FD0816400852FDB /* EditContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewModel.swift; sourceTree = "<group>"; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
 		FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewController.swift; sourceTree = "<group>"; };
+		FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewController.swift; sourceTree = "<group>"; };
 		FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewModel.swift; sourceTree = "<group>"; };
 		FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewControllerFooco.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -350,6 +352,7 @@
 				E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */,
 				FC0BB2E21FCF32310031275B /* ContextListViewController.swift */,
 				FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */,
+				FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				FCE6461E1FD07C7E008F65D6 /* NewContextViewModel.swift in Sources */,
 				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
 				EE1493F31FAA4E69004750DC /* Event.swift in Sources */,
+				FC713B471FD09B8D0016CEBF /* EditContextViewController.swift in Sources */,
 				E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */,
 				FC0BB2E31FCF32310031275B /* ContextListViewController.swift in Sources */,
 				FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */,

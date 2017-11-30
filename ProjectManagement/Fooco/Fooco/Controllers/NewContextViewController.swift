@@ -49,8 +49,11 @@ class NewContextViewController: UIViewController {
     }
     
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == self.segueToEdit, let editViewController = segue.destination as? EditContextViewController {
+			editViewController.viewModel = sender as? EditContextViewModel
+		}
+    }
 
 }
 
