@@ -122,4 +122,23 @@ class FoocoNewArchitectureTests: XCTestCase {
         
     }
     
+    func testWeekdayTemplate() {
+        
+        XCTAssertNotNil(WeekdayTemplate(weekday: .sunday))
+        XCTAssertNotNil(WeekdayTemplate(weekday: .monday))
+        XCTAssertNotNil(WeekdayTemplate(weekday: .tuesday))
+        XCTAssertNotNil(WeekdayTemplate(weekday: .wednesday))
+        XCTAssertNotNil(WeekdayTemplate(weekday: .thursday))
+        XCTAssertNotNil(WeekdayTemplate(weekday: .friday))
+        XCTAssertNotNil(WeekdayTemplate(weekday: .saturday))
+        
+        var tb1 = try! TimeBlock(starts: try! Time(hour: 8), ends: try! Time(hour: 12))
+        var college = Context(name: "College")
+        
+        var monday = WeekdayTemplate(weekday: .monday, contextBlocks: [(tb1,college)])
+        var tuesday = WeekdayTemplate(weekday: .tuesday, contextBlocks: [(tb1,college)])
+        
+        
+    }
+    
 }
