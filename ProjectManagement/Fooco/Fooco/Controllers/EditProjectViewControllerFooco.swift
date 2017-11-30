@@ -97,7 +97,7 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     }
     
     func contextUpdated(for context: Context?) {
-        let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
+        let color = (context != nil) ? context!.color : .addContextColor
 		self.navigationController?.navigationBar.changeFontAndTintColor(to: color)
     }
     

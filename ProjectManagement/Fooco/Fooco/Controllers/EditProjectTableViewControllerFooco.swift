@@ -50,7 +50,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		if let someSelectedContext = self.selectedContext {
 			return someSelectedContext.color
 		} else {
-			return UIColor.colorOfAddContext()
+			return .addContextColor
 		}
 	}
 	

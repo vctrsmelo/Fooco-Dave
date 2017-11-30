@@ -76,12 +76,10 @@ extension UIColor {
         static let iBlack = #colorLiteral(red: 0.0337530449, green: 0.1313122213, blue: 0.2268140912, alpha: 1)
     }
 	
+	static let addContextColor = #colorLiteral(red: 0.5843137255, green: 0.5843137255, blue: 0.5843137255, alpha: 1)
+	
 	static func contextColors() -> [UIColor] {
 		return [#colorLiteral(red: 0.596470058, green: 0.8240941167, blue: 0.8377798796, alpha: 1), #colorLiteral(red: 0.2224018574, green: 0.7209109664, blue: 0.59053123, alpha: 1), #colorLiteral(red: 0.8436028361, green: 0.6334985495, blue: 0.6773697734, alpha: 1), #colorLiteral(red: 0.7921995521, green: 0.8247993588, blue: 0.4140916467, alpha: 1), #colorLiteral(red: 0.9068188071, green: 0.3804750741, blue: 0.3638587296, alpha: 1), #colorLiteral(red: 0.5450553298, green: 0.679359138, blue: 0.6552342772, alpha: 1), #colorLiteral(red: 0.4687731862, green: 0.4971648455, blue: 0.7168904543, alpha: 1)]
-	}
-	
-	static func colorOfAddContext() -> UIColor {
-		return #colorLiteral(red: 0.5843137255, green: 0.5843137255, blue: 0.5843137255, alpha: 1)
 	}
 }
 
