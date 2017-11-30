@@ -849,6 +849,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="cVk-SC-zzz" id="DJf-Jx-hji"/>
+                                            <outlet property="delegate" destination="cVk-SC-zzz" id="WF5-IU-4we"/>
+                                        </connections>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xs-HS-fTN">
                                         <rect key="frame" x="0.0" y="307.5" width="303" height="19.5"/>
@@ -878,6 +882,10 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="cVk-SC-zzz" id="XYm-Um-fNn"/>
+                                            <outlet property="delegate" destination="cVk-SC-zzz" id="hwY-dl-0lT"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -933,6 +941,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="colorsCollection" destination="SSM-90-gbG" id="ZoC-za-M79"/>
+                        <outlet property="nameField" destination="zx6-8m-hdd" id="Gx5-vX-8lo"/>
+                        <outlet property="suggestionsTable" destination="jck-K6-Y6M" id="bAS-NM-A1Z"/>
                         <segue destination="dtK-j8-lWb" kind="show" identifier="fromNewContextToEdit" id="On5-n9-asR"/>
                     </connections>
                 </viewController>

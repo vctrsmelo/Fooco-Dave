@@ -53,8 +53,10 @@
 		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
+		FC5252B71FD0816400852FDB /* EditContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5252B61FD0816400852FDB /* EditContextViewModel.swift */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
 		FC673FF91FCF48DD00D4E9D4 /* NewContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */; };
+		FCE6461E1FD07C7E008F65D6 /* NewContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */; };
 		FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,8 +134,10 @@
 		FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		FC5252B61FD0816400852FDB /* EditContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewModel.swift; sourceTree = "<group>"; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
 		FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewController.swift; sourceTree = "<group>"; };
+		FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewModel.swift; sourceTree = "<group>"; };
 		FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewControllerFooco.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,6 +240,7 @@
 		EEA46B651F9A36CA00851D5D /* Fooco */ = {
 			isa = PBXGroup;
 			children = (
+				FCE6461F1FD07C86008F65D6 /* View Models */,
 				FCE536B41FB4C32D0010BA63 /* Cells */,
 				FCE536B31FB4C2FC0010BA63 /* Controllers */,
 				FCE536B51FB4C3340010BA63 /* Views */,
@@ -368,6 +373,15 @@
 				FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FCE6461F1FD07C86008F65D6 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */,
+				FC5252B61FD0816400852FDB /* EditContextViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -596,6 +610,7 @@
 			files = (
 				E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */,
 				FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */,
+				FCE6461E1FD07C7E008F65D6 /* NewContextViewModel.swift in Sources */,
 				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
 				EE1493F31FAA4E69004750DC /* Event.swift in Sources */,
 				E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */,
@@ -613,6 +628,7 @@
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
 				FC673FF91FCF48DD00D4E9D4 /* NewContextViewController.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
+				FC5252B71FD0816400852FDB /* EditContextViewModel.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */,
