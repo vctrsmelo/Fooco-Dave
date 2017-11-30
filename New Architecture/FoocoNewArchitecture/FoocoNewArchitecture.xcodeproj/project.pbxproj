@@ -18,6 +18,7 @@
 		EEBC21D91FCF10E30032FE29 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21D81FCF10E30032FE29 /* CustomProtocols.swift */; };
 		EEBC21DB1FCF3DBA0032FE29 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */; };
 		EEBC21DD1FCF3DF10032FE29 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21DC1FCF3DF10032FE29 /* TimeBlock.swift */; };
+		EEBC21DF1FD069040032FE29 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21DE1FD069040032FE29 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		EEBC21D81FCF10E30032FE29 /* CustomProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProtocols.swift; sourceTree = "<group>"; };
 		EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
 		EEBC21DC1FCF3DF10032FE29 /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
+		EEBC21DE1FD069040032FE29 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				EEBC21D81FCF10E30032FE29 /* CustomProtocols.swift */,
 				EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */,
 				EEBC21DC1FCF3DF10032FE29 /* TimeBlock.swift */,
+				EEBC21DE1FD069040032FE29 /* Extensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */,
 				EEBC21DD1FCF3DF10032FE29 /* TimeBlock.swift in Sources */,
 				EEBC21A81FCF0CDC0032FE29 /* AppDelegate.swift in Sources */,
+				EEBC21DF1FD069040032FE29 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

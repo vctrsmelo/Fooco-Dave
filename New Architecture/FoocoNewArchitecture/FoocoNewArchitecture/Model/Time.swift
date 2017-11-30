@@ -12,6 +12,55 @@ enum TimeError: Error {
     case OutOfBounds(String)
 }
 
+let dailyTotalSeconds = 86_400
+
+struct Time {
+    
+    var hour: Int {
+        return Int(totalSeconds.inHours)
+    }
+    
+    var minute: Int {
+        return Int(totalSeconds.inMinutes - hour.minutes)
+    }
+    
+    var second: Int {
+
+        return Int(totalSeconds - hour.hours - minute.minutes)
+    }
+    
+    /**
+     total seconds of the time, where 0 is 00:00:00 and 86_399 is 23:59:59
+     */
+    let totalSeconds: TimeInterval
+    
+    init(hour h: Int, minute m: Int = 0, second s: Int = 0) throws {
+        
+        
+        if  !TimeRange.hours.contains(h) || !TimeRange.minutes.contains(m) || !TimeRange.seconds.contains(s)  {
+            throw TimeError.OutOfBounds("time out of bounds: current value is hour = \(h), minute = \(m) and seconds = \(s).")
+        }
+        
+        self.totalSeconds = h.hour+m.minute+s.seconds
+        
+    }
+    
+}
+
+extension Time: Comparable {
+    
+    static func <(lhs: Time, rhs: Time) -> Bool {
+        
+        return lhs.totalSeconds < rhs.totalSeconds
+    }
+    
+    static func ==(lhs: Time, rhs: Time) -> Bool {
+        return lhs.totalSeconds == rhs.totalSeconds
+    }
+    
+    
+}
+
 /**
  Contains time range variables for hours, minutes and seconds.
  */
@@ -31,39 +80,5 @@ struct TimeRange {
      The range of hours, from 0 to 23.
      */
     static let hours  = (0 ... 23)
-    
-}
-
-struct Time {
-
-    let hour: Int
-    let minute: Int
-    let second: Int
-
-    init(hour h: Int, minute m: Int = 0, second s: Int = 0) throws {
-        
-        if !TimeRange.hours.contains(h) || !TimeRange.minutes.contains(m) || !TimeRange.seconds.contains(s) {
-            throw TimeError.OutOfBounds("hour and minute must be between 0 and 60: current value is hour = \(h) and minute = \(m).")
-        }
-        
-        hour = h
-        minute = m
-        second = s
-
-    }
-
-}
-
-extension Time: Comparable {
-    
-    static func <(lhs: Time, rhs: Time) -> Bool {
-        return (lhs.hour < rhs.hour || (lhs.hour == rhs.hour && lhs.minute < rhs.minute) || (lhs.hour == rhs.hour && lhs.minute == rhs.minute && lhs.second < rhs.second))
-
-    }
-    
-    static func ==(lhs: Time, rhs: Time) -> Bool {
-        return lhs.hour == rhs.hour && lhs.minute == rhs.minute && lhs.second == rhs.second
-    }
-    
     
 }
