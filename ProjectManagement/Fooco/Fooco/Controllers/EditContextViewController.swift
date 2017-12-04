@@ -46,13 +46,16 @@ class EditContextViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.contextTimeQuestionLabel.text = String(format: NSLocalizedString("When are you available to do %@'s activities", comment: "Top of new context second screen"), self.viewModel.contextName)
+		
+		self.totalWeekTimeLabel.text = self.viewModel.totalWeeklyTimeDescription
     }
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		self.contextTimeQuestionLabel.text = self.viewModel.name
-	}
+//	override func viewWillAppear(_ animated: Bool) {
+//		super.viewWillAppear(animated)
+//
+//	}
 
     /*
     // MARK: - Navigation

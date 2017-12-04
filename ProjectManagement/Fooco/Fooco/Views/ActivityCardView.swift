@@ -27,6 +27,15 @@ class ActivityCardView: UIView {
 		self.context.text = self.data?.project.context.name
 		self.project.text = self.data?.project.name
 		
-		self.focusTime.text = self.data?.timeBlock.totalTime.toString()
+		self.focusTime.text = self.string(of: self.data?.timeBlock.totalTime)
+	}
+	
+	private func string(of time: TimeInterval?) -> String {
+		let formatter = DateComponentsFormatter()
+		formatter.allowedUnits = [.day, .hour, .minute]
+		formatter.unitsStyle = .abbreviated
+		formatter.maximumUnitCount = 2
+		
+		return formatter.string(from: time ?? 0)!
 	}
 }

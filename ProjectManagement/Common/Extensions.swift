@@ -266,13 +266,4 @@ extension TimeInterval {
 	var inMinutes: Double {
 		return self / 1.minute
 	}
-	
-	func toString() -> String {
-		let formatter = DateComponentsFormatter()
-		formatter.allowedUnits = [.day, .hour, .minute]
-		formatter.unitsStyle = .abbreviated
-		formatter.maximumUnitCount = 2
-		
-		return formatter.string(from: self)!
-	}
 }
