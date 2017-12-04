@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum DayInWeek: Int {
+	case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+}
+
 class EditContextViewModel {
 	
 	let contextName: String
@@ -27,5 +31,12 @@ class EditContextViewModel {
 		self.color = color
 	}
 	
+	func time(for day: DayInWeek) -> String {
+		return "0h"
+	}
+	
+	func size(for day: DayInWeek) -> CGFloat {
+		return 0
+	}
 	
 }
