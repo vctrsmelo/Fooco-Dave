@@ -14,10 +14,10 @@ enum TimeBlockError: Error {
 }
 
 
-class TimeBlock {
+struct TimeBlock {
 
-    private(set) var starts: Time!
-    private(set) var ends: Time!
+    private var starts: Time!
+    private var ends: Time!
     
     private var range: ClosedRange<Time>!{
         return starts ... ends
@@ -30,7 +30,7 @@ class TimeBlock {
 
     }
 
-    func setStarts(_ starts: Time) throws {
+    mutating func setStarts(_ starts: Time) throws {
         
         if ends != nil && starts > ends {
             throw TimeBlockError.invalidRange("[setEnds error]: Starts is after ends: new start value is \(starts) while ends value is \(self.ends)")
@@ -39,7 +39,7 @@ class TimeBlock {
         self.starts = starts
     }
     
-    func setEnds(_ ends: Time) throws {
+    mutating func setEnds(_ ends: Time) throws {
         if starts != nil && starts > ends {
             throw TimeBlockError.invalidRange("[setEnds error]: Starts is after ends: new start value is \(starts) while ends value is \(self.ends)")
         }
