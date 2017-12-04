@@ -11,7 +11,38 @@ class EditContextViewController: UIViewController {
 
 	var viewModel: EditContextViewModel!
 	
+	// MARK: - Outlets
+
 	@IBOutlet private weak var contextTimeQuestionLabel: UILabel!
+	@IBOutlet private weak var totalWeekTimeLabel: UILabel!
+	
+	// MARK: Sunday
+	@IBOutlet private weak var sundayTime: UILabel!
+	@IBOutlet private weak var sundayBarHeight: NSLayoutConstraint!
+	
+	// MARK: Monday
+	@IBOutlet private weak var mondayTime: UILabel!
+	@IBOutlet private weak var mondayBarHeight: NSLayoutConstraint!
+	
+	// MARK: Tuesday
+	@IBOutlet private weak var tuesdayTime: UILabel!
+	@IBOutlet private weak var tuesdayBarHeight: NSLayoutConstraint!
+	
+	// MARK: Wednesday
+	@IBOutlet private weak var wednesdayTime: UILabel!
+	@IBOutlet private weak var wednesdayBarHeight: NSLayoutConstraint!
+	
+	// MARK: Thursday
+	@IBOutlet private weak var thursdayTime: UILabel!
+	@IBOutlet private weak var thursdayBarHeight: NSLayoutConstraint!
+	
+	// MARK: Friday
+	@IBOutlet private weak var fridayTime: UILabel!
+	@IBOutlet private weak var fridayBarHeight: NSLayoutConstraint!
+	
+	// MARK: Saturday
+	@IBOutlet private weak var saturdayTime: UILabel!
+	@IBOutlet private weak var saturdayBarHeight: NSLayoutConstraint!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()

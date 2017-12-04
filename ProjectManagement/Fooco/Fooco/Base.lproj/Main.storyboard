@@ -978,7 +978,7 @@
                                 <color key="textColor" red="0.23529411759999999" green="0.36078431370000003" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVI-qP-eN0">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVI-qP-eN0" userLabel="Week View">
                                 <rect key="frame" x="0.0" y="197.5" width="375" height="155"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gEI-mh-85f">
@@ -1334,6 +1334,21 @@
                     </view>
                     <connections>
                         <outlet property="contextTimeQuestionLabel" destination="Fgh-uE-qdX" id="l2y-Ks-RLR"/>
+                        <outlet property="fridayBarHeight" destination="w54-ZL-FdE" id="h9I-Py-2Jh"/>
+                        <outlet property="fridayTime" destination="Kbr-HO-IP3" id="8pz-uj-LrY"/>
+                        <outlet property="mondayBarHeight" destination="MNj-b9-uej" id="Zr7-ZS-skI"/>
+                        <outlet property="mondayTime" destination="aFA-2y-Q71" id="WKW-6X-7Li"/>
+                        <outlet property="saturdayBarHeight" destination="8cc-ln-2Th" id="peT-SD-OEW"/>
+                        <outlet property="saturdayTime" destination="tVT-0X-VvJ" id="oyJ-wx-3l8"/>
+                        <outlet property="sundayBarHeight" destination="fdD-WO-pXd" id="Noq-8x-eyK"/>
+                        <outlet property="sundayTime" destination="2mD-jZ-Trq" id="e3F-UC-Lvl"/>
+                        <outlet property="thursdayBarHeight" destination="bKs-sp-xz6" id="n1j-9X-v8m"/>
+                        <outlet property="thursdayTime" destination="qNQ-v2-ui9" id="nuo-Zw-n4v"/>
+                        <outlet property="totalWeekTimeLabel" destination="xGB-2P-fdC" id="wJr-QB-Hxy"/>
+                        <outlet property="tuesdayBarHeight" destination="whJ-jz-n0N" id="v6v-UM-e7m"/>
+                        <outlet property="tuesdayTime" destination="BFx-27-YKc" id="vut-g8-vOK"/>
+                        <outlet property="wednesdayBarHeight" destination="bbt-lF-NRU" id="Iu4-Sq-NLf"/>
+                        <outlet property="wednesdayTime" destination="eyE-sm-keV" id="77K-Eb-kuX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuW-bI-7Nb" userLabel="First Responder" sceneMemberID="firstResponder"/>
