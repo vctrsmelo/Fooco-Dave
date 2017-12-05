@@ -138,7 +138,12 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertNotNil(WeekdayTemplate(weekday: .monday, contextBlocks: [(tb1,college)]))
         XCTAssertNotNil(WeekdayTemplate(weekday: .tuesday, contextBlocks: [(tb1,college)]))
         
+    }
+    
+    func testProject() {
         
+        let college = Context(name: "College")
+        XCTAssertNoThrow(try Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3))
         
     }
     

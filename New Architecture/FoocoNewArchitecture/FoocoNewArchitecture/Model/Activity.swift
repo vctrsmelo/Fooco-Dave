@@ -9,18 +9,22 @@
 import Foundation
 
 /**
-Activity is a period of time focusing in a task/project
+Activity is a period of time focusing in a task/project, or an event from calendar.
+ The sources for an activity are:
+ - Project: defined during the scheduling algorithm
+ - User input: through the interface
+ - Calendar: through syncronization
 */
 struct Activity {
     
-    let id: UUID
+    private let id: UUID
     private let timeBlock: TimeBlock
-    let project: Project?
+    private let project: Project?
     
     /**
      If the activity is not related to a project, it should have a name
     */
-    let name: String?
+    private let name: String?
     
     init(from: Time, to: Time, project: Project) throws {
         
