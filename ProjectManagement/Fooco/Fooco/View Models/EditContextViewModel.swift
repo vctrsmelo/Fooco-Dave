@@ -89,17 +89,23 @@ class EditContextViewModel {
 	}
 	
 	func timeDescription(for day: DayInWeek) -> String {
-		return self.timeFormater(self.time(for: day))
+		let time = self.time(for: day)
+		
+		var result: String
+		
+		if time != 0 {
+			result = self.timeFormater(time)
+		} else {
+			result = ""
+		}
+		
+		return result
 	}
 	
 	func size(for day: DayInWeek) -> CGFloat {
 		let dayTime = self.time(for: day)
 		
-		var size = CGFloat(dayTime / self.busiestDayTotalTime)
-		
-		if size == 0 {
-			size = 0.1
-		}
+		let size = CGFloat(dayTime / self.busiestDayTotalTime)
 		
 		return size * self.barSize
 	}

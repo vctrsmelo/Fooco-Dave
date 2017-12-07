@@ -11,6 +11,8 @@ class EditContextViewController: UIViewController {
 
 	var viewModel: EditContextViewModel!
 	
+	private let cellIdentifier = "timeblockCell"
+	
 	// MARK: - Outlets
 
 	@IBOutlet private weak var contextTimeQuestionLabel: UILabel!
@@ -92,9 +94,7 @@ extension EditContextViewController: UITableViewDataSource, UITableViewDelegate 
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell()
-		
-		
+		let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
 		
 		return cell
 	}
