@@ -34,7 +34,15 @@ class EditContextViewModel {
 		return maxValue
 	}
 	
-	private var totalWeeklyTime: TimeInterval = 0
+	private var totalWeeklyTime: TimeInterval {
+		var value: TimeInterval = 0
+		
+		value = self.week.reduce(0) { partialResult, day -> TimeInterval in
+			return partialResult + self.time(for: day.key)
+		}
+		
+		return value
+	}
 	
 	var totalWeeklyTimeDescription: String {
 		return self.timeFormater(self.totalWeeklyTime)
@@ -42,6 +50,24 @@ class EditContextViewModel {
 	
 	init(context: Context) {
 		self.context = context
+		
+		self.loadData()
+	}
+	
+	private func loadData() {
+		let now = Date()
+		self.createTimeBlock(start: now, end: now.addingTimeInterval(3.hours), for: .monday)
+		self.createTimeBlock(start: now, end: now.addingTimeInterval(3.hours), for: .tuesday)
+		self.createTimeBlock(start: now.addingTimeInterval(4.hours), end: now.addingTimeInterval(6.hours), for: .tuesday)
+		self.createTimeBlock(start: now, end: now.addingTimeInterval(6.hours), for: .wednesday)
+	}
+	
+	private func timeFormater(_ time: TimeInterval) -> String {
+		let formatter = DateComponentsFormatter()
+		formatter.allowedUnits = [.hour, .minute]
+		formatter.unitsStyle = .abbreviated
+		
+		return formatter.string(from: time)!
 	}
 	
 	private func time(for day: DayInWeek) -> TimeInterval {
@@ -72,11 +98,13 @@ class EditContextViewModel {
 		return size * self.barSize
 	}
 	
-	func timeFormater(_ time: TimeInterval) -> String {
-		let formatter = DateComponentsFormatter()
-		formatter.allowedUnits = [.hour, .minute]
-		formatter.unitsStyle = .abbreviated
+	func createTimeBlock(start: Date, end: Date, for day: DayInWeek) {
+		let newTimeBlock = TimeBlock(startsAt: start, endsAt: end)
 		
-		return formatter.string(from: time)!
+		if var weekDay = self.week[day] {
+			weekDay.append(newTimeBlock)
+		} else {
+			self.week[day] = [newTimeBlock]
+		}
 	}
 }
