@@ -20,6 +20,22 @@ class EditContextViewModel {
 	
 	private var week = [DayInWeek: [TimeBlock]]()
 	
+	var counterWeek: [TimeBlock: [DayInWeek]] {
+		var value = [TimeBlock: [DayInWeek]]()
+		
+		for day in self.week {
+			for block in day.value {
+				if value[block] == nil {
+					value[block] = []
+				}
+				
+				value[block]?.append(day.key)
+			}
+		}
+		
+		return value
+	}
+	
 	private var busiestDayTotalTime: TimeInterval {
 		var maxValue: TimeInterval = 1
 		
@@ -49,9 +65,7 @@ class EditContextViewModel {
 	}
 	
 	var totalRows: Int {
-		return self.week.reduce(0) { partialResult, day -> Int in
-			return partialResult + day.value.count
-		}
+		return self.counterWeek.count
 	}
 	
 	init(context: Context) {
@@ -113,10 +127,10 @@ class EditContextViewModel {
 	func createTimeBlock(start: Date, end: Date, for day: DayInWeek) {
 		let newTimeBlock = TimeBlock(startsAt: start, endsAt: end)
 		
-		if var weekDay = self.week[day] {
-			weekDay.append(newTimeBlock)
-		} else {
-			self.week[day] = [newTimeBlock]
+		if self.week[day] == nil {
+			self.week[day] = []
 		}
+		
+		self.week[day]?.append(newTimeBlock)
 	}
 }
