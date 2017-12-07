@@ -48,6 +48,12 @@ class EditContextViewModel {
 		return self.timeFormater(self.totalWeeklyTime)
 	}
 	
+	var totalRows: Int {
+		return self.week.reduce(0) { partialResult, day -> Int in
+			return partialResult + day.value.count
+		}
+	}
+	
 	init(context: Context) {
 		self.context = context
 		

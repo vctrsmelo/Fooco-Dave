@@ -15,6 +15,7 @@ class EditContextViewController: UIViewController {
 
 	@IBOutlet private weak var contextTimeQuestionLabel: UILabel!
 	@IBOutlet private weak var totalWeekTimeLabel: UILabel!
+	@IBOutlet private weak var tableView: UITableView!
 	
 	// MARK: Sunday
 	@IBOutlet private weak var sundayTime: UILabel!
@@ -77,19 +78,24 @@ class EditContextViewController: UIViewController {
 		self.saturdayBarHeight.constant = self.viewModel.size(for: .saturday)
 	}
 	
-//	override func viewWillAppear(_ animated: Bool) {
-//		super.viewWillAppear(animated)
-//
-//	}
+	@IBAction func addContextTimes() {
+		
+	}
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+// MARK: - Tableview
 
+extension EditContextViewController: UITableViewDataSource, UITableViewDelegate {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return self.viewModel.totalRows
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = UITableViewCell()
+		
+		
+		
+		return cell
+	}
 }
