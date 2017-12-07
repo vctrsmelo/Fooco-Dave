@@ -50,7 +50,32 @@ class EditContextViewController: UIViewController {
 		self.contextTimeQuestionLabel.text = String(format: NSLocalizedString("When are you available to do %@'s activities", comment: "Top of new context second screen"), self.viewModel.context.name)
 		
 		self.totalWeekTimeLabel.text = self.viewModel.totalWeeklyTimeDescription
+		
+		self.updateBars()
     }
+	
+	private func updateBars() {
+		self.sundayTime.text = self.viewModel.timeDescription(for: .sunday)
+		self.sundayBarHeight.constant = self.viewModel.size(for: .sunday)
+		
+		self.mondayTime.text = self.viewModel.timeDescription(for: .monday)
+		self.mondayBarHeight.constant = self.viewModel.size(for: .monday)
+		
+		self.tuesdayTime.text = self.viewModel.timeDescription(for: .tuesday)
+		self.tuesdayBarHeight.constant = self.viewModel.size(for: .tuesday)
+		
+		self.wednesdayTime.text = self.viewModel.timeDescription(for: .wednesday)
+		self.wednesdayBarHeight.constant = self.viewModel.size(for: .wednesday)
+		
+		self.thursdayTime.text = self.viewModel.timeDescription(for: .thursday)
+		self.thursdayBarHeight.constant = self.viewModel.size(for: .thursday)
+		
+		self.fridayTime.text = self.viewModel.timeDescription(for: .friday)
+		self.fridayBarHeight.constant = self.viewModel.size(for: .friday)
+		
+		self.saturdayTime.text = self.viewModel.timeDescription(for: .saturday)
+		self.saturdayBarHeight.constant = self.viewModel.size(for: .saturday)
+	}
 	
 //	override func viewWillAppear(_ animated: Bool) {
 //		super.viewWillAppear(animated)
