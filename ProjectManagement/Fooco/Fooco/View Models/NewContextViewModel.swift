@@ -13,6 +13,7 @@ class NewContextViewModel {
 	let suggestionOptions = ["College", "Health", "Home", "Work"]
 	
 	func editContextViewModel(name: String, color: UIColor) -> EditContextViewModel {
-		return EditContextViewModel(name: name, color: color)
+		let context = Context(named: name, color: color, icon: nil, projects: nil, minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
+		return EditContextViewModel(context: context)
 	}
 }

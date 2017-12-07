@@ -13,8 +13,9 @@ enum DayInWeek: Int {
 
 class EditContextViewModel {
 	
-	let contextName: String
-	let color: UIColor
+	let context: Context
+	
+	var week = [DayInWeek: [TimeBlock]]()
 	
 	private var totalWeeklyTime: TimeInterval = 0
 	
@@ -26,9 +27,8 @@ class EditContextViewModel {
 		return formatter.string(from: self.totalWeeklyTime)!
 	}
 	
-	init(name: String, color: UIColor) {
-		self.contextName = name
-		self.color = color
+	init(context: Context) {
+		self.context = context
 	}
 	
 	func time(for day: DayInWeek) -> String {
