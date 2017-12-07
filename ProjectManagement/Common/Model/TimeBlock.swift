@@ -141,13 +141,17 @@ extension TimeBlock {
 
 }
 
-extension TimeBlock: Equatable, Comparable {
-    static func <(lhs: TimeBlock, rhs: TimeBlock) -> Bool {
+extension TimeBlock: Equatable, Comparable, Hashable {
+	var hashValue: Int {
+		return self.startsAt.hashValue + self.endsAt.hashValue
+	}
+	
+    static func < (lhs: TimeBlock, rhs: TimeBlock) -> Bool {
         return (lhs.startsAt < rhs.startsAt)
     }
     
     
-    static func ==(lhs: TimeBlock, rhs: TimeBlock) -> Bool {
+    static func == (lhs: TimeBlock, rhs: TimeBlock) -> Bool {
         
         let beginHourLhs = Calendar.current.component(.hour, from: lhs.startsAt)
         let beginHourRhs = Calendar.current.component(.hour, from: rhs.startsAt)
@@ -161,4 +165,3 @@ extension TimeBlock: Equatable, Comparable {
 
     
 }
-
