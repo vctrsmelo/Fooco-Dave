@@ -10,6 +10,31 @@ import Foundation
 
 enum DayInWeek: Int {
 	case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+	
+	var string: String {
+		switch self {
+		case .sunday:
+			return "sunday"
+			
+		case .monday:
+			return "monday"
+			
+		case .tuesday:
+			return "tuesday"
+			
+		case .wednesday:
+			return "wednesday"
+			
+		case .thursday:
+			return "thursday"
+			
+		case .friday:
+			return "friday"
+			
+		case .saturday:
+			return "saturday"
+		}
+	}
 }
 
 class EditContextViewModel {
@@ -80,6 +105,9 @@ class EditContextViewModel {
 		self.createTimeBlock(start: now, end: now.addingTimeInterval(3.hours), for: .tuesday)
 		self.createTimeBlock(start: now.addingTimeInterval(4.hours), end: now.addingTimeInterval(6.hours), for: .tuesday)
 		self.createTimeBlock(start: now, end: now.addingTimeInterval(6.hours), for: .wednesday)
+		self.createTimeBlock(start: now, end: now.addingTimeInterval(6.hours), for: .thursday)
+		self.createTimeBlock(start: now, end: now.addingTimeInterval(3.hours), for: .friday)
+		self.createTimeBlock(start: now.addingTimeInterval(5.hours), end: now.addingTimeInterval(6.hours), for: .saturday)
 	}
 	
 	private func timeFormater(_ time: TimeInterval) -> String {
