@@ -20,7 +20,7 @@ class EditContextViewModel {
 	
 	private var week = [DayInWeek: [TimeBlock]]()
 	
-	var counterWeek: [TimeBlock: [DayInWeek]] {
+	private var counterWeek: [TimeBlock: [DayInWeek]] {
 		var value = [TimeBlock: [DayInWeek]]()
 		
 		for day in self.week {
@@ -122,6 +122,10 @@ class EditContextViewModel {
 		let size = CGFloat(dayTime / self.busiestDayTotalTime)
 		
 		return size * self.barSize
+	}
+	
+	func cellData(for row: Int) -> (TimeBlock, [DayInWeek]) {
+		return self.counterWeek.row(row)
 	}
 	
 	func createTimeBlock(start: Date, end: Date, for day: DayInWeek) {

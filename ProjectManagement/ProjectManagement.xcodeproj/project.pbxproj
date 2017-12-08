@@ -52,6 +52,7 @@
 		FC2F29D01F9A3EA200984409 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB911F9A37E70051B33B /* Week.swift */; };
 		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
+		FC4202541FDB0D1A00D8550F /* TimeBlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
 		FC5252B71FD0816400852FDB /* EditContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5252B61FD0816400852FDB /* EditContextViewModel.swift */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
@@ -134,6 +135,7 @@
 		FC0BB2E21FCF32310031275B /* ContextListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextListViewController.swift; sourceTree = "<group>"; };
 		FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
+		FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockTableViewCell.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		FC5252B61FD0816400852FDB /* EditContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewModel.swift; sourceTree = "<group>"; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */,
+				FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */,
 				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
 				BEF900921FB63974007FB677 /* EditProjectContextCell.xib */,
 			);
@@ -627,6 +630,7 @@
 				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
 				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */,
+				FC4202541FDB0D1A00D8550F /* TimeBlockTableViewCell.swift in Sources */,
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,

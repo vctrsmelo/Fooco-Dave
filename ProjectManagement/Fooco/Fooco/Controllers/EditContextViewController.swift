@@ -94,7 +94,12 @@ extension EditContextViewController: UITableViewDataSource, UITableViewDelegate 
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+		var cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+		
+		if let someCell = cell as? TimeBlockTableViewCell {
+			someCell.cellData = self.viewModel.cellData(for: indexPath.row)
+			cell = someCell
+		}
 		
 		return cell
 	}

@@ -9,23 +9,6 @@ import UIKit
 
 // MARK: - Foundation
 
-extension Array {
-	func random(from initial: Int? = nil, to final: Int? = nil) -> Element {
-		
-		let begin = ((initial == nil || initial! > final!) ? 0 : initial)!              // if "initial" is nil, begin = 0
-		let end = ((final == nil || final! > (self.count)) ? self.count : final)!    // if "final" is nil, end = self.count
-		
-		let i = end - begin   // difference between end and begin
-		
-		var randomIndex = Int(arc4random_uniform(UInt32(i)))
-		randomIndex += begin    // move "begin" values to the right
-		
-		return self[randomIndex]
-		
-	}
-	
-}
-
 extension Int {
 	var timeInterval: TimeInterval {
 		return TimeInterval(self)
@@ -57,6 +40,29 @@ extension Int {
 	}
 	var day: TimeInterval {
 		return self.days
+	}
+}
+
+extension Array {
+	func random(from initial: Int? = nil, to final: Int? = nil) -> Element {
+		
+		let begin = ((initial == nil || initial! > final!) ? 0 : initial)!              // if "initial" is nil, begin = 0
+		let end = ((final == nil || final! > (self.count)) ? self.count : final)!    // if "final" is nil, end = self.count
+		
+		let i = end - begin   // difference between end and begin
+		
+		var randomIndex = Int(arc4random_uniform(UInt32(i)))
+		randomIndex += begin    // move "begin" values to the right
+		
+		return self[randomIndex]
+		
+	}
+	
+}
+
+extension Dictionary {
+	func row(_ counter: Int) -> (key: Key, value: Value) {
+		return self[index(startIndex, offsetBy: counter)]
 	}
 }
 
