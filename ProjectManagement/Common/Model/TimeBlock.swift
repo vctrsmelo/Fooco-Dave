@@ -143,7 +143,7 @@ extension TimeBlock {
 
 extension TimeBlock: Equatable, Comparable, Hashable {
 	var hashValue: Int {
-		return self.startsAt.hashValue + self.endsAt.hashValue
+		return self.startsAt.hashValue &+ self.endsAt.hashValue // TODO: This should not be in the final version
 	}
 	
     static func < (lhs: TimeBlock, rhs: TimeBlock) -> Bool {
