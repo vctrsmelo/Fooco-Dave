@@ -18,9 +18,7 @@ class EditProjectViewControllerFooco: UIViewController {
 	var unwindSegueIdentifier: String = ""
 	
 	private weak var tableViewController: EditProjectTableViewControllerFooco?
-	
-//    @IBOutlet private weak var navigationBar: UINavigationBar!
-	
+		
     @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
 	
     @IBOutlet private weak var bottomBg1ImageView: UIImageView!
@@ -74,7 +72,6 @@ class EditProjectViewControllerFooco: UIViewController {
 			self.tableViewController = editProjTableViewController
             editProjTableViewController.delegate = self
 			editProjTableViewController.project = self.project
-            datePickerAlertView.delegate = editProjTableViewController
         }
     }
 

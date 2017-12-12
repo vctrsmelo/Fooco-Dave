@@ -249,72 +249,26 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	
 	@IBAction func estimatedHoursTouched(_ sender: UIButton) {
 		delegate?.estimatedHoursTouched { alertView in
-//			alertView.present(.estimatedTime)
-//
-//			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
-//			let days = alertView.hoursPicker.selectedRow(inComponent: 0)
-//			let hours = alertView.hoursPicker.selectedRow(inComponent: 1)
-			
 			let pickerAlertViewModel = PickerAlertViewModel(with: .estimatedTime, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			
 			alertView.present(with: pickerAlertViewModel)
-//
-//			alertView.overTitleLabel.text = "\(contextName) Project"
-//			alertView.titleLabel.text = "Estimated Time"
-//			alertView.underTitleLabel.text = "\(days) days and \(hours) hours"
 		}
 	}
 	
 	@IBAction func startingDateTouched(_ sender: UIButton) {
 		delegate?.startingDateTouched { alertView in
-			
-//			alertView.present(.startingDate, initialDate: startingDate, limitDate: deadlineDate)
-//
-//			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
-//			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
-//
-//			let currentDate = alertView.datePicker.date
-			
 			let pickerAlertViewModel = PickerAlertViewModel(with: .startingDate, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			
 			alertView.present(with: pickerAlertViewModel)
-			
-//			alertView.underTitleLabel.text = ""
-//			alertView.overTitleLabel.text = "\(contextName) \(projectName)"
-//			alertView.titleLabel.text = "Starting Date"
-			
-//			if deadlineDate != nil {
-//				let daysBetween = Calendar.current.dateComponents([.day], from: currentDate, to: deadlineDate)
-//				if daysBetween.day != nil {
-//					alertView.underTitleLabel.text = "\(daysBetween.day!) days until deadline"
-//				}
-//			}
-			
 		}
 		
 	}
 	
 	@IBAction func deadlineDateTouched(_ sender: UIButton) {
 		delegate?.deadlineDateTouched { alertView in
-//			alertView.present(.endingDate, initialDate: deadlineDate, limitDate: startingDate)
-			
-//			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
-//			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
-			
-//			let currentDate = alertView.datePicker.date
-			
 			let pickerAlertViewModel = PickerAlertViewModel(with: .endingDate, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			
 			alertView.present(with: pickerAlertViewModel)
-			
-//			alertView.underTitleLabel.text = ""
-			
-//			if startingDate != nil {
-//				let daysBetween = Calendar.current.dateComponents([.day], from: startingDate, to: currentDate)
-//				if daysBetween.day != nil {
-//					alertView.underTitleLabel.text = "\(daysBetween.day!) days since starting date"
-//				}
-//			}
-//
-//			alertView.overTitleLabel.text = "\(contextName) \(projectName)"
-//			alertView.titleLabel.text = "Ending Date"
 		}
 	}
 	
@@ -447,71 +401,4 @@ extension EditProjectTableViewControllerFooco {
         contextsCollectionView.scrollToItem(at: contextsCollectionView.indexPath(for: focusedCell)!, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
     }
 
-}
-
-// MARK: - DatePickerAlertViewDelegate
-
-extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
-    
-    func dateChanged(_ sender: UIDatePicker, at alertView: DatePickerAlertView, for mode: AlertPickerViewMode) {
-        
-        let currentDate = alertView.datePicker.date
-        var newUnderTitleString = ""
-        
-        switch mode {
-        case .startingDate:
-            
-            if deadlineDate != nil {
-                let daysBetween = Calendar.current.dateComponents([.day], from: currentDate, to: deadlineDate)
-                
-                if daysBetween.day != nil {
-                    newUnderTitleString = "\(daysBetween.day!) days until deadline"
-                }
-            }
-			
-        case .endingDate:
-            
-            if startingDate != nil {
-                let daysBetween = Calendar.current.dateComponents([.day], from: startingDate, to: currentDate)
-                
-                if daysBetween.day != nil {
-                    newUnderTitleString = "\(daysBetween.day!) days since starting date"
-                }
-            }
-			
-        default:
-            break
-        }
-        
-//        alertView.underTitleLabel.text = newUnderTitleString
-    }
-    
-    func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode) {
-        sender.isHidden = true
-        
-        if mode != .estimatedTime {
-            return
-        }
-        
-        let days = sender.selectedRow(inComponent: 0)
-        let hours = sender.selectedRow(inComponent: 1)
-		
-        estimatedTime = TimeInterval(days.days + hours.hours)
-    }
-    
-    func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode) {
-        sender.isHidden = true
-		
-        // necessary to keep the dates as date (makes it easier to display the value later into alert view, if needed)
-        switch mode {
-            case .startingDate:
-                startingDate = sender.date
-			
-            case .endingDate:
-                deadlineDate = sender.date
-
-            default:
-                break
-        }
-    }
 }

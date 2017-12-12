@@ -25,9 +25,21 @@ class PickerAlertViewModel {
 	private(set) var title = ""
 	private(set) var underTitle = ""
 	
-	var startDate: Date?
-	var endDate: Date?
-	var chosenTime: (days: Int, hours: Int)?
+	var startDate: Date? {
+		didSet {
+			self.configureTitles()
+		}
+	}
+	var endDate: Date? {
+		didSet {
+			self.configureTitles()
+		}
+	}
+	var chosenTime: (days: Int, hours: Int)? {
+		didSet {
+			self.configureTitles()
+		}
+	}
 	
 	init(with mode: AlertPickerViewMode, contextName: String?, projectName: String?) {
 		self.currentMode = mode

@@ -7,15 +7,7 @@
 
 import UIKit
 
-protocol DatePickerAlertViewDelegate: AnyObject {
-    func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode)
-    func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode)
-    func dateChanged(_ sender: UIDatePicker, at alertView: DatePickerAlertView, for mode: AlertPickerViewMode)
-}
-
 class DatePickerAlertView: UIView {
-
-	weak var delegate: DatePickerAlertViewDelegate?
 	
 	private var currentMode: AlertPickerViewMode {
 		return self.viewModel.currentMode
@@ -48,8 +40,8 @@ class DatePickerAlertView: UIView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var underTitleLabel: UILabel!
 	
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var hoursPicker: UIPickerView!
+    @IBOutlet private weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var hoursPicker: UIPickerView!
 	
     @IBOutlet private weak var confirmButton: UIButton!
     
@@ -57,21 +49,16 @@ class DatePickerAlertView: UIView {
         
         self.viewModel = viewModel
 		
-		self.overTitleLabel.text = self.viewModel.overTitle
-		self.titleLabel.text = self.viewModel.title
-		self.underTitleLabel.text = self.viewModel.underTitle
+		self.updateToViewModel()
         
         hoursPicker.delegate = self
         hoursPicker.dataSource = self
         
-        if currentMode == .estimatedTime || currentMode == .totalFocusingTime {
+		if currentMode == .estimatedTime { // TODO: missing .totalFocusingTime
             hoursPicker.isHidden = false
             datePicker.isHidden = true
             
             if let someEstimatedTime = self.viewModel.chosenTime {
-//                let hours: Int = Int(someEstimatedTime / 1.hour)
-//                let days: Int = Int(someEstimatedTime / 1.day)
-				
                 hoursPicker.selectRow(someEstimatedTime.days, inComponent: 0, animated: false)
                 hoursPicker.selectRow(someEstimatedTime.hours, inComponent: 1, animated: false)
             }
@@ -83,22 +70,29 @@ class DatePickerAlertView: UIView {
 			if self.currentMode == .endingDate {
 				self.datePicker.minimumDate = self.viewModel.startDate
 				self.datePicker.maximumDate = nil
+				
+				let initialDate = (self.viewModel.endDate ?? self.viewModel.startDate) ?? Date().addingTimeInterval(7.days)
+				self.datePicker.setDate(initialDate, animated: false)
+				
 			} else if self.currentMode == .startingDate {
 				self.datePicker.maximumDate = self.viewModel.endDate
 				self.datePicker.minimumDate = nil
+				
+				let initialDate = self.viewModel.startDate ?? Date()
+				self.datePicker.setDate(initialDate, animated: false)
 			}
-			
-			// TODO: This
-//            if initialDate != nil {
-//                datePicker.setDate(initialDate!, animated: false)
-//            }
-			
         }
 		
-        updateIcon()
+        self.updateIcon()
         self.isHidden = false
         
     }
+	
+	private func updateToViewModel() {
+		self.overTitleLabel.text = self.viewModel.overTitle
+		self.titleLabel.text = self.viewModel.title
+		self.underTitleLabel.text = self.viewModel.underTitle
+	}
     
     func configure() {
         guard let superview = self.superview else {
@@ -156,15 +150,31 @@ class DatePickerAlertView: UIView {
 		
 		self.isHidden = true
         
-        if currentMode == .estimatedTime || currentMode == .totalFocusingTime {
-            delegate?.confirmTouched(hoursPicker, for: currentMode)
-        } else {
-            delegate?.confirmTouched(datePicker, for: currentMode)
-        }
+		switch self.currentMode {
+		case .estimatedTime:
+			self.viewModel.chosenTime?.days = self.hoursPicker.selectedRow(inComponent: 0)
+			self.viewModel.chosenTime?.hours = self.hoursPicker.selectedRow(inComponent: 1)
+			
+		case .endingDate:
+			self.viewModel.endDate = self.datePicker.date
+			
+		case .startingDate:
+			self.viewModel.startDate = self.datePicker.date
+		
+		case .totalFocusingTime:
+			// TODO: this
+			break
+		}
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
-        delegate?.dateChanged(sender, at: self, for: currentMode)
+		if self.currentMode == .endingDate {
+			self.viewModel.endDate = sender.date
+		} else if self.currentMode == .startingDate {
+			self.viewModel.startDate = sender.date
+		}
+		
+		self.updateToViewModel()
     }
 }
 
@@ -205,7 +215,8 @@ extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        underTitleLabel.text = "\(pickerView.selectedRow(inComponent: 0)) days and \(pickerView.selectedRow(inComponent: 1)) hours"
+		self.viewModel.chosenTime = (days: pickerView.selectedRow(inComponent: 0), hours: pickerView.selectedRow(inComponent: 1))
+		self.updateToViewModel()
     }
     
 }
