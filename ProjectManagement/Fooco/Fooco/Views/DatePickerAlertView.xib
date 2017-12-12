@@ -12,10 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePickerAlertView" customModule="Fooco" customModuleProvider="target">
             <connections>
+                <outlet property="bodyToFooterConstraint" destination="pno-Os-JZc" id="fgH-d0-szM"/>
+                <outlet property="bodyToSuperConstraint" destination="Bsl-s8-E4y" id="pR3-7S-reW"/>
                 <outlet property="calendarIconImageView" destination="cWg-QL-MKD" id="CZo-Xd-COs"/>
                 <outlet property="clockIconImageView" destination="2QW-a0-61y" id="eWF-v4-hYC"/>
                 <outlet property="confirmButton" destination="7Iz-tz-PO8" id="cr6-S7-1sh"/>
                 <outlet property="datePicker" destination="tub-iQ-1vS" id="0El-1c-RiL"/>
+                <outlet property="footer" destination="VRx-7j-irO" id="f9N-V2-pFb"/>
                 <outlet property="hoursPicker" destination="RNZ-ME-aKv" id="a1c-cw-ENF"/>
                 <outlet property="mainView" destination="jhX-NP-720" id="w7s-86-2Ik"/>
                 <outlet property="overTitleLabel" destination="niV-FX-Tap" id="T2H-bs-9DZ"/>

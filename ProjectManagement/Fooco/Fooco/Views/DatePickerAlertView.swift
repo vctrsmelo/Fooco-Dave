@@ -29,6 +29,12 @@ class DatePickerAlertView: UIView {
     private var _view: UIView!
 	private var originalNavigationColor: UIColor?
 	
+	var footerIsHidden = true {
+		didSet {
+			self.updateFooter()
+		}
+	}
+	
     @IBOutlet private weak var viewContainer: DatePickerAlertView!
 	
     @IBOutlet private weak var calendarIconImageView: UIImageView!
@@ -36,6 +42,10 @@ class DatePickerAlertView: UIView {
 	
 	@IBOutlet private weak var overlayView: UIView!
     @IBOutlet private weak var mainView: UIView!
+	
+	@IBOutlet private weak var footer: UIView!
+	@IBOutlet private weak var bodyToSuperConstraint: NSLayoutConstraint!
+	@IBOutlet private weak var bodyToFooterConstraint: NSLayoutConstraint!
 	
 	@IBOutlet weak var overTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -108,6 +118,8 @@ class DatePickerAlertView: UIView {
         confirmButton.layer.shadowRadius = 6
         confirmButton.layer.shadowColor = UIColor.black.cgColor
         confirmButton.layer.masksToBounds = false
+		
+		self.updateFooter()
         
         self.isHidden = true
     }
@@ -116,6 +128,22 @@ class DatePickerAlertView: UIView {
         clockIconImageView.isHidden = hoursPicker.isHidden
         calendarIconImageView.isHidden = datePicker.isHidden
     }
+	
+	private func updateFooter() {
+		DispatchQueue.main.async {
+			self.footer.isHidden = self.footerIsHidden
+			
+			if self.footerIsHidden { // need to make sure the constraints are deactivated first
+				self.bodyToFooterConstraint.isActive = false
+				self.bodyToSuperConstraint.isActive = true
+			} else {
+				self.bodyToSuperConstraint.isActive = false
+				self.bodyToFooterConstraint.isActive = true
+			}
+			
+			self.view.layoutIfNeeded()
+		}
+	}
 	
 	// TODO: hide view if touch outside it
     @IBAction func confirmTouched(_ sender: UIButton) {
