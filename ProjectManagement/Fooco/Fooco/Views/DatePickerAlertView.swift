@@ -7,13 +7,6 @@
 
 import UIKit
 
-enum AlertPickerViewMode {
-    case estimatedTime
-    case startingDate
-    case deadlineDate
-    case totalFocusingTime
-}
-
 protocol DatePickerAlertViewDelegate: AnyObject {
     func confirmTouched(_ sender: UIDatePicker, for mode: AlertPickerViewMode)
     func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode)
@@ -24,12 +17,16 @@ class DatePickerAlertView: UIView {
 
 	weak var delegate: DatePickerAlertViewDelegate?
 	
-	var currentMode: AlertPickerViewMode!
+	private var currentMode: AlertPickerViewMode {
+		return self.viewModel.currentMode
+	}
+	
+	var viewModel: PickerAlertViewModel!
 	
     private var _view: UIView!
 	private var originalNavigationColor: UIColor?
 	
-	var footerIsHidden = true {
+	private var footerIsHidden = true {
 		didSet {
 			self.updateFooter()
 		}
@@ -47,18 +44,22 @@ class DatePickerAlertView: UIView {
 	@IBOutlet private weak var bodyToSuperConstraint: NSLayoutConstraint!
 	@IBOutlet private weak var bodyToFooterConstraint: NSLayoutConstraint!
 	
-	@IBOutlet weak var overTitleLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var underTitleLabel: UILabel!
+	@IBOutlet private weak var overTitleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var underTitleLabel: UILabel!
 	
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var hoursPicker: UIPickerView!
 	
     @IBOutlet private weak var confirmButton: UIButton!
     
-	func present(_ mode: AlertPickerViewMode, initialDate: Date? = nil, limitDate: Date? = nil, estimatedTime: TimeInterval? = nil) {
+	func present(with viewModel: PickerAlertViewModel) {
         
-        currentMode = mode
+        self.viewModel = viewModel
+		
+		self.overTitleLabel.text = self.viewModel.overTitle
+		self.titleLabel.text = self.viewModel.title
+		self.underTitleLabel.text = self.viewModel.underTitle
         
         hoursPicker.delegate = self
         hoursPicker.dataSource = self
@@ -67,30 +68,31 @@ class DatePickerAlertView: UIView {
             hoursPicker.isHidden = false
             datePicker.isHidden = true
             
-            if let someEstimatedTime = estimatedTime {
-                let hours: Int = Int(someEstimatedTime / 1.hour)
-                let days: Int = Int(someEstimatedTime / 1.day)
-                
-                hoursPicker.selectRow(days, inComponent: 0, animated: false)
-                hoursPicker.selectRow(hours, inComponent: 1, animated: false)
+            if let someEstimatedTime = self.viewModel.chosenTime {
+//                let hours: Int = Int(someEstimatedTime / 1.hour)
+//                let days: Int = Int(someEstimatedTime / 1.day)
+				
+                hoursPicker.selectRow(someEstimatedTime.days, inComponent: 0, animated: false)
+                hoursPicker.selectRow(someEstimatedTime.hours, inComponent: 1, animated: false)
             }
             
         } else {
             hoursPicker.isHidden = true
             datePicker.isHidden = false
 			
-			if self.currentMode == .deadlineDate {
-				self.datePicker.minimumDate = limitDate
+			if self.currentMode == .endingDate {
+				self.datePicker.minimumDate = self.viewModel.startDate
 				self.datePicker.maximumDate = nil
 			} else if self.currentMode == .startingDate {
-				self.datePicker.maximumDate = limitDate
+				self.datePicker.maximumDate = self.viewModel.endDate
 				self.datePicker.minimumDate = nil
 			}
 			
-            if initialDate != nil {
-                datePicker.setDate(initialDate!, animated: false)
-            }
-            
+			// TODO: This
+//            if initialDate != nil {
+//                datePicker.setDate(initialDate!, animated: false)
+//            }
+			
         }
 		
         updateIcon()
@@ -123,6 +125,10 @@ class DatePickerAlertView: UIView {
         
         self.isHidden = true
     }
+	
+	private func updateLabels() {
+		
+	}
 
     private func updateIcon() {
         clockIconImageView.isHidden = hoursPicker.isHidden

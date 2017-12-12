@@ -249,38 +249,44 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	
 	@IBAction func estimatedHoursTouched(_ sender: UIButton) {
 		delegate?.estimatedHoursTouched { alertView in
-			alertView.present(.estimatedTime)
+//			alertView.present(.estimatedTime)
+//
+//			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
+//			let days = alertView.hoursPicker.selectedRow(inComponent: 0)
+//			let hours = alertView.hoursPicker.selectedRow(inComponent: 1)
 			
-			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
-			let days = alertView.hoursPicker.selectedRow(inComponent: 0)
-			let hours = alertView.hoursPicker.selectedRow(inComponent: 1)
-			
-			alertView.overTitleLabel.text = "\(contextName) Project"
-			alertView.titleLabel.text = "Estimated Time"
-			alertView.underTitleLabel.text = "\(days) days and \(hours) hours"
+			let pickerAlertViewModel = PickerAlertViewModel(with: .estimatedTime, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			alertView.present(with: pickerAlertViewModel)
+//
+//			alertView.overTitleLabel.text = "\(contextName) Project"
+//			alertView.titleLabel.text = "Estimated Time"
+//			alertView.underTitleLabel.text = "\(days) days and \(hours) hours"
 		}
 	}
 	
 	@IBAction func startingDateTouched(_ sender: UIButton) {
 		delegate?.startingDateTouched { alertView in
 			
-			alertView.present(.startingDate, initialDate: startingDate, limitDate: deadlineDate)
+//			alertView.present(.startingDate, initialDate: startingDate, limitDate: deadlineDate)
+//
+//			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
+//			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
+//
+//			let currentDate = alertView.datePicker.date
 			
-			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
-			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
+			let pickerAlertViewModel = PickerAlertViewModel(with: .startingDate, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			alertView.present(with: pickerAlertViewModel)
 			
-			let currentDate = alertView.datePicker.date
+//			alertView.underTitleLabel.text = ""
+//			alertView.overTitleLabel.text = "\(contextName) \(projectName)"
+//			alertView.titleLabel.text = "Starting Date"
 			
-			alertView.underTitleLabel.text = ""
-			alertView.overTitleLabel.text = "\(contextName) \(projectName)"
-			alertView.titleLabel.text = "Starting Date"
-			
-			if deadlineDate != nil {
-				let daysBetween = Calendar.current.dateComponents([.day], from: currentDate, to: deadlineDate)
-				if daysBetween.day != nil {
-					alertView.underTitleLabel.text = "\(daysBetween.day!) days until deadline"
-				}
-			}
+//			if deadlineDate != nil {
+//				let daysBetween = Calendar.current.dateComponents([.day], from: currentDate, to: deadlineDate)
+//				if daysBetween.day != nil {
+//					alertView.underTitleLabel.text = "\(daysBetween.day!) days until deadline"
+//				}
+//			}
 			
 		}
 		
@@ -288,24 +294,27 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	
 	@IBAction func deadlineDateTouched(_ sender: UIButton) {
 		delegate?.deadlineDateTouched { alertView in
-			alertView.present(.deadlineDate, initialDate: deadlineDate, limitDate: startingDate)
+//			alertView.present(.endingDate, initialDate: deadlineDate, limitDate: startingDate)
 			
-			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
-			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
+//			let contextName = (selectedContext != nil) ? selectedContext!.name : ""
+//			let projectName = (nameTextField != nil && nameTextField!.text != nil) ? nameTextField!.text! : ""
 			
-			let currentDate = alertView.datePicker.date
+//			let currentDate = alertView.datePicker.date
 			
-			alertView.underTitleLabel.text = ""
+			let pickerAlertViewModel = PickerAlertViewModel(with: .endingDate, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			alertView.present(with: pickerAlertViewModel)
 			
-			if startingDate != nil {
-				let daysBetween = Calendar.current.dateComponents([.day], from: startingDate, to: currentDate)
-				if daysBetween.day != nil {
-					alertView.underTitleLabel.text = "\(daysBetween.day!) days since starting date"
-				}
-			}
+//			alertView.underTitleLabel.text = ""
 			
-			alertView.overTitleLabel.text = "\(contextName) \(projectName)"
-			alertView.titleLabel.text = "Ending Date"
+//			if startingDate != nil {
+//				let daysBetween = Calendar.current.dateComponents([.day], from: startingDate, to: currentDate)
+//				if daysBetween.day != nil {
+//					alertView.underTitleLabel.text = "\(daysBetween.day!) days since starting date"
+//				}
+//			}
+//
+//			alertView.overTitleLabel.text = "\(contextName) \(projectName)"
+//			alertView.titleLabel.text = "Ending Date"
 		}
 	}
 	
@@ -460,7 +469,7 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
                 }
             }
 			
-        case .deadlineDate:
+        case .endingDate:
             
             if startingDate != nil {
                 let daysBetween = Calendar.current.dateComponents([.day], from: startingDate, to: currentDate)
@@ -474,7 +483,7 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
             break
         }
         
-        alertView.underTitleLabel.text = newUnderTitleString
+//        alertView.underTitleLabel.text = newUnderTitleString
     }
     
     func confirmTouched(_ sender: UIPickerView, for mode: AlertPickerViewMode) {
@@ -498,7 +507,7 @@ extension EditProjectTableViewControllerFooco: DatePickerAlertViewDelegate {
             case .startingDate:
                 startingDate = sender.date
 			
-            case .deadlineDate:
+            case .endingDate:
                 deadlineDate = sender.date
 
             default:
