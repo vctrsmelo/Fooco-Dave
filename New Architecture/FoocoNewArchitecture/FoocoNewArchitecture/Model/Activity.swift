@@ -57,3 +57,69 @@ struct Activity {
     }
     
 }
+
+extension Activity: CustomStringConvertible {
+    var description: String {
+        
+        var returnStr = "Activity ->"
+        
+        if project != nil {
+            returnStr += " project \(self.project!.name)"
+        }
+        
+        return "\(returnStr) from: \(timeBlock.start) to: \(timeBlock.end)"
+        
+        
+    }
+
+}
+
+extension Activity: IntervalType {
+    
+    typealias Bound = Time
+    
+    var end: Time {
+        return timeBlock.end
+    }
+    
+    var isEmpty: Bool {
+        return timeBlock.isEmpty
+    }
+    
+    var start: Time {
+        return timeBlock.start
+    }
+    
+    func clamp(_ intervalToClamp: Activity) -> Activity {
+
+        let clampedTimeBlock = timeBlock.clamp(intervalToClamp.timeBlock)
+        
+        if self.project != nil {
+            return try! Activity(from: clampedTimeBlock.start, to: clampedTimeBlock.end, project: self.project!)
+        }
+        
+        return try! Activity(from: clampedTimeBlock.start, to: clampedTimeBlock.end, name: self.name!)
+        
+    }
+    
+    func contains(_ value: Time) -> Bool {
+        return self.timeBlock.contains(value)
+    }
+    
+    func overlaps<I>(_ other: I) -> Bool where I : IntervalType, Activity.Bound == I.Bound {
+        return self.timeBlock.overlaps(other)
+    }
+
+}
+
+extension Activity: Equatable {
+    
+    static func ==(_ actv1: Activity, _ actv2: Activity) -> Bool{
+        return  actv1.timeBlock == actv2.timeBlock
+    }
+    
+    static func !=(_ actv1: Activity, _ actv2: Activity) -> Bool{
+        return  actv1.timeBlock != actv2.timeBlock
+    }
+    
+}

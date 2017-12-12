@@ -9,16 +9,16 @@
 import Foundation
 
 /**
- weekdays, where sunday is 0 and saturday is 6
+ weekdays, where sunday is 1 and saturday is 7
  */
 enum Weekday: Int {
-    case sunday = 0
-    case monday = 1
-    case tuesday = 2
-    case wednesday = 3
-    case thursday = 4
-    case friday = 5
-    case saturday = 6
+    case sunday = 1
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
 }
 
 /**
@@ -27,7 +27,7 @@ enum Weekday: Int {
 struct WeekdayTemplate {
     
     var weekday: Weekday
-    private var contextBlocks: [ContextBlock] = []
+    private(set) var contextBlocks: [ContextBlock] = []
 
     init(weekday: Weekday, contextBlocks: [(TimeBlock, Context)] = []) {
 
@@ -39,20 +39,20 @@ struct WeekdayTemplate {
         
     }
     
-    // Private struct
-    private struct ContextBlock {
-        let context: Context
-        let timeBlock: TimeBlock
-        
-        init(context: Context, timeBlock: TimeBlock) {
-            self.context = context
-            self.timeBlock = timeBlock
-        }
-        
-        init(_ tuple: (TimeBlock, Context)) {
-            self.init(context: tuple.1, timeBlock: tuple.0)
-        }
+}
+
+// Private struct
+struct ContextBlock {
+    let context: Context
+    let timeBlock: TimeBlock
+    
+    init(context: Context, timeBlock: TimeBlock) {
+        self.context = context
+        self.timeBlock = timeBlock
     }
     
+    init(_ tuple: (TimeBlock, Context)) {
+        self.init(context: tuple.1, timeBlock: tuple.0)
+    }
 }
 

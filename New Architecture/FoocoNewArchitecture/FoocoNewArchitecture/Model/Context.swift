@@ -17,3 +17,11 @@ class Context {
     }
     
 }
+
+extension Context: Equatable {
+    static func ==(lhs: Context, rhs: Context) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
+    
+}

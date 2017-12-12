@@ -48,19 +48,38 @@ struct TimeBlock {
 
 }
 
-extension TimeBlock {
+extension TimeBlock: IntervalType {
     
-    func contains(_ bound: Time) -> Bool {
-        return self.range.contains(bound)
+    typealias Bound = Time
+    
+    func contains(_ value: Time) -> Bool {
+        return self.range.contains(value)
     }
     
-    func contains(_ other: TimeBlock) -> Bool {
-        return (self.range.contains(other.range.lowerBound) && self.range.contains(other.range.upperBound))
+    func overlaps<I>(_ other: I) -> Bool where I : IntervalType, Time == I.Bound {
+        return ((self.start <= other.start && self.end >= other.start) || (other.start <= self.start && other.end >= self.end))
     }
     
-    func overlaps(_ other:  TimeBlock) -> Bool {
-        return self.range.overlaps(other.range)
+    var end: Time {
+        return self.end
     }
+    
+    var isEmpty: Bool {
+        return ends - starts > 0
+    }
+    
+    var start: Time {
+        return self.starts
+    }
+    
+    func clamp(_ intervalToClamp: TimeBlock) -> TimeBlock {
+        let newInterval = intervalToClamp.range.clamped(to: self.range)
+        return try! TimeBlock(starts: newInterval.lowerBound, ends: newInterval.upperBound)
+    }
+
+}
+
+extension TimeBlock: Equatable {
     
     static func ==(_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool{
         return tb1.range == tb2.range

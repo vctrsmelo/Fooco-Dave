@@ -68,3 +68,38 @@ extension TimeInterval {
     }
     
 }
+
+extension Date {
+    
+    func toString(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = dateStyle
+        dateFormatter.timeStyle = timeStyle
+        
+        return dateFormatter.string(from: self)
+    }
+    
+    /**
+     Return the same date with hours, minutes and seconds setted to zero.
+     */
+    func getDay() -> Date {
+        
+        let today = Calendar.current.dateComponents([.day, .month, .year], from: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        return dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!)")!
+        
+    }
+    
+    /**
+     Returns the Weekday.
+     - precondition: Calendar must be gregorian, where weekday starts as 1 (sunday) and ends as 7 (saturday).
+    */
+    func getWeekday() -> Weekday {
+        return Weekday(rawValue: Calendar.current.component(.weekday, from: self))!
+    }
+    
+}
+

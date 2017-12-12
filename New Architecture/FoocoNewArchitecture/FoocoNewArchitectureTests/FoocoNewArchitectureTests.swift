@@ -147,4 +147,36 @@ class FoocoNewArchitectureTests: XCTestCase {
         
     }
     
+    func testDay() {
+        
+        let college = Context(name: "College")
+        let project1 = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3)
+        let actv1 = try! Activity(from: Time(hour: 10), to: Time(hour: 12), name: "Buy milk")
+        let actv2 = try! Activity(from: Time(hour:13), to: Time(hour:14), project: project1)
+        
+        XCTAssertNotNil(try Day(date: Date()))
+        XCTAssertNoThrow(try Day(date: Date()))
+        XCTAssertNotNil(try Day(date: Date().addingTimeInterval(86_400), activities: [actv1,actv2]))
+    
+        //test overlaps
+        
+        let actvA1 = try! Activity(from: Time(hour:10), to: Time(hour:14), project: project1)
+        let actvA2 = try! Activity(from: Time(hour:13), to: Time(hour:15), project: project1)
+        
+        let actvB1 = try! Activity(from: Time(hour:10), to: Time(hour:14), project: project1)
+        let actvB2 = try! Activity(from: Time(hour:11), to: Time(hour:12), project: project1)
+        
+        let actvC1 = try! Activity(from: Time(hour:20), to: Time(hour:21), project: project1)
+        let actvC2 = try! Activity(from: Time(hour:17), to: Time(hour:21), project: project1)
+        
+        XCTAssertThrowsError(try Day(date: Date(), activities: [actvA1,actvA2]))
+        XCTAssertThrowsError(try Day(date: Date(), activities: [actvB1,actvB2]))
+        XCTAssertThrowsError(try Day(date: Date(), activities: [actvC1,actvC2]))
+        XCTAssertThrowsError(try Day(date: Date(), activities: [actvC2,actvC2]))
+        XCTAssertNoThrow(try Day(date: Date(), activities: [actvA1,actvC2]))
+
+        
+    }
+    
+    
 }

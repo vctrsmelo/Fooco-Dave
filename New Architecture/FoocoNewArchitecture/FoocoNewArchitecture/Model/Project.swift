@@ -16,11 +16,11 @@ struct Project {
     
     static private let importanceRange: [Int] = [1,2,3]
     
-    private let uuid: UUID
-    private var name: String
+    private let id: UUID
+    var name: String
     private var startingDate: Date
     private var endingDate: Date
-    private var context: Context
+    private(set) var context: Context
     private var importance: Int
     
     init(name: String, starts: Date, ends: Date, context: Context, importance: Int) throws {
@@ -36,7 +36,7 @@ struct Project {
         }
         
         self.importance = importance
-        self.uuid = UUID()
+        self.id = UUID()
     }
     
     /**
@@ -48,7 +48,7 @@ struct Project {
         self.endingDate = ends
         self.context = context
         self.importance = importance
-        self.uuid = UUID()
+        self.id = id
     }
     
 }

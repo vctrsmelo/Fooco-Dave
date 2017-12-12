@@ -61,6 +61,22 @@ extension Time: Comparable {
     
 }
 
+extension Time {
+    
+    static func -(lhs: Time, rhs: Time) -> Int {
+        return lhs.totalSeconds - rhs.totalSeconds
+    }
+    
+}
+
+extension Time: CustomStringConvertible {
+    var description: String {
+        return "\(hour):\(minute):\(second)"
+    }
+    
+    
+}
+
 /**
  Contains time range variables for hours, minutes and seconds.
  */

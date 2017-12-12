@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE0E579F1FD7089500EF77C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E579E1FD7089500EF77C0 /* User.swift */; };
 		EE0E57A11FD70B5000EF77C0 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */; };
+		EE40B7971FDB08A60087B768 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40B7961FDB08A60087B768 /* Day.swift */; };
 		EEBC21A81FCF0CDC0032FE29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */; };
 		EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A91FCF0CDC0032FE29 /* ViewController.swift */; };
 		EEBC21AD1FCF0CDC0032FE29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBC21AB1FCF0CDC0032FE29 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		EE0E579E1FD7089500EF77C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
+		EE40B7961FDB08A60087B768 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		EEBC21A41FCF0CDC0032FE29 /* FoocoNewArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoocoNewArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEBC21A91FCF0CDC0032FE29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				EEBC21E61FD5D6140032FE29 /* Project.swift */,
 				EE0E579E1FD7089500EF77C0 /* User.swift */,
 				EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */,
+				EE40B7961FDB08A60087B768 /* Day.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				EEBC21D71FCF0CF80032FE29 /* Time.swift in Sources */,
 				EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */,
 				EEBC21DD1FCF3DF10032FE29 /* TimeBlock.swift in Sources */,
+				EE40B7971FDB08A60087B768 /* Day.swift in Sources */,
 				EEBC21E71FD5D6140032FE29 /* Project.swift in Sources */,
 				EE0E57A11FD70B5000EF77C0 /* AlgorithmManager.swift in Sources */,
 				EEBC21E11FD083D50032FE29 /* Context.swift in Sources */,
