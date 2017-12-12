@@ -35,7 +35,7 @@ class DatePickerAlertView: UIView {
     @IBOutlet private weak var clockIconImageView: UIImageView!
 	
 	@IBOutlet private weak var overlayView: UIView!
-    @IBOutlet private weak var backgroundView: UIView!
+    @IBOutlet private weak var mainView: UIView!
 	
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overTitleLabel: UILabel!
@@ -97,11 +97,11 @@ class DatePickerAlertView: UIView {
         
         //shadow
         
-        backgroundView.layer.shadowOpacity = 0.30
-        backgroundView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        backgroundView.layer.shadowRadius = 6
-        backgroundView.layer.shadowColor = UIColor.black.cgColor
-        backgroundView.layer.masksToBounds = false
+        mainView.layer.shadowOpacity = 0.30
+        mainView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        mainView.layer.shadowRadius = 6
+        mainView.layer.shadowColor = UIColor.black.cgColor
+        mainView.layer.masksToBounds = false
         
         confirmButton.layer.shadowOpacity = 0.30
         confirmButton.layer.shadowOffset = CGSize(width: 0, height: 1)
