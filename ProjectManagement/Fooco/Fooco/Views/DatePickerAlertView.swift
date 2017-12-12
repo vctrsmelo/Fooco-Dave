@@ -37,8 +37,8 @@ class DatePickerAlertView: UIView {
 	@IBOutlet private weak var overlayView: UIView!
     @IBOutlet private weak var mainView: UIView!
 	
+	@IBOutlet weak var overTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var overTitleLabel: UILabel!
     @IBOutlet weak var underTitleLabel: UILabel!
 	
     @IBOutlet weak var datePicker: UIDatePicker!
