@@ -13,11 +13,12 @@ class EditProjectViewModel {
 	
 	var chosenContext: Context?
 	
-	private(set) var name: String?
+	var name: String?
+	var importance: Int = 1
+	
 	private var startingDate: Date?
 	private var endingDate: Date?
 	private var chosenTime: (days: Int, hours: Int)?
-	var importance: Int = 1
 	
 	init(with project: Project? = nil) {
 		self.project = project

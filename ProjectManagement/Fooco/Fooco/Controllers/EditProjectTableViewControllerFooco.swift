@@ -235,6 +235,19 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 }
 
+// MARK: - TextField
+
+extension EditProjectTableViewControllerFooco: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		return textField.resignFirstResponder()
+	}
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		self.viewModel.name = textField.text
+	}
+}
+
+
 // MARK: - Collection
 
 extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

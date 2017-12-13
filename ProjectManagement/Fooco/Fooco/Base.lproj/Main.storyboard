@@ -1547,11 +1547,14 @@
                                                     <color key="textColor" red="0.38942998647689819" green="0.68078142404556274" blue="0.59111994504928589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ByI-wv-0qC">
-                                                    <rect key="frame" x="118" y="42" width="202" height="17"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ByI-wv-0qC">
+                                                    <rect key="frame" x="118" y="42" width="202" height="19"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="continue" enablesReturnKeyAutomatically="YES" textContentType="name"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="ms8-Ga-Gck" id="nd5-1r-ZSm"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
