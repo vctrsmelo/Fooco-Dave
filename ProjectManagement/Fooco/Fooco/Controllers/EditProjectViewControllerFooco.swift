@@ -36,7 +36,7 @@ class EditProjectViewControllerFooco: UIViewController {
         bottomBg1ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         bottomBg2ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         
-        // hide keyboard when view is tapped
+        // Hide keyboard when view is tapped
         hideKeyboardWhenTappedAround()
     }
     
@@ -47,16 +47,8 @@ class EditProjectViewControllerFooco: UIViewController {
 	}
 	
 	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
-		if let savedProject = self.tableViewController?.saveProject() {
-			if self.project === savedProject { // Is editing Project
-				let index = User.sharedInstance.projects.index(of: savedProject) // TODO: Give id to projects and make this better
-				User.sharedInstance.projects[index!] = savedProject
-				
-			} else { // Is creating Project
-				User.sharedInstance.add(projects: [savedProject])
-			}
-			
-			User.sharedInstance.isCurrentScheduleUpdated = false
+		if self.tableViewController!.viewModel.canSaveProject() {
+			self.tableViewController!.viewModel.saveProject()
 			
 			self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 			
@@ -71,7 +63,7 @@ class EditProjectViewControllerFooco: UIViewController {
 			
 			self.tableViewController = editProjTableViewController
             editProjTableViewController.delegate = self
-			editProjTableViewController.project = self.project
+			editProjTableViewController.viewModel = EditProjectViewModel(with: self.project)
         }
     }
 

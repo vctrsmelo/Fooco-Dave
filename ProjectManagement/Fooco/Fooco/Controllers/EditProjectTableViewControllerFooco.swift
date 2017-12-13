@@ -16,47 +16,15 @@ protocol EditProjectTableViewControllerDelegate: AnyObject {
 
 class EditProjectTableViewControllerFooco: UITableViewController {
 	
-	var project: Project?
+	var viewModel: EditProjectViewModel!
 	
 	weak var delegate: EditProjectTableViewControllerDelegate?
 	
-	private var startingDate: Date! {
-		didSet {
-			self.startingDateButton.setTitle(DateFormatter.localizedString(from: self.startingDate, dateStyle: .short, timeStyle: .none))
-		}
-	}
-	private var deadlineDate: Date! {
-		didSet {
-			self.deadlineDateButton.setTitle(DateFormatter.localizedString(from: self.deadlineDate, dateStyle: .short, timeStyle: .none))
-		}
-	}
-	private var estimatedTime: TimeInterval! {
-		didSet {
-			let days = Int(self.estimatedTime) / Int(1.day)
-			let hours = Int(self.estimatedTime.truncatingRemainder(dividingBy: 1.day) / 1.hour)
-			
-			let localizedTitle = String(format: NSLocalizedString("%d days and %d hours", comment: "Estimated time phrase"), days, hours)
-			self.estimatedHoursButton.setTitle(localizedTitle)
-		}
-	}
-	
-	private var selectedContext: Context? {
-		didSet {
-			self.delegate?.contextUpdated(for: self.selectedContext)
-		}
-	}
-	
 	private var contextColor: UIColor {
-		if let someSelectedContext = self.selectedContext {
+		if let someSelectedContext = self.viewModel.chosenContext {
 			return someSelectedContext.color
 		} else {
 			return .addContextColor
-		}
-	}
-	
-	private var importance: Int = 1 {
-		willSet {
-			self.updateImportanceColor(to: newValue)
 		}
 	}
 	
@@ -115,7 +83,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		if let someContext = self.selectedContext, let index = User.sharedInstance.contexts.index(of: someContext) {
+		if let someContext = self.viewModel.chosenContext, let index = User.sharedInstance.contexts.index(of: someContext) {
 			let indexPath = IndexPath(row: index, section: 0)
 			self.contextsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
 		}
@@ -173,11 +141,11 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		lowImportanceButton.layer.borderColor = contextColor.cgColor
 		mediumImportanceButton.layer.borderColor = contextColor.cgColor
 		highImportanceButton.layer.borderColor = contextColor.cgColor
-		updateImportanceColor(to: importance)
+		updateImportanceColor()
 	}
 	
-	private func updateImportanceColor(to value: Int) {
-		switch value {
+	private func updateImportanceColor() {
+		switch self.viewModel.importance {
 		case 1:
 			lowImportanceButton.backgroundColor = contextColor
 			lowImportanceButton.setTitleColor(UIColor.Interface.iWhite)
@@ -208,48 +176,26 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 	
 	private func updateSelectedContext(with context: Context?) {
-		selectedContext = context
+		self.viewModel.chosenContext = context
 		updateColor()
 	}
 	
 	private func updateProjectData() {
-		self.nameTextField.text = self.project?.name ?? ""
-		self.startingDate = self.project?.startingDate ?? Date()
-		self.deadlineDate = self.project?.endingDate ?? Date().addingTimeInterval(7.days)
-		self.selectedContext = self.project?.context
-		self.importance = self.project?.importance ?? 1
-		self.estimatedTime = self.project?.totalTimeEstimated ?? 0
+//		self.delegate?.contextUpdated(for: self.selectedContext)
+		self.nameTextField.text = self.viewModel.name
+//		self.startingDateButton.setTitle(DateFormatter.localizedString(from: self.startingDate, dateStyle: .short, timeStyle: .none))
+//		self.deadlineDateButton.setTitle(DateFormatter.localizedString(from: self.deadlineDate, dateStyle: .short, timeStyle: .none))
+//		let localizedTitle = String(format: NSLocalizedString("%d days and %d hours", comment: "Estimated time phrase"), days, hours)
+//		self.estimatedHoursButton.setTitle(localizedTitle)
 		
 		self.updateColor()
-	}
-	
-	func saveProject() -> Project? {
-		if let name = self.nameTextField.text, let begin = self.startingDate, let end = self.deadlineDate, let context = self.selectedContext, let estimate = self.estimatedTime {
-			
-			if let someProject = self.project {
-				someProject.name = name
-				someProject.startingDate = begin
-				someProject.endingDate = end
-				someProject.context = context
-				someProject.importance = self.importance
-				someProject.totalTimeEstimated = estimate
-				
-				return someProject
-				
-			} else {
-				return Project(named: name, startsAt: begin, endsAt: end, withContext: context, importance: self.importance, totalTimeEstimated: estimate)
-			}
-			
-		} else {
-			return nil
-		}
 	}
 	
 	// MARK: - Touch Handling
 	
 	@IBAction func estimatedHoursTouched(_ sender: UIButton) {
 		delegate?.estimatedHoursTouched { alertView in
-			let pickerAlertViewModel = PickerAlertViewModel(with: .estimatedTime, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			let pickerAlertViewModel = self.viewModel.createAlert(for: .estimatedTime)
 			
 			alertView.present(with: pickerAlertViewModel)
 		}
@@ -257,7 +203,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	
 	@IBAction func startingDateTouched(_ sender: UIButton) {
 		delegate?.startingDateTouched { alertView in
-			let pickerAlertViewModel = PickerAlertViewModel(with: .startingDate, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			let pickerAlertViewModel = self.viewModel.createAlert(for: .startingDate)
 			
 			alertView.present(with: pickerAlertViewModel)
 		}
@@ -266,32 +212,35 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	
 	@IBAction func deadlineDateTouched(_ sender: UIButton) {
 		delegate?.deadlineDateTouched { alertView in
-			let pickerAlertViewModel = PickerAlertViewModel(with: .endingDate, contextName: self.selectedContext?.name, projectName: self.nameTextField.text)
+			let pickerAlertViewModel = self.viewModel.createAlert(for: .endingDate)
 			
 			alertView.present(with: pickerAlertViewModel)
 		}
 	}
 	
 	@IBAction func lowImportanceTouched(_ sender: UIButton) {
-		importance = 1
+		self.viewModel.importance = 1
 		lowImportanceButton.isSelected = true
 		mediumImportanceButton.isSelected = false
 		highImportanceButton.isSelected = false
+		self.updateImportanceColor()
 	}
 	
 	
 	@IBAction func mediumImportanceTouched(_ sender: UIButton) {
-		importance = 2
+		self.viewModel.importance = 2
 		lowImportanceButton.isSelected = false
 		mediumImportanceButton.isSelected = true
 		highImportanceButton.isSelected = false
+		self.updateImportanceColor()
 	}
 	
 	@IBAction func highImportanceTouched(_ sender: Any) {
-		importance = 3
+		self.viewModel.importance = 3
 		lowImportanceButton.isSelected = false
 		mediumImportanceButton.isSelected = false
 		highImportanceButton.isSelected = true
+		self.updateImportanceColor()
 	}
 }
 
@@ -317,7 +266,7 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
         } else {
             let context = User.sharedInstance.contexts[indexPath.row]
             cell.context = context
-            if selectedContext == nil {
+            if self.viewModel.chosenContext == nil {
                 updateSelectedContext(with: cell.context)
             }
         }

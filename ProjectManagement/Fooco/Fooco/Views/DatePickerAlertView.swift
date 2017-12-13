@@ -68,17 +68,17 @@ class DatePickerAlertView: UIView {
             datePicker.isHidden = false
 			
 			if self.currentMode == .endingDate {
-				self.datePicker.minimumDate = self.viewModel.startDate
+				self.datePicker.minimumDate = self.viewModel.comparisonDate
 				self.datePicker.maximumDate = nil
 				
-				let initialDate = (self.viewModel.endDate ?? self.viewModel.startDate) ?? Date().addingTimeInterval(7.days)
+				let initialDate = (self.viewModel.mainDate ?? self.viewModel.comparisonDate?.addingTimeInterval(7.days)) ?? Date().addingTimeInterval(7.days)
 				self.datePicker.setDate(initialDate, animated: false)
 				
 			} else if self.currentMode == .startingDate {
-				self.datePicker.maximumDate = self.viewModel.endDate
+				self.datePicker.maximumDate = self.viewModel.comparisonDate
 				self.datePicker.minimumDate = nil
 				
-				let initialDate = self.viewModel.startDate ?? Date()
+				let initialDate = self.viewModel.mainDate ?? Date()
 				self.datePicker.setDate(initialDate, animated: false)
 			}
         }
@@ -155,11 +155,8 @@ class DatePickerAlertView: UIView {
 			self.viewModel.chosenTime?.days = self.hoursPicker.selectedRow(inComponent: 0)
 			self.viewModel.chosenTime?.hours = self.hoursPicker.selectedRow(inComponent: 1)
 			
-		case .endingDate:
-			self.viewModel.endDate = self.datePicker.date
-			
-		case .startingDate:
-			self.viewModel.startDate = self.datePicker.date
+		case .endingDate, .startingDate:
+			self.viewModel.mainDate = self.datePicker.date
 		
 		case .totalFocusingTime:
 			// TODO: this
@@ -168,11 +165,7 @@ class DatePickerAlertView: UIView {
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
-		if self.currentMode == .endingDate {
-			self.viewModel.endDate = sender.date
-		} else if self.currentMode == .startingDate {
-			self.viewModel.startDate = sender.date
-		}
+		self.viewModel.mainDate = sender.date
 		
 		self.updateToViewModel()
     }
