@@ -17,7 +17,11 @@ class EditProjectViewControllerFooco: UIViewController {
 	
 	var unwindSegueIdentifier: String = ""
 	
-	private weak var tableViewController: EditProjectTableViewControllerFooco?
+	private weak var tableViewController: EditProjectTableViewControllerFooco!
+	
+	private var viewModel: EditProjectViewModel {
+		return self.tableViewController.viewModel
+	}
 		
     @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
 	
@@ -29,7 +33,7 @@ class EditProjectViewControllerFooco: UIViewController {
         
         datePickerAlertView.initialSetup()
         datePickerAlertView.configure()
-        datePickerAlertView.setNeedsLayout()
+        datePickerAlertView.layoutIfNeeded()
         
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
@@ -47,8 +51,8 @@ class EditProjectViewControllerFooco: UIViewController {
 	}
 	
 	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
-		if self.tableViewController!.viewModel.canSaveProject() {
-			self.tableViewController!.viewModel.saveProject()
+		if self.viewModel.canSaveProject() {
+			self.viewModel.saveProject()
 			
 			self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 			
@@ -73,20 +77,12 @@ class EditProjectViewControllerFooco: UIViewController {
 
 extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
    
-    func estimatedHoursTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
-        alertView(datePickerAlertView)
+	func presentPickerAlert(with pickerAlertViewModel: PickerAlertViewModel) {
+		self.datePickerAlertView.present(with: pickerAlertViewModel)
     }
     
-    func startingDateTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
-        alertView(datePickerAlertView)
-    }
-    
-    func deadlineDateTouched(_ alertView: ((DatePickerAlertView) -> Void)) {
-        alertView(datePickerAlertView)
-    }
-    
-    func contextUpdated(for context: Context?) {
-        let color = (context != nil) ? context!.color : .addContextColor
+    func contextUpdated() {
+        let color = self.viewModel.chosenContext?.color ?? .addContextColor
 		self.navigationController?.navigationBar.changeFontAndTintColor(to: color)
     }
     

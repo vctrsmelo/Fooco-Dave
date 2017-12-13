@@ -25,9 +25,21 @@ final class PickerAlertViewModel {
 	private(set) var title = ""
 	private(set) var underTitle = ""
 	
-	var mainDate: Date?
-	var comparisonDate: Date?
-	var chosenTime: (days: Int, hours: Int)?
+	var mainDate: Date? {
+		didSet {
+			self.configureTitles()
+		}
+	}
+	var comparisonDate: Date? {
+		didSet {
+			self.configureTitles()
+		}
+	}
+	var chosenTime: (days: Int, hours: Int)? {
+		didSet {
+			self.configureTitles()
+		}
+	}
 	
 	// MARK: - Initialization
 	
@@ -43,7 +55,7 @@ final class PickerAlertViewModel {
 	}
 	
 	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int)?, context: Context?, projectName: String?) -> PickerAlertViewModel {
-		return self.init(mode: .endingDate, context: context, projectName: projectName, chosenTime: chosenTime)
+		return self.init(mode: .estimatedTime, context: context, projectName: projectName, chosenTime: chosenTime)
 	}
 	
 	static func forStartingDate(_ startDate: Date?, endDate: Date?, context: Context?, projectName: String?) -> PickerAlertViewModel {

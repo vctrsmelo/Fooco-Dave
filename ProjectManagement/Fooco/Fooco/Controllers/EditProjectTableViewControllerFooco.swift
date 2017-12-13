@@ -8,10 +8,8 @@
 import UIKit
 
 protocol EditProjectTableViewControllerDelegate: AnyObject {
-    func contextUpdated(for context: Context?)
-    func estimatedHoursTouched(_ alertView: ((DatePickerAlertView) -> Void))
-    func startingDateTouched(_ alertView: ((DatePickerAlertView) -> Void))
-    func deadlineDateTouched(_ alertView: ((DatePickerAlertView) -> Void))
+    func contextUpdated()
+    func presentPickerAlert(with pickerAlertViewModel: PickerAlertViewModel)
 }
 
 class EditProjectTableViewControllerFooco: UITableViewController {
@@ -118,6 +116,8 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 	
 	private func updateColor() {
+		self.delegate?.contextUpdated()
+		
 		nameIconImageView.tintColor = contextColor
 		nameLabel.textColor = contextColor
 		nameTextField.textColor = contextColor
@@ -141,6 +141,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		lowImportanceButton.layer.borderColor = contextColor.cgColor
 		mediumImportanceButton.layer.borderColor = contextColor.cgColor
 		highImportanceButton.layer.borderColor = contextColor.cgColor
+		
 		updateImportanceColor()
 	}
 	
@@ -181,7 +182,6 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 	
 	private func updateProjectData() {
-//		self.delegate?.contextUpdated(for: self.selectedContext)
 		self.nameTextField.text = self.viewModel.name
 //		self.startingDateButton.setTitle(DateFormatter.localizedString(from: self.startingDate, dateStyle: .short, timeStyle: .none))
 //		self.deadlineDateButton.setTitle(DateFormatter.localizedString(from: self.deadlineDate, dateStyle: .short, timeStyle: .none))
@@ -194,28 +194,19 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	// MARK: - Touch Handling
 	
 	@IBAction func estimatedHoursTouched(_ sender: UIButton) {
-		delegate?.estimatedHoursTouched { alertView in
-			let pickerAlertViewModel = self.viewModel.createAlert(for: .estimatedTime)
-			
-			alertView.present(with: pickerAlertViewModel)
-		}
+		let pickerAlertViewModel = self.viewModel.createAlert(for: .estimatedTime)
+		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 	}
 	
 	@IBAction func startingDateTouched(_ sender: UIButton) {
-		delegate?.startingDateTouched { alertView in
-			let pickerAlertViewModel = self.viewModel.createAlert(for: .startingDate)
-			
-			alertView.present(with: pickerAlertViewModel)
-		}
+		let pickerAlertViewModel = self.viewModel.createAlert(for: .startingDate)
+		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 		
 	}
 	
 	@IBAction func deadlineDateTouched(_ sender: UIButton) {
-		delegate?.deadlineDateTouched { alertView in
-			let pickerAlertViewModel = self.viewModel.createAlert(for: .endingDate)
-			
-			alertView.present(with: pickerAlertViewModel)
-		}
+		let pickerAlertViewModel = self.viewModel.createAlert(for: .endingDate)
+		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 	}
 	
 	@IBAction func lowImportanceTouched(_ sender: UIButton) {
