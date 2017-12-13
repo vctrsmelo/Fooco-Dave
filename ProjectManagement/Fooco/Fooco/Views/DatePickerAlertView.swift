@@ -44,7 +44,15 @@ class DatePickerAlertView: UIView {
     @IBOutlet private weak var hoursPicker: UIPickerView!
 	
     @IBOutlet private weak var confirmButton: UIButton!
-    
+	
+	func initialSetup() {
+		self.xibSetup()
+		
+		self.updateFooter()
+		
+		self.isHidden = true
+	}
+	
 	func present(with viewModel: PickerAlertViewModel) {
         
         self.viewModel = viewModel
@@ -93,32 +101,6 @@ class DatePickerAlertView: UIView {
 		self.titleLabel.text = self.viewModel.title
 		self.underTitleLabel.text = self.viewModel.underTitle
 	}
-    
-    func configure() {
-        guard let superview = self.superview else {
-            return
-        }
-        
-        overlayView.frame = superview.frame
-        
-        //shadow
-        
-        mainView.layer.shadowOpacity = 0.30
-        mainView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        mainView.layer.shadowRadius = 6
-        mainView.layer.shadowColor = UIColor.black.cgColor
-        mainView.layer.masksToBounds = false
-        
-        confirmButton.layer.shadowOpacity = 0.30
-        confirmButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        confirmButton.layer.shadowRadius = 6
-        confirmButton.layer.shadowColor = UIColor.black.cgColor
-        confirmButton.layer.masksToBounds = false
-		
-		self.updateFooter()
-        
-        self.isHidden = true
-    }
 	
 	private func updateLabels() {
 		

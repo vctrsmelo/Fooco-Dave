@@ -32,16 +32,13 @@ class EditProjectViewControllerFooco: UIViewController {
         super.viewDidLoad()
         
         datePickerAlertView.initialSetup()
-        datePickerAlertView.configure()
-        datePickerAlertView.layoutIfNeeded()
-        
+		
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg1ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
         bottomBg2ImageView.tintColor = #colorLiteral(red: 72/255, green: 210/255, blue: 160/255, alpha: 0.46)
-        
-        // Hide keyboard when view is tapped
-        hideKeyboardWhenTappedAround()
+		
+        self.hideKeyboardOnOutsideTap()
     }
     
     // MARK: - Navigation

@@ -25,7 +25,7 @@ class NewContextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.hideKeyboardWhenTappedAround()
+		self.hideKeyboardOnOutsideTap()
 		
         self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.Interface.iDarkBlue)
     }
