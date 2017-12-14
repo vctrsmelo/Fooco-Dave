@@ -7,7 +7,13 @@
 
 import Foundation
 
+protocol ViewModelUpdateDelegate: AnyObject {
+	func viewModelDidUpdate()
+}
+
 class EditProjectViewModel {
+	
+	private weak var delegate: ViewModelUpdateDelegate?
 	
 	// MARK: Main Input
 	private var project: Project?
@@ -33,7 +39,9 @@ class EditProjectViewModel {
 	private var endingDate = Date().addingTimeInterval(7.days)
 	private var chosenTime = (days: 0, hours: 0)
 	
-	init(with project: Project? = nil) {
+	init(with project: Project?, and delegate: ViewModelUpdateDelegate) {
+		self.delegate = delegate
+		
 		self.project = project
 		
 		if let someProject = self.project {
@@ -94,16 +102,38 @@ class EditProjectViewModel {
 	func createAlert(for mode: AlertPickerViewMode) -> PickerAlertViewModel {
 		switch mode {
 		case .estimatedTime:
-			return PickerAlertViewModel.forEstimatedTime(self.chosenTime, context: self.chosenContext, projectName: self.name)
+			return PickerAlertViewModel.forEstimatedTime(self.chosenTime, context: self.chosenContext, projectName: self.name, receiver: self)
 		
 		case .startingDate:
-			return PickerAlertViewModel.forStartingDate(self.startingDate, endDate: self.endingDate, context: self.chosenContext, projectName: self.name)
+			return PickerAlertViewModel.forStartingDate(self.startingDate, endDate: self.endingDate, context: self.chosenContext, projectName: self.name, receiver: self)
 			
 		case .endingDate:
-			return PickerAlertViewModel.forEndingDate(self.endingDate, startDate: self.startingDate, context: self.chosenContext, projectName: self.name)
+			return PickerAlertViewModel.forEndingDate(self.endingDate, startDate: self.startingDate, context: self.chosenContext, projectName: self.name, receiver: self)
 			
-		case .totalFocusingTime:
-			fatalError("Do this") // TODO: this
+		default:
+			fatalError("Mode not supported by ViewModel")
 		}
+	}
+}
+
+// MARK: - PickerAlertViewModelReceiver
+
+extension EditProjectViewModel: PickerAlertViewModelReceiver {
+	func receive(_ viewModel: PickerAlertViewModel) {
+		switch viewModel.currentMode {
+		case .estimatedTime:
+			self.chosenTime = viewModel.chosenTime!
+			
+		case .startingDate:
+			self.startingDate = viewModel.mainDate!
+			
+		case .endingDate:
+			self.endingDate = viewModel.mainDate!
+			
+		default:
+			break
+		}
+		
+		self.delegate?.viewModelDidUpdate()
 	}
 }

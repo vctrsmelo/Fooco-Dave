@@ -240,6 +240,14 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 }
 
+// MARK: - ViewModelUpdateDelegate
+
+extension EditProjectTableViewControllerFooco: ViewModelUpdateDelegate {
+	func viewModelDidUpdate() {
+		self.updateProjectInfo()
+	}
+}
+
 // MARK: - TextField
 
 extension EditProjectTableViewControllerFooco: UITextFieldDelegate {

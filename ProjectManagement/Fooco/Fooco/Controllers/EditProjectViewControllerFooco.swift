@@ -64,7 +64,7 @@ class EditProjectViewControllerFooco: UIViewController {
 			
 			self.tableViewController = editProjTableViewController
             editProjTableViewController.delegate = self
-			editProjTableViewController.viewModel = EditProjectViewModel(with: self.project)
+			editProjTableViewController.viewModel = EditProjectViewModel(with: self.project, and: editProjTableViewController)
         }
     }
 

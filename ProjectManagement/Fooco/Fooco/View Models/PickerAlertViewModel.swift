@@ -14,17 +14,26 @@ enum AlertPickerViewMode {
 	case totalFocusingTime
 }
 
+protocol PickerAlertViewModelReceiver: AnyObject {
+	func receive(_ viewModel: PickerAlertViewModel)
+}
+
 final class PickerAlertViewModel {
 	
-	var currentMode: AlertPickerViewMode
+	private weak var receiver: PickerAlertViewModelReceiver?
 	
-	var projectName: String?
-	var context: Context?
+	// MARK: Input
+	private(set) var currentMode: AlertPickerViewMode
 	
+	private(set) var projectName: String?
+	private(set) var context: Context?
+	
+	// MARK: Output
 	private(set) var overTitle = ""
 	private(set) var title = ""
 	private(set) var underTitle = ""
 	
+	// MARK: Input/Output
 	var mainDate: Date? {
 		didSet {
 			self.configureTitles()
@@ -43,7 +52,9 @@ final class PickerAlertViewModel {
 	
 	// MARK: - Initialization
 	
-	private init(mode: AlertPickerViewMode, context: Context?, projectName: String?, mainDate: Date? = nil, comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int)? = nil) {
+	private init(mode: AlertPickerViewMode, context: Context?, projectName: String?, mainDate: Date? = nil, comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int)? = nil, receiver: PickerAlertViewModelReceiver) {
+		self.receiver = receiver
+		
 		self.currentMode = mode
 		self.context = context
 		self.projectName = projectName == "" ? nil : projectName
@@ -54,16 +65,20 @@ final class PickerAlertViewModel {
 		self.configureTitles()
 	}
 	
-	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int)?, context: Context?, projectName: String?) -> PickerAlertViewModel {
-		return self.init(mode: .estimatedTime, context: context, projectName: projectName, chosenTime: chosenTime)
+	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int)?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+		return self.init(mode: .estimatedTime, context: context, projectName: projectName, chosenTime: chosenTime, receiver: receiver)
 	}
 	
-	static func forStartingDate(_ startDate: Date?, endDate: Date?, context: Context?, projectName: String?) -> PickerAlertViewModel {
-		return self.init(mode: .startingDate, context: context, projectName: projectName, mainDate: startDate, comparisonDate: endDate)
+	static func forStartingDate(_ startDate: Date?, endDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+		return self.init(mode: .startingDate, context: context, projectName: projectName, mainDate: startDate, comparisonDate: endDate, receiver: receiver)
 	}
 	
-	static func forEndingDate(_ endDate: Date?, startDate: Date?, context: Context?, projectName: String?) -> PickerAlertViewModel {
-		return self.init(mode: .endingDate, context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate)
+	static func forEndingDate(_ endDate: Date?, startDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+		return self.init(mode: .endingDate, context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate, receiver: receiver)
+	}
+	
+	func sendToReceiver() {
+		self.receiver?.receive(self)
 	}
 	
 	// MARK: - Prepare Output to View

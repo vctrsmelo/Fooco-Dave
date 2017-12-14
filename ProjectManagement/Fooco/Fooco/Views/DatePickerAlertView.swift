@@ -144,6 +144,8 @@ class DatePickerAlertView: UIView {
 			// TODO: this
 			break
 		}
+		
+		self.viewModel.sendToReceiver()
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
