@@ -54,7 +54,7 @@ class EditProjectViewControllerFooco: UIViewController {
 			self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 			
 		} else {
-			print("Error") // TODO: Tell the user that there is missing information
+			print("[Error] Missing information") // TODO: Tell the user that there is missing information
 		}
 	}
 	
