@@ -83,7 +83,7 @@ class DatePickerAlertView: UIView {
 				self.datePicker.setDate(initialDate, animated: false)
 				
 			} else if self.currentMode == .startingDate {
-				self.datePicker.maximumDate = self.viewModel.comparisonDate
+				self.datePicker.maximumDate = nil
 				self.datePicker.minimumDate = nil
 				
 				let initialDate = self.viewModel.mainDate ?? Date()

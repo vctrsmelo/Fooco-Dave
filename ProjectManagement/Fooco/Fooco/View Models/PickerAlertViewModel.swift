@@ -84,7 +84,14 @@ final class PickerAlertViewModel {
 			if let start = self.mainDate, let end = self.comparisonDate {
 				let daysBetween = Calendar.current.dateComponents([.day], from: start, to: end)
 				
-				self.underTitle = NSLocalizedString("\(daysBetween.day!) days until deadline", comment: "UnderTitle for .startingDate")
+				if daysBetween.day! >= 0 {
+					self.underTitle = NSLocalizedString("\(daysBetween.day!) days until deadline", comment: "UnderTitle for .startingDate")
+					
+				} else {
+					self.underTitle = ""
+				}
+				
+				
 				
 			} else {
 				self.underTitle = ""

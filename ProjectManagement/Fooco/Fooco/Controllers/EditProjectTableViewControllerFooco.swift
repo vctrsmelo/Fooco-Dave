@@ -59,23 +59,13 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		convertIconsToTemplate()
-		designElements()
+		self.designElements()
 		
-		// design contextCollectionView layout
-		let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-		layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-		layout.itemSize = contextsCollectionView.frame.size
-		layout.minimumInteritemSpacing = 80
-		layout.minimumLineSpacing = 80
-		layout.scrollDirection = UICollectionViewScrollDirection.horizontal
-		contextsCollectionView.collectionViewLayout = layout
-		contextsCollectionView.showsHorizontalScrollIndicator = false
+		self.updateProjectInfo()
+		self.updateColor()
 		
 		let nib = UINib(nibName: "EditProjectContextCell", bundle: nil)
 		contextsCollectionView.register(nib, forCellWithReuseIdentifier: "contextCell")
-		
-		self.updateProjectData()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -95,6 +85,12 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 	
 	private func designElements() {
+		self.convertIconsToTemplate()
+		
+		lowImportanceButton.layer.borderWidth = 1
+		mediumImportanceButton.layer.borderWidth = 1
+		highImportanceButton.layer.borderWidth = 1
+		
 		// Textfield
 		let border = CALayer()
 		let width = CGFloat(1.0)
@@ -104,15 +100,15 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		nameTextField.layer.addSublayer(border)
 		nameTextField.layer.masksToBounds = true
 		
-		lowImportanceButton.layer.borderWidth = 1
-		mediumImportanceButton.layer.borderWidth = 1
-		highImportanceButton.layer.borderWidth = 1
-		
-		lowImportanceButton.setTitleColor(UIColor.Interface.iWhite, for: UIControlState.selected)
-		lowImportanceButton.setTitleColor(UIColor.Interface.iWhite, for: UIControlState.selected)
-		lowImportanceButton.setTitleColor(UIColor.Interface.iWhite, for: UIControlState.selected)
-		
-		updateColor()
+		// Design contextCollectionView layout
+		let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+		layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		layout.itemSize = contextsCollectionView.frame.size
+		layout.minimumInteritemSpacing = 80
+		layout.minimumLineSpacing = 80
+		layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+		contextsCollectionView.collectionViewLayout = layout
+		contextsCollectionView.showsHorizontalScrollIndicator = false
 	}
 	
 	private func updateColor() {
@@ -126,13 +122,13 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		
 		clockIconImageView.tintColor = contextColor
 		estimatedTimeLabel.textColor = contextColor
-		estimatedHoursButton.setTitleColor(contextColor)
+		estimatedHoursButton.setTitleColor(contextColor, for: .normal)
 		
 		calendarIconImageView.tintColor = contextColor
 		startsLabel.textColor = contextColor
 		deadlineLabel.textColor = contextColor
-		startingDateButton.setTitleColor(contextColor)
-		deadlineDateButton.setTitleColor(contextColor)
+		startingDateButton.setTitleColor(contextColor, for: .normal)
+		deadlineDateButton.setTitleColor(contextColor, for: .normal)
 		datesBarView.backgroundColor = contextColor
 		
 		importanceIconImageView.tintColor = contextColor
@@ -142,34 +138,29 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		mediumImportanceButton.layer.borderColor = contextColor.cgColor
 		highImportanceButton.layer.borderColor = contextColor.cgColor
 		
-		updateImportanceColor()
+		self.updateImportanceColor()
 	}
 	
 	private func updateImportanceColor() {
+		lowImportanceButton.setTitleColor(contextColor, for: .normal)
+		mediumImportanceButton.setTitleColor(contextColor, for: .normal)
+		highImportanceButton.setTitleColor(contextColor, for: .normal)
+		
 		switch self.viewModel.importance {
 		case 1:
 			lowImportanceButton.backgroundColor = contextColor
-			lowImportanceButton.setTitleColor(UIColor.Interface.iWhite)
 			mediumImportanceButton.backgroundColor = UIColor.clear
-			mediumImportanceButton.setTitleColor(contextColor)
 			highImportanceButton.backgroundColor = UIColor.clear
-			highImportanceButton.setTitleColor(contextColor)
 			
 		case 2:
 			lowImportanceButton.backgroundColor = UIColor.clear
-			lowImportanceButton.setTitleColor(contextColor)
 			mediumImportanceButton.backgroundColor = contextColor
-			mediumImportanceButton.setTitleColor(UIColor.Interface.iWhite)
 			highImportanceButton.backgroundColor = UIColor.clear
-			highImportanceButton.setTitleColor(contextColor)
 			
 		case 3:
 			lowImportanceButton.backgroundColor = UIColor.clear
-			lowImportanceButton.setTitleColor(contextColor)
 			mediumImportanceButton.backgroundColor = UIColor.clear
-			mediumImportanceButton.setTitleColor(contextColor)
 			highImportanceButton.backgroundColor = contextColor
-			highImportanceButton.setTitleColor(UIColor.Interface.iWhite)
 			
 		default:
 			break
@@ -181,14 +172,34 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		updateColor()
 	}
 	
-	private func updateProjectData() {
+	private func updateProjectInfo() {
 		self.nameTextField.text = self.viewModel.name
-//		self.startingDateButton.setTitle(DateFormatter.localizedString(from: self.startingDate, dateStyle: .short, timeStyle: .none))
-//		self.deadlineDateButton.setTitle(DateFormatter.localizedString(from: self.deadlineDate, dateStyle: .short, timeStyle: .none))
-//		let localizedTitle = String(format: NSLocalizedString("%d days and %d hours", comment: "Estimated time phrase"), days, hours)
-//		self.estimatedHoursButton.setTitle(localizedTitle)
+		self.updateSelectedImportance()
+		self.startingDateButton.setTitle(self.viewModel.startDateString, for: .normal)
+		self.deadlineDateButton.setTitle(self.viewModel.endDateString, for: .normal)
+		self.estimatedHoursButton.setTitle(self.viewModel.estimatedTimeString, for: .normal)
+	}
+	
+	private func updateSelectedImportance() {
+		switch self.viewModel.importance {
+		case 1:
+			lowImportanceButton.isSelected = true
+			mediumImportanceButton.isSelected = false
+			highImportanceButton.isSelected = false
 		
-		self.updateColor()
+		case 2:
+			lowImportanceButton.isSelected = false
+			mediumImportanceButton.isSelected = true
+			highImportanceButton.isSelected = false
+			
+		case 3:
+			lowImportanceButton.isSelected = false
+			mediumImportanceButton.isSelected = false
+			highImportanceButton.isSelected = true
+		
+		default:
+			break
+		}
 	}
 	
 	// MARK: - Touch Handling
@@ -211,26 +222,20 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	
 	@IBAction func lowImportanceTouched(_ sender: UIButton) {
 		self.viewModel.importance = 1
-		lowImportanceButton.isSelected = true
-		mediumImportanceButton.isSelected = false
-		highImportanceButton.isSelected = false
+		self.updateSelectedImportance()
 		self.updateImportanceColor()
 	}
 	
 	
 	@IBAction func mediumImportanceTouched(_ sender: UIButton) {
 		self.viewModel.importance = 2
-		lowImportanceButton.isSelected = false
-		mediumImportanceButton.isSelected = true
-		highImportanceButton.isSelected = false
+		self.updateSelectedImportance()
 		self.updateImportanceColor()
 	}
 	
 	@IBAction func highImportanceTouched(_ sender: Any) {
 		self.viewModel.importance = 3
-		lowImportanceButton.isSelected = false
-		mediumImportanceButton.isSelected = false
-		highImportanceButton.isSelected = true
+		self.updateSelectedImportance()
 		self.updateImportanceColor()
 	}
 }

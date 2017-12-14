@@ -9,16 +9,29 @@ import Foundation
 
 class EditProjectViewModel {
 	
+	// MARK: Main Input
 	private var project: Project?
 	
+	// MARK: Input/Output
 	var chosenContext: Context?
-	
 	var name: String?
 	var importance: Int = 1
 	
-	private var startingDate: Date?
-	private var endingDate: Date?
-	private var chosenTime: (days: Int, hours: Int)?
+	// MARK: Output
+	var startDateString: String {
+		return DateFormatter.localizedString(from: self.startingDate, dateStyle: .short, timeStyle: .none)
+	}
+	var endDateString: String {
+		return DateFormatter.localizedString(from: self.endingDate, dateStyle: .short, timeStyle: .none)
+	}
+	var estimatedTimeString: String {
+		return NSLocalizedString("\(self.chosenTime.days) days and \(self.chosenTime.hours) hours", comment: "Estimated time phrase")
+	}
+	
+	// MARK: Working Data
+	private var startingDate = Date()
+	private var endingDate = Date().addingTimeInterval(7.days)
+	private var chosenTime = (days: 0, hours: 0)
 	
 	init(with project: Project? = nil) {
 		self.project = project
@@ -41,26 +54,22 @@ class EditProjectViewModel {
 	func canSaveProject() -> Bool {
 		return self.chosenContext != nil &&
 			self.name != nil && self.name != "" &&
-			self.startingDate != nil &&
-			self.endingDate != nil &&
-			self.chosenTime != nil
+			self.chosenTime != (days: 0, hours: 0) &&
+			self.startingDate < self.endingDate
 	}
 	
 	func saveProject() {
 		if self.canSaveProject(),
 			let context = self.chosenContext,
-			let name = self.name,
-			let start = self.startingDate,
-			let end = self.endingDate,
-			let estimate = self.chosenTime {
+			let name = self.name {
 			
-			let totalEstimate = estimate.days.days + estimate.hours.hours
+			let totalEstimate = self.chosenTime.days.days + self.chosenTime.hours.hours
 			
 			if let editedProject = self.project {
 				editedProject.context = context
 				editedProject.name = name
-				editedProject.startingDate = start
-				editedProject.endingDate = end
+				editedProject.startingDate = self.startingDate
+				editedProject.endingDate = self.endingDate
 				editedProject.totalTimeEstimated = totalEstimate
 				editedProject.importance = self.importance
 				
@@ -69,7 +78,7 @@ class EditProjectViewModel {
 				User.sharedInstance.projects[index!] = editedProject
 				
 			} else {
-				let newProject = Project(named: name, startsAt: start, endsAt: end, withContext: context, importance: importance, totalTimeEstimated: totalEstimate)
+				let newProject = Project(named: name, startsAt: self.startingDate, endsAt: self.endingDate, withContext: context, importance: importance, totalTimeEstimated: totalEstimate)
 				
 				self.project = newProject
 				User.sharedInstance.add(projects: [newProject])
@@ -94,7 +103,7 @@ class EditProjectViewModel {
 			return PickerAlertViewModel.forEndingDate(self.endingDate, startDate: self.startingDate, context: self.chosenContext, projectName: self.name)
 			
 		case .totalFocusingTime:
-			fatalError() // TODO: this
+			fatalError("Do this") // TODO: this
 		}
 	}
 }
