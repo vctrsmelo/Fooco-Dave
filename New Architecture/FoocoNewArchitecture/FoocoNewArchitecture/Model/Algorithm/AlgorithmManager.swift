@@ -67,7 +67,9 @@ struct AlgorithmManager {
             //cria arvore com apenas a raiz
             var timeBlockTree = TimeBlockTree(root: contextBlock.timeBlock)
 
-            while timeBlockTree
+            while timeBlockTree {
+                
+            }
             
             //enquanto arvore tem time block para activities (nao terá mais quando, ao tentar adicionar activity, tiver percorrido toda a arvore e nao conseguiu)
                 //tenta adicionar proxima atividade na árvore

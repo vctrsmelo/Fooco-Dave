@@ -52,6 +52,20 @@ extension TimeBlock: IntervalType {
     
     typealias Bound = Time
     
+    func getComplement(_ other: TimeBlock) -> [TimeBlock] {
+        
+        var resultArray: [TimeBlock] = []
+
+        for tbl in self.getSplittedTimeBlocks(with: other) {
+            if !other.contains(tbl) {
+                resultArray.append(tbl)
+            }
+        }
+        
+        return resultArray
+    
+    }
+    
     func contains(_ value: Time) -> Bool {
         return self.range.contains(value)
     }
@@ -95,3 +109,64 @@ extension TimeBlock: Equatable {
     
 }
 
+extension TimeBlock {
+    
+    /**
+     Return an array of timeBlocks resulted from the split of self with other timeblock
+    */
+    private func getSplittedTimeBlocks(with other: TimeBlock) -> [TimeBlock] {
+        
+        if !self.overlaps(other) {
+            return [self,other]
+        }
+        
+//        var times: [Time] = getTimesWithoutDuplicatedValues(from: [self.start, self.end, other.start, other.end])
+  
+        var times: [Time] = [self.start, self.end, other.start, other.end].removeDuplicates()
+        
+        times.sort()
+        
+        var resultTimeBlocks: [TimeBlock] = []
+
+        if !times.isEmpty {
+            for i in 0 ..< times.count-1 {
+                
+                resultTimeBlocks.append(try! TimeBlock(starts: times[i], ends: times[i+1]))
+                
+            }
+        }
+        
+        return resultTimeBlocks
+        
+    }
+    
+//    /**
+//     Return the array of Time without duplicated values
+//    */
+//    private func getTimesWithoutDuplicatedValues(from times: [Time]) -> [Time]{
+//
+//        var indexToRemove: [Int] = []
+//        var resultArray = times
+//
+//        resultArray.sort()
+//
+//        for i in 0 ..< resultArray.count-1 {
+//
+//            if resultArray[i] == resultArray[i+1] {
+//                indexToRemove.append(i)
+//            }
+//
+//        }
+//
+//        while !indexToRemove.isEmpty {
+//
+//            resultArray.remove(at: indexToRemove.first!)
+//            indexToRemove = Array(indexToRemove.dropFirst())
+//
+//        }
+//
+//        return resultArray
+//
+//    }
+    
+}

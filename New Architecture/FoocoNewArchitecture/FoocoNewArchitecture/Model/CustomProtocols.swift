@@ -56,4 +56,9 @@ protocol IntervalType {
     */
     func overlaps<I : IntervalType>(_ other: I) -> Bool where I.Bound == Bound
     
+    /**
+     Get intervals from self that are not contained into parameter. It is the complement of the parameter.
+     */
+    func getComplement(_ other: Self) -> [Self]
+    
 }

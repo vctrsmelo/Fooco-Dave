@@ -128,4 +128,23 @@ extension Array where Element:Project {
         return returnArray
     }
     
+    
+}
+
+extension Array where Element: Equatable {
+    
+    /**
+     Remove duplicated values
+    */
+    func removeDuplicates() -> [Element] {
+        var result = [Element]()
+        
+        for value in self {
+            if result.contains(value) == false {
+                result.append(value)
+            }
+        }
+        
+        return result
+    }
 }

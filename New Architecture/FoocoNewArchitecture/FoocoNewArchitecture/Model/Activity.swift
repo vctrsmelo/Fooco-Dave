@@ -115,6 +115,27 @@ extension Activity: IntervalType {
         return self.timeBlock.overlaps(other)
     }
 
+    func getComplement(_ other: Activity) -> [Activity] {
+        let complementedTimeBlocks = self.timeBlock.getComplement(other.timeBlock)
+        
+        var resultArray: [Activity] = []
+        
+        for compTbl in complementedTimeBlocks {
+            
+            if let name = self.name {
+                resultArray.append(try! Activity(from: compTbl.start, to: compTbl.end, name: name))
+                continue
+            }
+            
+            if let project = self.project{
+                resultArray.append(try! Activity(from: compTbl.start, to: compTbl.end, project: project))
+            }
+        }
+        
+        return resultArray
+        
+    }
+    
 }
 
 extension Activity: Equatable {
