@@ -62,7 +62,9 @@ struct AlgorithmManager {
         
         for contextBlock in weekdayTemplate.contextBlocks {
             
-            activitiesForDay.append(getNextActivity(for: contextBlock))
+            if let nextActivity = getNextActivity(for: contextBlock) {
+                activitiesForDay.append()
+            }
             
         }
         
@@ -72,23 +74,40 @@ struct AlgorithmManager {
     /**
      Returns the next activity to be done for the context block
     */
-    private static func getNextActivity(for contextBlock: ContextBlock) -> Activity {
+    private static func getNextActivity(for contextBlock: ContextBlock) -> Activity? {
         
-        var currentProject: Project? = nil
+        //tuple of projects and its priority. Uses tuple to not need to recalculate the priority value while executing the algorithm below.
+        var higherProjects: [(Project,Double)] = []
         
+        //iterate over user projects
         for project in User.sharedInstance.projects {
             
             if project.context == contextBlock.context {
-                
-                
+
+                higherProjects.append((project,project.priority))
+
+            }
+        }
+        
+        //sort by priority values.
+        higherProjects.sort { (arg0, arg1) -> Bool in
+            let priority1 = arg0.1
+            let priority2 = arg1.1
+            return (priority1 > priority2)
+        }
+        
+        var nextActivity: Activity?
+        var i = 0
+        while nextActivity == nil {
+            
+            let highestProject = higherProjects[i].0
+            
+            if let actv = highestProject.nextActivity(for: contextBlock) {
                 
             }
             
+            
         }
-        
-        //iterate over user projects
-            //if project is of context and has higher priority than currentProject, updates currentProject
-        
         
         
     }

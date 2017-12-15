@@ -23,6 +23,11 @@ struct Project {
     private(set) var context: Context
     private var importance: Int
     
+    var priority: Double {
+        //TODO: implement get priority method
+        return 0.0
+    }
+    
     init(name: String, starts: Date, ends: Date, context: Context, importance: Int) throws {
         self.name = name
         self.startingDate = starts
@@ -49,6 +54,16 @@ struct Project {
         self.context = context
         self.importance = importance
         self.id = id
+    }
+    
+    /**
+     - postcondition: returns nil if can not create an activity for the context block parameter
+    */
+    func nextActivity(for contextBlock: ContextBlock) -> Activity? {
+        //TODO: implement nextActivity method
+        
+        //if can't create an activity for the context block (there is no sufficient time in the contextblock, for example), returns nil
+        return nil
     }
     
 }
