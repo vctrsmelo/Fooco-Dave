@@ -124,6 +124,10 @@
                                                 </datePicker>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNZ-ME-aKv">
                                                     <rect key="frame" x="0.0" y="0.0" width="277" height="166"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-1" id="9Wm-5z-eao"/>
+                                                        <outlet property="delegate" destination="-1" id="hMI-bz-NbI"/>
+                                                    </connections>
                                                 </pickerView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

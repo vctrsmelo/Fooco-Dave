@@ -11,7 +11,6 @@ enum AlertPickerViewMode {
 	case estimatedTime
 	case startingDate
 	case endingDate
-	case totalFocusingTime
 }
 
 protocol PickerAlertViewModelReceiver: AnyObject {
@@ -123,10 +122,6 @@ final class PickerAlertViewModel {
 			} else {
 				self.underTitle = ""
 			}
-		
-		case .totalFocusingTime: // TODO: this
-			self.title = NSLocalizedString("Focus Duration", comment: "Title for .totalFocusingTime")
-			self.underTitle = NSLocalizedString("TODO", comment: "UnderTitle for .totalFocusingTime")
 		}
 	}
 	

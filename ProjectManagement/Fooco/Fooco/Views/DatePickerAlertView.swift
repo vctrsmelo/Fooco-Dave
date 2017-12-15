@@ -9,11 +9,11 @@ import UIKit
 
 class DatePickerAlertView: UIView {
 	
+	var viewModel: PickerAlertViewModel!
+	
 	private var currentMode: AlertPickerViewMode {
 		return self.viewModel.currentMode
 	}
-	
-	var viewModel: PickerAlertViewModel!
 	
     private var _view: UIView!
 	private var originalNavigationColor: UIColor?
@@ -59,10 +59,7 @@ class DatePickerAlertView: UIView {
 		
 		self.updateToViewModel()
         
-        hoursPicker.delegate = self
-        hoursPicker.dataSource = self
-        
-		if currentMode == .estimatedTime { // TODO: missing .totalFocusingTime
+		if currentMode == .estimatedTime {
             hoursPicker.isHidden = false
             datePicker.isHidden = true
             
@@ -79,7 +76,10 @@ class DatePickerAlertView: UIView {
 				self.datePicker.minimumDate = self.viewModel.comparisonDate
 				self.datePicker.maximumDate = nil
 				
-				let initialDate = (self.viewModel.mainDate ?? self.viewModel.comparisonDate?.addingTimeInterval(7.days)) ?? Date().addingTimeInterval(7.days)
+				let initialDate = (self.viewModel.mainDate ??
+					self.viewModel.comparisonDate?.addingTimeInterval(7.days)) ??
+					Date().addingTimeInterval(7.days)
+				
 				self.datePicker.setDate(initialDate, animated: false)
 				
 			} else if self.currentMode == .startingDate {
@@ -101,10 +101,6 @@ class DatePickerAlertView: UIView {
 		self.titleLabel.text = self.viewModel.title
 		self.underTitleLabel.text = self.viewModel.underTitle
 	}
-	
-	private func updateLabels() {
-		
-	}
 
     private func updateIcon() {
         clockIconImageView.isHidden = hoursPicker.isHidden
@@ -115,7 +111,7 @@ class DatePickerAlertView: UIView {
 		DispatchQueue.main.async {
 			self.footer.isHidden = self.footerIsHidden
 			
-			if self.footerIsHidden { // need to make sure the constraints are deactivated first
+			if self.footerIsHidden { // needed to make sure the constraints are deactivated first
 				self.bodyToFooterConstraint.isActive = false
 				self.bodyToSuperConstraint.isActive = true
 			} else {
@@ -139,10 +135,6 @@ class DatePickerAlertView: UIView {
 			
 		case .endingDate, .startingDate:
 			self.viewModel.mainDate = self.datePicker.date
-		
-		case .totalFocusingTime:
-			// TODO: this
-			break
 		}
 		
 		self.viewModel.sendToReceiver()
