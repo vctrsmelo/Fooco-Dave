@@ -641,7 +641,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="projectCell" id="WUx-27-8g8" customClass="ProjectListTableViewCell" customModule="Fooco" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="projectCell" id="WUx-27-8g8" customClass="ProjectListTableViewCell" customModule="Fooco" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WUx-27-8g8" id="1TX-vk-oTb">
@@ -1889,6 +1889,6 @@
         <image name="bottomBgRight" width="1384" height="143"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1k7-U0-1if"/>
+        <segue reference="cbm-xf-14l"/>
     </inferredMetricsTieBreakers>
 </document>
