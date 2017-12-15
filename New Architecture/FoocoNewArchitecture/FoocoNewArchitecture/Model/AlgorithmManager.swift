@@ -79,15 +79,7 @@ struct AlgorithmManager {
         //tuple of projects and its priority. Uses tuple to not need to recalculate the priority value while executing the algorithm below.
         var higherProjects: [(Project,Double)] = []
         
-        //iterate over user projects
-        for project in User.sharedInstance.projects {
-            
-            if project.context == contextBlock.context {
-
-                higherProjects.append((project,project.priority))
-
-            }
-        }
+        higherProjects.append(contentsOf: getProjectsFor(contextBlock: contextBlock).withPriorityValue)
         
         //sort by priority values.
         higherProjects.sort { (arg0, arg1) -> Bool in
@@ -102,13 +94,29 @@ struct AlgorithmManager {
             
             let highestProject = higherProjects[i].0
             
-            if let actv = highestProject.nextActivity(for: contextBlock) {
+            guard let actv = highestProject.nextActivity(for: contextBlock) else {
                 
+                i += 1
+                continue
             }
             
             
         }
         
+    }
+    
+    static func getProjectsFor(contextBlock: ContextBlock) -> [Project] {
+        
+        var resultArray: [Project] = []
+        //iterate over user projects
+        for project in User.sharedInstance.projects {
+            
+            if project.context == contextBlock.context {
+                
+                resultArray.append(project)
+                
+            }
+        }
         
     }
     

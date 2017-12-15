@@ -103,3 +103,20 @@ extension Date {
     
 }
 
+extension Array where Element:Project {
+    
+    /**
+     Returns an array of tuples of a project and it's priority value.
+     It's useful to keep the priority value in "cache", as it's calculation is not trivial.
+    */
+    var withPriorityValue: [(Project,Priority)] {
+        var returnArray: [(Project,Priority)] = []
+
+        for proj in self {
+            returnArray.append((proj,proj.priority))
+        }
+        return returnArray
+    }
+    
+}
+

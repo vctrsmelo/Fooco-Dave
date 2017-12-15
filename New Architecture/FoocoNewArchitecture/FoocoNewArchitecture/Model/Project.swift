@@ -12,7 +12,13 @@ enum ProjectError: Error {
     case InvalidImportanceValue(String)
 }
 
-struct Project {
+/**
+ The priority value of a project.
+ - Invariant: it's a value between 0 and 1. The closer to 1, the higher is the priority of the project.
+*/
+typealias Priority = Double
+
+class Project {
     
     static private let importanceRange: [Int] = [1,2,3]
     
@@ -23,7 +29,7 @@ struct Project {
     private(set) var context: Context
     private var importance: Int
     
-    var priority: Double {
+    var priority: Priority {
         //TODO: implement get priority method
         return 0.0
     }
