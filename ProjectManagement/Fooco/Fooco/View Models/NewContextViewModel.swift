@@ -5,7 +5,8 @@
 //  Created by Rodrigo Cardoso Buske on 30/11/17.
 //
 
-import UIKit
+import Foundation
+import UIKit.UIColor
 
 class NewContextViewModel {
 	

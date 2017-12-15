@@ -35,6 +35,7 @@
 		EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */; };
 		FC0BB2E31FCF32310031275B /* ContextListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB2E21FCF32310031275B /* ContextListViewController.swift */; };
 		FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */; };
+		FC2224491FE05EFF006A4E6C /* PickerAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */; };
 		FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8B1F9A37E70051B33B /* Activity.swift */; };
 		FC2F29C31F9A3EA100984409 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8C1F9A37E70051B33B /* Context.swift */; };
 		FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8D1F9A37E70051B33B /* ContextBlock.swift */; };
@@ -54,6 +55,7 @@
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FC4202541FDB0D1A00D8550F /* TimeBlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
+		FC4D370E1FE1BA48009F76B9 /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */; };
 		FC5252B71FD0816400852FDB /* EditContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5252B61FD0816400852FDB /* EditContextViewModel.swift */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
 		FC673FF91FCF48DD00D4E9D4 /* NewContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */; };
@@ -134,9 +136,11 @@
 		EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertView.swift; sourceTree = "<group>"; };
 		FC0BB2E21FCF32310031275B /* ContextListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextListViewController.swift; sourceTree = "<group>"; };
 		FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
+		FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAlertViewModel.swift; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockTableViewCell.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
 		FC5252B61FD0816400852FDB /* EditContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewModel.swift; sourceTree = "<group>"; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
 		FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +390,8 @@
 			children = (
 				FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */,
 				FC5252B61FD0816400852FDB /* EditContextViewModel.swift */,
+				FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */,
+				FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -644,6 +650,8 @@
 				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
 				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
 				EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */,
+				FC4D370E1FE1BA48009F76B9 /* EditProjectViewModel.swift in Sources */,
+				FC2224491FE05EFF006A4E6C /* PickerAlertViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

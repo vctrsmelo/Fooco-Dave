@@ -31,7 +31,7 @@ class Mocado {
 	
     private static func populateProjects() -> [Project] {
         
-        let proj1 = Project(named: "Project Test", startsAt: today, endsAt: Date().addingTimeInterval(21.days), withContext: contexts.first!, importance: 1, totalTimeEstimated: 30.hours)
+        let proj1 = Project(named: "Project Test", startsAt: today, endsAt: Date().addingTimeInterval(21.days), withContext: contexts.first!, importance: 3, totalTimeEstimated: 30.hours)
         
         let proj2 = Project(named: "Test Two", startsAt: today, endsAt: Date().addingTimeInterval(30.days), withContext: contexts.last!, importance: 1, totalTimeEstimated: 40.hours)
         

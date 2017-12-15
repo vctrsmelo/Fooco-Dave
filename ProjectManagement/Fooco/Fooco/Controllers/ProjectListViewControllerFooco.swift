@@ -15,8 +15,6 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 
 	var projects = [Project]()
 	
-	private var selectedProject: Project?
-	
 	private var addButton: FloatingAddButton!
 	
 	@IBOutlet private weak var tableView: UITableView!
@@ -50,8 +48,7 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 	
 	@objc
 	private func addButtonTapped(sender: UIButton) {
-		self.selectedProject = nil
-		self.performSegue(withIdentifier: self.segueToProject, sender: self)
+		self.performSegue(withIdentifier: self.segueToProject, sender: nil)
 	}
 
     // MARK: - Navigation
@@ -61,7 +58,7 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 			let navigationVC = segue.destination as? UINavigationController,
 			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
 			destinationVC.unwindSegueIdentifier = self.unwindFromProject
-			destinationVC.project = self.selectedProject
+			destinationVC.project = sender as? Project
 		}
     }
 	
@@ -97,8 +94,8 @@ extension ProjectListViewControllerFooco: UITableViewDataSource, UITableViewDele
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		self.selectedProject = self.projects[indexPath.row]
+		let selectedProject = self.projects[indexPath.row]
 		
-		self.performSegue(withIdentifier: self.segueToProject, sender: self)
+		self.performSegue(withIdentifier: self.segueToProject, sender: selectedProject)
 	}
 }

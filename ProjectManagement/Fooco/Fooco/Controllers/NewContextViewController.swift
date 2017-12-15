@@ -25,7 +25,7 @@ class NewContextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.hideKeyboardWhenTappedAround()
+		self.hideKeyboardOnOutsideTap()
 		
         self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.Interface.iDarkBlue)
     }
@@ -44,7 +44,7 @@ class NewContextViewController: UIViewController {
 		if self.hasValidData() {
 			self.performSegue(withIdentifier: self.segueToEdit, sender: self.viewModel.editContextViewModel(name: self.nameField.text!, color: self.selectedColor!))
 		} else {
-			print("Error") // TODO: Tell the user that there is missing information
+			print("[Error] Missing information") // TODO: Tell the user that there is missing information
 		}
     }
     
