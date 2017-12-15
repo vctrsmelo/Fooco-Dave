@@ -62,8 +62,19 @@ struct AlgorithmManager {
         
         for contextBlock in weekdayTemplate.contextBlocks {
             
+            //Problema: context block pode ter mais de uma activity em si. Precisa considerar isso.
+            
+            //cria arvore com apenas a raiz
+            var timeBlockTree = TimeBlockTree(root: contextBlock.timeBlock)
+
+            while timeBlockTree
+            
+            //enquanto arvore tem time block para activities (nao terá mais quando, ao tentar adicionar activity, tiver percorrido toda a arvore e nao conseguiu)
+                //tenta adicionar proxima atividade na árvore
+            
+            
             if let nextActivity = getNextActivity(for: contextBlock) {
-                activitiesForDay.append()
+                activitiesForDay.append(nextActivity)
             }
             
         }
@@ -77,41 +88,44 @@ struct AlgorithmManager {
     private static func getNextActivity(for contextBlock: ContextBlock) -> Activity? {
         
         //tuple of projects and its priority. Uses tuple to not need to recalculate the priority value while executing the algorithm below.
-        var higherProjects: [(Project,Double)] = []
+        var highestProjects: [Project] = getProjectsFor(context: contextBlock.context)
         
-        higherProjects.append(contentsOf: getProjectsFor(contextBlock: contextBlock).withPriorityValue)
-        
-        //sort by priority values.
-        higherProjects.sort { (arg0, arg1) -> Bool in
-            let priority1 = arg0.1
-            let priority2 = arg1.1
-            return (priority1 > priority2)
-        }
+        highestProjects.sort()
         
         var nextActivity: Activity?
         var i = 0
-        while nextActivity == nil {
-            
-            let highestProject = higherProjects[i].0
+        
+        while nextActivity == nil && highestProjects.count > i {
+
+            let highestProject = highestProjects[i]
             
             guard let actv = highestProject.nextActivity(for: contextBlock) else {
                 
+                //if the highest project can't create a new activity, try to create an activity for the next project in the list.
                 i += 1
                 continue
+            
             }
             
+            nextActivity = actv
             
         }
         
+        return nextActivity
+        
     }
     
-    static func getProjectsFor(contextBlock: ContextBlock) -> [Project] {
+    /**
+     Get the list of user's current projects for the context parameter.
+    */
+    static func getProjectsFor(context: Context) -> [Project] {
         
         var resultArray: [Project] = []
+        
         //iterate over user projects
         for project in User.sharedInstance.projects {
             
-            if project.context == contextBlock.context {
+            if project.context == context {
                 
                 resultArray.append(project)
                 

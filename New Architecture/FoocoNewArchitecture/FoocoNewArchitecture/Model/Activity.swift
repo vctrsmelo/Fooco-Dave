@@ -18,7 +18,7 @@ Activity is a period of time focusing in a task/project, or an event from calend
 struct Activity {
     
     private let id: UUID
-    private let timeBlock: TimeBlock
+    let timeBlock: TimeBlock
     private let project: Project?
     
     /**
@@ -105,6 +105,11 @@ extension Activity: IntervalType {
     func contains(_ value: Time) -> Bool {
         return self.timeBlock.contains(value)
     }
+
+    func contains<I>(_ other: I) -> Bool where I : IntervalType, Activity.Bound == I.Bound {
+        return self.timeBlock.overlaps(other)
+    }
+
     
     func overlaps<I>(_ other: I) -> Bool where I : IntervalType, Activity.Bound == I.Bound {
         return self.timeBlock.overlaps(other)

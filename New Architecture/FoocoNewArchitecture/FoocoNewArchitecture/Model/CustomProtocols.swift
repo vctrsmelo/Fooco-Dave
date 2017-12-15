@@ -45,6 +45,11 @@ protocol IntervalType {
      Returns true iff the interval contains value.
     */
     func contains(_ value: Self.Bound) -> Bool
+
+    /**
+     Returns true if lhs contains rhs.
+     */
+    func contains<I : IntervalType>(_ other: I) -> Bool where I.Bound == Bound
     
     /**
     Returns true if lhs and rhs have a non-empty intersection.

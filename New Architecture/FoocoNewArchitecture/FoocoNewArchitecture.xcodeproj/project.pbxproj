@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE0E579F1FD7089500EF77C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E579E1FD7089500EF77C0 /* User.swift */; };
 		EE0E57A11FD70B5000EF77C0 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */; };
+		EE3D50911FE42D0B0042ED85 /* ActivitySchedulerTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */; };
 		EE40B7971FDB08A60087B768 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40B7961FDB08A60087B768 /* Day.swift */; };
 		EEBC21A81FCF0CDC0032FE29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */; };
 		EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A91FCF0CDC0032FE29 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		EE0E579E1FD7089500EF77C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
+		EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySchedulerTree.swift; sourceTree = "<group>"; };
 		EE40B7961FDB08A60087B768 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		EEBC21A41FCF0CDC0032FE29 /* FoocoNewArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoocoNewArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE3D508F1FE42CFA0042ED85 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */,
+				EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
 		EEBC219B1FCF0CDC0032FE29 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +162,7 @@
 		EEBC21D51FCF0CE80032FE29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EE3D508F1FE42CFA0042ED85 /* Algorithm */,
 				EEBC21D61FCF0CF80032FE29 /* Time.swift */,
 				EEBC21D81FCF10E30032FE29 /* CustomProtocols.swift */,
 				EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */,
@@ -160,7 +172,6 @@
 				EEBC21E41FD5D5690032FE29 /* Activity.swift */,
 				EEBC21E61FD5D6140032FE29 /* Project.swift */,
 				EE0E579E1FD7089500EF77C0 /* User.swift */,
-				EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */,
 				EE40B7961FDB08A60087B768 /* Day.swift */,
 			);
 			path = Model;
@@ -306,6 +317,7 @@
 				EEBC21D71FCF0CF80032FE29 /* Time.swift in Sources */,
 				EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */,
 				EEBC21DD1FCF3DF10032FE29 /* TimeBlock.swift in Sources */,
+				EE3D50911FE42D0B0042ED85 /* ActivitySchedulerTree.swift in Sources */,
 				EE40B7971FDB08A60087B768 /* Day.swift in Sources */,
 				EEBC21E71FD5D6140032FE29 /* Project.swift in Sources */,
 				EE0E57A11FD70B5000EF77C0 /* AlgorithmManager.swift in Sources */,

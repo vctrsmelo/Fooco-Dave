@@ -109,14 +109,23 @@ extension Array where Element:Project {
      Returns an array of tuples of a project and it's priority value.
      It's useful to keep the priority value in "cache", as it's calculation is not trivial.
     */
-    var withPriorityValue: [(Project,Priority)] {
+    func withPriorityValue(sorted: Bool = false) -> [(Project,Priority)] {
         var returnArray: [(Project,Priority)] = []
 
         for proj in self {
             returnArray.append((proj,proj.priority))
         }
+        
+        if sorted {
+            //sort by priority values.
+            returnArray.sort { (arg0, arg1) -> Bool in
+                let priority1 = arg0.1
+                let priority2 = arg1.1
+                return (priority1 > priority2)
+            }
+        }
+        
         return returnArray
     }
     
 }
-

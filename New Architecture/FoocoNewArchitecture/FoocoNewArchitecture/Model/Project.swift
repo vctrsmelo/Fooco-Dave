@@ -28,8 +28,15 @@ class Project {
     private var endingDate: Date
     private(set) var context: Context
     private var importance: Int
-    
+
+    //priority cached. When it's not valid anymore, should be setted to nil
+    private var _priority: Priority?
     var priority: Priority {
+
+        if _priority != nil {
+            return _priority!
+        }
+        
         //TODO: implement get priority method
         return 0.0
     }
@@ -71,5 +78,18 @@ class Project {
         //if can't create an activity for the context block (there is no sufficient time in the contextblock, for example), returns nil
         return nil
     }
+    
+}
+
+extension Project: Comparable {
+    
+    static func <(lhs: Project, rhs: Project) -> Bool {
+        return lhs.priority < rhs.priority
+    }
+    
+    static func ==(lhs: Project, rhs: Project) -> Bool {
+        return lhs.priority == rhs.priority
+    }
+    
     
 }

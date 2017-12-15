@@ -56,6 +56,10 @@ extension TimeBlock: IntervalType {
         return self.range.contains(value)
     }
     
+    func contains<I>(_ other: I) -> Bool where I : IntervalType, TimeBlock.Bound == I.Bound {
+        return self.range.contains(other.start) && self.range.contains(other.end)
+    }
+    
     func overlaps<I>(_ other: I) -> Bool where I : IntervalType, Time == I.Bound {
         return ((self.start <= other.start && self.end >= other.start) || (other.start <= self.start && other.end >= self.end))
     }
