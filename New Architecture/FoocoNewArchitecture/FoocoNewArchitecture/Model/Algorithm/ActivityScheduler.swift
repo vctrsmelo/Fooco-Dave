@@ -26,16 +26,9 @@ class ActivityScheduler {
      - precondition: the TimeBlock parameter must be into the list returned by getAvailableTimeBlocks()
     */
     func add(activity: Activity, in tbl: TimeBlock) {
-        
-        for i in 0 ..< timeBlocks.count {
-            
-            if timeBlocks[i] == tbl {
-                
-                timeBlocks.remove(at: i)
-                
-            }
-            
-        }
+
+        //remove the timeblock tbl from array
+        timeBlocks.remove(tbl)
         
         //re-add left time blocks into timeBlocks array
         self.timeBlocks.append(contentsOf: tbl.getComplement(activity.timeBlock))
