@@ -8,44 +8,37 @@
 import Foundation
 
 enum AlertPickerViewMode: Equatable {
+	enum Stage {
+		case begin
+		case end
+	}
+	
 	case estimatedTime
-	case startingDate
-	case endingDate
-	case timeBlock(ModeStage)
+	case date(Stage)
+	case timeBlock(Stage)
 	
 	static func == (lhs: AlertPickerViewMode, rhs: AlertPickerViewMode) -> Bool {
 		switch (lhs, rhs) {
 		case (.estimatedTime, .estimatedTime):
 			return true
 			
-		case (.startingDate, .startingDate):
-			return true
-			
-		case (.endingDate, .endingDate):
-			return true
+		case (.date(let stageLhs), .date(let stageRhs)):
+			return stageLhs == stageRhs
 			
 		case (.timeBlock(let stageLhs), .timeBlock(let stageRhs)):
 			return stageLhs == stageRhs
 		
-		// These are added so the default case is not need and the compiler always remind if a new case is added
+		// These are added so the default case is not need and the compiler always warns if a new case is added
 		case (.estimatedTime, _):
 			return false
 			
-		case (.startingDate, _):
-			return false
-			
-		case (.endingDate, _):
+		case (.date, _):
 			return false
 			
 		case (.timeBlock, _):
 			return false
 		}
 	}
-}
-
-enum ModeStage {
-	case begin
-	case end
 }
 
 protocol PickerAlertViewModelReceiver: AnyObject {
@@ -107,11 +100,11 @@ final class PickerAlertViewModel {
 	}
 	
 	static func forStartingDate(_ startDate: Date?, endDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
-		return self.init(mode: .startingDate, context: context, projectName: projectName, mainDate: startDate, comparisonDate: endDate, receiver: receiver)
+		return self.init(mode: .date(.begin), context: context, projectName: projectName, mainDate: startDate, comparisonDate: endDate, receiver: receiver)
 	}
 	
 	static func forEndingDate(_ endDate: Date?, startDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
-		return self.init(mode: .endingDate, context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate, receiver: receiver)
+		return self.init(mode: .date(.end), context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate, receiver: receiver)
 	}
 	
 	func sendToReceiver() {
@@ -130,7 +123,7 @@ final class PickerAlertViewModel {
 			
 			self.underTitle = NSLocalizedString("\(self.chosenTime?.days ?? 0) days and \(self.chosenTime?.hours ?? 0) hours", comment: "UnderTitle for .estimatedTime")
 			
-		case .startingDate:
+		case .date(.begin):
 			self.title = NSLocalizedString("Starting Date", comment: "Title for .startingDate")
 			
 			if let start = self.mainDate, let end = self.comparisonDate {
@@ -147,7 +140,7 @@ final class PickerAlertViewModel {
 				self.underTitle = ""
 			}
 			
-		case .endingDate:
+		case .date(.end):
 			self.title = NSLocalizedString("Ending Date", comment: "Title for .endingDate")
 			
 			if let start = self.comparisonDate, let end = self.mainDate {

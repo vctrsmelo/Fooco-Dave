@@ -210,13 +210,13 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 	
 	@IBAction func startingDateTouched(_ sender: UIButton) {
-		let pickerAlertViewModel = self.viewModel.createAlert(for: .startingDate)
+		let pickerAlertViewModel = self.viewModel.createAlert(for: .date(.begin))
 		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 		
 	}
 	
 	@IBAction func deadlineDateTouched(_ sender: UIButton) {
-		let pickerAlertViewModel = self.viewModel.createAlert(for: .endingDate)
+		let pickerAlertViewModel = self.viewModel.createAlert(for: .date(.end))
 		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 	}
 	

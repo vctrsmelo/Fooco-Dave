@@ -74,7 +74,7 @@ class DatePickerAlertView: UIView {
             hoursPicker.isHidden = true
             datePicker.isHidden = false
 			
-			if self.currentMode == .endingDate {
+			if self.currentMode == .date(.end) {
 				self.datePicker.minimumDate = self.viewModel.comparisonDate
 				self.datePicker.maximumDate = nil
 				
@@ -84,7 +84,7 @@ class DatePickerAlertView: UIView {
 				
 				self.datePicker.setDate(initialDate, animated: false)
 				
-			} else if self.currentMode == .startingDate {
+			} else if self.currentMode == .date(.begin) {
 				self.datePicker.maximumDate = nil
 				self.datePicker.minimumDate = nil
 				
@@ -135,9 +135,9 @@ class DatePickerAlertView: UIView {
 			self.viewModel.chosenTime?.days = self.hoursPicker.selectedRow(inComponent: 0)
 			self.viewModel.chosenTime?.hours = self.hoursPicker.selectedRow(inComponent: 1)
 			
-		case .endingDate, .startingDate:
+		case .date:
 			self.viewModel.mainDate = self.datePicker.date
-		case .timeBlock(_):
+		case .timeBlock:
 			break
 		}
 		

@@ -104,13 +104,13 @@ class EditProjectViewModel {
 		case .estimatedTime:
 			return PickerAlertViewModel.forEstimatedTime(self.chosenTime, context: self.chosenContext, projectName: self.name, receiver: self)
 		
-		case .startingDate:
+		case .date(.begin):
 			return PickerAlertViewModel.forStartingDate(self.startingDate, endDate: self.endingDate, context: self.chosenContext, projectName: self.name, receiver: self)
 			
-		case .endingDate:
+		case .date(.end):
 			return PickerAlertViewModel.forEndingDate(self.endingDate, startDate: self.startingDate, context: self.chosenContext, projectName: self.name, receiver: self)
 			
-		default:
+		case .timeBlock:
 			fatalError("[Error] Mode not supported")
 		}
 	}
@@ -124,14 +124,14 @@ extension EditProjectViewModel: PickerAlertViewModelReceiver {
 		case .estimatedTime:
 			self.chosenTime = viewModel.chosenTime!
 			
-		case .startingDate:
+		case .date(.begin):
 			self.startingDate = viewModel.mainDate!
 			
-		case .endingDate:
+		case .date(.end):
 			self.endingDate = viewModel.mainDate!
 			
-		default:
-			break
+		case .timeBlock:
+			fatalError("[Error] Mode not supported")
 		}
 		
 		self.delegate?.viewModelDidUpdate()
