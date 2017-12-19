@@ -9,31 +9,18 @@ import CoreGraphics
 import Foundation
 
 enum DayInWeek: Int {
-	case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+	case sunday, monday, tuesday, wednesday, thursday, friday, saturday
 	
 	var string: String {
-		switch self {
-		case .sunday:
-			return "sunday"
-			
-		case .monday:
-			return "monday"
-			
-		case .tuesday:
-			return "tuesday"
-			
-		case .wednesday:
-			return "wednesday"
-			
-		case .thursday:
-			return "thursday"
-			
-		case .friday:
-			return "friday"
-			
-		case .saturday:
-			return "saturday"
-		}
+		return DateFormatter().standaloneWeekdaySymbols[self.rawValue]
+	}
+	
+	var shortString: String {
+		return DateFormatter().shortStandaloneWeekdaySymbols[self.rawValue]
+	}
+	
+	var veryShortString: String {
+		return DateFormatter().veryShortStandaloneWeekdaySymbols[self.rawValue]
 	}
 }
 

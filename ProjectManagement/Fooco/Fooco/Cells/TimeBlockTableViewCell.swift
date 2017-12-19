@@ -39,7 +39,7 @@ class TimeBlockTableViewCell: UITableViewCell {
 					weekdaysText.append(", ")
 				}
 				
-				weekdaysText.append(day.string)
+				weekdaysText.append(day.string.lowercased())
 			}
 			
 			self.weekDays.text = weekdaysText
