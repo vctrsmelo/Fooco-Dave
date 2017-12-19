@@ -18,6 +18,7 @@ class EditContextViewController: UIViewController {
 	@IBOutlet private weak var contextTimeQuestionLabel: UILabel!
 	@IBOutlet private weak var totalWeekTimeLabel: UILabel!
 	@IBOutlet private weak var tableView: UITableView!
+	@IBOutlet private weak var pickerAlertView: DatePickerAlertView!
 	
 	// MARK: Sunday
 	@IBOutlet private weak var sundayTime: UILabel!
@@ -50,6 +51,8 @@ class EditContextViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		self.pickerAlertView.initialSetup()
+		
 		self.contextTimeQuestionLabel.text = String(format: NSLocalizedString("When are you available to do %@'s activities", comment: "Top of new context second screen"), self.viewModel.context.name)
 		
 		self.totalWeekTimeLabel.text = self.viewModel.totalWeeklyTimeDescription
@@ -81,7 +84,7 @@ class EditContextViewController: UIViewController {
 	}
 	
 	@IBAction func addContextTimes() {
-		
+//		self.pickerAlertView.present(with: PickerAlertViewModel)
 	}
 
 }

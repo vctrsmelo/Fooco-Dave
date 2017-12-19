@@ -1364,10 +1364,15 @@
                                     <outlet property="delegate" destination="dtK-j8-lWb" id="nD4-MO-D5j"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ko5-jh-ZkI" customClass="DatePickerAlertView" customModule="Fooco" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NUo-IR-xdq" firstAttribute="trailing" secondItem="Fgh-uE-qdX" secondAttribute="trailing" constant="67" id="02V-2o-Eg3"/>
+                            <constraint firstItem="NUo-IR-xdq" firstAttribute="trailing" secondItem="ko5-jh-ZkI" secondAttribute="trailing" id="09e-bn-3BE"/>
+                            <constraint firstItem="NUo-IR-xdq" firstAttribute="bottom" secondItem="ko5-jh-ZkI" secondAttribute="bottom" id="AW5-rC-hq1"/>
                             <constraint firstItem="NUo-IR-xdq" firstAttribute="trailing" secondItem="xGB-2P-fdC" secondAttribute="trailing" constant="67" id="CyZ-ix-vMl"/>
                             <constraint firstItem="HzC-Oa-39D" firstAttribute="top" secondItem="zVI-qP-eN0" secondAttribute="bottom" constant="15" id="Dv9-iY-YZi"/>
                             <constraint firstItem="zVI-qP-eN0" firstAttribute="top" secondItem="xGB-2P-fdC" secondAttribute="bottom" constant="45" id="J93-B5-Wlv"/>
@@ -1375,6 +1380,7 @@
                             <constraint firstItem="sYE-bs-ZUb" firstAttribute="leading" secondItem="NUo-IR-xdq" secondAttribute="leading" id="NFu-Bs-Jlv"/>
                             <constraint firstItem="xGB-2P-fdC" firstAttribute="leading" secondItem="NUo-IR-xdq" secondAttribute="leading" constant="67" id="NOw-je-UfZ"/>
                             <constraint firstItem="zVI-qP-eN0" firstAttribute="leading" secondItem="NUo-IR-xdq" secondAttribute="leading" id="Rpd-DI-0i3"/>
+                            <constraint firstItem="ko5-jh-ZkI" firstAttribute="leading" secondItem="NUo-IR-xdq" secondAttribute="leading" id="UDE-nT-zTU"/>
                             <constraint firstItem="NUo-IR-xdq" firstAttribute="trailing" secondItem="sYE-bs-ZUb" secondAttribute="trailing" id="WnY-r4-Uoo"/>
                             <constraint firstItem="xGB-2P-fdC" firstAttribute="top" secondItem="hwm-z5-rfw" secondAttribute="bottom" id="Zuf-Px-43t"/>
                             <constraint firstItem="sYE-bs-ZUb" firstAttribute="top" secondItem="HzC-Oa-39D" secondAttribute="bottom" constant="15" id="iL2-k1-9PQ"/>
@@ -1385,6 +1391,7 @@
                             <constraint firstItem="hwm-z5-rfw" firstAttribute="leading" secondItem="NUo-IR-xdq" secondAttribute="leading" constant="67" id="njz-La-1pH"/>
                             <constraint firstItem="Fgh-uE-qdX" firstAttribute="leading" secondItem="NUo-IR-xdq" secondAttribute="leading" constant="67" id="puZ-UT-Hyw"/>
                             <constraint firstItem="hwm-z5-rfw" firstAttribute="top" secondItem="Fgh-uE-qdX" secondAttribute="bottom" constant="13" id="wcv-hX-Oph"/>
+                            <constraint firstItem="ko5-jh-ZkI" firstAttribute="top" secondItem="n7T-6j-MUe" secondAttribute="top" id="xry-mp-gFX"/>
                             <constraint firstItem="NUo-IR-xdq" firstAttribute="trailing" secondItem="hwm-z5-rfw" secondAttribute="trailing" constant="67" id="zfR-mU-UFt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NUo-IR-xdq"/>
@@ -1395,6 +1402,7 @@
                         <outlet property="fridayTime" destination="Kbr-HO-IP3" id="8pz-uj-LrY"/>
                         <outlet property="mondayBarHeight" destination="MNj-b9-uej" id="Zr7-ZS-skI"/>
                         <outlet property="mondayTime" destination="aFA-2y-Q71" id="WKW-6X-7Li"/>
+                        <outlet property="pickerAlertView" destination="ko5-jh-ZkI" id="2KJ-zD-dKy"/>
                         <outlet property="saturdayBarHeight" destination="8cc-ln-2Th" id="peT-SD-OEW"/>
                         <outlet property="saturdayTime" destination="tVT-0X-VvJ" id="oyJ-wx-3l8"/>
                         <outlet property="sundayBarHeight" destination="fdD-WO-pXd" id="Noq-8x-eyK"/>
