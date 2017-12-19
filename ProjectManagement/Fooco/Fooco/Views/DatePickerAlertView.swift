@@ -40,6 +40,8 @@ class DatePickerAlertView: UIView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var underTitleLabel: UILabel!
 	
+	@IBOutlet private weak var footerTitle: UILabel!
+	
     @IBOutlet private weak var datePicker: UIDatePicker!
     @IBOutlet private weak var hoursPicker: UIPickerView!
 	
@@ -59,7 +61,7 @@ class DatePickerAlertView: UIView {
 		
 		self.updateToViewModel()
         
-		if currentMode == .estimatedTime {
+		if self.currentMode == .estimatedTime {
             hoursPicker.isHidden = false
             datePicker.isHidden = true
             
@@ -135,6 +137,8 @@ class DatePickerAlertView: UIView {
 			
 		case .endingDate, .startingDate:
 			self.viewModel.mainDate = self.datePicker.date
+		case .timeBlock(_):
+			break
 		}
 		
 		self.viewModel.sendToReceiver()

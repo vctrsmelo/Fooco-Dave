@@ -111,7 +111,7 @@ class EditProjectViewModel {
 			return PickerAlertViewModel.forEndingDate(self.endingDate, startDate: self.startingDate, context: self.chosenContext, projectName: self.name, receiver: self)
 			
 		default:
-			break
+			fatalError("[Error] Mode not supported")
 		}
 	}
 }

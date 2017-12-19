@@ -19,6 +19,7 @@
                 <outlet property="confirmButton" destination="7Iz-tz-PO8" id="cr6-S7-1sh"/>
                 <outlet property="datePicker" destination="tub-iQ-1vS" id="0El-1c-RiL"/>
                 <outlet property="footer" destination="VRx-7j-irO" id="f9N-V2-pFb"/>
+                <outlet property="footerTitle" destination="8dZ-2R-E0q" id="WVX-Oj-1PH"/>
                 <outlet property="hoursPicker" destination="RNZ-ME-aKv" id="a1c-cw-ENF"/>
                 <outlet property="mainView" destination="jhX-NP-720" id="w7s-86-2Ik"/>
                 <outlet property="overTitleLabel" destination="niV-FX-Tap" id="T2H-bs-9DZ"/>

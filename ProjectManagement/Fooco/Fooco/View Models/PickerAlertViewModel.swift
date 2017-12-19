@@ -7,10 +7,45 @@
 
 import Foundation
 
-enum AlertPickerViewMode {
+enum AlertPickerViewMode: Equatable {
 	case estimatedTime
 	case startingDate
 	case endingDate
+	case timeBlock(ModeStage)
+	
+	static func == (lhs: AlertPickerViewMode, rhs: AlertPickerViewMode) -> Bool {
+		switch (lhs, rhs) {
+		case (.estimatedTime, .estimatedTime):
+			return true
+			
+		case (.startingDate, .startingDate):
+			return true
+			
+		case (.endingDate, .endingDate):
+			return true
+			
+		case (.timeBlock(let stageLhs), .timeBlock(let stageRhs)):
+			return stageLhs == stageRhs
+		
+		// These are added so the default case is not need and the compiler always remind if a new case is added
+		case (.estimatedTime, _):
+			return false
+			
+		case (.startingDate, _):
+			return false
+			
+		case (.endingDate, _):
+			return false
+			
+		case (.timeBlock, _):
+			return false
+		}
+	}
+}
+
+enum ModeStage {
+	case begin
+	case end
 }
 
 protocol PickerAlertViewModelReceiver: AnyObject {
@@ -27,10 +62,13 @@ final class PickerAlertViewModel {
 	private(set) var projectName: String?
 	private(set) var context: Context?
 	
+	private(set) var footerDays = Set<DayInWeek>()
+	
 	// MARK: Output
 	private(set) var overTitle = ""
 	private(set) var title = ""
 	private(set) var underTitle = ""
+	private(set) var footerTitle = ""
 	
 	// MARK: Input/Output
 	var mainDate: Date? {
@@ -105,8 +143,6 @@ final class PickerAlertViewModel {
 					self.underTitle = ""
 				}
 				
-				
-				
 			} else {
 				self.underTitle = ""
 			}
@@ -116,12 +152,29 @@ final class PickerAlertViewModel {
 			
 			if let start = self.comparisonDate, let end = self.mainDate {
 				let daysBetween = Calendar.current.dateComponents([.day], from: start, to: end)
-				
 				self.underTitle = NSLocalizedString("\(daysBetween.day!) days since starting date", comment: "UnderTitle for .endingDate")
 				
 			} else {
 				self.underTitle = ""
 			}
+			
+		case .timeBlock(.begin):
+			self.overTitle = NSLocalizedString("\(self.context!.name)'s Available Time", comment: "OverTitle for .timeBlock(.begin)")
+			self.title = NSLocalizedString("Starts at", comment: "Title for .timeBlock(.begin)")
+			self.underTitle = ""
+			
+			if self.footerDays.isEmpty {
+				self.footerTitle = NSLocalizedString("choose one or more days", comment: "FooterTitle for .timeBlock(.begin), with empty days set")
+			} else {
+				self.footerTitle = NSLocalizedString("", comment: "FooterTitle for .timeBlock(.begin), with not empty days set") // TODO: Footer Label
+			}
+			
+		case .timeBlock(.end):
+			self.overTitle = NSLocalizedString("\(self.context!.name)'s Available Time", comment: "OverTitle for .timeBlock(.end)")
+			self.title = NSLocalizedString("Ends at", comment: "Title for .timeBlock(.end)")
+			
+			let hoursBetween = Calendar.current.dateComponents([.hour], from: self.comparisonDate!, to: self.mainDate!)
+			self.underTitle = NSLocalizedString("\(hoursBetween.hour!) hours of available time", comment: "Title for .timeBlock(.end)")
 		}
 	}
 	
