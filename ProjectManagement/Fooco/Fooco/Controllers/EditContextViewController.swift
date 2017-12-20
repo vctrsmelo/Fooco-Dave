@@ -84,7 +84,7 @@ class EditContextViewController: UIViewController {
 	}
 	
 	@IBAction func addContextTimes() {
-//		self.pickerAlertView.present(with: PickerAlertViewModel)
+		self.pickerAlertView.present(with: self.viewModel.createNewAlert())
 	}
 
 }

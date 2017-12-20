@@ -107,6 +107,21 @@ final class PickerAlertViewModel {
 		return self.init(mode: .date(.end), context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate, receiver: receiver)
 	}
 	
+	static func forTimeBlocks(startingTime: Date?, endingTime: Date?, days: Set<DayInWeek>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+		let returnValue = self.init(mode: .timeBlock(.begin), context: context, projectName: nil, mainDate: startingTime, comparisonDate: endingTime, receiver: receiver)
+		
+		returnValue.footerDays = days
+		
+		return returnValue
+	}
+	
+	func forTimeBlockEnd() -> PickerAlertViewModel {
+		self.currentMode = .timeBlock(.end)
+		self.configureTitles()
+		
+		return self
+	}
+	
 	func sendToReceiver() {
 		self.receiver?.receive(self)
 	}
@@ -166,7 +181,7 @@ final class PickerAlertViewModel {
 			self.overTitle = NSLocalizedString("\(self.context!.name)'s Available Time", comment: "OverTitle for .timeBlock(.end)")
 			self.title = NSLocalizedString("Ends at", comment: "Title for .timeBlock(.end)")
 			
-			let hoursBetween = Calendar.current.dateComponents([.hour], from: self.comparisonDate!, to: self.mainDate!)
+			let hoursBetween = Calendar.current.dateComponents([.hour], from: self.mainDate!, to: self.comparisonDate!)
 			self.underTitle = NSLocalizedString("\(hoursBetween.hour!) hours of available time", comment: "Title for .timeBlock(.end)")
 		}
 	}

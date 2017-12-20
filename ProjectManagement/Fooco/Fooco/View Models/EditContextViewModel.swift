@@ -152,4 +152,15 @@ class EditContextViewModel {
 		
 		self.week[day]?.append(newTimeBlock)
 	}
+	
+	func createNewAlert() -> PickerAlertViewModel {
+		let now = Date()
+		return PickerAlertViewModel.forTimeBlocks(startingTime: now, endingTime: now.addingTimeInterval(1.hour), days: Set(), context: self.context, receiver: self)
+	}
+}
+
+extension EditContextViewModel: PickerAlertViewModelReceiver {
+	func receive(_ viewModel: PickerAlertViewModel) {
+		print("Received something") // TODO: Finish
+	}
 }
