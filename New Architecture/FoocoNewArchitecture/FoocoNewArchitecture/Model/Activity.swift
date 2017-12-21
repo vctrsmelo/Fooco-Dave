@@ -24,12 +24,27 @@ struct Activity {
     
     private let id: UUID
     let timeBlock: TimeBlock
-    private let project: Project?
+    let project: Project?
     
     /**
      If the activity is not related to a project, it should have a name
     */
     private let name: String?
+    
+    init(for timeBlock: TimeBlock, project: Project) {
+        self.project = project
+        self.name = nil
+        self.timeBlock = timeBlock
+        id = UUID()
+    }
+    
+    init(for timeBlock: TimeBlock, name: String) {
+        self.name = name
+        self.project = nil
+        self.timeBlock = timeBlock
+        id = UUID()
+    }
+
     
     init(from: Time, to: Time, project: Project) throws {
         
@@ -42,8 +57,8 @@ struct Activity {
     
     init(from: Time, to: Time, name: String) throws {
         
-        self.project = nil
         self.name = name
+        self.project = nil
         self.timeBlock = try TimeBlock(starts: from, ends: to)
         id = UUID()
         
@@ -140,6 +155,18 @@ extension Activity: IntervalType {
         return resultArray
         
     }
+    
+}
+
+extension Activity: TimeIntervalType {
+    
+    /**
+     Activity's length in seconds.
+    */
+    var length: TimeInterval {
+        return timeBlock.end - timeBlock.start
+    }
+    
     
 }
 

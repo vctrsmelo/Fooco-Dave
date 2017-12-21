@@ -54,10 +54,11 @@ struct AlgorithmManager {
         //iterate over Context Blocks of weekdayTemplate to append activities into activitiesForDay
         for contextBlock in weekdayTemplate.contextBlocks {
             
-            //Problema: context block pode ter mais de uma activity em si. Precisa considerar isso.
+            //Problema: context block pode ter mais de uma activity em si. Precisa considerar isso. (RESOLVIDO)
+            //Problem: corner case, when context block continues until next day
 
             //cria scheduler
-            var scheduler = ActivityScheduler(timeBlock: contextBlock.timeBlock, context: contextBlock.context)
+            let scheduler = ActivityScheduler(timeBlock: contextBlock.timeBlock, context: contextBlock.context)
 
             //enquanto scheduler tem time blocks disponíveis
             while !scheduler.getAvailableTimeBlocks().isEmpty {
@@ -92,7 +93,10 @@ struct AlgorithmManager {
         //tuple of projects and its priority. Uses tuple to not need to recalculate the priority value while executing the algorithm below.
         var highestProjects: [Project] = getProjectsFor(context: scheduler.context)
         
-        highestProjects.sort()
+        //sort projects by their priorities
+        highestProjects.sort { (p1, p2) -> Bool in
+            return p1.priority > p2.priority
+        }
         
         var i = 0
         while highestProjects.count > i {
@@ -100,6 +104,11 @@ struct AlgorithmManager {
             let highestProject = highestProjects[i]
             
             for timeBlock in scheduler.getAvailableTimeBlocks() {
+                
+                //if timeBlock length is smaller than minimalTimeLength for activity, skip it
+                if timeBlock.length < Activity.minimalTimeLength {
+                    continue
+                }
                 
                 //if highestProject found an activity for timeBlock
                 if let nextActivity = highestProject.nextActivity(for: timeBlock) {

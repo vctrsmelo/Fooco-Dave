@@ -79,7 +79,7 @@ extension TimeBlock: IntervalType {
     }
     
     var end: Time {
-        return self.end
+        return self.ends
     }
     
     var isEmpty: Bool {
@@ -96,6 +96,15 @@ extension TimeBlock: IntervalType {
     }
 
 }
+
+extension TimeBlock: TimeIntervalType {
+
+    var length: TimeInterval {
+        return self.ends - self.starts
+    }
+    
+}
+
 
 extension TimeBlock: Equatable {
     
@@ -139,34 +148,4 @@ extension TimeBlock {
         return resultTimeBlocks
         
     }
-    
-//    /**
-//     Return the array of Time without duplicated values
-//    */
-//    private func getTimesWithoutDuplicatedValues(from times: [Time]) -> [Time]{
-//
-//        var indexToRemove: [Int] = []
-//        var resultArray = times
-//
-//        resultArray.sort()
-//
-//        for i in 0 ..< resultArray.count-1 {
-//
-//            if resultArray[i] == resultArray[i+1] {
-//                indexToRemove.append(i)
-//            }
-//
-//        }
-//
-//        while !indexToRemove.isEmpty {
-//
-//            resultArray.remove(at: indexToRemove.first!)
-//            indexToRemove = Array(indexToRemove.dropFirst())
-//
-//        }
-//
-//        return resultArray
-//
-//    }
-    
 }

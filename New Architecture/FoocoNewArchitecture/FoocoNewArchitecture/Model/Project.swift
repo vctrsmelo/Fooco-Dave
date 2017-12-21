@@ -31,12 +31,26 @@ class Project {
     
     private var _notAllocatedEstimatedTime: TimeInterval
     private var estimatedTime: TimeInterval {
-        get {
-            var leftTime = _notAllocatedEstimatedTime
-            //TODO: implement. Should get user's activities in stack for this project and decrease that value from leftTime before returns it
-            return 0
-        }
+        var leftTime = _notAllocatedEstimatedTime
         
+        //if user has an schedule in cache
+        if let schedule = User.sharedInstance.schedule {
+        
+            //for each day in schedule
+            for day in schedule {
+                
+                //for each activity in day
+                for activity in day.activities {
+                    
+                    //remove the time of activities already scheduled
+                    if activity.project == self {
+                        leftTime -= activity.length
+                    }
+                    
+                }
+            }
+        }
+        return leftTime
     }
 
     //priority cached. When it's not valid anymore, should be setted to nil
@@ -89,30 +103,29 @@ class Project {
         
         //TODO: implement nextActivity method
         
+        //verifies if timeBlock respects Activity.minimalTimeLength
+        if timeBlock.length < Activity.minimalTimeLength {
+            return nil
+        }
+        
         //verifies if exists left time to be completed (according to estimated time)
+        let currentLeftTime = self.estimatedTime
         
-        //verifies if time block is greater than user's minimal time length of activity
-    
-        //create activity with timeBlock parameter
+        if currentLeftTime <= 0 {
+            return nil
+        }
         
+        //return new activity created
+        return Activity(for: timeBlock, project: self)
         
-        
-        
-        //if can't create an activity for the context block (there is no sufficient time in the contextblock, for example), returns nil
-        return nil
     }
     
 }
 
-extension Project: Comparable {
-    
-    static func <(lhs: Project, rhs: Project) -> Bool {
-        return lhs.priority < rhs.priority
-    }
+extension Project: Equatable {
     
     static func ==(lhs: Project, rhs: Project) -> Bool {
-        return lhs.priority == rhs.priority
+        return lhs.id == rhs.id
     }
-    
     
 }

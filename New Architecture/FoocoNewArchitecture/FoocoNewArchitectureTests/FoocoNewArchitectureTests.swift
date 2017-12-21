@@ -143,14 +143,30 @@ class FoocoNewArchitectureTests: XCTestCase {
     func testProject() {
         
         let college = Context(name: "College")
-        XCTAssertNoThrow(try Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3))
+        XCTAssertNoThrow(try Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours))
+    
+    
+    //get next activity
+        let project = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours)
+        
+        XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 4))))
+        XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 3))))
+        XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 25))))
+
+        XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 24))))
+        XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 15))))
+        XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 1))))
+        XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 24, second: 59))))
+        
         
     }
+    
+    
     
     func testDay() {
         
         let college = Context(name: "College")
-        let project1 = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3)
+        let project1 = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours)
         let actv1 = try! Activity(from: Time(hour: 10), to: Time(hour: 12), name: "Buy milk")
         let actv2 = try! Activity(from: Time(hour:13), to: Time(hour:14), project: project1)
         

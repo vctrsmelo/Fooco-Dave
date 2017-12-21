@@ -62,3 +62,14 @@ protocol IntervalType {
     func getComplement(_ other: Self) -> [Self]
     
 }
+
+/**
+ An interval of Time
+ */
+protocol TimeIntervalType {
+    
+    var length: TimeInterval {
+        get
+    }
+    
+}

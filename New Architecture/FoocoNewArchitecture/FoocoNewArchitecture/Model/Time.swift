@@ -63,8 +63,8 @@ extension Time: Comparable {
 
 extension Time {
     
-    static func -(lhs: Time, rhs: Time) -> Int {
-        return Int(lhs.totalSeconds - rhs.totalSeconds)
+    static func -(lhs: Time, rhs: Time) -> TimeInterval {
+        return lhs.totalSeconds - rhs.totalSeconds
     }
     
 }
