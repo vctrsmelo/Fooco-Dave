@@ -43,6 +43,7 @@ struct WeekdayTemplate {
 
 // Private struct
 struct ContextBlock {
+        
     let context: Context
     let timeBlock: TimeBlock
     

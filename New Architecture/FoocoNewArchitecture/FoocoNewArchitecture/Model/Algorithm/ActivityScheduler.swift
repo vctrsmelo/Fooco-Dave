@@ -39,7 +39,9 @@ class ActivityScheduler {
         let tbl = activity.timeBlock
         
         //remove the timeblock tbl from array
-        timeBlocks.remove(tbl)
+        if let index = timeBlocks.index(of: tbl) {
+            timeBlocks.remove(at: index)
+        }
         
         //get timeblock set from tbl difference to activity
         //re-add left time blocks into timeBlocks array

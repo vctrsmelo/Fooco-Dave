@@ -17,6 +17,11 @@ Activity is a period of time focusing in a task/project, or an event from calend
 */
 struct Activity {
     
+    /**
+     It's the minimal time length that a timeBlock can have. It's useful to avoid creating activities with smaller time lengths.
+     */
+    static let minimalTimeLength: TimeInterval = 25.minutes
+    
     private let id: UUID
     let timeBlock: TimeBlock
     private let project: Project?

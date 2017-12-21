@@ -17,7 +17,7 @@ struct AlgorithmManager {
        Get day schedule until the date parameter.
     
     */
-    static func getDayScheduleFor(date dte: Date) -> [Day]{
+    static func getDayScheduleFor(date dte: Date) throws -> [Day]{
         
         let lastDate = dte.getDay()
         
@@ -29,14 +29,14 @@ struct AlgorithmManager {
         //Implemented using iterator, not recursive because of possibility of memory leak if the date is far in the future.
         while iteratorDate <= lastDate {
             
-            resultDays.append(getDayScheduleForAux(date: iteratorDate))
+            try resultDays.append(getDayScheduleForAux(date: iteratorDate))
             
             //increase iteratorDate
             iteratorDate = iteratorDate.addingTimeInterval(1.day)
             
         }
         
-        
+        return resultDays
         
     }
     
@@ -124,17 +124,19 @@ struct AlgorithmManager {
     */
     static func getProjectsFor(context: Context) -> [Project] {
         
-        var resultArray: [Project] = []
+        var projects: [Project] = []
         
         //iterate over user projects
         for project in User.sharedInstance.projects {
             
             if project.context == context {
                 
-                resultArray.append(project)
+                projects.append(project)
                 
             }
         }
+        
+        return projects
         
     }
     

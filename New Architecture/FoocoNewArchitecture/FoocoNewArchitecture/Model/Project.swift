@@ -28,6 +28,16 @@ class Project {
     private var endingDate: Date
     private(set) var context: Context
     private var importance: Int
+    
+    private var _notAllocatedEstimatedTime: TimeInterval
+    private var estimatedTime: TimeInterval {
+        get {
+            var leftTime = _notAllocatedEstimatedTime
+            //TODO: implement. Should get user's activities in stack for this project and decrease that value from leftTime before returns it
+            return 0
+        }
+        
+    }
 
     //priority cached. When it's not valid anymore, should be setted to nil
     private var _priority: Priority?
@@ -41,7 +51,7 @@ class Project {
         return 0.0
     }
     
-    init(name: String, starts: Date, ends: Date, context: Context, importance: Int) throws {
+    init(name: String, starts: Date, ends: Date, context: Context, importance: Int, estimatedTime notAllocatedLeftTime: TimeInterval) throws {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
@@ -53,6 +63,8 @@ class Project {
             
         }
         
+        self._notAllocatedEstimatedTime = notAllocatedLeftTime
+        
         self.importance = importance
         self.id = UUID()
     }
@@ -60,20 +72,31 @@ class Project {
     /**
      Should be used internally just to load from database
      */
-    private init(name: String, starts: Date, ends: Date, context: Context, importance: Int, id: UUID) {
+    private init(name: String, starts: Date, ends: Date, context: Context, importance: Int, estimatedTime notAllocatedLeftTime: TimeInterval, id: UUID) {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
         self.context = context
         self.importance = importance
+        self._notAllocatedEstimatedTime = notAllocatedLeftTime
         self.id = id
     }
     
     /**
-     - postcondition: returns nil if can not create an activity for the tim block parameter
+     - postcondition: returns nil if can not create an activity for the time block parameter
     */
     func nextActivity(for timeBlock: TimeBlock) -> Activity? {
+        
         //TODO: implement nextActivity method
+        
+        //verifies if exists left time to be completed (according to estimated time)
+        
+        //verifies if time block is greater than user's minimal time length of activity
+    
+        //create activity with timeBlock parameter
+        
+        
+        
         
         //if can't create an activity for the context block (there is no sufficient time in the contextblock, for example), returns nil
         return nil

@@ -147,21 +147,5 @@ extension Array where Element: Equatable {
         
         return result
     }
-    
-    /**
-     Remove an specific element from array. If the element is not in array, does nothing.
-     */
-    func remove(_ element: Element) {
-        
-        for i in 0 ..< self.count {
-            
-            if self[i] == element {
-                self.remove(at: i)
-                break
-            }
-            
-        }
-        
-    }
-    
+
 }
