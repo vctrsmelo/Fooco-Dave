@@ -17,7 +17,7 @@ struct AlgorithmManager {
        Get day schedule until the date parameter.
     
     */
-    static func getDayScheduleUntil(date dte: Date) -> [Day]{
+    static func getDayScheduleFor(date dte: Date) -> [Day]{
         
         let lastDate = dte.getDay()
         
@@ -26,10 +26,10 @@ struct AlgorithmManager {
         
         var resultDays: [Day] = []
         
-        //Implemented using iterator, not recursivity, because of possibility of memory leak if the date is far away.
+        //Implemented using iterator, not recursive because of possibility of memory leak if the date is far in the future.
         while iteratorDate <= lastDate {
             
-            resultDays.append(getDayScheduleFor(date: iteratorDate))
+            resultDays.append(getDayScheduleForAux(date: iteratorDate))
             
             //increase iteratorDate
             iteratorDate = iteratorDate.addingTimeInterval(1.day)
@@ -44,76 +44,78 @@ struct AlgorithmManager {
      - precondition: date parameter is exactly the next day to be scheduled, according to the cached dates.
      - postcondition: will return a Day with the correct activities scheduled.
     */
-    private static func getDayScheduleFor(date: Date) -> Day {
+    private static func getDayScheduleForAux(date: Date) throws -> Day {
         
-        //get weekday
-        //get weekday template
-        //iterate over contextBlocks
-            //activities.append(getActivityForCB method)
-        
-        //new Day with activities
-        //return Day
-        
-        let weekday = date.getWeekday()
-
-        let weekdayTemplate = User.sharedInstance.getWeekdayTemplate(for: weekday)
+        //get weekdayTemplate
+        let weekdayTemplate = User.sharedInstance.getWeekdayTemplate(for: date.getWeekday())
     
         var activitiesForDay: [Activity] = []
         
+        //iterate over Context Blocks of weekdayTemplate to append activities into activitiesForDay
         for contextBlock in weekdayTemplate.contextBlocks {
             
             //Problema: context block pode ter mais de uma activity em si. Precisa considerar isso.
-            
-            //cria arvore com apenas a raiz
-            var timeBlockTree = TimeBlockTree(root: contextBlock.timeBlock)
 
-            while timeBlockTree {
+            //cria scheduler
+            var scheduler = ActivityScheduler(timeBlock: contextBlock.timeBlock, context: contextBlock.context)
+
+            //enquanto scheduler tem time blocks disponíveis
+            while !scheduler.getAvailableTimeBlocks().isEmpty {
+                
+                //tenta adicionar proxima atividade no timeBlock disponível
+                guard let nextActivity = getNextActivity(for: scheduler) else {
+                    
+                    //can not allocate another activity into scheduler. Should get out from this while loop.
+                    break
+                    
+                }
+                
+                scheduler.add(activity: nextActivity)
                 
             }
             
-            //enquanto arvore tem time block para activities (nao terá mais quando, ao tentar adicionar activity, tiver percorrido toda a arvore e nao conseguiu)
-                //tenta adicionar proxima atividade na árvore
-            
-            
-            if let nextActivity = getNextActivity(for: contextBlock) {
-                activitiesForDay.append(nextActivity)
-            }
+            //add created activities into activitiesForDay
+            activitiesForDay.append(contentsOf: scheduler.getActivities())
             
         }
         
+        //return Day created with activitiesForDay, if possible (if the activities are not overlapping, what shouldn't be occuring)
+        return try Day(date: date, activities: activitiesForDay)
         
     }
     
     /**
      Returns the next activity to be done for the context block
     */
-    private static func getNextActivity(for contextBlock: ContextBlock) -> Activity? {
+    private static func getNextActivity(for scheduler: ActivityScheduler) -> Activity? {
         
         //tuple of projects and its priority. Uses tuple to not need to recalculate the priority value while executing the algorithm below.
-        var highestProjects: [Project] = getProjectsFor(context: contextBlock.context)
+        var highestProjects: [Project] = getProjectsFor(context: scheduler.context)
         
         highestProjects.sort()
         
-        var nextActivity: Activity?
         var i = 0
-        
-        while nextActivity == nil && highestProjects.count > i {
+        while highestProjects.count > i {
 
             let highestProject = highestProjects[i]
             
-            guard let actv = highestProject.nextActivity(for: contextBlock) else {
+            for timeBlock in scheduler.getAvailableTimeBlocks() {
                 
-                //if the highest project can't create a new activity, try to create an activity for the next project in the list.
-                i += 1
-                continue
-            
+                //if highestProject found an activity for timeBlock
+                if let nextActivity = highestProject.nextActivity(for: timeBlock) {
+
+                    //return the nextActivity created
+                    return nextActivity
+
+                }
+                
             }
-            
-            nextActivity = actv
-            
+
+            //the highestProject couldn't create an activity. Now will iterate again to try to create an activity for the following project with highest priority value
+            i += 1
         }
         
-        return nextActivity
+        return nil
         
     }
     

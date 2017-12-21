@@ -10,11 +10,13 @@ import Foundation
 
 class ActivityScheduler {
     
+    let context: Context
     private var timeBlocks: [TimeBlock] = []
     private var activities: [Activity] = []
     
-    init(timeBlock: TimeBlock) {
+    init(timeBlock: TimeBlock, context: Context) {
         self.timeBlocks.append(timeBlock)
+        self.context = context
     }
     
     func getAvailableTimeBlocks() -> [TimeBlock] {
@@ -22,14 +24,24 @@ class ActivityScheduler {
     }
     
     /**
-     Add an activity into ActivityScheduler
-     - precondition: the TimeBlock parameter must be into the list returned by getAvailableTimeBlocks()
+     Return the activities allocated for this ActivityScheduler.
     */
-    func add(activity: Activity, in tbl: TimeBlock) {
+    func getActivities() -> [Activity] {
+        return activities
+    }
+    
+    /**
+     Add an activity into ActivityScheduler
+     - precondition: the TimeBlock of activity parameter must be into the list returned by getAvailableTimeBlocks()
+    */
+    func add(activity: Activity) {
 
+        let tbl = activity.timeBlock
+        
         //remove the timeblock tbl from array
         timeBlocks.remove(tbl)
         
+        //get timeblock set from tbl difference to activity
         //re-add left time blocks into timeBlocks array
         self.timeBlocks.append(contentsOf: tbl.getComplement(activity.timeBlock))
         

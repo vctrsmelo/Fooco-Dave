@@ -70,9 +70,9 @@ class Project {
     }
     
     /**
-     - postcondition: returns nil if can not create an activity for the context block parameter
+     - postcondition: returns nil if can not create an activity for the tim block parameter
     */
-    func nextActivity(for contextBlock: ContextBlock) -> Activity? {
+    func nextActivity(for timeBlock: TimeBlock) -> Activity? {
         //TODO: implement nextActivity method
         
         //if can't create an activity for the context block (there is no sufficient time in the contextblock, for example), returns nil
