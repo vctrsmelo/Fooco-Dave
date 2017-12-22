@@ -162,10 +162,19 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 3))))
         XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 25))))
 
+        //Should return nil because TimeBlock parameter has smaller time length than Activity.minimalTimeLength
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 24))))
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 15))))
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 1))))
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 24, second: 59))))
+        
+        let completedProject = try! Project(name: "A Project already completed", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 0.hour)
+        
+        //Should return nil because project has zero estimated time left
+        XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour:2), ends: Time(hour:10))))
+        
+        //should return activity with Activity.minimalTimeLength of size because the project.estimatedTime < Activity.minimalTimeLength
+        
         
         
     }

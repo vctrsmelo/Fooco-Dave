@@ -97,7 +97,10 @@ class Project {
     }
     
     /**
-     - postcondition: returns nil if can not create an activity for the time block parameter
+     - parameter timeBlock: is the timeBlock considered available to be used for creating the Activity. The activity returned may have a time block smaller or equal to the parameter.
+     - returns: maybe Activity.
+     - postcondition: returns nil if timeBlock.length < ActivityminimalTimeLength
+     - postcondition: returns nil if self.estimatedTime <= 0
     */
     func nextActivity(for timeBlock: TimeBlock) -> Activity? {
         
@@ -108,6 +111,17 @@ class Project {
             return nil
         }
         
+        guard let activityTimeBlock = getTimeBlockForNewActivity(from: timeBlock) else {
+            return nil
+        }
+        
+        //return new activity created
+        return Activity(for: activityTimeBlock, project: self)
+        
+    }
+    
+    private func getTimeBlockForNewActivity(from timeBlock: TimeBlock) -> TimeBlock? {
+        
         //verifies if exists left time to be completed (according to estimated time)
         let currentLeftTime = self.estimatedTime
         
@@ -115,9 +129,25 @@ class Project {
             return nil
         }
         
-        //return new activity created
-        return Activity(for: timeBlock, project: self)
-        
+        //left time to complete the project is smaller than timeBlock length
+        if currentLeftTime < timeBlock.length {
+            
+            
+            if currentLeftTime < Activity.minimalTimeLength {
+                
+                //activity should have length of Activity.minimalTimeLength
+                return TimeBlock(starts: timeBlock.start, ends: timeBlock.start.addingTimeInterval(Activity.minimalTimeLength))
+              
+                
+            } else {
+                //activity should have length of currentLeftTime
+                
+            }
+            
+            
+        } else {
+            //activity should be created for timeBlock
+        }
     }
     
 }

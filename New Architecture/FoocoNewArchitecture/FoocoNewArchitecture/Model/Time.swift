@@ -39,7 +39,7 @@ struct Time {
      */
     let totalSeconds: TimeInterval
     
-    init(day d: Int = 0,hour h: Int, minute m: Int = 0, second s: Int = 0) throws {
+    init(day d: Int = 0,hour h: Int = 0, minute m: Int = 0, second s: Int = 0) throws {
         
         
         if  !TimeRange.hours.contains(h) || !TimeRange.minutes.contains(m) || !TimeRange.seconds.contains(s)  {
@@ -48,6 +48,15 @@ struct Time {
         
         self.totalSeconds = d.day+h.hour+m.minute+s.seconds
 
+    }
+    
+    /**
+     - returns: returns Time with the parameter as seconds.
+    */
+    func addingTimeInterval(_ timeInterval: TimeInterval) throws -> Time {
+        
+        return try Time(second: Int(timeInterval))
+        
     }
     
 }
