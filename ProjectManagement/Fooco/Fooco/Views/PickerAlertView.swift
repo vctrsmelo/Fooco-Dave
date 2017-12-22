@@ -65,39 +65,34 @@ class PickerAlertView: UIView {
 		
 		switch self.currentMode {
 		case .estimatedTime:
-			if let someEstimatedTime = self.viewModel.chosenTime {
-				hoursPicker.selectRow(someEstimatedTime.days, inComponent: 0, animated: false)
-				hoursPicker.selectRow(someEstimatedTime.hours, inComponent: 1, animated: false)
-			}
+			let someEstimatedTime = self.viewModel.chosenTime
+            hoursPicker.selectRow(someEstimatedTime.days, inComponent: 0, animated: false)
+            hoursPicker.selectRow(someEstimatedTime.hours, inComponent: 1, animated: false)
 			
 			self.showHoursPicker()
 			
 		case .date(.begin):
-			let initialDate = self.viewModel.mainDate ?? Date()
+			let initialDate = self.viewModel.mainDate
 			self.datePicker.setDate(initialDate, animated: false)
 			
 		case .date(.end):
             self.datePicker.minimumDate = self.viewModel.comparisonDate
 			
-			let initialDate = (self.viewModel.mainDate ??
-                self.viewModel.comparisonDate?.addingTimeInterval(7.days)) ??
-                Date().addingTimeInterval(7.days)
+			let initialDate = self.viewModel.mainDate
 			
 			self.datePicker.setDate(initialDate, animated: false)
 			
 		case .timeBlock(.begin):
 			self.datePicker.datePickerMode = .time
-			self.datePicker.minuteInterval = 15
 			
-			self.datePicker.setDate(self.viewModel.mainDate ?? Date(), animated: false)
+			self.datePicker.setDate(self.viewModel.mainDate, animated: false)
 			
 			self.footerIsHidden = false
 			
 		case .timeBlock(.end):
 			self.datePicker.datePickerMode = .time
-			self.datePicker.minuteInterval = 15
 
-			self.datePicker.minimumDate = self.viewModel.mainDate?.addingTimeInterval(1.hour)
+			self.datePicker.minimumDate = self.viewModel.mainDate.addingTimeInterval(1.hour)
 			
             self.datePicker.setDate(self.viewModel.comparisonDate ?? Date().addingTimeInterval(1.hour), animated: true)
             
@@ -168,8 +163,8 @@ class PickerAlertView: UIView {
         
 		switch self.currentMode {
 		case .estimatedTime:
-			self.viewModel.chosenTime?.days = self.hoursPicker.selectedRow(inComponent: 0)
-			self.viewModel.chosenTime?.hours = self.hoursPicker.selectedRow(inComponent: 1)
+			self.viewModel.chosenTime.days = self.hoursPicker.selectedRow(inComponent: 0)
+			self.viewModel.chosenTime.hours = self.hoursPicker.selectedRow(inComponent: 1)
 			
 		case .date:
 			self.viewModel.mainDate = self.datePicker.date

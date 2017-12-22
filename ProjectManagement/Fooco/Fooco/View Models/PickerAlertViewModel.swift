@@ -67,7 +67,7 @@ final class PickerAlertViewModel {
     private(set) var button = (title: "", color: UIColor.Interface.iGreen)
 	
 	// MARK: Input/Output
-	var mainDate: Date? {
+	var mainDate: Date {
 		didSet {
 			self.configureOutputs()
 		}
@@ -77,7 +77,7 @@ final class PickerAlertViewModel {
 			self.configureOutputs()
 		}
 	}
-	var chosenTime: (days: Int, hours: Int)? {
+	var chosenTime: (days: Int, hours: Int) {
 		didSet {
 			self.configureOutputs()
 		}
@@ -85,7 +85,7 @@ final class PickerAlertViewModel {
 	
 	// MARK: - Initialization
 	
-	private init(mode: PickerAlertMode, context: Context?, projectName: String?, mainDate: Date? = nil, comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int)? = nil, receiver: PickerAlertViewModelReceiver) {
+    private init(mode: PickerAlertMode, context: Context?, projectName: String?, mainDate: Date = Date(), comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int) = (days: 0, hours: 0), receiver: PickerAlertViewModelReceiver) {
 		self.receiver = receiver
 		
 		self.mode = mode
@@ -98,19 +98,19 @@ final class PickerAlertViewModel {
 		self.configureOutputs()
 	}
 	
-	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int)?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int), context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
 		return self.init(mode: .estimatedTime, context: context, projectName: projectName, chosenTime: chosenTime, receiver: receiver)
 	}
 	
-	static func forStartingDate(_ startDate: Date?, endDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forStartingDate(_ startDate: Date, endDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
 		return self.init(mode: .date(.begin), context: context, projectName: projectName, mainDate: startDate, comparisonDate: endDate, receiver: receiver)
 	}
 	
-	static func forEndingDate(_ endDate: Date?, startDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forEndingDate(_ endDate: Date, startDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
 		return self.init(mode: .date(.end), context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate, receiver: receiver)
 	}
 	
-	static func forTimeBlocks(startingTime: Date?, endingTime: Date?, days: Set<DayInWeek>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forTimeBlocks(startingTime: Date, endingTime: Date?, days: Set<DayInWeek>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
 		let returnValue = self.init(mode: .timeBlock(.begin), context: context, projectName: nil, mainDate: startingTime, comparisonDate: endingTime, receiver: receiver)
 		
 		returnValue.selectedDays = days
@@ -147,20 +147,15 @@ final class PickerAlertViewModel {
 		case .estimatedTime:
 			self.title = NSLocalizedString("Estimated Time", comment: "Title for .estimatedTime")
 			
-			self.underTitle = NSLocalizedString("\(self.chosenTime?.days ?? 0) days and \(self.chosenTime?.hours ?? 0) hours", comment: "UnderTitle for .estimatedTime")
+			self.underTitle = NSLocalizedString("\(self.chosenTime.days) days and \(self.chosenTime.hours) hours", comment: "UnderTitle for .estimatedTime")
 			
 		case .date(.begin):
 			self.title = NSLocalizedString("Starting Date", comment: "Title for .date(.begin)")
 			
-			if let start = self.mainDate, let end = self.comparisonDate {
+			if let end = self.comparisonDate {
+                let start = self.mainDate
 				let daysBetween = Calendar.current.dateComponents([.day], from: start, to: end)
-				
-				if daysBetween.day! >= 0 {
-					self.underTitle = NSLocalizedString("\(daysBetween.day!) days until deadline", comment: "UnderTitle for .date(.begin)")
-					
-				} else {
-					self.underTitle = ""
-				}
+                self.underTitle = NSLocalizedString("\(daysBetween.day!) days until deadline", comment: "UnderTitle for .date(.begin)")
 				
 			} else {
 				self.underTitle = ""
@@ -169,8 +164,9 @@ final class PickerAlertViewModel {
 		case .date(.end):
 			self.title = NSLocalizedString("Ending Date", comment: "Title for .date(.end)")
 			
-			if let start = self.comparisonDate, let end = self.mainDate {
-				let daysBetween = Calendar.current.dateComponents([.day], from: start, to: end)
+			if let start = self.comparisonDate {
+				let end = self.mainDate
+                let daysBetween = Calendar.current.dateComponents([.day], from: start, to: end)
 				self.underTitle = NSLocalizedString("\(daysBetween.day!) days since starting date", comment: "UnderTitle for .date(.end)")
 				
 			} else {
@@ -188,7 +184,7 @@ final class PickerAlertViewModel {
 			self.overTitle = NSLocalizedString("\(self.context!.name)'s Available Time", comment: "OverTitle for .timeBlock(.end)")
 			self.title = NSLocalizedString("Ends at", comment: "Title for .timeBlock(.end)")
 			
-			let hoursBetween = Calendar.current.dateComponents([.hour], from: self.mainDate!, to: self.comparisonDate!)
+			let hoursBetween = Calendar.current.dateComponents([.hour], from: self.mainDate, to: self.comparisonDate!)
 			self.underTitle = NSLocalizedString("\(hoursBetween.hour!) hours of available time", comment: "Title for .timeBlock(.end)")
 		}
 	}

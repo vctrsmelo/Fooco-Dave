@@ -122,13 +122,13 @@ extension EditProjectViewModel: PickerAlertViewModelReceiver {
 	func receive(_ viewModel: PickerAlertViewModel) {
 		switch viewModel.mode {
 		case .estimatedTime:
-			self.chosenTime = viewModel.chosenTime!
+			self.chosenTime = viewModel.chosenTime
 			
 		case .date(.begin):
-			self.startingDate = viewModel.mainDate!
+			self.startingDate = viewModel.mainDate
 			
 		case .date(.end):
-			self.endingDate = viewModel.mainDate!
+			self.endingDate = viewModel.mainDate
 			
 		case .timeBlock:
 			fatalError("[Error] Mode not supported")
