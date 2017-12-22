@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +15,7 @@
                 <outlet property="confirmButton" destination="7Iz-tz-PO8" id="cr6-S7-1sh"/>
                 <outlet property="datePicker" destination="tub-iQ-1vS" id="0El-1c-RiL"/>
                 <outlet property="footer" destination="VRx-7j-irO" id="f9N-V2-pFb"/>
-                <outlet property="footerTitle" destination="8dZ-2R-E0q" id="WVX-Oj-1PH"/>
+                <outlet property="footerTitleLabel" destination="8dZ-2R-E0q" id="WVX-Oj-1PH"/>
                 <outlet property="hoursPicker" destination="RNZ-ME-aKv" id="a1c-cw-ENF"/>
                 <outlet property="mainView" destination="jhX-NP-720" id="w7s-86-2Ik"/>
                 <outlet property="overTitleLabel" destination="niV-FX-Tap" id="T2H-bs-9DZ"/>

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit.UIColor
 
 enum PickerAlertMode: Equatable {
 	enum Stage {
@@ -63,21 +64,22 @@ final class PickerAlertViewModel {
 	private(set) var title = ""
 	private(set) var underTitle = ""
 	private(set) var footerTitle = ""
+    private(set) var button = (title: "", color: UIColor.Interface.iGreen)
 	
 	// MARK: Input/Output
 	var mainDate: Date? {
 		didSet {
-			self.configureTitles()
+			self.configureOutputs()
 		}
 	}
 	var comparisonDate: Date? {
 		didSet {
-			self.configureTitles()
+			self.configureOutputs()
 		}
 	}
 	var chosenTime: (days: Int, hours: Int)? {
 		didSet {
-			self.configureTitles()
+			self.configureOutputs()
 		}
 	}
 	
@@ -93,7 +95,7 @@ final class PickerAlertViewModel {
 		self.comparisonDate = comparisonDate
 		self.chosenTime = chosenTime
 		
-		self.configureTitles()
+		self.configureOutputs()
 	}
 	
 	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int)?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
@@ -118,7 +120,7 @@ final class PickerAlertViewModel {
 	
 	func forTimeBlockEnd() -> PickerAlertViewModel {
 		self.mode = .timeBlock(.end)
-		self.configureTitles()
+		self.configureOutputs()
 		
 		return self
 	}
@@ -129,9 +131,17 @@ final class PickerAlertViewModel {
 	
 	// MARK: - Prepare Output to View
 	
-	private func configureTitles() {
+	private func configureOutputs() {
 		
 		self.overTitle = NSLocalizedString("\(self.context?.name ?? "Context") - \(self.projectName ?? "Project")", comment: "OverTitle for most pickerAlertView states")
+        self.button.title = NSLocalizedString("Confirm", comment: "Button Title for most pickerAlertView states")
+        self.button.color = UIColor.Interface.iGreen
+        
+        if self.selectedDays.isEmpty {
+            self.footerTitle = NSLocalizedString("choose one or more days", comment: "FooterTitle for .timeBlock(.begin), with empty days set")
+        } else {
+            self.footerTitle = NSLocalizedString("UNDER CONSTRUCTION", comment: "FooterTitle for .timeBlock(.begin), with not empty days set") // TODO: Footer Label
+        }
 		
 		switch self.mode {
 		case .estimatedTime:
@@ -140,13 +150,13 @@ final class PickerAlertViewModel {
 			self.underTitle = NSLocalizedString("\(self.chosenTime?.days ?? 0) days and \(self.chosenTime?.hours ?? 0) hours", comment: "UnderTitle for .estimatedTime")
 			
 		case .date(.begin):
-			self.title = NSLocalizedString("Starting Date", comment: "Title for .startingDate")
+			self.title = NSLocalizedString("Starting Date", comment: "Title for .date(.begin)")
 			
 			if let start = self.mainDate, let end = self.comparisonDate {
 				let daysBetween = Calendar.current.dateComponents([.day], from: start, to: end)
 				
 				if daysBetween.day! >= 0 {
-					self.underTitle = NSLocalizedString("\(daysBetween.day!) days until deadline", comment: "UnderTitle for .startingDate")
+					self.underTitle = NSLocalizedString("\(daysBetween.day!) days until deadline", comment: "UnderTitle for .date(.begin)")
 					
 				} else {
 					self.underTitle = ""
@@ -157,11 +167,11 @@ final class PickerAlertViewModel {
 			}
 			
 		case .date(.end):
-			self.title = NSLocalizedString("Ending Date", comment: "Title for .endingDate")
+			self.title = NSLocalizedString("Ending Date", comment: "Title for .date(.end)")
 			
 			if let start = self.comparisonDate, let end = self.mainDate {
 				let daysBetween = Calendar.current.dateComponents([.day], from: start, to: end)
-				self.underTitle = NSLocalizedString("\(daysBetween.day!) days since starting date", comment: "UnderTitle for .endingDate")
+				self.underTitle = NSLocalizedString("\(daysBetween.day!) days since starting date", comment: "UnderTitle for .date(.end)")
 				
 			} else {
 				self.underTitle = ""
@@ -171,12 +181,8 @@ final class PickerAlertViewModel {
 			self.overTitle = NSLocalizedString("\(self.context!.name)'s Available Time", comment: "OverTitle for .timeBlock(.begin)")
 			self.title = NSLocalizedString("Starts at", comment: "Title for .timeBlock(.begin)")
 			self.underTitle = ""
-			
-			if self.selectedDays.isEmpty {
-				self.footerTitle = NSLocalizedString("choose one or more days", comment: "FooterTitle for .timeBlock(.begin), with empty days set")
-			} else {
-				self.footerTitle = NSLocalizedString("", comment: "FooterTitle for .timeBlock(.begin), with not empty days set") // TODO: Footer Label
-			}
+			self.button.title = NSLocalizedString("Continue", comment: "Button Title for .timeBlock(.begin)") // Only case with different button for now
+            self.button.color = UIColor.Interface.iDarkBlue
 			
 		case .timeBlock(.end):
 			self.overTitle = NSLocalizedString("\(self.context!.name)'s Available Time", comment: "OverTitle for .timeBlock(.end)")

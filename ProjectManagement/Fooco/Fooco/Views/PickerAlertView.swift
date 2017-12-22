@@ -40,7 +40,7 @@ class PickerAlertView: UIView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var underTitleLabel: UILabel!
 	
-	@IBOutlet private weak var footerTitle: UILabel!
+	@IBOutlet private weak var footerTitleLabel: UILabel!
 	
     @IBOutlet private weak var datePicker: UIDatePicker!
     @IBOutlet private weak var hoursPicker: UIPickerView!
@@ -93,9 +93,6 @@ class PickerAlertView: UIView {
 			
 			self.footerIsHidden = false
 			
-			self.confirmButton.backgroundColor = UIColor.Interface.iDarkBlue
-			self.confirmButton.setTitle("Continue", for: .normal)
-			
 		case .timeBlock(.end):
 			self.datePicker.datePickerMode = .time
 			self.datePicker.minuteInterval = 15
@@ -121,9 +118,6 @@ class PickerAlertView: UIView {
 		self.datePicker.minimumDate = nil
         
 		self.footerIsHidden = true
-        
-        self.confirmButton.backgroundColor = UIColor.Interface.iGreen
-        self.confirmButton.setTitle("Confirm", for: .normal)
 	}
 	
 	private func showHoursPicker() {
@@ -140,6 +134,10 @@ class PickerAlertView: UIView {
 		self.overTitleLabel.text = self.viewModel.overTitle
 		self.titleLabel.text = self.viewModel.title
 		self.underTitleLabel.text = self.viewModel.underTitle
+        self.footerTitleLabel.text = self.viewModel.footerTitle
+        
+        self.confirmButton.setTitle(self.viewModel.button.title, for: .normal)
+        self.confirmButton.backgroundColor = self.viewModel.button.color
 	}
 
     private func updateIcon() {
