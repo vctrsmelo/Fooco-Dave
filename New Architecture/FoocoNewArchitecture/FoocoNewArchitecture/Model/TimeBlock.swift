@@ -17,6 +17,7 @@ enum TimeBlockError: Error {
 struct TimeBlock {
 
     private var starts: Time!
+
     private var ends: Time!
     
     private var range: ClosedRange<Time>!{
@@ -75,7 +76,7 @@ extension TimeBlock: IntervalType {
     }
     
     func overlaps<I>(_ other: I) -> Bool where I : IntervalType, Time == I.Bound {
-        return ((self.start <= other.start && self.end >= other.start) || (other.start <= self.start && other.end >= self.end))
+        return ((self.start <= other.start && self.end >= other.start) || (other.start <= self.start && other.end >= self.starts))
     }
     
     var end: Time {

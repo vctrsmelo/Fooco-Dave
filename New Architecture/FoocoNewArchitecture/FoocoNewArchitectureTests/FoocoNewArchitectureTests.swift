@@ -41,18 +41,23 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertThrowsError(try Time(hour: 2, minute: -1))
         XCTAssertThrowsError(try Time(hour: 2, minute: 21, second: 99))
         XCTAssertThrowsError(try Time(hour: 23, minute: 59, second: 60))
+        XCTAssertThrowsError(try Time(day: 2, hour: 23, minute: 59, second: 60))
         
         XCTAssertNoThrow(try Time(hour: 20))
         XCTAssertNoThrow(try Time(hour: 0, minute: 59))
         XCTAssertNoThrow(try Time(hour: 23, minute: 30, second: 59))
-        
+        XCTAssertNoThrow(try Time(day: 59, hour: 23, minute: 30, second: 59))
+
         XCTAssertEqual(try! Time(hour: 23),try! Time(hour: 23, minute: 0, second: 0))
         XCTAssertEqual(try! Time(hour: 10, minute: 15), try! Time(hour: 10, minute: 15, second: 0))
         XCTAssertEqual(try! Time(hour: 0), try! Time(hour: 0, minute: 0))
-        
+        XCTAssertEqual(try! Time(day: 0, hour: 0), try! Time(hour: 0, minute: 0))
+
         XCTAssertNotEqual(try! Time(hour: 23), try! Time(hour:23, minute: 1))
         XCTAssertNotEqual(try! Time(hour: 23, minute: 20), try! Time(hour:23, minute: 20, second: 1))
         XCTAssertNotEqual(try! Time(hour: 23, minute: 0, second: 3), try! Time(hour:23, minute: 2, second: 3))
+        XCTAssertNotEqual(try! Time(day: 1, hour: 0), try! Time(hour: 0, minute: 0))
+        
         
         //test hour, minute and second variables relation with totalSeconds
         var time = try! Time(hour: 20)
@@ -61,7 +66,11 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertTrue(time.hour*60*60+time.minute*60+time.second == Int(time.totalSeconds))
         time = try! Time(hour: 11, minute: 0, second: 30)
         XCTAssertTrue(time.hour*60*60+time.minute*60+time.second == Int(time.totalSeconds))
-        
+        time = try! Time(day: 3, hour: 0, minute: 0, second: 0)
+        XCTAssertTrue(time.day*24*60*60+time.hour*60*60+time.minute*60+time.second == Int(time.totalSeconds))
+        time = try! Time(day: 3, hour: 17, minute: 58, second: 23)
+        XCTAssertTrue(time.day*24*60*60+time.hour*60*60+time.minute*60+time.second == Int(time.totalSeconds))
+
     }
     
     func testTimeBlock() {

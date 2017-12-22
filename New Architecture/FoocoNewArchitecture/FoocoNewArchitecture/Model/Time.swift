@@ -16,17 +16,22 @@ let dailyTotalSeconds = 86_400
 
 struct Time {
     
+    var day: Int {
+        return Int(totalSeconds.inDays)
+    }
+    
     var hour: Int {
-        return Int(totalSeconds.inHours)
+        return Int((totalSeconds - day.day).inHours)
     }
     
     var minute: Int {
-        return Int(totalSeconds.inMinutes - hour.minutes)
+        return Int((totalSeconds - day.day - hour.hour).inMinutes)
     }
     
     var second: Int {
 
-        return Int(totalSeconds - hour.hours - minute.minutes)
+        return Int(totalSeconds - day.day - hour.hours - minute.minutes)
+
     }
     
     /**
@@ -34,15 +39,15 @@ struct Time {
      */
     let totalSeconds: TimeInterval
     
-    init(hour h: Int, minute m: Int = 0, second s: Int = 0) throws {
+    init(day d: Int = 0,hour h: Int, minute m: Int = 0, second s: Int = 0) throws {
         
         
         if  !TimeRange.hours.contains(h) || !TimeRange.minutes.contains(m) || !TimeRange.seconds.contains(s)  {
             throw TimeError.OutOfBounds("time out of bounds: current value is hour = \(h), minute = \(m) and seconds = \(s).")
         }
         
-        self.totalSeconds = h.hour+m.minute+s.seconds
-        
+        self.totalSeconds = d.day+h.hour+m.minute+s.seconds
+
     }
     
 }
@@ -98,3 +103,4 @@ struct TimeRange {
     static let hours  = (0 ... 23)
     
 }
+
