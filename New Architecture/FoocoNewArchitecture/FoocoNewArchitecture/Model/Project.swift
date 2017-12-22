@@ -99,8 +99,8 @@ class Project {
     /**
      - parameter timeBlock: is the timeBlock considered available to be used for creating the Activity. The activity returned may have a time block smaller or equal to the parameter.
      - returns: maybe Activity.
-     - postcondition: returns nil if timeBlock.length < ActivityminimalTimeLength
-     - postcondition: returns nil if self.estimatedTime <= 0
+     - postcondition: timeBlock.length < ActivityminimalTimeLength => result == nil
+     - postcondition: self.estimatedTime <= 0 => result == nil
     */
     func nextActivity(for timeBlock: TimeBlock) -> Activity? {
         
@@ -120,6 +120,10 @@ class Project {
         
     }
     
+    /**
+     Compares the parameter timeBlock with Activity.minimalTimeLength and with self.estimatedTime to get the real time block for the activity that shall be created.
+     - postcondition: result <= timeBlock OR result == nil
+    */
     private func getTimeBlockForNewActivity(from timeBlock: TimeBlock) -> TimeBlock? {
         
         //verifies if exists left time to be completed (according to estimated time)
@@ -136,18 +140,19 @@ class Project {
             if currentLeftTime < Activity.minimalTimeLength {
                 
                 //activity should have length of Activity.minimalTimeLength
-                return TimeBlock(starts: timeBlock.start, ends: timeBlock.start.addingTimeInterval(Activity.minimalTimeLength))
+                return try! TimeBlock(starts: timeBlock.start, ends: timeBlock.start.addingTimeInterval(Activity.minimalTimeLength))
               
-                
-            } else {
-                //activity should have length of currentLeftTime
                 
             }
             
-            
-        } else {
-            //activity should be created for timeBlock
+            //activity should have length of currentLeftTime
+            return try! TimeBlock(starts: timeBlock.start, ends: timeBlock.start.addingTimeInterval(currentLeftTime))
+
         }
+
+        //activity should be created for timeBlock itself
+        return timeBlock
+        
     }
     
 }
