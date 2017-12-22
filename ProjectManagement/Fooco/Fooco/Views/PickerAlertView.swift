@@ -11,8 +11,8 @@ class PickerAlertView: UIView {
 	
 	var viewModel: PickerAlertViewModel!
 	
-	private var currentMode: AlertPickerViewMode {
-		return self.viewModel.currentMode
+	private var currentMode: PickerAlertMode {
+		return self.viewModel.mode
 	}
 	
     private var _view: UIView!

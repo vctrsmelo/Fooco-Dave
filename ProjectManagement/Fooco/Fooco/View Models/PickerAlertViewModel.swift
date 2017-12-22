@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AlertPickerViewMode: Equatable {
+enum PickerAlertMode: Equatable {
 	enum Stage {
 		case begin
 		case end
@@ -17,7 +17,7 @@ enum AlertPickerViewMode: Equatable {
 	case date(Stage)
 	case timeBlock(Stage)
 	
-	static func == (lhs: AlertPickerViewMode, rhs: AlertPickerViewMode) -> Bool {
+	static func == (lhs: PickerAlertMode, rhs: PickerAlertMode) -> Bool {
 		switch (lhs, rhs) {
 		case (.estimatedTime, .estimatedTime):
 			return true
@@ -47,15 +47,16 @@ protocol PickerAlertViewModelReceiver: AnyObject {
 
 final class PickerAlertViewModel {
 	
+    /// Basically a delegate
 	private weak var receiver: PickerAlertViewModelReceiver?
 	
 	// MARK: Input
-	private(set) var currentMode: AlertPickerViewMode
+	private(set) var mode: PickerAlertMode
 	
 	private(set) var projectName: String?
 	private(set) var context: Context?
 	
-	private(set) var footerDays = Set<DayInWeek>()
+	private(set) var selectedDays = Set<DayInWeek>()
 	
 	// MARK: Output
 	private(set) var overTitle = ""
@@ -82,10 +83,10 @@ final class PickerAlertViewModel {
 	
 	// MARK: - Initialization
 	
-	private init(mode: AlertPickerViewMode, context: Context?, projectName: String?, mainDate: Date? = nil, comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int)? = nil, receiver: PickerAlertViewModelReceiver) {
+	private init(mode: PickerAlertMode, context: Context?, projectName: String?, mainDate: Date? = nil, comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int)? = nil, receiver: PickerAlertViewModelReceiver) {
 		self.receiver = receiver
 		
-		self.currentMode = mode
+		self.mode = mode
 		self.context = context
 		self.projectName = projectName == "" ? nil : projectName
 		self.mainDate = mainDate
@@ -110,13 +111,13 @@ final class PickerAlertViewModel {
 	static func forTimeBlocks(startingTime: Date?, endingTime: Date?, days: Set<DayInWeek>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
 		let returnValue = self.init(mode: .timeBlock(.begin), context: context, projectName: nil, mainDate: startingTime, comparisonDate: endingTime, receiver: receiver)
 		
-		returnValue.footerDays = days
+		returnValue.selectedDays = days
 		
 		return returnValue
 	}
 	
 	func forTimeBlockEnd() -> PickerAlertViewModel {
-		self.currentMode = .timeBlock(.end)
+		self.mode = .timeBlock(.end)
 		self.configureTitles()
 		
 		return self
@@ -132,7 +133,7 @@ final class PickerAlertViewModel {
 		
 		self.overTitle = NSLocalizedString("\(self.context?.name ?? "Context") - \(self.projectName ?? "Project")", comment: "OverTitle for most pickerAlertView states")
 		
-		switch self.currentMode {
+		switch self.mode {
 		case .estimatedTime:
 			self.title = NSLocalizedString("Estimated Time", comment: "Title for .estimatedTime")
 			
@@ -171,7 +172,7 @@ final class PickerAlertViewModel {
 			self.title = NSLocalizedString("Starts at", comment: "Title for .timeBlock(.begin)")
 			self.underTitle = ""
 			
-			if self.footerDays.isEmpty {
+			if self.selectedDays.isEmpty {
 				self.footerTitle = NSLocalizedString("choose one or more days", comment: "FooterTitle for .timeBlock(.begin), with empty days set")
 			} else {
 				self.footerTitle = NSLocalizedString("", comment: "FooterTitle for .timeBlock(.begin), with not empty days set") // TODO: Footer Label

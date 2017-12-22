@@ -99,7 +99,7 @@ class EditProjectViewModel {
 		}
 	}
 	
-	func createAlert(for mode: AlertPickerViewMode) -> PickerAlertViewModel {
+	func createAlert(for mode: PickerAlertMode) -> PickerAlertViewModel {
 		switch mode {
 		case .estimatedTime:
 			return PickerAlertViewModel.forEstimatedTime(self.chosenTime, context: self.chosenContext, projectName: self.name, receiver: self)
@@ -120,7 +120,7 @@ class EditProjectViewModel {
 
 extension EditProjectViewModel: PickerAlertViewModelReceiver {
 	func receive(_ viewModel: PickerAlertViewModel) {
-		switch viewModel.currentMode {
+		switch viewModel.mode {
 		case .estimatedTime:
 			self.chosenTime = viewModel.chosenTime!
 			
