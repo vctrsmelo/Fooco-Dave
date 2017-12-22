@@ -50,12 +50,17 @@ struct Time {
 
     }
     
+    private init(timeInterval: TimeInterval) {
+        
+        self.totalSeconds = timeInterval
+    }
+    
     /**
      - returns: returns Time with the parameter as seconds.
     */
-    func addingTimeInterval(_ timeInterval: TimeInterval) throws -> Time {
+    func addingTimeInterval(_ timeInterval: TimeInterval) -> Time {
         
-        return try Time(second: Int(timeInterval))
+        return Time(timeInterval: timeInterval+self.totalSeconds)
         
     }
     

@@ -11,6 +11,8 @@ import XCTest
 
 class FoocoNewArchitectureTests: XCTestCase {
     
+    let college = Context(name: "College")
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -149,19 +151,20 @@ class FoocoNewArchitectureTests: XCTestCase {
         
     }
     
-    func testProject() {
+    func testProjectCreation() {
         
-        let college = Context(name: "College")
         XCTAssertNoThrow(try Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours))
+        
+    }
     
-    
-    //get next activity
+    func testProjectGetNextActivity() {
+        
         let project = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours)
         
         XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 4))))
         XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 3))))
         XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 25))))
-
+        
         //Should return nil because TimeBlock parameter has smaller time length than Activity.minimalTimeLength
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 24))))
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 15))))
@@ -171,19 +174,21 @@ class FoocoNewArchitectureTests: XCTestCase {
         let completedProject = try! Project(name: "A Project already completed", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 0.hour)
         
         //Should return nil because project has zero estimated time left
-        XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour:2), ends: Time(hour:10))))
+        XCTAssertNil(completedProject.nextActivity(for: try! TimeBlock(starts: Time(hour:2), ends: Time(hour:10))))
         
         //should return activity with Activity.minimalTimeLength of size because the project.estimatedTime < Activity.minimalTimeLength
+        let proj = try! Project(name: "Almost completed project", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 2, estimatedTime: 15.minutes)
+        let tb = try! TimeBlock(starts: Time(hour: 10), ends: Time(hour: 11))
+        XCTAssertEqual(proj.nextActivity(for: tb)!.length, Activity.minimalTimeLength)
         
-        
+        //should return activity with project.estimatedTime length
+        let proj2 = try! Project(name: "Almost completed project", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 2, estimatedTime: 30.minutes)
+        XCTAssertEqual(proj2.nextActivity(for: tb)?.length, 30.minutes)
         
     }
-    
-    
-    
+
     func testDay() {
         
-        let college = Context(name: "College")
         let project1 = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours)
         let actv1 = try! Activity(from: Time(hour: 10), to: Time(hour: 12), name: "Buy milk")
         let actv2 = try! Activity(from: Time(hour:13), to: Time(hour:14), project: project1)
