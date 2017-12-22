@@ -81,6 +81,13 @@ extension Date {
     }
     
     /**
+     Verifies if self is today
+    */
+    func isToday() -> Bool {
+        return self.getDay() == Date().getDay()
+    }
+    
+    /**
      Return the same date with hours, minutes and seconds setted to zero.
      */
     func getDay() -> Date {

@@ -20,14 +20,14 @@ typealias Priority = Double
 
 class Project {
     
-    static private let importanceRange: [Int] = [1,2,3]
+    static private let importanceRange: [Double] = [1.0,2.0,3.0]
     
     private let id: UUID
     var name: String
     private var startingDate: Date
     private var endingDate: Date
     private(set) var context: Context
-    private var importance: Int
+    private var importance: Double
     
     private var _notAllocatedEstimatedTime: TimeInterval
     private var estimatedTime: TimeInterval {
@@ -61,11 +61,23 @@ class Project {
             return _priority!
         }
         
-        //TODO: implement get priority method
-        return 0.0
+        let et = self.estimatedTime
+        let imp = self.importance
+        let wat = User.sharedInstance.getWeeklyAvailableTime(for: self.context)
+        
+        //there is no weekly available time for context. If that's the case, the project has no priority (it's impossible to be done while there is no time to work on it)
+        if wat == 0 {
+
+            return 0.0
+        
+        }
+        
+        _priority = (et*imp)/(wat*3)
+        return _priority!
+        
     }
     
-    init(name: String, starts: Date, ends: Date, context: Context, importance: Int, estimatedTime notAllocatedLeftTime: TimeInterval) throws {
+    init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime notAllocatedLeftTime: TimeInterval) throws {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
@@ -86,7 +98,7 @@ class Project {
     /**
      Should be used internally just to load from database
      */
-    private init(name: String, starts: Date, ends: Date, context: Context, importance: Int, estimatedTime notAllocatedLeftTime: TimeInterval, id: UUID) {
+    private init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime notAllocatedLeftTime: TimeInterval, id: UUID) {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
@@ -103,8 +115,6 @@ class Project {
      - postcondition: self.estimatedTime <= 0 => result == nil
     */
     func nextActivity(for timeBlock: TimeBlock) -> Activity? {
-        
-        //TODO: implement nextActivity method
         
         //verifies if timeBlock respects Activity.minimalTimeLength
         if timeBlock.length < Activity.minimalTimeLength {

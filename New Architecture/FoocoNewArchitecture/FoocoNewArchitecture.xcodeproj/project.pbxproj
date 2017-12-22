@@ -12,6 +12,9 @@
 		EE3D50911FE42D0B0042ED85 /* ActivitySchedulerTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */; };
 		EE3D50931FE45E7D0042ED85 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D50921FE45E7D0042ED85 /* ActivityScheduler.swift */; };
 		EE40B7971FDB08A60087B768 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40B7961FDB08A60087B768 /* Day.swift */; };
+		EE85360B1FEDA47F00BA5BDC /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85360A1FEDA47F00BA5BDC /* ContextBlock.swift */; };
+		EE85360D1FEDA68200BA5BDC /* TestElementsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85360C1FEDA68200BA5BDC /* TestElementsFactory.swift */; };
+		EE85360E1FEDA6FC00BA5BDC /* TestElementsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85360C1FEDA68200BA5BDC /* TestElementsFactory.swift */; };
 		EEBC21A81FCF0CDC0032FE29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */; };
 		EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A91FCF0CDC0032FE29 /* ViewController.swift */; };
 		EEBC21AD1FCF0CDC0032FE29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBC21AB1FCF0CDC0032FE29 /* Main.storyboard */; };
@@ -52,6 +55,8 @@
 		EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySchedulerTree.swift; sourceTree = "<group>"; };
 		EE3D50921FE45E7D0042ED85 /* ActivityScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScheduler.swift; sourceTree = "<group>"; };
 		EE40B7961FDB08A60087B768 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		EE85360A1FEDA47F00BA5BDC /* ContextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextBlock.swift; sourceTree = "<group>"; };
+		EE85360C1FEDA68200BA5BDC /* TestElementsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestElementsFactory.swift; sourceTree = "<group>"; };
 		EEBC21A41FCF0CDC0032FE29 /* FoocoNewArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoocoNewArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEBC21A91FCF0CDC0032FE29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +154,7 @@
 			children = (
 				EEBC21BC1FCF0CDC0032FE29 /* FoocoNewArchitectureTests.swift */,
 				EEBC21BE1FCF0CDC0032FE29 /* Info.plist */,
+				EE85360C1FEDA68200BA5BDC /* TestElementsFactory.swift */,
 			);
 			path = FoocoNewArchitectureTests;
 			sourceTree = "<group>";
@@ -169,6 +175,7 @@
 				EEBC21D61FCF0CF80032FE29 /* Time.swift */,
 				EEBC21D81FCF10E30032FE29 /* CustomProtocols.swift */,
 				EEBC21DA1FCF3DBA0032FE29 /* WeekdayTemplate.swift */,
+				EE85360A1FEDA47F00BA5BDC /* ContextBlock.swift */,
 				EEBC21DC1FCF3DF10032FE29 /* TimeBlock.swift */,
 				EEBC21DE1FD069040032FE29 /* Extensions.swift */,
 				EEBC21E01FD083D50032FE29 /* Context.swift */,
@@ -327,8 +334,10 @@
 				EE0E57A11FD70B5000EF77C0 /* AlgorithmManager.swift in Sources */,
 				EEBC21E11FD083D50032FE29 /* Context.swift in Sources */,
 				EEBC21A81FCF0CDC0032FE29 /* AppDelegate.swift in Sources */,
+				EE85360B1FEDA47F00BA5BDC /* ContextBlock.swift in Sources */,
 				EEBC21DF1FD069040032FE29 /* Extensions.swift in Sources */,
 				EE0E579F1FD7089500EF77C0 /* User.swift in Sources */,
+				EE85360E1FEDA6FC00BA5BDC /* TestElementsFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEBC21BD1FCF0CDC0032FE29 /* FoocoNewArchitectureTests.swift in Sources */,
+				EE85360D1FEDA68200BA5BDC /* TestElementsFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

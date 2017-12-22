@@ -48,6 +48,115 @@ struct User {
         
     }
     
+    /**
+     Returns the time available for a context until the date parameter, including it. Discount the activities already allocated into schedule.
+    */
+    func getAvailableTime(for context: Context, until date: Date) -> TimeInterval{
+
+        var returnValue: TimeInterval = 0.0
+        //recursive get each day until today (obs: into today, verifies the current time)
+        if !date.isToday() {
+            
+            returnValue += getAvailableTime(for: context, until: date.addingTimeInterval(-1.day))
+            
+        }
+        
+        //get date available time for context
+        let weekdayTemplate = getWeekdayTemplate(for: date.getWeekday())
+        
+        //keep contextblocks of context parameter at weekday.
+        var weekdayContextBlocks: [ContextBlock] = []
+        
+        //add contextBlocks lengths if it's for context parameter
+        for contextBlock in weekdayTemplate.contextBlocks {
+            
+            if contextBlock.context == context {
+                
+                returnValue += contextBlock.timeBlock.length
+
+                weekdayContextBlocks.append(contextBlock)
+
+            }
+            
+        }
+        
+        //decrease activities length if date is already in schedule
+        guard let currentSchedule = schedule else {
+            return returnValue
+        }
+        
+        for day in currentSchedule {
+            
+            //if day is not the weekday being verified, skip it
+            if day.date.getWeekday() != weekdayTemplate.weekday {
+                continue
+            }
+            
+            for activity in day.activities {
+
+                //if it's an activity for a project
+                if let project = activity.project {
+                    
+                    //verifies if context is the same. If it's, discount the already allocated time from returnValue and continue loop over day.activities
+                    if project.context == context {
+                        returnValue -= activity.length
+                        continue
+                    }
+
+                }
+
+                //activity is an event from user calendar. Should discount it's time if it occurs during a context of weekdayContextBlocks
+                let calendarEvent = activity
+                
+                //verifies if calendarEvent occurs during a contextBlock timeBlock for the context parameter.
+                for contextBlock in weekdayContextBlocks {
+                    
+                    //clampedTimeBlock is the timeBlock created from intersection between contextBlock and calendarEvent.timeBlock
+                    let clampedTimeBlock = contextBlock.timeBlock.clamp(calendarEvent.timeBlock)
+                    
+                    //discounts clampedTimeBlock length. If contextBlock does not clamp with calendarEvent, this discount will be of zero, not affecting the algorithm logic.
+                    returnValue -= clampedTimeBlock.length
+                    
+                }
+                
+                
+            }
+            
+        }
+        
+        return returnValue
+        
+    }
+    
+    /**
+     Returns the weekly available time for a context.
+    */
+    func getWeeklyAvailableTime(for context: Context) -> TimeInterval {
+        
+
+        var weekContextBlocks = weekTemplate.0.contextBlocks
+        weekContextBlocks.append(contentsOf: weekTemplate.1.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.2.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.3.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.4.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.5.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.6.contextBlocks)
+
+        var availableTime: TimeInterval = 0.0
+        for contextBlock in weekContextBlocks {
+            
+            if contextBlock.context != context {
+                continue
+            }
+
+            availableTime += contextBlock.timeBlock.length
+
+        }
+        
+        return availableTime
+        
+    }
+    
     func getWeekdayTemplate(for weekday: Weekday) -> WeekdayTemplate {
         switch weekday {
         case .sunday:

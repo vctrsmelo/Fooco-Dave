@@ -41,19 +41,4 @@ struct WeekdayTemplate {
     
 }
 
-// Private struct
-struct ContextBlock {
-        
-    let context: Context
-    let timeBlock: TimeBlock
-    
-    init(context: Context, timeBlock: TimeBlock) {
-        self.context = context
-        self.timeBlock = timeBlock
-    }
-    
-    init(_ tuple: (TimeBlock, Context)) {
-        self.init(context: tuple.1, timeBlock: tuple.0)
-    }
-}
 

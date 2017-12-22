@@ -153,13 +153,13 @@ class FoocoNewArchitectureTests: XCTestCase {
     
     func testProjectCreation() {
         
-        XCTAssertNoThrow(try Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours))
+        XCTAssertNoThrow(try Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours))
         
     }
     
     func testProjectGetNextActivity() {
         
-        let project = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours)
+        let project = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
         
         XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 4))))
         XCTAssertNotNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 3))))
@@ -171,7 +171,7 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 1))))
         XCTAssertNil(project.nextActivity(for: try! TimeBlock(starts: Time(hour: 2), ends: Time(hour: 2, minute: 24, second: 59))))
         
-        let completedProject = try! Project(name: "A Project already completed", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 0.hour)
+        let completedProject = try! Project(name: "A Project already completed", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 0.hour)
         
         //Should return nil because project has zero estimated time left
         XCTAssertNil(completedProject.nextActivity(for: try! TimeBlock(starts: Time(hour:2), ends: Time(hour:10))))
@@ -182,14 +182,14 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertEqual(proj.nextActivity(for: tb)!.length, Activity.minimalTimeLength)
         
         //should return activity with project.estimatedTime length
-        let proj2 = try! Project(name: "Almost completed project", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 2, estimatedTime: 30.minutes)
+        let proj2 = try! Project(name: "Almost completed project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 2, estimatedTime: 30.minutes)
         XCTAssertEqual(proj2.nextActivity(for: tb)?.length, 30.minutes)
         
     }
 
     func testDay() {
         
-        let project1 = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(84_400), context: college, importance: 3, estimatedTime: 5.hours)
+        let project1 = try! Project(name: "App Development", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
         let actv1 = try! Activity(from: Time(hour: 10), to: Time(hour: 12), name: "Buy milk")
         let actv2 = try! Activity(from: Time(hour:13), to: Time(hour:14), project: project1)
         
@@ -214,6 +214,38 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertThrowsError(try Day(date: Date(), activities: [actvC2,actvC2]))
         XCTAssertNoThrow(try Day(date: Date(), activities: [actvA1,actvC2]))
 
+        
+    }
+    
+    func testAlgorithmManagerGetNextActivityForScheduler() {
+        
+        let scheduler = try! ActivityScheduler(timeBlock: TimeBlock(starts: Time(hour: 10), ends: Time(hour:20)), context: college)
+        
+        //TODO: implement testAlgorithmManagerGetNextActivityForScheduler tests
+        
+    }
+    
+    func testProjectPriorityCalculation(){
+        
+        //create weekTemplate for college
+        
+        
+        //importance variation
+        var p1 = try! Project(name: "most important", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
+        var p2 = try! Project(name: "second most important", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 2, estimatedTime: 5.hours)
+        var p3 = try! Project(name: "third most important", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 1, estimatedTime: 5.hours)
+        
+        var highestProjects = [p3,p1,p2]
+        
+        highestProjects.sort { (pa, pb) -> Bool in
+            return pa.priority > p2.priority
+        }
+        
+        XCTAssertEqual(highestProjects.first!, p1)
+        XCTAssertEqual(highestProjects[1], p2)
+        XCTAssertEqual(highestProjects.last!, p3)
+        
+        //estimated time variation
         
     }
     
