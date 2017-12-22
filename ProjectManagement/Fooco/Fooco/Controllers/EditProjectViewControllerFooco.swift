@@ -23,7 +23,7 @@ class EditProjectViewControllerFooco: UIViewController {
 		return self.tableViewController.viewModel
 	}
 		
-    @IBOutlet private weak var datePickerAlertView: DatePickerAlertView!
+    @IBOutlet private weak var pickerAlertView: PickerAlertView!
 	
     @IBOutlet private weak var bottomBg1ImageView: UIImageView!
     @IBOutlet private weak var bottomBg2ImageView: UIImageView!
@@ -31,7 +31,7 @@ class EditProjectViewControllerFooco: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        datePickerAlertView.initialSetup()
+        pickerAlertView.initialSetup()
 		
         bottomBg1ImageView.image = bottomBg1ImageView.image!.withRenderingMode(.alwaysTemplate)
         bottomBg2ImageView.image = bottomBg2ImageView.image!.withRenderingMode(.alwaysTemplate)
@@ -75,7 +75,7 @@ class EditProjectViewControllerFooco: UIViewController {
 extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
    
 	func presentPickerAlert(with pickerAlertViewModel: PickerAlertViewModel) {
-		self.datePickerAlertView.present(with: pickerAlertViewModel)
+		self.pickerAlertView.present(with: pickerAlertViewModel)
     }
     
     func contextUpdated() {

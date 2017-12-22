@@ -31,8 +31,8 @@
 		EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BAD1F9A36D600851D5D /* DaveTests.swift */; };
 		EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BB81F9A36D600851D5D /* DaveUITests.swift */; };
 		EED935561FBF615C00177FCC /* XibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED935551FBF615C00177FCC /* XibLoader.swift */; };
-		EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */; };
-		EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */; };
+		EEF932C21FBF571D00D6A29E /* PickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */; };
+		EEF932C41FBF5D7500D6A29E /* PickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF932C31FBF5D7500D6A29E /* PickerAlertView.swift */; };
 		FC0BB2E31FCF32310031275B /* ContextListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB2E21FCF32310031275B /* ContextListViewController.swift */; };
 		FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */; };
 		FC2224491FE05EFF006A4E6C /* PickerAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */; };
@@ -132,8 +132,8 @@
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EED935551FBF615C00177FCC /* XibLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoader.swift; sourceTree = "<group>"; };
-		EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerAlertView.xib; sourceTree = "<group>"; };
-		EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertView.swift; sourceTree = "<group>"; };
+		EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerAlertView.xib; sourceTree = "<group>"; };
+		EEF932C31FBF5D7500D6A29E /* PickerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAlertView.swift; sourceTree = "<group>"; };
 		FC0BB2E21FCF32310031275B /* ContextListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextListViewController.swift; sourceTree = "<group>"; };
 		FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
 		FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAlertViewModel.swift; sourceTree = "<group>"; };
@@ -378,8 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */,
-				EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */,
-				EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */,
+				EEF932C31FBF5D7500D6A29E /* PickerAlertView.swift */,
+				EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */,
 				FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */,
 			);
 			path = Views;
@@ -557,7 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */,
-				EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */,
+				EEF932C21FBF571D00D6A29E /* PickerAlertView.xib in Resources */,
 				BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */,
 				EE61F1FE1FB9F771005D6668 /* (null) in Resources */,
 				FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */,
@@ -649,7 +649,7 @@
 				FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */,
 				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
 				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
-				EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */,
+				EEF932C41FBF5D7500D6A29E /* PickerAlertView.swift in Sources */,
 				FC4D370E1FE1BA48009F76B9 /* EditProjectViewModel.swift in Sources */,
 				FC2224491FE05EFF006A4E6C /* PickerAlertViewModel.swift in Sources */,
 			);

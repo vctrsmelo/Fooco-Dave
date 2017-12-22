@@ -1,5 +1,5 @@
 //
-//  DatePickerAlertView.swift
+//  PickerAlertView.swift
 //  Fooco
 //
 //  Created by Victor S Melo on 17/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DatePickerAlertView: UIView {
+class PickerAlertView: UIView {
 	
 	var viewModel: PickerAlertViewModel!
 	
@@ -24,7 +24,7 @@ class DatePickerAlertView: UIView {
 		}
 	}
 	
-    @IBOutlet private weak var viewContainer: DatePickerAlertView!
+    @IBOutlet private weak var viewContainer: PickerAlertView!
 	
     @IBOutlet private weak var calendarIconImageView: UIImageView!
     @IBOutlet private weak var clockIconImageView: UIImageView!
@@ -198,9 +198,9 @@ class DatePickerAlertView: UIView {
     }
 }
 
-extension DatePickerAlertView: XibLoader {
+extension PickerAlertView: XibLoader {
     var nibName: String {
-        return "DatePickerAlertView"
+        return "PickerAlertView"
     }
     
     var view: UIView! {
@@ -214,7 +214,7 @@ extension DatePickerAlertView: XibLoader {
     
 }
 
-extension DatePickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
+extension PickerAlertView: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }

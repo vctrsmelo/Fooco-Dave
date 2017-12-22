@@ -18,7 +18,7 @@ class EditContextViewController: UIViewController {
 	@IBOutlet private weak var contextTimeQuestionLabel: UILabel!
 	@IBOutlet private weak var totalWeekTimeLabel: UILabel!
 	@IBOutlet private weak var tableView: UITableView!
-	@IBOutlet private weak var pickerAlertView: DatePickerAlertView!
+	@IBOutlet private weak var pickerAlertView: PickerAlertView!
 	
 	// MARK: Sunday
 	@IBOutlet private weak var sundayTime: UILabel!
