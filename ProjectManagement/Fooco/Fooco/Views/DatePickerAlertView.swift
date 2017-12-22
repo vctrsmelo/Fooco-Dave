@@ -61,7 +61,7 @@ class DatePickerAlertView: UIView {
 		
 		self.updateToViewModel()
 		
-		self.footerIsHidden = true // TODO: refactor
+		self.defaultConfigurations()
 		
 		switch self.currentMode {
 		case .estimatedTime:
@@ -70,28 +70,24 @@ class DatePickerAlertView: UIView {
 				hoursPicker.selectRow(someEstimatedTime.hours, inComponent: 1, animated: false)
 			}
 			
-		case .date(.begin):
-			self.datePicker.maximumDate = nil
-			self.datePicker.minimumDate = nil
+			self.showHoursPicker()
 			
+		case .date(.begin):
 			let initialDate = self.viewModel.mainDate ?? Date()
 			self.datePicker.setDate(initialDate, animated: false)
 			
 		case .date(.end):
-			self.datePicker.minimumDate = self.viewModel.comparisonDate
-			self.datePicker.maximumDate = nil
+            self.datePicker.minimumDate = self.viewModel.comparisonDate
 			
 			let initialDate = (self.viewModel.mainDate ??
-				self.viewModel.comparisonDate?.addingTimeInterval(7.days)) ??
-				Date().addingTimeInterval(7.days)
+                self.viewModel.comparisonDate?.addingTimeInterval(7.days)) ??
+                Date().addingTimeInterval(7.days)
 			
 			self.datePicker.setDate(initialDate, animated: false)
 			
 		case .timeBlock(.begin):
 			self.datePicker.datePickerMode = .time
 			self.datePicker.minuteInterval = 15
-			self.datePicker.maximumDate = nil
-			self.datePicker.minimumDate = nil
 			
 			self.datePicker.setDate(self.viewModel.mainDate ?? Date(), animated: false)
 			
@@ -103,30 +99,42 @@ class DatePickerAlertView: UIView {
 		case .timeBlock(.end):
 			self.datePicker.datePickerMode = .time
 			self.datePicker.minuteInterval = 15
-			self.datePicker.maximumDate = nil
+
 			self.datePicker.minimumDate = self.viewModel.mainDate?.addingTimeInterval(1.hour)
 			
-			self.footerIsHidden = false
-			
-			self.datePicker.setDate(self.viewModel.comparisonDate ?? Date().addingTimeInterval(1.hour), animated: true)
-			
-			self.confirmButton.backgroundColor = UIColor.Interface.iGreen
-			self.confirmButton.setTitle("Confirm", for: .normal)
+            self.datePicker.setDate(self.viewModel.comparisonDate ?? Date().addingTimeInterval(1.hour), animated: true)
+            
+            self.footerIsHidden = false
 		}
-		
-		if self.currentMode == .estimatedTime {
-            hoursPicker.isHidden = false
-            datePicker.isHidden = true
-			
-        } else {
-            hoursPicker.isHidden = true
-            datePicker.isHidden = false
-        }
 		
         self.updateIcon()
         self.isHidden = false
-        
     }
+	
+	/// Most common picker configurations
+	private func defaultConfigurations() {
+		self.showDatePicker()
+        
+        self.datePicker.datePickerMode = .date
+        
+		self.datePicker.maximumDate = nil
+		self.datePicker.minimumDate = nil
+        
+		self.footerIsHidden = true
+        
+        self.confirmButton.backgroundColor = UIColor.Interface.iGreen
+        self.confirmButton.setTitle("Confirm", for: .normal)
+	}
+	
+	private func showHoursPicker() {
+		hoursPicker.isHidden = false
+		datePicker.isHidden = true
+	}
+	
+	private func showDatePicker() {
+		hoursPicker.isHidden = true
+		datePicker.isHidden = false
+	}
 	
 	private func updateToViewModel() {
 		self.overTitleLabel.text = self.viewModel.overTitle
