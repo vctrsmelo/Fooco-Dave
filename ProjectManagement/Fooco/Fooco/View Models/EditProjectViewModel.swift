@@ -59,7 +59,7 @@ class EditProjectViewModel {
 		}
 	}
 	
-	func canSaveProject() -> Bool {
+    func canSaveProject() -> Bool { // TODO: All error handling (testing and giving feedback to the user), should be done here
 		return self.chosenContext != nil &&
 			self.name != nil && self.name != "" &&
 			self.chosenTime != (days: 0, hours: 0) &&

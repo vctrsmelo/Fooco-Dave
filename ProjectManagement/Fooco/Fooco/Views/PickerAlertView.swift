@@ -108,6 +108,7 @@ class PickerAlertView: UIView {
 		self.showDatePicker()
         
         self.datePicker.datePickerMode = .date
+        self.datePicker.minuteInterval = 15 // Doesn't make difference for .date
         
 		self.datePicker.maximumDate = nil
 		self.datePicker.minimumDate = nil
@@ -133,6 +134,11 @@ class PickerAlertView: UIView {
         
         self.confirmButton.setTitle(self.viewModel.button.title, for: .normal)
         self.confirmButton.backgroundColor = self.viewModel.button.color
+        
+        for day in self.viewModel.selectedDays {
+            let tagAdd = 100 // The tags start at 100 to diferentiate from not tagged items
+            (self.footer.viewWithTag(day.rawValue + tagAdd) as? UIButton)?.isSelected = true
+        }
 	}
 
     private func updateIcon() {
@@ -144,7 +150,7 @@ class PickerAlertView: UIView {
 		DispatchQueue.main.async {
 			self.footer.isHidden = self.footerIsHidden
 			
-			if self.footerIsHidden { // needed to make sure the constraints are deactivated first
+			if self.footerIsHidden { // Needed to make sure the constraints are deactivated first
 				self.bodyToFooterConstraint.isActive = false
 				self.bodyToSuperConstraint.isActive = true
 			} else {
