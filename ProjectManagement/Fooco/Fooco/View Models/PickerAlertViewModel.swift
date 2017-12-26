@@ -60,6 +60,8 @@ final class PickerAlertViewModel {
 	private(set) var selectedDays = Set<DayInWeek>()
 	
 	// MARK: Output
+    let tagAdd = 100 // The tags start at 100 to diferentiate from not tagged items
+    
 	private(set) var overTitle = ""
 	private(set) var title = ""
 	private(set) var underTitle = ""
@@ -130,6 +132,19 @@ final class PickerAlertViewModel {
 	}
 	
 	// MARK: - Prepare Output to View
+    
+    func dayTouched(tag: Int) {
+        if let day = DayInWeek(rawValue: tag - self.tagAdd) {
+            if self.selectedDays.contains(day) {
+                self.selectedDays.remove(day)
+                
+            } else {
+                self.selectedDays.insert(day)
+            }
+        }
+        
+        self.configureOutputs()
+    }
 	
 	private func configureOutputs() {
 		

@@ -165,6 +165,9 @@
                                                             <state key="selected">
                                                                 <color key="titleColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="dayTouched:" destination="-1" eventType="primaryActionTriggered" id="2o1-aS-aiJ"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-Eq-VYT">
                                                             <rect key="frame" x="39.5" y="0.0" width="39.5" height="33"/>
@@ -175,6 +178,9 @@
                                                             <state key="selected">
                                                                 <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="dayTouched:" destination="-1" eventType="primaryActionTriggered" id="vgR-97-skT"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VH6-Q6-44P">
                                                             <rect key="frame" x="79" y="0.0" width="39.5" height="33"/>
@@ -185,6 +191,9 @@
                                                             <state key="selected">
                                                                 <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="dayTouched:" destination="-1" eventType="primaryActionTriggered" id="oNH-cl-rBb"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jit-zm-0J7">
                                                             <rect key="frame" x="118.5" y="0.0" width="40" height="33"/>
@@ -195,6 +204,9 @@
                                                             <state key="selected">
                                                                 <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="dayTouched:" destination="-1" eventType="primaryActionTriggered" id="sji-Cv-OLb"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghs-Qz-2WN">
                                                             <rect key="frame" x="158.5" y="0.0" width="39.5" height="33"/>
@@ -205,6 +217,9 @@
                                                             <state key="selected">
                                                                 <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="dayTouched:" destination="-1" eventType="primaryActionTriggered" id="0o0-uK-psl"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJb-yC-OyS">
                                                             <rect key="frame" x="198" y="0.0" width="39.5" height="33"/>
@@ -215,6 +230,9 @@
                                                             <state key="selected">
                                                                 <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="dayTouched:" destination="-1" eventType="primaryActionTriggered" id="vOT-rC-Vzr"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXy-gR-vGE">
                                                             <rect key="frame" x="237.5" y="0.0" width="39.5" height="33"/>
@@ -225,6 +243,9 @@
                                                             <state key="selected">
                                                                 <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="dayTouched:" destination="-1" eventType="primaryActionTriggered" id="Vga-8l-7zK"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

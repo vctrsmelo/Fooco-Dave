@@ -136,8 +136,7 @@ class PickerAlertView: UIView {
         self.confirmButton.backgroundColor = self.viewModel.button.color
         
         for day in self.viewModel.selectedDays {
-            let tagAdd = 100 // The tags start at 100 to diferentiate from not tagged items
-            (self.footer.viewWithTag(day.rawValue + tagAdd) as? UIButton)?.isSelected = true
+            (self.footer.viewWithTag(day.rawValue + self.viewModel.tagAdd) as? UIButton)?.isSelected = true
         }
 	}
 
@@ -195,6 +194,13 @@ class PickerAlertView: UIView {
 		
 		self.updateToViewModel()
     }
+    
+    @IBAction func dayTouched(_ sender: UIButton) {
+        sender.isSelected = false // It's easier to update only the selected on the self.updateToViewModel()
+        self.viewModel.dayTouched(tag: sender.tag)
+        self.updateToViewModel()
+    }
+    
 }
 
 extension PickerAlertView: XibLoader {
