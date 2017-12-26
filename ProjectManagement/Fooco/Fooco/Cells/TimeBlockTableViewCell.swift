@@ -28,21 +28,7 @@ class TimeBlockTableViewCell: UITableViewCell {
 			self.startTime.text = dateFormatter.string(from: someCellData.timeblock.startsAt)
 			self.endTime.text = dateFormatter.string(from: someCellData.timeblock.endsAt)
 			
-			var weekdaysText = ""
-			
-			for day in someCellData.days {
-				if day == someCellData.days.first {
-					weekdaysText.append("at ")
-				} else if day == someCellData.days.last {
-					weekdaysText.append(" and ")
-				} else {
-					weekdaysText.append(", ")
-				}
-				
-				weekdaysText.append(day.string.lowercased())
-			}
-			
-			self.weekDays.text = weekdaysText
+			self.weekDays.text = DayInWeek.weekdaysText(for: someCellData.days, style: .normal)
 		}
 	}
 

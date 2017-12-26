@@ -155,7 +155,7 @@ final class PickerAlertViewModel {
         if self.selectedDays.isEmpty {
             self.footerTitle = NSLocalizedString("choose one or more days", comment: "FooterTitle for .timeBlock(.begin), with empty days set")
         } else {
-            self.footerTitle = NSLocalizedString("UNDER CONSTRUCTION", comment: "FooterTitle for .timeBlock(.begin), with not empty days set") // TODO: Footer Label
+            self.footerTitle = DayInWeek.weekdaysText(for: self.selectedDays.sorted(), style: .short)
         }
 		
 		switch self.mode {
@@ -192,7 +192,7 @@ final class PickerAlertViewModel {
 			self.overTitle = NSLocalizedString("\(self.context!.name)'s Available Time", comment: "OverTitle for .timeBlock(.begin)")
 			self.title = NSLocalizedString("Starts at", comment: "Title for .timeBlock(.begin)")
 			self.underTitle = ""
-			self.button.title = NSLocalizedString("Continue", comment: "Button Title for .timeBlock(.begin)") // Only case with different button for now
+			self.button.title = NSLocalizedString("Continue", comment: "Button Title for .timeBlock(.begin)") // That's the only case with a different button for now
             self.button.color = UIColor.Interface.iDarkBlue
 			
 		case .timeBlock(.end):

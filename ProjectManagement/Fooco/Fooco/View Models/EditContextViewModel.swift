@@ -8,7 +8,15 @@
 import CoreGraphics
 import Foundation
 
-enum DayInWeek: Int {
+enum DayInWeek: Int, Comparable {
+    static func <(lhs: DayInWeek, rhs: DayInWeek) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+    
+    enum SizeStyle {
+        case veryShort, short, normal
+    }
+    
 	case sunday, monday, tuesday, wednesday, thursday, friday, saturday
 	
 	var string: String {
@@ -22,6 +30,37 @@ enum DayInWeek: Int {
 	var veryShortString: String {
 		return DateFormatter().veryShortStandaloneWeekdaySymbols[self.rawValue]
 	}
+    
+    func string(_ style: SizeStyle) -> String {
+        switch style {
+        case .veryShort:
+            return self.veryShortString
+            
+        case .short:
+            return self.shortString
+            
+        case .normal:
+            return self.string
+        }
+    }
+    
+    static func weekdaysText(for days: [DayInWeek], style: SizeStyle) -> String {
+        var weekdaysText = ""
+        
+        for day in days {
+            if day == days.first {
+                weekdaysText.append(NSLocalizedString("at ", comment: "weekdaysText first part"))
+            } else if day == days.last {
+                weekdaysText.append(NSLocalizedString(" and ", comment: "weekdaysText second to last part"))
+            } else {
+                weekdaysText.append(", ")
+            }
+            
+            weekdaysText.append(day.string(style).lowercased())
+        }
+        
+        return weekdaysText
+    }
 }
 
 class EditContextViewModel {
