@@ -84,6 +84,7 @@ class PickerAlertView: UIView {
 			
 		case .timeBlock(.begin):
 			self.datePicker.datePickerMode = .time
+            self.datePicker.minuteInterval = 15
 			
 			self.datePicker.setDate(self.viewModel.mainDate, animated: false)
 			
@@ -91,6 +92,7 @@ class PickerAlertView: UIView {
 			
 		case .timeBlock(.end):
 			self.datePicker.datePickerMode = .time
+            self.datePicker.minuteInterval = 15
 
 			self.datePicker.minimumDate = self.viewModel.mainDate.addingTimeInterval(1.hour)
 			
@@ -108,7 +110,6 @@ class PickerAlertView: UIView {
 		self.showDatePicker()
         
         self.datePicker.datePickerMode = .date
-        self.datePicker.minuteInterval = 15 // Doesn't make difference for .date
         
 		self.datePicker.maximumDate = nil
 		self.datePicker.minimumDate = nil
@@ -170,9 +171,11 @@ class PickerAlertView: UIView {
 		case .estimatedTime:
 			self.viewModel.chosenTime.days = self.hoursPicker.selectedRow(inComponent: 0)
 			self.viewModel.chosenTime.hours = self.hoursPicker.selectedRow(inComponent: 1)
+            self.viewModel.sendToReceiver()
 			
 		case .date:
 			self.viewModel.mainDate = self.datePicker.date
+            self.viewModel.sendToReceiver()
 			
 		case .timeBlock(.begin):
 			self.viewModel.mainDate = self.datePicker.date
@@ -180,9 +183,8 @@ class PickerAlertView: UIView {
 			
 		case .timeBlock(.end):
 			self.viewModel.comparisonDate = self.datePicker.date
+            self.viewModel.sendToReceiver()
 		}
-		
-		self.viewModel.sendToReceiver()
     }
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {

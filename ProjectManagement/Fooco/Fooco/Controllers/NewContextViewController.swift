@@ -14,9 +14,7 @@ class NewContextViewController: UIViewController {
 	private let tableCellIdentifier = "nameSuggestionCell"
 	
 	private let viewModel = NewContextViewModel()
-	
-	private var selectedColor: UIColor?
-	
+		
 	@IBOutlet private weak var nameField: UITextField!
 	@IBOutlet private weak var colorsCollection: UICollectionView!
 	@IBOutlet private weak var suggestionsTable: UITableView!
@@ -28,21 +26,21 @@ class NewContextViewController: UIViewController {
 		self.hideKeyboardOnOutsideTap()
 		
         self.navigationController?.navigationBar.changeFontAndTintColor(to: UIColor.Interface.iDarkBlue)
+        
+        self.updateToViewModel()
     }
-	
-	private func hasValidData() -> Bool {
-		if let existingText = self.nameField.text {
-			return !existingText.isEmpty && self.selectedColor != nil
-		} else {
-			return false
-		}
-	}
+    
+    private func updateToViewModel() {
+        self.nameField.text = self.viewModel.name
+        
+        // TODO: make something for the color selection
+    }
 
     // MARK: - Navigation
     
     @IBAction func nextTapped(_ sender: UIBarButtonItem) {
-		if self.hasValidData() {
-			self.performSegue(withIdentifier: self.segueToEdit, sender: self.viewModel.editContextViewModel(name: self.nameField.text!, color: self.selectedColor!))
+		if self.viewModel.hasValidData() {
+			self.performSegue(withIdentifier: self.segueToEdit, sender: nil)
 		} else {
 			print("[Error] Missing information") // TODO: Tell the user that there is missing information
 		}
@@ -51,10 +49,22 @@ class NewContextViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == self.segueToEdit, let editViewController = segue.destination as? EditContextViewController {
-			editViewController.viewModel = sender as? EditContextViewModel
+			editViewController.viewModel = self.viewModel.editContextViewModel(with: editViewController)
 		}
     }
 
+}
+
+// MARK: - Textfield
+
+extension NewContextViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.viewModel.name = textField.text
+    }
 }
 
 // MARK: - CollectionView
@@ -78,7 +88,7 @@ extension NewContextViewController: UICollectionViewDataSource, UICollectionView
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let cell = collectionView.cellForItem(at: indexPath)
 		
-		self.selectedColor = cell?.backgroundColor
+		self.viewModel.color = cell?.backgroundColor
 		
 		cell?.layer.borderWidth = 1
 	}
@@ -86,7 +96,7 @@ extension NewContextViewController: UICollectionViewDataSource, UICollectionView
 	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
 		let cell = collectionView.cellForItem(at: indexPath)
 		
-		self.selectedColor = nil
+		self.viewModel.color = nil
 		
 		cell?.layer.borderWidth = 0
 	}
@@ -110,7 +120,8 @@ extension NewContextViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let cell = tableView.cellForRow(at: indexPath)
 		
-		self.nameField.text = cell?.textLabel?.text
+		self.viewModel.name = cell?.textLabel?.text
+        self.updateToViewModel()
 	}
 	
 	func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {

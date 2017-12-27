@@ -807,6 +807,9 @@
                                         <color key="textColor" red="0.23529411764705882" green="0.36078431372549019" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES" textContentType="name"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="cVk-SC-zzz" id="yJ1-AM-z2h"/>
+                                        </connections>
                                     </textField>
                                     <view autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJa-uZ-bm5" userLabel="Line">
                                         <rect key="frame" x="0.0" y="112.5" width="303" height="1"/>

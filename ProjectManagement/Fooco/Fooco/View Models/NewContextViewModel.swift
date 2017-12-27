@@ -12,9 +12,20 @@ class NewContextViewModel {
 	
 	let colorOptions = UIColor.contextColors()
 	let suggestionOptions = ["College", "Health", "Home", "Work"]
+    
+    var color: UIColor?
+    var name: String?
+    
+    func hasValidData() -> Bool {
+        if let existingText = self.name {
+            return !existingText.isEmpty && self.color != nil
+        } else {
+            return false
+        }
+    }
 	
-	func editContextViewModel(name: String, color: UIColor) -> EditContextViewModel {
-		let context = Context(named: name, color: color, icon: nil, projects: nil, minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
-		return EditContextViewModel(context: context)
+    func editContextViewModel(with delegate: ViewModelUpdateDelegate) -> EditContextViewModel {
+		let context = Context(named: self.name!, color: self.color!, icon: nil, projects: nil, minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
+        return EditContextViewModel(context: context, and: delegate)
 	}
 }

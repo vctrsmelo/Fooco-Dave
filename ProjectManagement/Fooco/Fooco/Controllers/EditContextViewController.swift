@@ -53,11 +53,17 @@ class EditContextViewController: UIViewController {
 		
 		self.pickerAlertView.initialSetup()
 		
-		self.contextTimeQuestionLabel.text = String(format: NSLocalizedString("When are you available to do %@'s activities", comment: "Top of new context second screen"), self.viewModel.context.name)
-		
-		self.totalWeekTimeLabel.text = self.viewModel.totalWeeklyTimeDescription
-		
-		self.updateBars()
+		self.updateToViewModel()
+    }
+    
+    private func updateToViewModel() {
+        self.contextTimeQuestionLabel.text = String(format: NSLocalizedString("When are you available to do %@'s activities", comment: "Top of new context second screen"), self.viewModel.context.name)
+        
+        self.totalWeekTimeLabel.text = self.viewModel.totalWeeklyTimeDescription
+        
+        self.updateBars()
+        
+        self.tableView.reloadData()
     }
 	
 	private func updateBars() {
@@ -86,7 +92,14 @@ class EditContextViewController: UIViewController {
 	@IBAction func addContextTimes() {
 		self.pickerAlertView.present(with: self.viewModel.createNewAlert())
 	}
+}
 
+// MARK: - ViewModelUpdateDelegate
+
+extension EditContextViewController: ViewModelUpdateDelegate {
+    func viewModelDidUpdate() {
+        self.updateToViewModel()
+    }
 }
 
 // MARK: - Tableview

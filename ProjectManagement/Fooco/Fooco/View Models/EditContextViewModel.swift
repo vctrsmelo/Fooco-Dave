@@ -9,7 +9,7 @@ import CoreGraphics
 import Foundation
 
 enum DayInWeek: Int, Comparable {
-    static func <(lhs: DayInWeek, rhs: DayInWeek) -> Bool {
+    static func < (lhs: DayInWeek, rhs: DayInWeek) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }
     
@@ -64,6 +64,8 @@ enum DayInWeek: Int, Comparable {
 }
 
 class EditContextViewModel {
+    
+    private weak var delegate: ViewModelUpdateDelegate?
 	
 	let context: Context
 	
@@ -119,21 +121,14 @@ class EditContextViewModel {
 		return self.counterWeek.count
 	}
 	
-	init(context: Context) {
+    init(context: Context, and delegate: ViewModelUpdateDelegate) {
 		self.context = context
+        self.delegate = delegate
 		
 		self.loadData()
 	}
 	
-	private func loadData() {
-		let now = Date()
-		self.createTimeBlock(start: now, end: now.addingTimeInterval(3.hours), for: .monday)
-		self.createTimeBlock(start: now, end: now.addingTimeInterval(3.hours), for: .tuesday)
-		self.createTimeBlock(start: now.addingTimeInterval(4.hours), end: now.addingTimeInterval(6.hours), for: .tuesday)
-		self.createTimeBlock(start: now, end: now.addingTimeInterval(6.hours), for: .wednesday)
-		self.createTimeBlock(start: now, end: now.addingTimeInterval(6.hours), for: .thursday)
-		self.createTimeBlock(start: now, end: now.addingTimeInterval(3.hours), for: .friday)
-		self.createTimeBlock(start: now.addingTimeInterval(5.hours), end: now.addingTimeInterval(6.hours), for: .saturday)
+    private func loadData() { // TODO: actually load it
 	}
 	
 	private func timeFormater(_ time: TimeInterval) -> String {
@@ -182,14 +177,16 @@ class EditContextViewModel {
 		return self.counterWeek.row(row)
 	}
 	
-	func createTimeBlock(start: Date, end: Date, for day: DayInWeek) {
+	private func createTimeBlock(start: Date, end: Date, for days: Set<DayInWeek>) {
 		let newTimeBlock = TimeBlock(startsAt: start, endsAt: end)
 		
-		if self.week[day] == nil {
-			self.week[day] = []
-		}
-		
-		self.week[day]?.append(newTimeBlock)
+        for day in days {
+            if self.week[day] == nil {
+                self.week[day] = []
+            }
+            
+            self.week[day]?.append(newTimeBlock)
+        }
 	}
 	
 	func createNewAlert() -> PickerAlertViewModel {
@@ -206,6 +203,10 @@ class EditContextViewModel {
 
 extension EditContextViewModel: PickerAlertViewModelReceiver {
 	func receive(_ viewModel: PickerAlertViewModel) {
-		print("Received something") // TODO: Finish
+        if viewModel.mode == .timeBlock(.end) {
+            self.createTimeBlock(start: viewModel.mainDate, end: viewModel.comparisonDate!, for: viewModel.selectedDays)
+            
+            self.delegate?.viewModelDidUpdate()
+        }
 	}
 }
