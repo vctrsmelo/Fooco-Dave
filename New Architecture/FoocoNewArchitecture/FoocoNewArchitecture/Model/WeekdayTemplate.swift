@@ -39,6 +39,13 @@ struct WeekdayTemplate {
         
     }
     
+    init(weekday: Weekday, contextBlocks: [ContextBlock]) {
+        
+        self.weekday = weekday
+        self.contextBlocks = contextBlocks
+        
+    }
+    
 }
 
 
