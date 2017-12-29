@@ -323,6 +323,12 @@ class FoocoNewArchitectureTests: XCTestCase {
         
     }
     
+    func testGetAvailableTimeBlocks() {
+        
+        
+        
+    }
+    
     
     
     

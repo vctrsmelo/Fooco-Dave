@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EE0E579F1FD7089500EF77C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E579E1FD7089500EF77C0 /* User.swift */; };
 		EE0E57A11FD70B5000EF77C0 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */; };
-		EE3D50911FE42D0B0042ED85 /* ActivitySchedulerTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */; };
 		EE3D50931FE45E7D0042ED85 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D50921FE45E7D0042ED85 /* ActivityScheduler.swift */; };
 		EE40B7971FDB08A60087B768 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40B7961FDB08A60087B768 /* Day.swift */; };
 		EE4803D51FF58377008B60CF /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4803D41FF58377008B60CF /* WeekTemplate.swift */; };
@@ -52,7 +51,6 @@
 /* Begin PBXFileReference section */
 		EE0E579E1FD7089500EF77C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
-		EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySchedulerTree.swift; sourceTree = "<group>"; };
 		EE3D50921FE45E7D0042ED85 /* ActivityScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScheduler.swift; sourceTree = "<group>"; };
 		EE40B7961FDB08A60087B768 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		EE4803D41FF58377008B60CF /* WeekTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				EE0E57A01FD70B5000EF77C0 /* AlgorithmManager.swift */,
-				EE3D50901FE42D0B0042ED85 /* ActivitySchedulerTree.swift */,
 				EE3D50921FE45E7D0042ED85 /* ActivityScheduler.swift */,
 			);
 			path = Algorithm;
@@ -330,7 +327,6 @@
 				EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */,
 				EEBC21DD1FCF3DF10032FE29 /* TimeBlock.swift in Sources */,
 				EE3D50931FE45E7D0042ED85 /* ActivityScheduler.swift in Sources */,
-				EE3D50911FE42D0B0042ED85 /* ActivitySchedulerTree.swift in Sources */,
 				EE40B7971FDB08A60087B768 /* Day.swift in Sources */,
 				EEBC21E71FD5D6140032FE29 /* Project.swift in Sources */,
 				EE0E57A11FD70B5000EF77C0 /* AlgorithmManager.swift in Sources */,
