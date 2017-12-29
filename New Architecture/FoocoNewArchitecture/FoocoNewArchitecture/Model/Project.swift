@@ -9,8 +9,17 @@
 import Foundation
 
 enum ProjectError: Error {
-    case InvalidImportanceValue(String)
+    case InvalidImportanceValue
 }
+
+extension ProjectError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .InvalidImportanceValue: return "Importance value should be 1, 2 or 3."
+        }
+    }
+}
+
 
 /**
  The priority value of a project.
@@ -65,6 +74,12 @@ class Project {
         let imp = self.importance
         let wat = User.sharedInstance.getWeeklyAvailableTime(for: self.context)
         
+        //advRange is a value between 0 and 1. It is the percentage of how the time, since projecte beginning, has advanced closer to deadline.
+        var advRange = getAdvRange()
+        if advRange == 0.0 {
+            advRange = 0.01
+        }
+        print("\(name) - advRange: \(advRange)")
         //there is no weekly available time for context. If that's the case, the project has no priority (it's impossible to be done while there is no time to work on it)
         if wat == 0 {
 
@@ -72,7 +87,8 @@ class Project {
         
         }
         
-        _priority = (et*imp)/(wat*3)
+        _priority = (et*imp*advRange)/(wat*3)
+        print("\(name) - Priority: \(_priority)")
         return _priority!
         
     }
@@ -85,7 +101,7 @@ class Project {
         
         if !Project.importanceRange.contains(importance) {
             
-            throw ProjectError.InvalidImportanceValue("Importance value must be between 1 and 3. Current value is \(importance)")
+            throw ProjectError.InvalidImportanceValue
             
         }
         
@@ -165,12 +181,36 @@ class Project {
         
     }
     
+    /**
+     - Returns:
+        A value between 0 and 1 representing how closer the project is of the deadline. 1 means today is deadline date, and 0 means today is starting date.
+    */
+    private func getAdvRange() -> Double {
+        
+        let starts = startingDate.timeIntervalSince1970
+        let ends = endingDate.timeIntervalSince1970
+        let today = Date().timeIntervalSince1970
+        
+        var val = (today-starts)/(ends-starts)
+        val = Double(round(1000000*val)/1000000)
+        
+        return val
+        
+    }
+    
 }
 
 extension Project: Equatable {
     
     static func ==(lhs: Project, rhs: Project) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+}
+
+extension Project: Comparable {
+    static func <(lhs: Project, rhs: Project) -> Bool {
+        return lhs.priority > rhs.priority
     }
     
 }

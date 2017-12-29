@@ -9,8 +9,17 @@
 import Foundation
 
 enum DayError: Error {
-    case ActivitiesOverlapping(String)
+    case ActivitiesOverlapping
 }
+
+extension DayError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .ActivitiesOverlapping: return "The activities in a day should not overlap."
+        }
+    }
+}
+
 
 struct Day {
     
@@ -27,13 +36,7 @@ struct Day {
         self.id = UUID()
         
         if isOverlapping(activities) {
-            
-            var errorString = "Unable to create day: activities are overlapping:"
-            for act in activities {
-                errorString += "\n \(act.description)"
-            }
-            
-            throw DayError.ActivitiesOverlapping(errorString)
+            throw DayError.ActivitiesOverlapping
         }
     
     }

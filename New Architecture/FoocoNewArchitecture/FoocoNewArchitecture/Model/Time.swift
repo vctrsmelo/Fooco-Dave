@@ -9,7 +9,15 @@
 import Foundation
 
 enum TimeError: Error {
-    case OutOfBounds(String)
+    case OutOfBounds
+}
+
+extension TimeError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .OutOfBounds: return "Time is out of bounds. Probably hour, minute or second is an integer out of it's limit."
+        }
+    }
 }
 
 let dailyTotalSeconds = 86_400
@@ -43,14 +51,14 @@ struct Time {
         
         
         if  !TimeRange.hours.contains(h) || !TimeRange.minutes.contains(m) || !TimeRange.seconds.contains(s)  {
-            throw TimeError.OutOfBounds("time out of bounds: current value is hour = \(h), minute = \(m) and seconds = \(s).")
+            throw TimeError.OutOfBounds
         }
         
         self.totalSeconds = d.day+h.hour+m.minute+s.seconds
 
     }
     
-    private init(timeInterval: TimeInterval) {
+    init(timeInterval: TimeInterval) {
         
         self.totalSeconds = timeInterval
     }

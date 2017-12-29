@@ -12,11 +12,10 @@ class TestElementsFactory {
     
     
     /**
-     - Precondition: WeekdayContextBlocks.count <= 7
-     - Returns: weekly schedule made from WeekdayContextBlocks, starting sunday.
+     - Returns: weekly schedule with only one daily context block for each context parameter.
     */
-    static func getWeekSchedule(WeekdayContextBlocks dailyContextBlocks: [(Weekday,[ContextBlock])]) -> WeekTemplate {
-    
+    static func getWeekSchedule(contextAndDailyTime: [(Context,TimeInterval)]) -> WeekTemplate {
+
         var sun = WeekdayTemplate(weekday: .sunday)
         var mon = WeekdayTemplate(weekday: .monday)
         var tue = WeekdayTemplate(weekday: .tuesday)
@@ -25,35 +24,29 @@ class TestElementsFactory {
         var fri = WeekdayTemplate(weekday: .friday)
         var sat = WeekdayTemplate(weekday: .saturday)
         
-        for weekday in dailyContextBlocks {
+        for elem in contextAndDailyTime {
+        
+            let contextBlock = try! ContextBlock.init(context: elem.0, timeBlock: TimeBlock(starts: Time(hour: 0), ends: Time(timeInterval: elem.1)))
             
-            switch weekday.0 {
-            case .sunday:
-                sun = WeekdayTemplate(weekday: weekday.0, contextBlocks: weekday.1)
-                break
-            case .monday:
-                mon = WeekdayTemplate(weekday: weekday.0, contextBlocks: weekday.1)
-                break
-            case .tuesday:
-                tue = WeekdayTemplate(weekday: weekday.0, contextBlocks: weekday.1)
-                break
-            case .wednesday:
-                wed = WeekdayTemplate(weekday: weekday.0, contextBlocks: weekday.1)
-                break
-            case .thursday:
-                thu = WeekdayTemplate(weekday: weekday.0, contextBlocks: weekday.1)
-                break
-            case .friday:
-                fri = WeekdayTemplate(weekday: weekday.0, contextBlocks: weekday.1)
-                break
-            case .saturday:
-                sat = WeekdayTemplate(weekday: weekday.0, contextBlocks: weekday.1)
-                break
+            do {
+                
+               try sun.appendContextBlock(contextBlock)
+               try mon.appendContextBlock(contextBlock)
+               try tue.appendContextBlock(contextBlock)
+               try wed.appendContextBlock(contextBlock)
+               try thu.appendContextBlock(contextBlock)
+               try fri.appendContextBlock(contextBlock)
+               try sat.appendContextBlock(contextBlock)
+                
+            } catch let error as TimeBlockError {
+                print(error.description)
+            } catch let error {
+                print(error.localizedDescription)
             }
             
         }
         
-        return (sun,mon,tue,wed,thu,fri,sat)
+        return WeekTemplate(sun: sun, mon: mon, tue: tue, wed: wed, thu: thu, fri: fri, sat: sat)
         
     }
     

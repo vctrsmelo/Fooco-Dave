@@ -46,6 +46,17 @@ struct WeekdayTemplate {
         
     }
     
+    mutating func appendContextBlock(_ contextBlock: ContextBlock) throws {
+        for cb in contextBlocks {
+            if cb.timeBlock.overlaps(contextBlock.timeBlock) {
+                throw TimeBlockError.Overlaps
+            }
+        }
+        
+        contextBlocks.append(contextBlock)
+        
+    }
+    
 }
 
 

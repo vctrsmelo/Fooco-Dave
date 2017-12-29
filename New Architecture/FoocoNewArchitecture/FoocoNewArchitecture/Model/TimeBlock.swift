@@ -10,7 +10,17 @@
 import Foundation
 
 enum TimeBlockError: Error {
-    case invalidRange(String)
+    case InvalidRange
+    case Overlaps
+}
+
+extension TimeBlockError: CustomStringConvertible {
+    var description: String {
+        switch self {
+            case .InvalidRange: return "Invalid range in TimeBlock. Probably starting time is after ending."
+            case .Overlaps: return "Two timeblocks are overlapping when they shouldn't."
+        }
+    }
 }
 
 
@@ -32,9 +42,9 @@ struct TimeBlock {
     }
 
     mutating func setStarts(_ starts: Time) throws {
-        
+
         if ends != nil && starts > ends {
-            throw TimeBlockError.invalidRange("[setEnds error]: Starts is after ends: new start value is \(starts) while ends value is \(self.ends)")
+            throw TimeBlockError.InvalidRange
         }
         
         self.starts = starts
@@ -42,7 +52,7 @@ struct TimeBlock {
     
     mutating func setEnds(_ ends: Time) throws {
         if starts != nil && starts > ends {
-            throw TimeBlockError.invalidRange("[setEnds error]: Starts is after ends: new start value is \(starts) while ends value is \(self.ends)")
+            throw TimeBlockError.InvalidRange
         }
         self.ends = ends
     }

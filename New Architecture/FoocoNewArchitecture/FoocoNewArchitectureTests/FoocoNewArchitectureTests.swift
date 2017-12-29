@@ -228,26 +228,51 @@ class FoocoNewArchitectureTests: XCTestCase {
     func testProjectPriorityCalculation(){
         
         //create weekTemplate for college
-        
+        let schedule = TestElementsFactory.getWeekSchedule(contextAndDailyTime: [(college,3.hours)])
+        User.sharedInstance.weekTemplate = schedule
         
         //importance variation
         var p1 = try! Project(name: "most important", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
         var p2 = try! Project(name: "second most important", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 2, estimatedTime: 5.hours)
         var p3 = try! Project(name: "third most important", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 1, estimatedTime: 5.hours)
-        
+
         var highestProjects = [p3,p1,p2]
-        
-        highestProjects.sort { (pa, pb) -> Bool in
-            return pa.priority > p2.priority
-        }
+
+        highestProjects.sort()
         
         XCTAssertEqual(highestProjects.first!, p1)
         XCTAssertEqual(highestProjects[1], p2)
         XCTAssertEqual(highestProjects.last!, p3)
         
-        //estimated time variation
+        //starts and end difference time variation
+        p1 = try! Project(name: "second most important", starts: Date().addingTimeInterval(-100_000), ends: Date().addingTimeInterval(100_000), context: college, importance: 2, estimatedTime: 3.hours)
+        p2 = try! Project(name: "most important", starts: Date().addingTimeInterval(-100_000), ends: Date().addingTimeInterval(90_000), context: college, importance: 2, estimatedTime: 3.hours)
+        p3 = try! Project(name: "third most important", starts: Date().addingTimeInterval(-100_000), ends: Date().addingTimeInterval(120_000), context: college, importance: 2, estimatedTime: 3.hours)
+     
+        highestProjects = [p3,p1,p2]
+        highestProjects.sort()
         
+        XCTAssertEqual(highestProjects.first!, p2)
+        XCTAssertEqual(highestProjects[1], p1)
+        XCTAssertEqual(highestProjects.last!, p3)
+        
+        //estimated time variation (if in the future, the user can change the prioritizing relating to estimated time, this test must be remade)
+        p1 = try! Project(name: "third most important", starts: Date(), ends: Date().addingTimeInterval(120_000), context: college, importance: 2, estimatedTime: 1.hours)
+        p2 = try! Project(name: "second most important", starts: Date(), ends: Date().addingTimeInterval(100_000), context: college, importance: 2, estimatedTime: 3.hours)
+        p3 = try! Project(name: "most important", starts: Date(), ends: Date().addingTimeInterval(90_000), context: college, importance: 2, estimatedTime: 5.hours)
+        
+        highestProjects = [p3,p1,p2]
+        highestProjects.sort()
+        
+        XCTAssertEqual(highestProjects.first!, p3)
+        XCTAssertEqual(highestProjects[1], p2)
+        XCTAssertEqual(highestProjects.last!, p1)
+    
     }
+    
+    
+    
+    
     
     
 }

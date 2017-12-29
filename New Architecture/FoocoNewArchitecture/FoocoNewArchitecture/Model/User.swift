@@ -8,15 +8,13 @@
 
 import Foundation
 
-typealias WeekTemplate = (WeekdayTemplate,WeekdayTemplate,WeekdayTemplate,WeekdayTemplate,WeekdayTemplate,WeekdayTemplate,WeekdayTemplate)
-
 struct User {
     
-    static let sharedInstance = User()
+    static var sharedInstance = User()
     
     var projects: [Project]
     var contexts: [Context]
-    private(set) var weekTemplate: WeekTemplate
+    var weekTemplate: WeekTemplate
     
     /**
         is optional because if schedule changes, must invalidate current schedule cached.
@@ -39,7 +37,8 @@ struct User {
         if let weekTemp = weekTemplate {
             self.weekTemplate = weekTemp
         } else {
-            self.weekTemplate = (WeekdayTemplate(weekday: .sunday),WeekdayTemplate(weekday: .monday),WeekdayTemplate(weekday: .tuesday),WeekdayTemplate(weekday: .wednesday),WeekdayTemplate(weekday: .thursday),WeekdayTemplate(weekday: .friday),WeekdayTemplate(weekday: .saturday))
+            
+            self.weekTemplate = WeekTemplate(sun: WeekdayTemplate(weekday: .sunday),mon: WeekdayTemplate(weekday: .monday),tue: WeekdayTemplate(weekday: .tuesday),wed: WeekdayTemplate(weekday: .wednesday),thu: WeekdayTemplate(weekday: .thursday),fri: WeekdayTemplate(weekday: .friday),sat: WeekdayTemplate(weekday: .saturday))
         }
         
         self.projects = projects
@@ -134,13 +133,13 @@ struct User {
     func getWeeklyAvailableTime(for context: Context) -> TimeInterval {
         
 
-        var weekContextBlocks = weekTemplate.0.contextBlocks
-        weekContextBlocks.append(contentsOf: weekTemplate.1.contextBlocks)
-        weekContextBlocks.append(contentsOf: weekTemplate.2.contextBlocks)
-        weekContextBlocks.append(contentsOf: weekTemplate.3.contextBlocks)
-        weekContextBlocks.append(contentsOf: weekTemplate.4.contextBlocks)
-        weekContextBlocks.append(contentsOf: weekTemplate.5.contextBlocks)
-        weekContextBlocks.append(contentsOf: weekTemplate.6.contextBlocks)
+        var weekContextBlocks = weekTemplate.value.0.contextBlocks
+        weekContextBlocks.append(contentsOf: weekTemplate.value.1.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.value.2.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.value.3.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.value.4.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.value.5.contextBlocks)
+        weekContextBlocks.append(contentsOf: weekTemplate.value.6.contextBlocks)
 
         var availableTime: TimeInterval = 0.0
         for contextBlock in weekContextBlocks {
@@ -160,19 +159,19 @@ struct User {
     func getWeekdayTemplate(for weekday: Weekday) -> WeekdayTemplate {
         switch weekday {
         case .sunday:
-            return weekTemplate.0
+            return weekTemplate.value.0
         case .monday:
-            return weekTemplate.1
+            return weekTemplate.value.1
         case .tuesday:
-            return weekTemplate.2
+            return weekTemplate.value.2
         case .wednesday:
-            return weekTemplate.3
+            return weekTemplate.value.3
         case .thursday:
-            return weekTemplate.4
+            return weekTemplate.value.4
         case .friday:
-            return weekTemplate.5
+            return weekTemplate.value.5
         case .saturday:
-            return weekTemplate.6
+            return weekTemplate.value.6
         }
     }
     
