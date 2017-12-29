@@ -38,17 +38,22 @@ class ActivityScheduler {
 
         let tbl = activity.timeBlock
         
-        //remove the timeblock tbl from array
-        if let index = timeBlocks.index(of: tbl) {
-            timeBlocks.remove(at: index)
+        for tb in timeBlocks {
+            
+            //if found timeBlock in timeBlocks that contains the timeBlock of activity
+            if tb.contains(tbl) {
+                
+                //remove the timeBlock container
+                timeBlocks.remove(at: timeBlocks.index(of: tb)!)
+                timeBlocks.append(contentsOf: tb.getComplement(activity.timeBlock))
+            
+                //add activity into activities
+                activities.append(activity)
+            
+                return
+                
+            }
         }
-        
-        //get timeblock set from tbl difference to activity
-        //re-add left time blocks into timeBlocks array
-        self.timeBlocks.append(contentsOf: tbl.getComplement(activity.timeBlock))
-        
-        //add activity into activities
-        activities.append(activity)
         
     }
     

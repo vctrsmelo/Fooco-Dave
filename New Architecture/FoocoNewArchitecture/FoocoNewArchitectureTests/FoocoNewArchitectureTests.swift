@@ -325,7 +325,36 @@ class FoocoNewArchitectureTests: XCTestCase {
     
     func testGetAvailableTimeBlocks() {
         
+        let morningBlock = try! TimeBlock(starts: Time(hour: 8), ends: Time(hour: 11, minute: 30))
         
+        let scheduler = ActivityScheduler(timeBlock: morningBlock, context: college)
+        
+        XCTAssertEqual(scheduler.getAvailableTimeBlocks(), [morningBlock])
+        
+        let event1 = try! Activity(for: TimeBlock(starts: Time(hour: 9), ends: Time(hour: 10)), name: "student's meeting")
+        scheduler.add(activity: event1)
+        
+        XCTAssertEqual(scheduler.getActivities(), [event1])
+            
+        var getAvailableTimeBlocksCounter = 0
+        for timeBlock in scheduler.getAvailableTimeBlocks() {
+            switch timeBlock {
+            case try! TimeBlock(starts: Time(hour: 8), ends: Time(hour: 9)):
+                getAvailableTimeBlocksCounter += 1
+                break
+            case try! TimeBlock(starts: Time(hour: 10), ends: Time(hour: 11, minute: 30)):
+                getAvailableTimeBlocksCounter += 1
+                break
+            default:
+                break
+            }
+        }
+        
+        XCTAssertEqual(getAvailableTimeBlocksCounter, 2) //getAvailableTimeBlocks returned correct values
+        
+        //try to add event out of available time blocks (should not add)
+        
+        //try to add event not fully contained into timeblock available (should not add)
         
     }
     
