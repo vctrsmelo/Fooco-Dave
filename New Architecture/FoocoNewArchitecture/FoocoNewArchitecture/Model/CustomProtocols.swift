@@ -73,3 +73,22 @@ protocol TimeIntervalType {
     }
     
 }
+
+protocol Observer {
+    
+    var observerId: UUID {
+        get
+    }
+    
+    func update<T>(with newValue: T)
+}
+
+protocol Observable {
+    associatedtype T
+    var value : T { get set }
+    var observers : [Observer] { get set }
+    
+    func addObserver(observer: Observer)
+    func removeObserver(observer: Observer)
+    func notifyAllObservers<T>(with newValue: T)
+}

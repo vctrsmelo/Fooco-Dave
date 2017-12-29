@@ -229,7 +229,7 @@ class FoocoNewArchitectureTests: XCTestCase {
     func testProjectPriorityCalculation(){
         
         //create weekTemplate for college
-        let schedule = TestElementsFactory.getWeekSchedule(contextAndDailyTime: [(college,3.hours)])
+        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college,3.hours)])
         User.sharedInstance.weekTemplate = schedule
         
         //importance variation
@@ -323,7 +323,7 @@ class FoocoNewArchitectureTests: XCTestCase {
         
     }
     
-    func testGetAvailableTimeBlocks() {
+    func testGetAvailableTimeBlocksAndActivities() {
         
         let morningBlock = try! TimeBlock(starts: Time(hour: 8), ends: Time(hour: 11, minute: 30))
         
@@ -331,11 +331,12 @@ class FoocoNewArchitectureTests: XCTestCase {
         
         XCTAssertEqual(scheduler.getAvailableTimeBlocks(), [morningBlock])
         
+        //add valid event
         let event1 = try! Activity(for: TimeBlock(starts: Time(hour: 9), ends: Time(hour: 10)), name: "student's meeting")
-        scheduler.add(activity: event1)
+        XCTAssertNoThrow(try scheduler.add(activity: event1))
         
-        XCTAssertEqual(scheduler.getActivities(), [event1])
-            
+        XCTAssertEqual(scheduler.getActivities(), [event1]) //getActivities
+        
         var getAvailableTimeBlocksCounter = 0
         for timeBlock in scheduler.getAvailableTimeBlocks() {
             switch timeBlock {
@@ -353,12 +354,81 @@ class FoocoNewArchitectureTests: XCTestCase {
         XCTAssertEqual(getAvailableTimeBlocksCounter, 2) //getAvailableTimeBlocks returned correct values
         
         //try to add event out of available time blocks (should not add)
+        let event2 = try! Activity(for: TimeBlock(starts: Time(hour:13), ends: Time(hour: 15)), name: "Get some papers into building A")
+        XCTAssertThrowsError(try scheduler.add(activity: event2))
         
         //try to add event not fully contained into timeblock available (should not add)
+        let event3 = try! Activity(for: TimeBlock(starts: Time(hour:10), ends: Time(hour: 12)), name: "Something important but not fully contained into available timeblocks")
+        XCTAssertThrowsError(try scheduler.add(activity: event3))
+
+        XCTAssertEqual(scheduler.getActivities(), [event1])
+        
+        getAvailableTimeBlocksCounter = 0
+        for timeBlock in scheduler.getAvailableTimeBlocks() {
+            switch timeBlock {
+            case try! TimeBlock(starts: Time(hour: 8), ends: Time(hour: 9)):
+                getAvailableTimeBlocksCounter += 1
+                break
+            case try! TimeBlock(starts: Time(hour: 10), ends: Time(hour: 11, minute: 30)):
+                getAvailableTimeBlocksCounter += 1
+                break
+            default:
+                break
+            }
+        }
+        
+        XCTAssertEqual(getAvailableTimeBlocksCounter, 2) //getAvailableTimeBlocks still returned correct values
+        
         
     }
     
+    func testGetWeekdayTemplate() {
+        
+        //create weekTemplate for college
+        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college,3.hours)])
+        User.sharedInstance.weekTemplate = schedule
+        
+        let testMonday = try! WeekdayTemplate(weekday: .monday, contextBlocks: [(TimeBlock(starts: Time(hour:10), ends: Time(hour:20)),work)])
+        User.sharedInstance.weekTemplate.value.1 = testMonday
+        
+        let takenMonday = User.sharedInstance.getWeekdayTemplate(for: .monday)
+        
+        //test getting the weekday that was added into user weekTemplate
+        XCTAssertEqual(testMonday, takenMonday)
+        
+        let takenTuesday = User.sharedInstance.getWeekdayTemplate(for: .tuesday)
+
+        //test getting another weekday
+        XCTAssertNotEqual(testMonday, takenTuesday)
+        
+    }
     
-    
+    func testGetDayScheduleForDate() {
+        
+        //create weekTemplate for college
+        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college,3.hours)])
+        User.sharedInstance.weekTemplate = schedule
+        
+        let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
+        
+        User.sharedInstance.projects = [project1]
+        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
+        
+        XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
+        
+        for day in User.sharedInstance.schedule! {
+            for activity in day.activities {
+                
+                XCTAssertEqual(activity.project, project1)
+                
+            }
+        }
+        
+        XCTAssertEqual(project1.estimatedTime, 0)
+        
+        //project does not return new activity when it has already allocated all activities
+        XCTAssertNil(try! project1.nextActivity(for: TimeBlock(starts: Time(hour:0), ends: Time(hour: 23, minute: 59))))
+        
+    }
     
 }

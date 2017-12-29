@@ -8,10 +8,26 @@
 
 import Foundation
 
-struct User {
+class User {
     
     static var sharedInstance = User()
     
+    
+    private var _value: [Day] {
+        get{
+            guard let schedule = _scheduleCache else {
+                return []
+            }
+            
+            return schedule
+            
+        }
+        set{
+            _scheduleCache = newValue
+        }
+    }
+    private var _observers: [Observer] = []
+
     var projects: [Project]
     var contexts: [Context]
     var weekTemplate: WeekTemplate
@@ -172,6 +188,46 @@ struct User {
             return weekTemplate.value.5
         case .saturday:
             return weekTemplate.value.6
+        }
+    }
+    
+}
+
+extension User: Observable {
+    
+    typealias T = [Day]?
+    
+    var value: [Day]? {
+        get {
+            return self.schedule
+        }
+        set {
+            
+        }
+    }
+    
+    var observers: [Observer] {
+        get {
+            return self._observers
+        }
+        set {
+            self._observers = newValue
+        }
+    }
+    
+    func addObserver(observer: Observer) {
+        self.observers.append(observer)
+    }
+    
+    func removeObserver(observer: Observer) {
+        
+        observers = observers.filter({$0.observerId != observer.observerId})
+        
+    }
+    
+    func notifyAllObservers<T>(with newValue: T) {
+        for observer in observers {
+            observer.update(with: newValue)
         }
     }
     

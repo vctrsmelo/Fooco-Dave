@@ -13,7 +13,7 @@
 		EE40B7971FDB08A60087B768 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40B7961FDB08A60087B768 /* Day.swift */; };
 		EE4803D51FF58377008B60CF /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4803D41FF58377008B60CF /* WeekTemplate.swift */; };
 		EE85360B1FEDA47F00BA5BDC /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85360A1FEDA47F00BA5BDC /* ContextBlock.swift */; };
-		EE85360E1FEDA6FC00BA5BDC /* TestElementsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85360C1FEDA68200BA5BDC /* TestElementsFactory.swift */; };
+		EE85360E1FEDA6FC00BA5BDC /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85360C1FEDA68200BA5BDC /* TestElementsGenerator.swift */; };
 		EEBC21A81FCF0CDC0032FE29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */; };
 		EEBC21AA1FCF0CDC0032FE29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC21A91FCF0CDC0032FE29 /* ViewController.swift */; };
 		EEBC21AD1FCF0CDC0032FE29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBC21AB1FCF0CDC0032FE29 /* Main.storyboard */; };
@@ -55,7 +55,7 @@
 		EE40B7961FDB08A60087B768 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		EE4803D41FF58377008B60CF /* WeekTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
 		EE85360A1FEDA47F00BA5BDC /* ContextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextBlock.swift; sourceTree = "<group>"; };
-		EE85360C1FEDA68200BA5BDC /* TestElementsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestElementsFactory.swift; sourceTree = "<group>"; };
+		EE85360C1FEDA68200BA5BDC /* TestElementsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestElementsGenerator.swift; sourceTree = "<group>"; };
 		EEBC21A41FCF0CDC0032FE29 /* FoocoNewArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoocoNewArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBC21A71FCF0CDC0032FE29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEBC21A91FCF0CDC0032FE29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 			children = (
 				EEBC21BC1FCF0CDC0032FE29 /* FoocoNewArchitectureTests.swift */,
 				EEBC21BE1FCF0CDC0032FE29 /* Info.plist */,
-				EE85360C1FEDA68200BA5BDC /* TestElementsFactory.swift */,
+				EE85360C1FEDA68200BA5BDC /* TestElementsGenerator.swift */,
 			);
 			path = FoocoNewArchitectureTests;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 				EEBC21DF1FD069040032FE29 /* Extensions.swift in Sources */,
 				EE4803D51FF58377008B60CF /* WeekTemplate.swift in Sources */,
 				EE0E579F1FD7089500EF77C0 /* User.swift in Sources */,
-				EE85360E1FEDA6FC00BA5BDC /* TestElementsFactory.swift in Sources */,
+				EE85360E1FEDA6FC00BA5BDC /* TestElementsGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

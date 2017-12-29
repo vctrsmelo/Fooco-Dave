@@ -59,4 +59,28 @@ struct WeekdayTemplate {
     
 }
 
+extension WeekdayTemplate: Equatable {
+    static func ==(lhs: WeekdayTemplate, rhs: WeekdayTemplate) -> Bool {
+        
+        if lhs.weekday != rhs.weekday {
+            return false
+        }
+
+        for lhsCb in lhs.contextBlocks {
+            
+            if !rhs.contextBlocks.contains(lhsCb){
+            
+                return false
+                
+            }
+            
+        }
+        
+        return true
+        
+    }
+    
+    
+}
+
 

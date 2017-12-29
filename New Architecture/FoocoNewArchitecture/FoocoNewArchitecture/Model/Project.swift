@@ -38,29 +38,8 @@ class Project {
     private(set) var context: Context
     private var importance: Double
     
-    private var _notAllocatedEstimatedTime: TimeInterval
-    private var estimatedTime: TimeInterval {
-        var leftTime = _notAllocatedEstimatedTime
-        
-        //if user has an schedule in cache
-        if let schedule = User.sharedInstance.schedule {
-        
-            //for each day in schedule
-            for day in schedule {
-                
-                //for each activity in day
-                for activity in day.activities {
-                    
-                    //remove the time of activities already scheduled
-                    if activity.project == self {
-                        leftTime -= activity.length
-                    }
-                    
-                }
-            }
-        }
-        return leftTime
-    }
+    private let _initialEstimatedTime: TimeInterval
+    var estimatedTime: TimeInterval
 
     //priority cached. When it's not valid anymore, should be setted to nil
     private var _priority: Priority?
@@ -79,7 +58,7 @@ class Project {
         if advRange == 0.0 {
             advRange = 0.01
         }
-        print("\(name) - advRange: \(advRange)")
+        
         //there is no weekly available time for context. If that's the case, the project has no priority (it's impossible to be done while there is no time to work on it)
         if wat == 0 {
 
@@ -88,12 +67,11 @@ class Project {
         }
         
         _priority = (et*imp*advRange)/(wat*3)
-        print("\(name) - Priority: \(_priority)")
         return _priority!
         
     }
     
-    init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime notAllocatedLeftTime: TimeInterval) throws {
+    init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval) throws {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
@@ -105,23 +83,29 @@ class Project {
             
         }
         
-        self._notAllocatedEstimatedTime = notAllocatedLeftTime
-        
+        self.estimatedTime = initialEstimatedTime
+        self._initialEstimatedTime = initialEstimatedTime
         self.importance = importance
         self.id = UUID()
+        
+        User.sharedInstance.addObserver(observer: self)
     }
     
     /**
      Should be used internally just to load from database
      */
-    private init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime notAllocatedLeftTime: TimeInterval, id: UUID) {
+    private init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, id: UUID) {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
         self.context = context
         self.importance = importance
-        self._notAllocatedEstimatedTime = notAllocatedLeftTime
+        self.estimatedTime = initialEstimatedTime
+        self._initialEstimatedTime = initialEstimatedTime
         self.id = id
+
+        User.sharedInstance.addObserver(observer: self)
+    
     }
     
     /**
@@ -142,6 +126,7 @@ class Project {
         }
         
         //return new activity created
+        estimatedTime -= activityTimeBlock.length
         return Activity(for: activityTimeBlock, project: self)
         
     }
@@ -200,6 +185,24 @@ class Project {
     
 }
 
+extension Project: Observer {
+    typealias T = [Day]
+    
+    var observerId: UUID {
+        return self.id
+    }
+    
+    func update<T>(with newValue: T) {
+    
+        if newValue == nil {
+            estimatedTime = _initialEstimatedTime
+        }
+    
+    }
+    
+    
+}
+
 extension Project: Equatable {
     
     static func ==(lhs: Project, rhs: Project) -> Bool {
@@ -214,3 +217,4 @@ extension Project: Comparable {
     }
     
 }
+

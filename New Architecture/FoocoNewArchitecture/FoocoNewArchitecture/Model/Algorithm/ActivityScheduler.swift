@@ -8,6 +8,18 @@
 
 import Foundation
 
+enum ActivitySchedulerError: Error {
+    case ActivityOutOfTimeBlocksBound
+}
+
+extension ActivitySchedulerError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .ActivityOutOfTimeBlocksBound: return "Tried to add an activity out of available timeblocks limits"
+        }
+    }
+}
+
 class ActivityScheduler {
     
     let context: Context
@@ -34,7 +46,7 @@ class ActivityScheduler {
      Add an activity into ActivityScheduler
      - precondition: the TimeBlock of activity parameter must be into the list returned by getAvailableTimeBlocks()
     */
-    func add(activity: Activity) {
+    func add(activity: Activity) throws {
 
         let tbl = activity.timeBlock
         
@@ -54,6 +66,8 @@ class ActivityScheduler {
                 
             }
         }
+        
+        throw ActivitySchedulerError.ActivityOutOfTimeBlocksBound
         
     }
     

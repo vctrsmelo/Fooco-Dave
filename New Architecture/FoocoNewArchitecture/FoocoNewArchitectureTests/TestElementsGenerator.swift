@@ -1,5 +1,5 @@
 //
-//  TestElementsFactory.swift
+//  TestElementsGenerator.swift
 //  FoocoNewArchitectureTests
 //
 //  Created by Victor S Melo on 22/12/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TestElementsFactory {
+class TestElementsGenerator {
     
     
     /**

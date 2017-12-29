@@ -34,3 +34,17 @@ extension ContextBlock: TimeIntervalType {
     }
     
 }
+
+extension ContextBlock: Equatable {
+    
+    static func ==(lhs: ContextBlock, rhs: ContextBlock) -> Bool {
+        if lhs.context == rhs.context && lhs.timeBlock == rhs.timeBlock {
+            return true
+        }
+        
+        return false
+        
+    }
+    
+    
+}

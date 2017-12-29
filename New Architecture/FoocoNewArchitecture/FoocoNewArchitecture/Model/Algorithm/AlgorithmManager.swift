@@ -71,7 +71,7 @@ struct AlgorithmManager {
                     
                 }
                 
-                scheduler.add(activity: nextActivity)
+                try! scheduler.add(activity: nextActivity)
                 
             }
             
