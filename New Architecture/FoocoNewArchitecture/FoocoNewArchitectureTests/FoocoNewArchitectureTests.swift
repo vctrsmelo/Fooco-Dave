@@ -12,6 +12,7 @@ import XCTest
 class FoocoNewArchitectureTests: XCTestCase {
     
     let college = Context(name: "College")
+    let work = Context(name: "Work")
     
     override func setUp() {
         super.setUp()
@@ -270,7 +271,57 @@ class FoocoNewArchitectureTests: XCTestCase {
     
     }
     
+    func testGetProjectsForContext() {
+        
+        User.sharedInstance.contexts = [college,work]
+        
+        let proj1College = try! Project(name: "Algebra test studying", starts: Date(), ends: Date().addingTimeInterval(3.day), context: college, importance: 3, estimatedTime: 8.hours)
+        let proj2College = try! Project(name: "Programming Logic project", starts: Date().addingTimeInterval(-10.days), ends: Date().addingTimeInterval(10.day), context: college, importance: 3, estimatedTime: 15.hours)
+        let proj3College = try! Project(name: "AI project", starts: Date().addingTimeInterval(-10.days), ends: Date().addingTimeInterval(20.day), context: college, importance: 3, estimatedTime: 25.hours)
+        
+        let proj1Work = try! Project(name: "Website for John's e-commerce", starts: Date(), ends: Date().addingTimeInterval(30.day), context: work, importance: 3, estimatedTime: 20.hours)
+        let proj2Work = try! Project(name: "Presentation prepare for meeting with boss", starts: Date(), ends: Date().addingTimeInterval(10.day), context: work, importance: 2, estimatedTime: 3.hours)
+
+        User.sharedInstance.projects = [proj1College,proj2College,proj3College,proj1Work,proj2Work]
+
+        var collegeProjects = AlgorithmManager.getProjectsFor(context: college)
+        var workProjects = AlgorithmManager.getProjectsFor(context: work)
+        
+        var c = 0
+        for collegeProject in collegeProjects {
+            switch collegeProject {
+            case proj1College:
+                c += 1
+                break
+            case proj2College:
+                c += 1
+                break
+            case proj3College:
+                c += 1
+                break
+            default:
+                break
+            }
+        }
     
+        var w = 0
+        for workProject in workProjects {
+            switch workProject {
+            case proj1Work:
+                w += 1
+                break
+            case proj2Work:
+                w += 1
+                break
+            default:
+                break
+            }
+        }
+        
+        XCTAssertEqual(c, 3) //returned all college projects
+        XCTAssertEqual(w, 2) //returned all work projects
+        
+    }
     
     
     
