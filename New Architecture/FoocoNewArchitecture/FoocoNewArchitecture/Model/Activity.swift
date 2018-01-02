@@ -89,22 +89,6 @@ final class Activity: NSObject {
     
 }
 
-//extension Activity: CustomStringConvertible {
-//    var description: String {
-//
-//        var returnStr = "Activity ->"
-//
-//        if project != nil {
-//            returnStr += " project \(self.project!.name)"
-//        }
-//
-//        return "\(returnStr) from: \(timeBlock.start) to: \(timeBlock.end)"
-//
-//
-//    }
-//
-//}
-
 extension Activity: IntervalType {
     
     typealias Bound = Time
