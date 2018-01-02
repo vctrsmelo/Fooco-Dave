@@ -496,7 +496,7 @@ class FoocoNewArchitectureTests: XCTestCase {
         
         let activity1 = User.sharedInstance.schedule!.activities.first!
 
-        activity1.isCompleted = true
+        activity1.complete()
         
         //assert that the project1 knows the activity was completed
         XCTAssertTrue(project1.completedActivities.contains { (activity1) -> Bool in

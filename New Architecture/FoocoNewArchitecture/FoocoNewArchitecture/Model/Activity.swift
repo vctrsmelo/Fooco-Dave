@@ -28,7 +28,7 @@ final class Activity: NSObject {
     let timeBlock: TimeBlock
     let project: Project?
 
-    @objc dynamic var isCompleted: Bool
+    @objc private(set) dynamic var isCompleted: Bool
     /**
      If the activity is not related to a project, it should have a name
     */
@@ -71,6 +71,13 @@ final class Activity: NSObject {
         self.isCompleted = completed
         id = UUID()
         
+    }
+    
+    /**
+     Complete the current activity
+    */
+    func complete() {
+        self.isCompleted = true
     }
     
     /**
