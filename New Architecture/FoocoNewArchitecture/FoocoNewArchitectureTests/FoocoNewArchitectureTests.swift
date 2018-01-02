@@ -406,7 +406,7 @@ class FoocoNewArchitectureTests: XCTestCase {
     func testGetDayScheduleForDate() {
         
         //create weekTemplate for college
-        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college,3.hours)])
+        var schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college,3.hours)])
         User.sharedInstance.weekTemplate = schedule
         
         let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
@@ -428,6 +428,45 @@ class FoocoNewArchitectureTests: XCTestCase {
         
         //project does not return new activity when it has already allocated all activities
         XCTAssertNil(try! project1.nextActivity(for: TimeBlock(starts: Time(hour:0), ends: Time(hour: 23, minute: 59))))
+        
+        schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college,3.hours),(work, 4.hours)])
+        User.sharedInstance.weekTemplate = schedule
+        User.sharedInstance.schedule = nil
+        User.sharedInstance.projects = []
+        
+        let projCollege = try! Project(name: "College Project", starts: Date().addingTimeInterval(-1.day), ends: Date().addingTimeInterval(10.days), context: college, importance: 2, estimatedTime: 10.hours)
+        
+        let projWork = try! Project(name: "Work Project", starts: Date(), ends: Date().addingTimeInterval(20.days), context: work, importance: 3, estimatedTime: 20.hours)
+        
+        User.sharedInstance.projects = [projCollege,projWork]
+        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(3.days))
+        
+        XCTAssertEqual(User.sharedInstance.schedule!.count, 4)
+        
+        for day in User.sharedInstance.schedule! {
+            for activity in day.activities {
+            
+                let proj = activity.project!
+                XCTAssertTrue((proj.context == work && proj == projWork) || (proj.context == college && proj == projCollege))
+                
+            }
+        }
+        
+    }
+    
+    func testProjectProgress() {
+        
+        let proj = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 10.hours)
+        
+        let _ = try! proj.nextActivity(for: TimeBlock(starts: Time(hour:0), ends: Time(hour:5)))
+        
+        XCTAssertEqual(proj.estimatedTime, 5.hours)
+        XCTAssertEqual(proj.getProgress(), 0.5)
+
+        let _ = try! proj.nextActivity(for: TimeBlock(starts: Time(hour:0), ends: Time(hour:5)))
+
+        XCTAssertEqual(proj.estimatedTime, 0.hours)
+        XCTAssertEqual(proj.getProgress(), 1)
         
     }
     

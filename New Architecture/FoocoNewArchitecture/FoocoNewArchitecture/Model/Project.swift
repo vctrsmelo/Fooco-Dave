@@ -183,6 +183,16 @@ class Project {
         
     }
     
+    /**
+     - Returns:
+        A value between 0 and 1 representing the project progress, according to the estimated time.
+    */
+    func getProgress() -> Double {
+        
+        return (_initialEstimatedTime-estimatedTime)/_initialEstimatedTime
+        
+    }
+    
 }
 
 extension Project: Observer {
