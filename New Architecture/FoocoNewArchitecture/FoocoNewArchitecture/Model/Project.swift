@@ -27,7 +27,7 @@ extension ProjectError: CustomStringConvertible {
 */
 typealias Priority = Double
 
-class Project {
+class Project: NSObject {
     
     static private let importanceRange: [Double] = [1.0,2.0,3.0]
     
@@ -40,6 +40,10 @@ class Project {
     
     private let _initialEstimatedTime: TimeInterval
     var estimatedTime: TimeInterval
+    
+    var completedActivities: [(Activity,Date)]
+    
+    var observedActivities: [(Activity,NSKeyValueObservation)] = []
 
     //priority cached. When it's not valid anymore, should be setted to nil
     private var _priority: Priority?
@@ -65,13 +69,14 @@ class Project {
             return 0.0
         
         }
-        
+    
         _priority = (et*imp*advRange)/(wat*3)
         return _priority!
         
     }
     
-    init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval) throws {
+    init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, completedActivities: [(Activity,Date)] = []) throws {
+        
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
@@ -86,15 +91,16 @@ class Project {
         self.estimatedTime = initialEstimatedTime
         self._initialEstimatedTime = initialEstimatedTime
         self.importance = importance
+        self.completedActivities = completedActivities
         self.id = UUID()
-        
+        super.init()
         User.sharedInstance.addObserver(observer: self)
     }
     
     /**
      Should be used internally just to load from database
      */
-    private init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, id: UUID) {
+    private init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, completedActivities: [(Activity,Date)] = [], id: UUID) {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
@@ -102,8 +108,9 @@ class Project {
         self.importance = importance
         self.estimatedTime = initialEstimatedTime
         self._initialEstimatedTime = initialEstimatedTime
+        self.completedActivities = completedActivities
         self.id = id
-
+        super.init()
         User.sharedInstance.addObserver(observer: self)
     
     }
@@ -127,9 +134,28 @@ class Project {
         
         //return new activity created
         estimatedTime -= activityTimeBlock.length
-        return Activity(for: activityTimeBlock, project: self)
+        
+        let activity = Activity(for: activityTimeBlock, project: self)
+        
+        addCompletedActivityObservation(for: activity)
+        
+        return activity
         
     }
+    
+    private func addCompletedActivityObservation(for activity: Activity) {
+        //becomes oberver of activity
+        let observ = activity.observe(\.isCompleted) { (activity, change) in
+            if activity.isCompleted == true {
+                self.completedActivities.append((activity,Date()))
+                self.stopObserving(activity)
+            }
+        }
+        
+        self.observedActivities.append((activity,observ))
+        
+    }
+    
     
     /**
      Compares the parameter timeBlock with Activity.minimalTimeLength and with self.estimatedTime to get the real time block for the activity that shall be created.
@@ -193,6 +219,46 @@ class Project {
         
     }
     
+    /**
+     Add activity to the completed activities list
+     - Parameters:
+        - activity: is the activity to be added into the completed activities list
+        - date: is the date when activity was completed. If not defined, it will be the current date when this method is called.
+    */
+    func addCompletedActivity(_ activity: Activity, at date: Date = Date()) {
+        
+        self.completedActivities.append((activity,date))
+        
+    }
+    
+    /**
+     - Returns:
+     Sum of time length of the already completed activities.
+     */
+    func getCompletedActivitiesTotalLength() -> TimeInterval {
+        
+        var totalTime: TimeInterval = 0.0
+        
+        for activityAndDate in self.completedActivities {
+            totalTime += activityAndDate.0.length
+        }
+        
+        return totalTime
+        
+    }
+    
+    /**
+     Remove the activity from current observed activities
+    */
+    func stopObserving(_ activity: Activity) {
+        for i in 0 ..< self.observedActivities.count {
+            if self.observedActivities[i].0 == activity {
+                self.observedActivities.remove(at: i)
+                break
+            }
+        }
+    }
+    
 }
 
 extension Project: Observer {
@@ -205,18 +271,20 @@ extension Project: Observer {
     func update<T>(with newValue: T) {
     
         if newValue == nil {
-            estimatedTime = _initialEstimatedTime
+            estimatedTime = _initialEstimatedTime-getCompletedActivitiesTotalLength()
         }
+        
     
     }
     
     
 }
 
-extension Project: Equatable {
+//Equatable
+extension Project {
     
-    static func ==(lhs: Project, rhs: Project) -> Bool {
-        return lhs.id == rhs.id
+    override func isEqual(_ object: Any?) -> Bool {
+        return self.id == (object as? Project)?.id
     }
     
 }

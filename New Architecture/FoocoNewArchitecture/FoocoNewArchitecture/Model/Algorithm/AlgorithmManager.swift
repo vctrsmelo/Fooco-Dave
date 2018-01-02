@@ -22,7 +22,7 @@ struct AlgorithmManager {
         let lastDate = dte.getDay()
         
         //receives the day after the last cached day, or receives today, if there is no cached days.
-        var iteratorDate: Date! = (User.sharedInstance.schedule == nil) ? Date().getDay() : User.sharedInstance.schedule!.last!.date.addingTimeInterval(1.day)
+        var iteratorDate: Date! = (User.sharedInstance.schedule == nil || User.sharedInstance.schedule!.isEmpty) ? Date().getDay() : User.sharedInstance.schedule!.last!.date.addingTimeInterval(1.day)
         
         var resultDays: [Day] = []
         
@@ -103,12 +103,8 @@ struct AlgorithmManager {
 
             let highestProject = highestProjects[i]
             
-            for timeBlock in scheduler.getAvailableTimeBlocks() {
-                
-                //if timeBlock length is smaller than minimalTimeLength for activity, skip it
-                if timeBlock.length < Activity.minimalTimeLength {
-                    continue
-                }
+            //if timeBlock length is smaller than minimalTimeLength for activity, skip it
+            for timeBlock in (scheduler.getAvailableTimeBlocks().filter {$0.length >= Activity.minimalTimeLength }) {
                 
                 //if highestProject found an activity for timeBlock
                 if let nextActivity = highestProject.nextActivity(for: timeBlock) {
@@ -136,13 +132,10 @@ struct AlgorithmManager {
         var projects: [Project] = []
         
         //iterate over user projects
-        for project in User.sharedInstance.projects {
+        for project in (User.sharedInstance.projects.filter {$0.context == context}) {
             
-            if project.context == context {
-                
-                projects.append(project)
-                
-            }
+            projects.append(project)
+
         }
         
         return projects

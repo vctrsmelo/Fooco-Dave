@@ -44,7 +44,24 @@ class User {
             return _scheduleCache
         }
         set{
+            
             _scheduleCache = newValue?.sorted()
+
+        }
+    }
+    
+    /**
+     Return all the user's completed activities
+    */
+    var completedActivities: [(Activity,Date)] {
+        get {
+            var completedActivities: [(Activity,Date)] = []
+            for project in projects {
+                completedActivities.append(contentsOf: project.completedActivities)
+            }
+            
+            return completedActivities
+            
         }
     }
     
@@ -189,6 +206,106 @@ class User {
         case .saturday:
             return weekTemplate.value.6
         }
+    }
+    
+    /**
+     Retrieves all completed activities, and the corresponding date they were completed.
+     - Parameters:
+        - for: filter the activities for the context informed. If nil, returns activities for all contexts.
+        - at: filter the activities for the corresponding date. If nil, returns activities for all dates.
+     - Returns: All completed activities, and the date they were achieved, filtered according to the parameters.
+     */
+    func getCompletedActivitiesWithDate(for contextParam: Context? = nil, at dateParam: Date? = nil) -> [(Activity,Date)] {
+        
+        var completedActivities: [(Activity,Date)] = []
+        
+        if let context = contextParam {
+         
+            for project in (projects.filter{$0.context == context}) {
+                completedActivities.append(contentsOf: project.completedActivities)
+            }
+            
+        }
+        
+        if let date = dateParam {
+        
+            completedActivities = completedActivities.filter { $0.1.getDay() == date.getDay() }
+            
+        }
+
+        return completedActivities
+        
+    }
+    
+    /**
+     Retrieves all completed activities
+     - Parameters:
+        - for: filter the activities for the context informed. If nil, returns activities for all contexts.
+        - at: filter the activities for the corresponding date. If nil, returns activities for all dates.
+     - Returns: All completed activities filtered according to the parameters.
+    */
+    func getCompletedActivities(for contextParam: Context? = nil, at dateParam: Date? = nil) -> [Activity] {
+        
+        let activitiesWithDates = getCompletedActivitiesWithDate(for: contextParam, at: dateParam)
+        
+        var activities: [Activity] = []
+        for activityAndDate in activitiesWithDates {
+            
+            activities.append(activityAndDate.0)
+            
+        }
+        
+        return activities
+        
+    }
+    
+    /**
+     Retrieves all completed activities, and the corresponding date they were completed.
+     - Parameters:
+     - for: filter the activities for the project informed. If nil, returns activities for all projects.
+     - at: filter the activities for the corresponding date. If nil, returns activities for all dates.
+     - Returns: All completed activities, and the date they were achieved, filtered according to the parameters.
+     */
+    func getCompletedActivitiesWithDate(for projectParam: Project? = nil, at dateParam: Date? = nil) -> [(Activity,Date)] {
+        
+        var completedActivities: [(Activity,Date)] = []
+        
+        if let project = projectParam {
+            
+            completedActivities.append(contentsOf: project.completedActivities)
+            
+        }
+        
+        if let date = dateParam {
+            
+            completedActivities = completedActivities.filter { $0.1.getDay() == date.getDay() }
+            
+        }
+        
+        return completedActivities
+        
+    }
+    
+    /**
+     Retrieves all completed activities
+     - Parameters:
+     - for: filter the activities for the project informed. If nil, returns activities for all projects.
+     - at: filter the activities for the corresponding date. If nil, returns activities for all dates.
+     - Returns: All completed activities filtered according to the parameters.
+     */
+    func getCompletedActivities(for projectParam: Project? = nil, at dateParam: Date? = nil) -> [Activity] {
+        
+        let activitiesWithDates = getCompletedActivitiesWithDate(for: projectParam, at: dateParam)
+        
+        var activities: [Activity] = []
+        for activityAndDate in activitiesWithDates {
+            
+            activities.append(activityAndDate.0)
+            
+        }
+        
+        return activities
+        
     }
     
 }
