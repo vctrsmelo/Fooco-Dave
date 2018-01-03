@@ -17,6 +17,9 @@ class FoocoNewArchitectureTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        User.sharedInstance.projects = []
+        User.sharedInstance.contexts = []
+        User.sharedInstance.schedule = nil
     }
     
     override func tearDown() {
@@ -467,6 +470,49 @@ class FoocoNewArchitectureTests: XCTestCase {
 
         XCTAssertEqual(proj.estimatedTime, 0.hours)
         XCTAssertEqual(proj.getProgress(), 1)
+        
+    }
+    
+    func testGetCompletedActivities(){
+
+        //create weekTemplate for college
+        var schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college,5.hours)])
+        User.sharedInstance.weekTemplate = schedule
+
+        let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
+
+        User.sharedInstance.projects = [project1]
+        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
+
+        XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
+
+        for day in User.sharedInstance.schedule! {
+            for activity in day.activities {
+
+                XCTAssertEqual(activity.project, project1)
+
+            }
+        }
+        
+        let activity1 = User.sharedInstance.schedule!.activities.first!
+
+        activity1.complete()
+        
+        //assert that the project1 knows the activity was completed
+        XCTAssertTrue(project1.completedActivities.contains { (activity1) -> Bool in
+            
+            for actvAndDate in project1.completedActivities {
+                if actvAndDate.0 == activity1.0 {
+                    return true
+                }
+            }
+            
+            return false
+            
+        })
+        
+        //as the activity1 is completed, the project1 should stop observing it.
+        XCTAssertEqual(project1.observedActivities.count, 0)
         
     }
     

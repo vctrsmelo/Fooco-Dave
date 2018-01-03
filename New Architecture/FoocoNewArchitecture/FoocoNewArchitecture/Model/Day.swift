@@ -21,7 +21,7 @@ extension DayError: CustomStringConvertible {
 }
 
 
-struct Day {
+class Day {
     
     private let id: UUID
     

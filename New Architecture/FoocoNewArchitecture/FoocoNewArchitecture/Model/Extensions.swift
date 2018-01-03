@@ -157,3 +157,17 @@ extension Array where Element: Equatable {
 
 }
 
+extension Array where Element: Day {
+    
+    /**
+     Return only the activities of the array of days.
+    */
+    var activities: [Activity] {
+        var activities: [Activity] = []
+        for day in self {
+            activities.append(contentsOf: day.activities)
+        }
+        return activities
+    }
+    
+}

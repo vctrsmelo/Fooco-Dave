@@ -15,7 +15,9 @@ Activity is a period of time focusing in a task/project, or an event from calend
  - User input: through the interface
  - Calendar: through syncronization
 */
-struct Activity {
+final class Activity: NSObject {
+    
+    // MARK: - Properties
     
     /**
      It's the minimal time length that a timeBlock can have. It's useful to avoid creating activities with smaller time lengths.
@@ -25,73 +27,73 @@ struct Activity {
     private let id: UUID
     let timeBlock: TimeBlock
     let project: Project?
-    
+
+    @objc private(set) dynamic var isCompleted: Bool
     /**
      If the activity is not related to a project, it should have a name
     */
     private let name: String?
     
-    init(for timeBlock: TimeBlock, project: Project) {
+    // MARK: - Initialization
+    
+    init(for timeBlock: TimeBlock, project: Project, completed: Bool = false) {
         self.project = project
         self.name = nil
         self.timeBlock = timeBlock
+        self.isCompleted = completed
         id = UUID()
     }
     
-    init(for timeBlock: TimeBlock, name: String) {
+    init(for timeBlock: TimeBlock, name: String, completed: Bool = false) {
         self.name = name
         self.project = nil
         self.timeBlock = timeBlock
+        self.isCompleted = completed
         id = UUID()
     }
 
     
-    init(from: Time, to: Time, project: Project) throws {
+    init(from: Time, to: Time, project: Project, completed: Bool = false) throws {
         
         self.project = project
         self.name = nil
         self.timeBlock = try TimeBlock(starts: from, ends: to)
+        self.isCompleted = completed
         id = UUID()
         
     }
     
-    init(from: Time, to: Time, name: String) throws {
+    init(from: Time, to: Time, name: String, completed: Bool = false) throws {
         
         self.name = name
         self.project = nil
         self.timeBlock = try TimeBlock(starts: from, ends: to)
+        self.isCompleted = completed
         id = UUID()
         
     }
     
     /**
+     Complete the current activity
+    */
+    func complete() {
+        self.isCompleted = true
+    }
+    
+    /**
      Should be used internally just to load from database
     */
-    private init(from: Time, to: Time, project: Project?, name: String?, id: UUID) throws {
+    private init(from: Time, to: Time, project: Project?, name: String?, completed: Bool = false, id: UUID) throws {
         
         self.project = project
         self.name = name
         self.timeBlock = try TimeBlock(starts: from, ends: to)
+        self.isCompleted = completed
         self.id = id
+        
         
     }
     
-}
-
-extension Activity: CustomStringConvertible {
-    var description: String {
-        
-        var returnStr = "Activity ->"
-        
-        if project != nil {
-            returnStr += " project \(self.project!.name)"
-        }
-        
-        return "\(returnStr) from: \(timeBlock.start) to: \(timeBlock.end)"
-        
-        
-    }
-
 }
 
 extension Activity: IntervalType {
@@ -170,14 +172,11 @@ extension Activity: TimeIntervalType {
     
 }
 
-extension Activity: Equatable {
-    
-    static func ==(_ actv1: Activity, _ actv2: Activity) -> Bool{
-        return  actv1.timeBlock == actv2.timeBlock
+//equatable
+extension Activity {
+
+    override func isEqual(_ object: Any?) -> Bool {
+        return self.timeBlock == (object as? Activity)?.timeBlock
     }
-    
-    static func !=(_ actv1: Activity, _ actv2: Activity) -> Bool{
-        return  actv1.timeBlock != actv2.timeBlock
-    }
-    
+
 }
