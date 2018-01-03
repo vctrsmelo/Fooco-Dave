@@ -94,7 +94,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		// Textfield
 		let border = CALayer()
 		let width = CGFloat(1.0)
-		border.frame = CGRect(x: 0, y: nameTextField.frame.size.height - width, width:  nameTextField.frame.size.width, height: nameTextField.frame.size.height)
+		border.frame = CGRect(x: 0, y: nameTextField.frame.size.height - width, width: nameTextField.frame.size.width, height: nameTextField.frame.size.height)
 		border.borderWidth = width
 		nameTextFieldBorder = border
 		nameTextField.layer.addSublayer(border)
