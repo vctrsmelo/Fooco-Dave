@@ -15,8 +15,8 @@
 		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
 		E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */; };
 		E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */; };
-		E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
-		E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
+		E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
+		E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
 		E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
 		EE1493F31FAA4E69004750DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1493F21FAA4E69004750DC /* Event.swift */; };
 		EE61F1FE1FB9F771005D6668 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -99,7 +99,7 @@
 		BEF900921FB63974007FB677 /* EditProjectContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCell.xib; sourceTree = "<group>"; };
 		E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFooco.swift; sourceTree = "<group>"; };
 		E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewCell.swift; sourceTree = "<group>"; };
-		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsOLD.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		EE1493F21FAA4E69004750DC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EE899B4E1FBE27A200234504 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		EE99BB8A1F9A37E70051B33B /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E7AE61F11FC6784200F0BE62 /* Extensions.swift */,
+				E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */,
 				EE99BB931F9A383E0051B33B /* Model */,
 			);
 			path = Common;
@@ -620,7 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */,
+				E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
 				FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */,
 				FCE6461E1FD07C7E008F65D6 /* NewContextViewModel.swift in Sources */,
 				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
@@ -669,7 +669,7 @@
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
 				FC2F29CC1F9A3EA200984409 /* ContextBlock.swift in Sources */,
 				FC2F29CD1F9A3EA200984409 /* Project.swift in Sources */,
-				E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */,
+				E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
