@@ -65,7 +65,7 @@ class EditProjectViewControllerFooco: UIViewController {
 				User.sharedInstance.add(projects: [savedProject])
 			}
 			
-			User.sharedInstance.isCurrentScheduleUpdated = false
+			User.sharedInstance.invalidateSchedule()
 			
 			self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 			
