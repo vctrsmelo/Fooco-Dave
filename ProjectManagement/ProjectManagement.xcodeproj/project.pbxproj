@@ -47,8 +47,8 @@
 		FC981C3C1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */; };
 		FC981C3D1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
 		FC981C3E1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
-		FC981C3F1FFED9A5000C2EC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */; };
-		FC981C401FFED9A5000C2EC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */; };
+		FC981C3F1FFED9A5000C2EC1 /* ExtensionsNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2C1FFED9A4000C2EC1 /* ExtensionsNEW.swift */; };
+		FC981C401FFED9A5000C2EC1 /* ExtensionsNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2C1FFED9A4000C2EC1 /* ExtensionsNEW.swift */; };
 		FC981C411FFED9A5000C2EC1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2D1FFED9A4000C2EC1 /* Project.swift */; };
 		FC981C421FFED9A5000C2EC1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2D1FFED9A4000C2EC1 /* Project.swift */; };
 		FC981C431FFED9A5000C2EC1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */; };
@@ -137,7 +137,7 @@
 		FC981C281FFED9A4000C2EC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
 		FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityScheduler.swift; sourceTree = "<group>"; };
-		FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FC981C2C1FFED9A4000C2EC1 /* ExtensionsNEW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsNEW.swift; sourceTree = "<group>"; };
 		FC981C2D1FFED9A4000C2EC1 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextBlock.swift; sourceTree = "<group>"; };
 		FC981C2F1FFED9A4000C2EC1 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
@@ -329,7 +329,7 @@
 				FC981C271FFED9A4000C2EC1 /* Day.swift */,
 				FC981C281FFED9A4000C2EC1 /* User.swift */,
 				FC981C291FFED9A4000C2EC1 /* Algorithm */,
-				FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */,
+				FC981C2C1FFED9A4000C2EC1 /* ExtensionsNEW.swift */,
 				FC981C2D1FFED9A4000C2EC1 /* Project.swift */,
 				FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */,
 				FC981C2F1FFED9A4000C2EC1 /* Context.swift */,
@@ -593,7 +593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC981C3F1FFED9A5000C2EC1 /* Extensions.swift in Sources */,
+				FC981C3F1FFED9A5000C2EC1 /* ExtensionsNEW.swift in Sources */,
 				E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
 				FC981C4F1FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */,
 				FC981C491FFED9A5000C2EC1 /* Activity.swift in Sources */,
@@ -642,7 +642,7 @@
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
 				FC981C3E1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */,
 				FC981C3C1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */,
-				FC981C401FFED9A5000C2EC1 /* Extensions.swift in Sources */,
+				FC981C401FFED9A5000C2EC1 /* ExtensionsNEW.swift in Sources */,
 				FC981C4E1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */,
 				E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
 				FC981C421FFED9A5000C2EC1 /* Project.swift in Sources */,
