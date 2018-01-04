@@ -17,76 +17,6 @@
 		E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
 		E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
 		E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
-		EE47396A1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
-		EE47396B1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
-		EE47396C1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
-		EE47396D1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
-		EE47396E1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
-		EE47396F1FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
-		EE4739701FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
-		EE4739711FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
-		EE4739721FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
-		EE4739731FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
-		EE4739741FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
-		EE4739751FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
-		EE4739761FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
-		EE4739771FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
-		EE4739781FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
-		EE4739791FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
-		EE47397A1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
-		EE47397B1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
-		EE47397C1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
-		EE47397D1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
-		EE47397E1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
-		EE47397F1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
-		EE4739801FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
-		EE4739811FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
-		EE4739821FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
-		EE4739831FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
-		EE4739841FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
-		EE4739851FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
-		EE4739861FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
-		EE4739871FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
-		EE4739881FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
-		EE4739891FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
-		EE47398A1FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
-		EE47398B1FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
-		EE47398C1FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
-		EE47398D1FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
-		EE47398E1FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
-		EE47398F1FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
-		EE4739901FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
-		EE4739911FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
-		EE4739921FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
-		EE4739931FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
-		EE4739941FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
-		EE4739951FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
-		EE4739961FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
-		EE4739971FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
-		EE4739981FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
-		EE4739991FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
-		EE47399A1FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
-		EE47399B1FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
-		EE47399C1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
-		EE47399D1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
-		EE47399E1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
-		EE47399F1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
-		EE4739A01FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
-		EE4739A11FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
-		EE4739A21FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
-		EE4739A31FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
-		EE4739A41FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
-		EE4739A51FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
-		EE4739A61FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
-		EE4739A71FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
-		EE4739A81FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
-		EE4739A91FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
-		EE4739AA1FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
-		EE4739AB1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
-		EE4739AC1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
-		EE4739AD1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
-		EE4739AE1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
-		EE4739AF1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
 		EE4739B21FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
 		EE4739B31FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
 		EE4739B41FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
@@ -115,6 +45,34 @@
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
+		FC981C351FFED9A5000C2EC1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C261FFED9A4000C2EC1 /* Time.swift */; };
+		FC981C361FFED9A5000C2EC1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C261FFED9A4000C2EC1 /* Time.swift */; };
+		FC981C371FFED9A5000C2EC1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C271FFED9A4000C2EC1 /* Day.swift */; };
+		FC981C381FFED9A5000C2EC1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C271FFED9A4000C2EC1 /* Day.swift */; };
+		FC981C391FFED9A5000C2EC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C281FFED9A4000C2EC1 /* User.swift */; };
+		FC981C3A1FFED9A5000C2EC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C281FFED9A4000C2EC1 /* User.swift */; };
+		FC981C3B1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */; };
+		FC981C3C1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */; };
+		FC981C3D1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
+		FC981C3E1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
+		FC981C3F1FFED9A5000C2EC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */; };
+		FC981C401FFED9A5000C2EC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */; };
+		FC981C411FFED9A5000C2EC1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2D1FFED9A4000C2EC1 /* Project.swift */; };
+		FC981C421FFED9A5000C2EC1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2D1FFED9A4000C2EC1 /* Project.swift */; };
+		FC981C431FFED9A5000C2EC1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */; };
+		FC981C441FFED9A5000C2EC1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */; };
+		FC981C451FFED9A5000C2EC1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2F1FFED9A4000C2EC1 /* Context.swift */; };
+		FC981C461FFED9A5000C2EC1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2F1FFED9A4000C2EC1 /* Context.swift */; };
+		FC981C471FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C301FFED9A4000C2EC1 /* CustomProtocols.swift */; };
+		FC981C481FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C301FFED9A4000C2EC1 /* CustomProtocols.swift */; };
+		FC981C491FFED9A5000C2EC1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C311FFED9A4000C2EC1 /* Activity.swift */; };
+		FC981C4A1FFED9A5000C2EC1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C311FFED9A4000C2EC1 /* Activity.swift */; };
+		FC981C4B1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */; };
+		FC981C4C1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */; };
+		FC981C4D1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */; };
+		FC981C4E1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */; };
+		FC981C4F1FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */; };
+		FC981C501FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */; };
 		FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */; };
 /* End PBXBuildFile section */
 
@@ -154,20 +112,6 @@
 		E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewCell.swift; sourceTree = "<group>"; };
 		E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsOLD.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
-		EE47395B1FFEC42A003884A1 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
-		EE47395C1FFEC42A003884A1 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		EE47395D1FFEC42A003884A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
-		EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityScheduler.swift; sourceTree = "<group>"; };
-		EE4739611FFEC42A003884A1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		EE4739621FFEC42A003884A1 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		EE4739631FFEC42A003884A1 /* ContextBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextBlock.swift; sourceTree = "<group>"; };
-		EE4739641FFEC42A003884A1 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
-		EE4739651FFEC42A003884A1 /* CustomProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProtocols.swift; sourceTree = "<group>"; };
-		EE4739661FFEC42A003884A1 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		EE4739671FFEC42A003884A1 /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
-		EE4739681FFEC42A003884A1 /* WeekTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
-		EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
 		EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestElementsGenerator.swift; path = "../../../New Architecture/FoocoNewArchitecture/FoocoNewArchitectureTests/TestElementsGenerator.swift"; sourceTree = "<group>"; };
 		EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectManagementTests.swift; path = "../../../New Architecture/FoocoNewArchitecture/FoocoNewArchitectureTests/ProjectManagementTests.swift"; sourceTree = "<group>"; };
 		EE899B4E1FBE27A200234504 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -198,6 +142,20 @@
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
+		FC981C261FFED9A4000C2EC1 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		FC981C271FFED9A4000C2EC1 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		FC981C281FFED9A4000C2EC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
+		FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityScheduler.swift; sourceTree = "<group>"; };
+		FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FC981C2D1FFED9A4000C2EC1 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextBlock.swift; sourceTree = "<group>"; };
+		FC981C2F1FFED9A4000C2EC1 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		FC981C301FFED9A4000C2EC1 /* CustomProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProtocols.swift; sourceTree = "<group>"; };
+		FC981C311FFED9A4000C2EC1 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
+		FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
+		FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
 		FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewControllerFooco.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,41 +208,11 @@
 			path = FoocoTests;
 			sourceTree = "<group>";
 		};
-		EE47395A1FFEC42A003884A1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EE47395B1FFEC42A003884A1 /* Time.swift */,
-				EE47395C1FFEC42A003884A1 /* Day.swift */,
-				EE47395D1FFEC42A003884A1 /* User.swift */,
-				EE47395E1FFEC42A003884A1 /* Algorithm */,
-				EE4739611FFEC42A003884A1 /* Extensions.swift */,
-				EE4739621FFEC42A003884A1 /* Project.swift */,
-				EE4739631FFEC42A003884A1 /* ContextBlock.swift */,
-				EE4739641FFEC42A003884A1 /* Context.swift */,
-				EE4739651FFEC42A003884A1 /* CustomProtocols.swift */,
-				EE4739661FFEC42A003884A1 /* Activity.swift */,
-				EE4739671FFEC42A003884A1 /* TimeBlock.swift */,
-				EE4739681FFEC42A003884A1 /* WeekTemplate.swift */,
-				EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */,
-			);
-			name = Model;
-			path = "../../New Architecture/FoocoNewArchitecture/FoocoNewArchitecture/Model";
-			sourceTree = "<group>";
-		};
-		EE47395E1FFEC42A003884A1 /* Algorithm */ = {
-			isa = PBXGroup;
-			children = (
-				EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */,
-				EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */,
-			);
-			path = Algorithm;
-			sourceTree = "<group>";
-		};
 		EE99BB8A1F9A37E70051B33B /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */,
-				EE47395A1FFEC42A003884A1 /* Model */,
+				FC981C251FFED9A4000C2EC1 /* Model */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -412,6 +340,35 @@
 				EE899B4E1FBE27A200234504 /* UIColorExtension.swift */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		FC981C251FFED9A4000C2EC1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC981C261FFED9A4000C2EC1 /* Time.swift */,
+				FC981C271FFED9A4000C2EC1 /* Day.swift */,
+				FC981C281FFED9A4000C2EC1 /* User.swift */,
+				FC981C291FFED9A4000C2EC1 /* Algorithm */,
+				FC981C2C1FFED9A4000C2EC1 /* Extensions.swift */,
+				FC981C2D1FFED9A4000C2EC1 /* Project.swift */,
+				FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */,
+				FC981C2F1FFED9A4000C2EC1 /* Context.swift */,
+				FC981C301FFED9A4000C2EC1 /* CustomProtocols.swift */,
+				FC981C311FFED9A4000C2EC1 /* Activity.swift */,
+				FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */,
+				FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */,
+				FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC981C291FFED9A4000C2EC1 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */,
+				FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */,
+			);
+			path = Algorithm;
 			sourceTree = "<group>";
 		};
 		FCE536B31FB4C2FC0010BA63 /* Controllers */ = {
@@ -664,21 +621,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE4739BB1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
-				EE4739821FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
-				EE4739AF1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
-				EE4739781FFEC42A003884A1 /* User.swift in Sources */,
-				EE4739911FFEC42A003884A1 /* ContextBlock.swift in Sources */,
-				EE47399B1FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
 				EE4739B61FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
-				EE4739961FFEC42A003884A1 /* Context.swift in Sources */,
-				EE47396E1FFEC42A003884A1 /* Time.swift in Sources */,
-				EE4739A01FFEC42A003884A1 /* Activity.swift in Sources */,
-				EE4739A51FFEC42A003884A1 /* TimeBlock.swift in Sources */,
-				EE47397D1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
-				EE4739731FFEC42A003884A1 /* Day.swift in Sources */,
-				EE4739AA1FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
-				EE4739871FFEC42A003884A1 /* Extensions.swift in Sources */,
-				EE47398C1FFEC42A003884A1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,37 +629,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4739971FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
+				FC981C3F1FFED9A5000C2EC1 /* Extensions.swift in Sources */,
 				E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
-				EE4739791FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
+				FC981C4F1FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */,
+				FC981C491FFED9A5000C2EC1 /* Activity.swift in Sources */,
+				FC981C3B1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */,
+				FC981C451FFED9A5000C2EC1 /* Context.swift in Sources */,
 				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
-				EE47398D1FFEC42A003884A1 /* ContextBlock.swift in Sources */,
 				E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */,
 				FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */,
-				EE4739AB1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
-				EE47396A1FFEC42A003884A1 /* Time.swift in Sources */,
-				EE47397E1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
-				EE4739881FFEC42A003884A1 /* Project.swift in Sources */,
 				EE4739B71FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
+				FC981C4D1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */,
+				FC981C3D1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */,
 				E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */,
+				FC981C351FFED9A5000C2EC1 /* Time.swift in Sources */,
 				BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */,
+				FC981C391FFED9A5000C2EC1 /* User.swift in Sources */,
 				E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */,
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
+				FC981C431FFED9A5000C2EC1 /* ContextBlock.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
-				EE4739831FFEC42A003884A1 /* Extensions.swift in Sources */,
-				EE47396F1FFEC42A003884A1 /* Day.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
 				EE4739B21FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
-				EE4739741FFEC42A003884A1 /* User.swift in Sources */,
-				EE4739A11FFEC42A003884A1 /* TimeBlock.swift in Sources */,
+				FC981C471FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */,
+				FC981C371FFED9A5000C2EC1 /* Day.swift in Sources */,
 				FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */,
-				EE4739921FFEC42A003884A1 /* Context.swift in Sources */,
 				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
-				EE4739A61FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
-				EE47399C1FFEC42A003884A1 /* Activity.swift in Sources */,
+				FC981C4B1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */,
 				EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */,
+				FC981C411FFED9A5000C2EC1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,25 +667,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4739A21FFEC42A003884A1 /* TimeBlock.swift in Sources */,
-				EE47396B1FFEC42A003884A1 /* Time.swift in Sources */,
-				EE4739841FFEC42A003884A1 /* Extensions.swift in Sources */,
-				EE47399D1FFEC42A003884A1 /* Activity.swift in Sources */,
-				EE47397A1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
-				EE4739A71FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
-				EE4739AC1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
-				EE4739981FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
-				EE4739891FFEC42A003884A1 /* Project.swift in Sources */,
+				FC981C481FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */,
+				FC981C501FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */,
+				FC981C381FFED9A5000C2EC1 /* Day.swift in Sources */,
+				FC981C441FFED9A5000C2EC1 /* ContextBlock.swift in Sources */,
+				FC981C361FFED9A5000C2EC1 /* Time.swift in Sources */,
+				FC981C461FFED9A5000C2EC1 /* Context.swift in Sources */,
 				EE4739B81FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
+				FC981C4A1FFED9A5000C2EC1 /* Activity.swift in Sources */,
+				FC981C4C1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */,
 				EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */,
-				EE4739751FFEC42A003884A1 /* User.swift in Sources */,
-				EE47398E1FFEC42A003884A1 /* ContextBlock.swift in Sources */,
+				FC981C3A1FFED9A5000C2EC1 /* User.swift in Sources */,
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
-				EE4739701FFEC42A003884A1 /* Day.swift in Sources */,
+				FC981C3E1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */,
 				EE4739B31FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
-				EE4739931FFEC42A003884A1 /* Context.swift in Sources */,
-				EE47397F1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
+				FC981C3C1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */,
+				FC981C401FFED9A5000C2EC1 /* Extensions.swift in Sources */,
+				FC981C4E1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */,
 				E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
+				FC981C421FFED9A5000C2EC1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,23 +693,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4739801FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
-				EE4739AD1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
-				EE4739761FFEC42A003884A1 /* User.swift in Sources */,
-				EE47398F1FFEC42A003884A1 /* ContextBlock.swift in Sources */,
-				EE4739991FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
-				EE4739941FFEC42A003884A1 /* Context.swift in Sources */,
-				EE47396C1FFEC42A003884A1 /* Time.swift in Sources */,
-				EE47399E1FFEC42A003884A1 /* Activity.swift in Sources */,
 				EE4739B91FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
-				EE4739A31FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */,
 				EE4739B41FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
-				EE47397B1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
-				EE4739711FFEC42A003884A1 /* Day.swift in Sources */,
-				EE4739A81FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
-				EE4739851FFEC42A003884A1 /* Extensions.swift in Sources */,
-				EE47398A1FFEC42A003884A1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,23 +703,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4739811FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
-				EE4739AE1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
-				EE4739771FFEC42A003884A1 /* User.swift in Sources */,
-				EE4739901FFEC42A003884A1 /* ContextBlock.swift in Sources */,
-				EE47399A1FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
-				EE4739951FFEC42A003884A1 /* Context.swift in Sources */,
-				EE47396D1FFEC42A003884A1 /* Time.swift in Sources */,
-				EE47399F1FFEC42A003884A1 /* Activity.swift in Sources */,
 				EE4739BA1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
-				EE4739A41FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */,
 				EE4739B51FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
-				EE47397C1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
-				EE4739721FFEC42A003884A1 /* Day.swift in Sources */,
-				EE4739A91FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
-				EE4739861FFEC42A003884A1 /* Extensions.swift in Sources */,
-				EE47398B1FFEC42A003884A1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,7 +800,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -951,7 +866,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Y93HUJS49V;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1073,7 +988,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = Y93HUJS49V;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1138,7 +1053,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Y93HUJS49V;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
