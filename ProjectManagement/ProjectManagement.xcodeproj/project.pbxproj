@@ -11,7 +11,6 @@
 		BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */; };
 		BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11211FB38C3E004B5B9E /* Mocado.swift */; };
 		BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */; };
-		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
 		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
 		E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */; };
 		E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */; };
@@ -88,6 +87,16 @@
 		EE4739AD1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
 		EE4739AE1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
 		EE4739AF1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
+		EE4739B21FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
+		EE4739B31FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
+		EE4739B41FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
+		EE4739B51FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
+		EE4739B61FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
+		EE4739B71FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
+		EE4739B81FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
+		EE4739B91FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
+		EE4739BA1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
+		EE4739BB1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
 		EE61F1FE1FB9F771005D6668 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
@@ -139,7 +148,6 @@
 		BE6E11211FB38C3E004B5B9E /* Mocado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocado.swift; sourceTree = "<group>"; };
 		BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectTableViewControllerFooco.swift; sourceTree = "<group>"; };
 		BEDE6C721FB0D0DE00ABD6D8 /* FoocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoTests.swift; sourceTree = "<group>"; };
 		BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEF900921FB63974007FB677 /* EditProjectContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCell.xib; sourceTree = "<group>"; };
 		E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFooco.swift; sourceTree = "<group>"; };
@@ -160,6 +168,8 @@
 		EE4739671FFEC42A003884A1 /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
 		EE4739681FFEC42A003884A1 /* WeekTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
 		EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
+		EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestElementsGenerator.swift; path = "../../../New Architecture/FoocoNewArchitecture/FoocoNewArchitectureTests/TestElementsGenerator.swift"; sourceTree = "<group>"; };
+		EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectManagementTests.swift; path = "../../../New Architecture/FoocoNewArchitecture/FoocoNewArchitectureTests/ProjectManagementTests.swift"; sourceTree = "<group>"; };
 		EE899B4E1FBE27A200234504 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B661F9A36CA00851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,7 +243,8 @@
 		BEDE6C731FB0D0DE00ABD6D8 /* FoocoTests */ = {
 			isa = PBXGroup;
 			children = (
-				BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */,
+				EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */,
+				EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */,
 				BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */,
 			);
 			path = FoocoTests;
@@ -652,16 +663,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4739BB1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				EE4739821FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
 				EE4739AF1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
 				EE4739781FFEC42A003884A1 /* User.swift in Sources */,
 				EE4739911FFEC42A003884A1 /* ContextBlock.swift in Sources */,
 				EE47399B1FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
+				EE4739B61FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				EE4739961FFEC42A003884A1 /* Context.swift in Sources */,
 				EE47396E1FFEC42A003884A1 /* Time.swift in Sources */,
 				EE4739A01FFEC42A003884A1 /* Activity.swift in Sources */,
 				EE4739A51FFEC42A003884A1 /* TimeBlock.swift in Sources */,
-				BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */,
 				EE47397D1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
 				EE4739731FFEC42A003884A1 /* Day.swift in Sources */,
 				EE4739AA1FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
@@ -685,6 +697,7 @@
 				EE47396A1FFEC42A003884A1 /* Time.swift in Sources */,
 				EE47397E1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
 				EE4739881FFEC42A003884A1 /* Project.swift in Sources */,
+				EE4739B71FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */,
 				BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */,
 				E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */,
@@ -694,6 +707,7 @@
 				EE4739831FFEC42A003884A1 /* Extensions.swift in Sources */,
 				EE47396F1FFEC42A003884A1 /* Day.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
+				EE4739B21FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				EE4739741FFEC42A003884A1 /* User.swift in Sources */,
 				EE4739A11FFEC42A003884A1 /* TimeBlock.swift in Sources */,
@@ -719,11 +733,13 @@
 				EE4739AC1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
 				EE4739981FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
 				EE4739891FFEC42A003884A1 /* Project.swift in Sources */,
+				EE4739B81FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */,
 				EE4739751FFEC42A003884A1 /* User.swift in Sources */,
 				EE47398E1FFEC42A003884A1 /* ContextBlock.swift in Sources */,
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
 				EE4739701FFEC42A003884A1 /* Day.swift in Sources */,
+				EE4739B31FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				EE4739931FFEC42A003884A1 /* Context.swift in Sources */,
 				EE47397F1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
 				E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
@@ -742,8 +758,10 @@
 				EE4739941FFEC42A003884A1 /* Context.swift in Sources */,
 				EE47396C1FFEC42A003884A1 /* Time.swift in Sources */,
 				EE47399E1FFEC42A003884A1 /* Activity.swift in Sources */,
+				EE4739B91FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				EE4739A31FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */,
+				EE4739B41FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				EE47397B1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
 				EE4739711FFEC42A003884A1 /* Day.swift in Sources */,
 				EE4739A81FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
@@ -764,8 +782,10 @@
 				EE4739951FFEC42A003884A1 /* Context.swift in Sources */,
 				EE47396D1FFEC42A003884A1 /* Time.swift in Sources */,
 				EE47399F1FFEC42A003884A1 /* Activity.swift in Sources */,
+				EE4739BA1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				EE4739A41FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */,
+				EE4739B51FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				EE47397C1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
 				EE4739721FFEC42A003884A1 /* Day.swift in Sources */,
 				EE4739A91FFEC42A003884A1 /* WeekTemplate.swift in Sources */,

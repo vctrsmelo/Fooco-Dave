@@ -223,16 +223,16 @@ extension UIButton {
 // MARK: Date
 
 //extension Date {
-//    
+//
 //    func toString(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
 //        let dateFormatter = DateFormatter()
-//        
+//
 //        dateFormatter.dateStyle = dateStyle
 //        dateFormatter.timeStyle = timeStyle
-//        
+//
 //        return dateFormatter.string(from: self)
 //    }
-//    
+//
 //    /**
 //    Set hours, minutes and seconds to zero, returning only the day.
 //    */
@@ -241,9 +241,9 @@ extension UIButton {
 //        let today = Calendar.current.dateComponents([.day, .month, .year], from: self)
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "dd-MM-yyyy"
-//        
+//
 //        return dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!)")!
-//        
+//
 //    }
 //}
 

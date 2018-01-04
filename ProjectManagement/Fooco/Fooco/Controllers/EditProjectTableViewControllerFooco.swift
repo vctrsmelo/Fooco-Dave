@@ -213,12 +213,13 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 	}
 	
 	private func updateProjectData() {
+        
 		self.nameTextField.text = self.project?.name ?? ""
 		self.startingDate = self.project?.startingDate ?? Date()
 		self.deadlineDate = self.project?.endingDate ?? Date().addingTimeInterval(7.days)
 		self.selectedContext = self.project?.context
-		self.importance = self.project?.importance ?? 1
-		self.estimatedTime = self.project?.totalTimeEstimated ?? 0
+		self.importance = Int(self.project?.importance ?? 1)
+		self.estimatedTime = self.project?.estimatedTime ?? 0
 		
 		self.updateColor()
 	}
@@ -231,13 +232,13 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 				someProject.startingDate = begin
 				someProject.endingDate = end
 				someProject.context = context
-				someProject.importance = self.importance
-				someProject.totalTimeEstimated = estimate
+				someProject.importance = Double(self.importance)
+				someProject.updateInitialEstimatedTime(estimatedTime)
 				
 				return someProject
 				
 			} else {
-				return Project(named: name, startsAt: begin, endsAt: end, withContext: context, importance: self.importance, totalTimeEstimated: estimate)
+                return try! Project(name: name, starts: begin, ends: end, context: context, importance: Double(importance), estimatedTime: estimate)
 			}
 			
 		} else {

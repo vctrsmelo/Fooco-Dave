@@ -75,7 +75,6 @@ protocol TimeIntervalType {
 }
 
 protocol Observer {
-    
     var observerId: UUID {
         get
     }

@@ -33,13 +33,13 @@ class Project: NSObject {
     
     private let id: UUID
     var name: String
-    private var startingDate: Date
-    private var endingDate: Date
-    private(set) var context: Context
-    private var importance: Double
+    var startingDate: Date
+    var endingDate: Date
+    var context: Context
+    var importance: Double
     
-    private let _initialEstimatedTime: TimeInterval
-    var estimatedTime: TimeInterval
+    private var _initialEstimatedTime: TimeInterval
+    private(set) var estimatedTime: TimeInterval
     
     var completedActivities: [(Activity,Date)]
     
@@ -140,6 +140,16 @@ class Project: NSObject {
         addCompletedActivityObservation(for: activity)
         
         return activity
+        
+    }
+    
+    /**
+     Update the initial estimated time for the project.
+    */
+    func updateInitialEstimatedTime(_ timeInterval: TimeInterval) {
+        
+        _initialEstimatedTime = timeInterval
+        update(with: User.sharedInstance.schedule)
         
     }
     
@@ -262,19 +272,25 @@ class Project: NSObject {
 }
 
 extension Project: Observer {
-    typealias T = [Day]
     
     var observerId: UUID {
         return self.id
     }
     
     func update<T>(with newValue: T) {
-    
-        if newValue == nil {
-            estimatedTime = _initialEstimatedTime-getCompletedActivitiesTotalLength()
+        
+
+        estimatedTime = _initialEstimatedTime-getCompletedActivitiesTotalLength()
+
+        guard let schedule = newValue as? [Day] else {
+            return
+            
         }
         
-    
+        for activity in schedule.activities where activity.project == self{
+            estimatedTime -= activity.length
+        }
+        
     }
     
     

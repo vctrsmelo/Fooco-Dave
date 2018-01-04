@@ -46,7 +46,8 @@ class User {
         set{
             
             _scheduleCache = newValue?.sorted()
-
+            notifyAllObservers(with: newValue)
+            
         }
     }
     
@@ -77,6 +78,47 @@ class User {
         self.projects = projects
         self.contexts = contexts
         self.schedule = schedule
+        
+    }
+    
+    /**
+     Append the projects into user current projects list
+     */
+    func add(projects projs: [Project]) {
+        projects.append(contentsOf: projs)
+    }
+    
+    func add(contexts ctxs: [Context]) {
+        contexts.append(contentsOf: ctxs)
+    }
+    
+    /**
+     Invalidates the current schedule cached.
+    */
+    func invalidateSchedule() {
+        self.schedule = []
+    }
+    
+    /**
+     Get next activity available into user schedule.
+    */
+    func getNextActivity() -> Activity? {
+        
+        guard let schedule = self.schedule else {
+            return nil
+        }
+        
+        if let day = (schedule.filter{$0.date >= Date()}.sorted().first) {
+
+            let activity = day.activities.sorted(by: { (act1, act2) -> Bool in
+                return act1.timeBlock.start < act2.timeBlock.start
+            }).first
+            
+            return activity
+                
+        }
+        
+        return nil
         
     }
     

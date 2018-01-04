@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 class Context {
     
     var name: String
+    var color: UIColor
+    var icon: UIImage
     
-    init(name: String) {
+    init(name: String, color: UIColor, icon: UIImage) {
         self.name = name
+        self.color = color
+        self.icon = icon
     }
     
 }

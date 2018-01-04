@@ -53,10 +53,11 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 	}
 	
 	private func dataUpdate() {
-		User.sharedInstance.updateCurrentScheduleUntil(date: Date().addingTimeInterval(2.days))
+        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(2.days))
 		
 		self.currentActivity = User.sharedInstance.getNextActivity()
-		
+        self.currentActivity = User.sharedInstance.getNextActivity()
+        
 		self.viewSwiper.viewsAreHidden(self.currentActivity == nil)
 		
 		self.topLabel.text = self.chooseTopLabelText()
@@ -124,7 +125,7 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 
 extension HomeViewControllerFooco: ViewSwiperDelegate {
 	func doneExecuted() {
-		User.sharedInstance.getNextActivity()?.done = true
+		User.sharedInstance.getNextActivity()?.complete()
 		self.dataUpdate()
 	}
 	

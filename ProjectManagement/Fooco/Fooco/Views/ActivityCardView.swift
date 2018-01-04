@@ -22,11 +22,18 @@ class ActivityCardView: UIView {
 	@IBOutlet private weak var focusTime: UILabel!
 
 	private func dataManager() {
-		self.startTime.text = self.data?.timeBlock.startsAt.toString(dateStyle: .none, timeStyle: .short)
-		self.deadlineTime.text = self.data?.timeBlock.endsAt.toString(dateStyle: .none, timeStyle: .short)
-		self.context.text = self.data?.project.context.name
-		self.project.text = self.data?.project.name
-		
-		self.focusTime.text = self.data?.timeBlock.totalTime.toString()
+//		self.startTime.text = self.data?.timeBlock.startsAt.toString(dateStyle: .none, timeStyle: .short)
+        
+        if let data = self.data {
+            self.startTime.text = "\(data.timeBlock.start.hour):\(data.timeBlock.start.minute)"
+            self.deadlineTime.text = "\(data.timeBlock.end.hour):\(data.timeBlock.end.minute)"
+            self.context.text = data.project?.context.name ?? ""
+            self.project.text = data.project?.name ?? data.name!
+
+            self.focusTime.text = "\(data.timeBlock.length.inHours)"
+
+        }
+        
+        
 	}
 }

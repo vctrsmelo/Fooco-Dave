@@ -32,7 +32,7 @@ final class Activity: NSObject {
     /**
      If the activity is not related to a project, it should have a name
     */
-    private let name: String?
+    let name: String?
     
     // MARK: - Initialization
     
