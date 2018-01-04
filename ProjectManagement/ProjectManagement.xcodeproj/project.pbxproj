@@ -15,10 +15,79 @@
 		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
 		E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */; };
 		E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */; };
-		E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
-		E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
+		E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
+		E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
 		E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
-		EE1493F31FAA4E69004750DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1493F21FAA4E69004750DC /* Event.swift */; };
+		EE47396A1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
+		EE47396B1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
+		EE47396C1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
+		EE47396D1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
+		EE47396E1FFEC42A003884A1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395B1FFEC42A003884A1 /* Time.swift */; };
+		EE47396F1FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
+		EE4739701FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
+		EE4739711FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
+		EE4739721FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
+		EE4739731FFEC42A003884A1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395C1FFEC42A003884A1 /* Day.swift */; };
+		EE4739741FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
+		EE4739751FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
+		EE4739761FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
+		EE4739771FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
+		EE4739781FFEC42A003884A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395D1FFEC42A003884A1 /* User.swift */; };
+		EE4739791FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
+		EE47397A1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
+		EE47397B1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
+		EE47397C1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
+		EE47397D1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */; };
+		EE47397E1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
+		EE47397F1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
+		EE4739801FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
+		EE4739811FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
+		EE4739821FFEC42A003884A1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */; };
+		EE4739831FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
+		EE4739841FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
+		EE4739851FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
+		EE4739861FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
+		EE4739871FFEC42A003884A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739611FFEC42A003884A1 /* Extensions.swift */; };
+		EE4739881FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
+		EE4739891FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
+		EE47398A1FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
+		EE47398B1FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
+		EE47398C1FFEC42A003884A1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739621FFEC42A003884A1 /* Project.swift */; };
+		EE47398D1FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
+		EE47398E1FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
+		EE47398F1FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
+		EE4739901FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
+		EE4739911FFEC42A003884A1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739631FFEC42A003884A1 /* ContextBlock.swift */; };
+		EE4739921FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
+		EE4739931FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
+		EE4739941FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
+		EE4739951FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
+		EE4739961FFEC42A003884A1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739641FFEC42A003884A1 /* Context.swift */; };
+		EE4739971FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
+		EE4739981FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
+		EE4739991FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
+		EE47399A1FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
+		EE47399B1FFEC42A003884A1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739651FFEC42A003884A1 /* CustomProtocols.swift */; };
+		EE47399C1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
+		EE47399D1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
+		EE47399E1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
+		EE47399F1FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
+		EE4739A01FFEC42A003884A1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739661FFEC42A003884A1 /* Activity.swift */; };
+		EE4739A11FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
+		EE4739A21FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
+		EE4739A31FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
+		EE4739A41FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
+		EE4739A51FFEC42A003884A1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739671FFEC42A003884A1 /* TimeBlock.swift */; };
+		EE4739A61FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
+		EE4739A71FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
+		EE4739A81FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
+		EE4739A91FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
+		EE4739AA1FFEC42A003884A1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739681FFEC42A003884A1 /* WeekTemplate.swift */; };
+		EE4739AB1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
+		EE4739AC1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
+		EE4739AD1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
+		EE4739AE1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
+		EE4739AF1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */; };
 		EE61F1FE1FB9F771005D6668 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
@@ -34,22 +103,6 @@
 		EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */; };
 		EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */; };
 		FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */; };
-		FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8B1F9A37E70051B33B /* Activity.swift */; };
-		FC2F29C31F9A3EA100984409 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8C1F9A37E70051B33B /* Context.swift */; };
-		FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8D1F9A37E70051B33B /* ContextBlock.swift */; };
-		FC2F29C51F9A3EA100984409 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8E1F9A37E70051B33B /* Project.swift */; };
-		FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8F1F9A37E70051B33B /* TimeBlock.swift */; };
-		FC2F29C71F9A3EA100984409 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB901F9A37E70051B33B /* User.swift */; };
-		FC2F29C81F9A3EA100984409 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB911F9A37E70051B33B /* Week.swift */; };
-		FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
-		FC2F29CA1F9A3EA200984409 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8B1F9A37E70051B33B /* Activity.swift */; };
-		FC2F29CB1F9A3EA200984409 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8C1F9A37E70051B33B /* Context.swift */; };
-		FC2F29CC1F9A3EA200984409 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8D1F9A37E70051B33B /* ContextBlock.swift */; };
-		FC2F29CD1F9A3EA200984409 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8E1F9A37E70051B33B /* Project.swift */; };
-		FC2F29CE1F9A3EA200984409 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB8F1F9A37E70051B33B /* TimeBlock.swift */; };
-		FC2F29CF1F9A3EA200984409 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB901F9A37E70051B33B /* User.swift */; };
-		FC2F29D01F9A3EA200984409 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB911F9A37E70051B33B /* Week.swift */; };
-		FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE99BB921F9A37E70051B33B /* Weekday.swift */; };
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
@@ -91,18 +144,23 @@
 		BEF900921FB63974007FB677 /* EditProjectContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCell.xib; sourceTree = "<group>"; };
 		E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFooco.swift; sourceTree = "<group>"; };
 		E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewCell.swift; sourceTree = "<group>"; };
-		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsOLD.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
-		EE1493F21FAA4E69004750DC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		EE47395B1FFEC42A003884A1 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		EE47395C1FFEC42A003884A1 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		EE47395D1FFEC42A003884A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
+		EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityScheduler.swift; sourceTree = "<group>"; };
+		EE4739611FFEC42A003884A1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EE4739621FFEC42A003884A1 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		EE4739631FFEC42A003884A1 /* ContextBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextBlock.swift; sourceTree = "<group>"; };
+		EE4739641FFEC42A003884A1 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		EE4739651FFEC42A003884A1 /* CustomProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProtocols.swift; sourceTree = "<group>"; };
+		EE4739661FFEC42A003884A1 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		EE4739671FFEC42A003884A1 /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
+		EE4739681FFEC42A003884A1 /* WeekTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
+		EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
 		EE899B4E1FBE27A200234504 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		EE99BB8B1F9A37E70051B33B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		EE99BB8C1F9A37E70051B33B /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
-		EE99BB8D1F9A37E70051B33B /* ContextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextBlock.swift; sourceTree = "<group>"; };
-		EE99BB8E1F9A37E70051B33B /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		EE99BB8F1F9A37E70051B33B /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
-		EE99BB901F9A37E70051B33B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EE99BB911F9A37E70051B33B /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
-		EE99BB921F9A37E70051B33B /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B661F9A36CA00851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA46B6B1F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,29 +239,43 @@
 			path = FoocoTests;
 			sourceTree = "<group>";
 		};
+		EE47395A1FFEC42A003884A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE47395B1FFEC42A003884A1 /* Time.swift */,
+				EE47395C1FFEC42A003884A1 /* Day.swift */,
+				EE47395D1FFEC42A003884A1 /* User.swift */,
+				EE47395E1FFEC42A003884A1 /* Algorithm */,
+				EE4739611FFEC42A003884A1 /* Extensions.swift */,
+				EE4739621FFEC42A003884A1 /* Project.swift */,
+				EE4739631FFEC42A003884A1 /* ContextBlock.swift */,
+				EE4739641FFEC42A003884A1 /* Context.swift */,
+				EE4739651FFEC42A003884A1 /* CustomProtocols.swift */,
+				EE4739661FFEC42A003884A1 /* Activity.swift */,
+				EE4739671FFEC42A003884A1 /* TimeBlock.swift */,
+				EE4739681FFEC42A003884A1 /* WeekTemplate.swift */,
+				EE4739691FFEC42A003884A1 /* WeekdayTemplate.swift */,
+			);
+			name = Model;
+			path = "../../New Architecture/FoocoNewArchitecture/FoocoNewArchitecture/Model";
+			sourceTree = "<group>";
+		};
+		EE47395E1FFEC42A003884A1 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				EE47395F1FFEC42A003884A1 /* AlgorithmManager.swift */,
+				EE4739601FFEC42A003884A1 /* ActivityScheduler.swift */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
 		EE99BB8A1F9A37E70051B33B /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E7AE61F11FC6784200F0BE62 /* Extensions.swift */,
-				EE99BB931F9A383E0051B33B /* Model */,
+				E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */,
+				EE47395A1FFEC42A003884A1 /* Model */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		EE99BB931F9A383E0051B33B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EE99BB8B1F9A37E70051B33B /* Activity.swift */,
-				EE99BB8C1F9A37E70051B33B /* Context.swift */,
-				EE99BB8D1F9A37E70051B33B /* ContextBlock.swift */,
-				EE99BB8E1F9A37E70051B33B /* Project.swift */,
-				EE99BB8F1F9A37E70051B33B /* TimeBlock.swift */,
-				EE99BB901F9A37E70051B33B /* User.swift */,
-				EE99BB911F9A37E70051B33B /* Week.swift */,
-				EE99BB921F9A37E70051B33B /* Weekday.swift */,
-				EE1493F21FAA4E69004750DC /* Event.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		EEA46B581F9A36A400851D5D = {
@@ -580,7 +652,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4739821FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
+				EE4739AF1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
+				EE4739781FFEC42A003884A1 /* User.swift in Sources */,
+				EE4739911FFEC42A003884A1 /* ContextBlock.swift in Sources */,
+				EE47399B1FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
+				EE4739961FFEC42A003884A1 /* Context.swift in Sources */,
+				EE47396E1FFEC42A003884A1 /* Time.swift in Sources */,
+				EE4739A01FFEC42A003884A1 /* Activity.swift in Sources */,
+				EE4739A51FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */,
+				EE47397D1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
+				EE4739731FFEC42A003884A1 /* Day.swift in Sources */,
+				EE4739AA1FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
+				EE4739871FFEC42A003884A1 /* Extensions.swift in Sources */,
+				EE47398C1FFEC42A003884A1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,29 +674,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */,
-				FC2F29C21F9A3EA100984409 /* Activity.swift in Sources */,
+				EE4739971FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
+				E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
+				EE4739791FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
 				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
-				EE1493F31FAA4E69004750DC /* Event.swift in Sources */,
+				EE47398D1FFEC42A003884A1 /* ContextBlock.swift in Sources */,
 				E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */,
 				FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */,
-				FC2F29C31F9A3EA100984409 /* Context.swift in Sources */,
+				EE4739AB1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
+				EE47396A1FFEC42A003884A1 /* Time.swift in Sources */,
+				EE47397E1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
+				EE4739881FFEC42A003884A1 /* Project.swift in Sources */,
 				E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */,
 				BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */,
-				FC2F29C61F9A3EA100984409 /* TimeBlock.swift in Sources */,
-				FC2F29C71F9A3EA100984409 /* User.swift in Sources */,
-				FC2F29C81F9A3EA100984409 /* Week.swift in Sources */,
 				E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */,
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
-				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
+				EE4739831FFEC42A003884A1 /* Extensions.swift in Sources */,
+				EE47396F1FFEC42A003884A1 /* Day.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
+				EE4739741FFEC42A003884A1 /* User.swift in Sources */,
+				EE4739A11FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */,
-				FC2F29C41F9A3EA100984409 /* ContextBlock.swift in Sources */,
+				EE4739921FFEC42A003884A1 /* Context.swift in Sources */,
 				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
-				FC2F29C51F9A3EA100984409 /* Project.swift in Sources */,
+				EE4739A61FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
+				EE47399C1FFEC42A003884A1 /* Activity.swift in Sources */,
 				EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,17 +710,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC2F29CA1F9A3EA200984409 /* Activity.swift in Sources */,
-				FC2F29CB1F9A3EA200984409 /* Context.swift in Sources */,
-				FC2F29CE1F9A3EA200984409 /* TimeBlock.swift in Sources */,
+				EE4739A21FFEC42A003884A1 /* TimeBlock.swift in Sources */,
+				EE47396B1FFEC42A003884A1 /* Time.swift in Sources */,
+				EE4739841FFEC42A003884A1 /* Extensions.swift in Sources */,
+				EE47399D1FFEC42A003884A1 /* Activity.swift in Sources */,
+				EE47397A1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
+				EE4739A71FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
+				EE4739AC1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
+				EE4739981FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
+				EE4739891FFEC42A003884A1 /* Project.swift in Sources */,
 				EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */,
-				FC2F29CF1F9A3EA200984409 /* User.swift in Sources */,
-				FC2F29D01F9A3EA200984409 /* Week.swift in Sources */,
-				FC2F29D11F9A3EA200984409 /* Weekday.swift in Sources */,
+				EE4739751FFEC42A003884A1 /* User.swift in Sources */,
+				EE47398E1FFEC42A003884A1 /* ContextBlock.swift in Sources */,
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
-				FC2F29CC1F9A3EA200984409 /* ContextBlock.swift in Sources */,
-				FC2F29CD1F9A3EA200984409 /* Project.swift in Sources */,
-				E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */,
+				EE4739701FFEC42A003884A1 /* Day.swift in Sources */,
+				EE4739931FFEC42A003884A1 /* Context.swift in Sources */,
+				EE47397F1FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
+				E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +734,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4739801FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
+				EE4739AD1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
+				EE4739761FFEC42A003884A1 /* User.swift in Sources */,
+				EE47398F1FFEC42A003884A1 /* ContextBlock.swift in Sources */,
+				EE4739991FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
+				EE4739941FFEC42A003884A1 /* Context.swift in Sources */,
+				EE47396C1FFEC42A003884A1 /* Time.swift in Sources */,
+				EE47399E1FFEC42A003884A1 /* Activity.swift in Sources */,
+				EE4739A31FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */,
+				EE47397B1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
+				EE4739711FFEC42A003884A1 /* Day.swift in Sources */,
+				EE4739A81FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
+				EE4739851FFEC42A003884A1 /* Extensions.swift in Sources */,
+				EE47398A1FFEC42A003884A1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +756,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4739811FFEC42A003884A1 /* ActivityScheduler.swift in Sources */,
+				EE4739AE1FFEC42A003884A1 /* WeekdayTemplate.swift in Sources */,
+				EE4739771FFEC42A003884A1 /* User.swift in Sources */,
+				EE4739901FFEC42A003884A1 /* ContextBlock.swift in Sources */,
+				EE47399A1FFEC42A003884A1 /* CustomProtocols.swift in Sources */,
+				EE4739951FFEC42A003884A1 /* Context.swift in Sources */,
+				EE47396D1FFEC42A003884A1 /* Time.swift in Sources */,
+				EE47399F1FFEC42A003884A1 /* Activity.swift in Sources */,
+				EE4739A41FFEC42A003884A1 /* TimeBlock.swift in Sources */,
 				EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */,
+				EE47397C1FFEC42A003884A1 /* AlgorithmManager.swift in Sources */,
+				EE4739721FFEC42A003884A1 /* Day.swift in Sources */,
+				EE4739A91FFEC42A003884A1 /* WeekTemplate.swift in Sources */,
+				EE4739861FFEC42A003884A1 /* Extensions.swift in Sources */,
+				EE47398B1FFEC42A003884A1 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
