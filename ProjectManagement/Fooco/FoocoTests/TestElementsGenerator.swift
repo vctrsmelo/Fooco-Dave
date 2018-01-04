@@ -6,6 +6,7 @@
 //  Copyright © 2017 Victor S Melo. All rights reserved.
 //
 
+@testable import Fooco
 import Foundation
 
 class TestElementsGenerator {
@@ -14,7 +15,7 @@ class TestElementsGenerator {
     /**
      - Returns: weekly schedule with only one daily context block for each context parameter.
     */
-    static func getWeekSchedule(contextAndDailyTime: [(Context,TimeInterval)]) -> WeekTemplate {
+    static func getWeekSchedule(contextAndDailyTime: [(Context, TimeInterval)]) -> WeekTemplate {
 
         var sun = WeekdayTemplate(weekday: .sunday)
         var mon = WeekdayTemplate(weekday: .monday)
@@ -47,7 +48,6 @@ class TestElementsGenerator {
         }
         
         return WeekTemplate(sun: sun, mon: mon, tue: tue, wed: wed, thu: thu, fri: fri, sat: sat)
-        
     }
     
 }

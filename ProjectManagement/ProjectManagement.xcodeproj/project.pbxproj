@@ -17,16 +17,6 @@
 		E7AE61F21FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
 		E7AE61F31FC6784200F0BE62 /* ExtensionsOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */; };
 		E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
-		EE4739B21FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
-		EE4739B31FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
-		EE4739B41FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
-		EE4739B51FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
-		EE4739B61FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */; };
-		EE4739B71FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
-		EE4739B81FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
-		EE4739B91FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
-		EE4739BA1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
-		EE4739BB1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */; };
 		EE61F1FE1FB9F771005D6668 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
@@ -45,6 +35,8 @@
 		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
+		FC9703D21FFEDEF100E5C8A3 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9703CF1FFEDEEA00E5C8A3 /* ProjectManagementTests.swift */; };
+		FC9703D31FFEDEF100E5C8A3 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9703CE1FFEDEEA00E5C8A3 /* TestElementsGenerator.swift */; };
 		FC981C351FFED9A5000C2EC1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C261FFED9A4000C2EC1 /* Time.swift */; };
 		FC981C361FFED9A5000C2EC1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C261FFED9A4000C2EC1 /* Time.swift */; };
 		FC981C371FFED9A5000C2EC1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C271FFED9A4000C2EC1 /* Day.swift */; };
@@ -112,16 +104,12 @@
 		E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewCell.swift; sourceTree = "<group>"; };
 		E7AE61F11FC6784200F0BE62 /* ExtensionsOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsOLD.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
-		EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestElementsGenerator.swift; path = "../../../New Architecture/FoocoNewArchitecture/FoocoNewArchitectureTests/TestElementsGenerator.swift"; sourceTree = "<group>"; };
-		EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectManagementTests.swift; path = "../../../New Architecture/FoocoNewArchitecture/FoocoNewArchitectureTests/ProjectManagementTests.swift"; sourceTree = "<group>"; };
 		EE899B4E1FBE27A200234504 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B661F9A36CA00851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA46B6B1F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEA46B701F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEA46B721F9A36CA00851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EEA46B861F9A36CA00851D5D /* FoocoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoUITests.swift; sourceTree = "<group>"; };
-		EEA46B881F9A36CA00851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEA46B961F9A36D600851D5D /* Dave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B981F9A36D600851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA46B9A1F9A36D600851D5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +130,8 @@
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
+		FC9703CE1FFEDEEA00E5C8A3 /* TestElementsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestElementsGenerator.swift; sourceTree = "<group>"; };
+		FC9703CF1FFEDEEA00E5C8A3 /* ProjectManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManagementTests.swift; sourceTree = "<group>"; };
 		FC981C261FFED9A4000C2EC1 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		FC981C271FFED9A4000C2EC1 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		FC981C281FFED9A4000C2EC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -201,8 +191,8 @@
 		BEDE6C731FB0D0DE00ABD6D8 /* FoocoTests */ = {
 			isa = PBXGroup;
 			children = (
-				EE4739B11FFECD0D003884A1 /* ProjectManagementTests.swift */,
-				EE4739B01FFECD0C003884A1 /* TestElementsGenerator.swift */,
+				FC9703CF1FFEDEEA00E5C8A3 /* ProjectManagementTests.swift */,
+				FC9703CE1FFEDEEA00E5C8A3 /* TestElementsGenerator.swift */,
 				BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */,
 			);
 			path = FoocoTests;
@@ -253,15 +243,6 @@
 			path = Fooco;
 			sourceTree = "<group>";
 		};
-		EEA46B851F9A36CA00851D5D /* FoocoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EEA46B861F9A36CA00851D5D /* FoocoUITests.swift */,
-				EEA46B881F9A36CA00851D5D /* Info.plist */,
-			);
-			path = FoocoUITests;
-			sourceTree = "<group>";
-		};
 		EEA46B971F9A36D600851D5D /* Dave */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +287,6 @@
 			children = (
 				EEA46B651F9A36CA00851D5D /* Fooco */,
 				BEDE6C731FB0D0DE00ABD6D8 /* FoocoTests */,
-				EEA46B851F9A36CA00851D5D /* FoocoUITests */,
 			);
 			path = Fooco;
 			sourceTree = "<group>";
@@ -432,7 +412,6 @@
 				EEA46B5F1F9A36CA00851D5D /* Sources */,
 				EEA46B601F9A36CA00851D5D /* Frameworks */,
 				EEA46B611F9A36CA00851D5D /* Resources */,
-				EE1493F11FAA3D70004750DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -507,6 +486,7 @@
 				TargetAttributes = {
 					BEDE6C711FB0D0DE00ABD6D8 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = EEA46B621F9A36CA00851D5D;
 					};
@@ -599,29 +579,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		EE1493F11FAA3D70004750DC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		BEDE6C6E1FB0D0DE00ABD6D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4739BB1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
-				EE4739B61FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
+				FC9703D31FFEDEF100E5C8A3 /* TestElementsGenerator.swift in Sources */,
+				FC9703D21FFEDEF100E5C8A3 /* ProjectManagementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,7 +602,6 @@
 				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
 				E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */,
 				FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */,
-				EE4739B71FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				FC981C4D1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */,
 				FC981C3D1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */,
 				E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */,
@@ -651,7 +614,6 @@
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
 				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
-				EE4739B21FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				FC981C471FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */,
 				FC981C371FFED9A5000C2EC1 /* Day.swift in Sources */,
@@ -673,14 +635,12 @@
 				FC981C441FFED9A5000C2EC1 /* ContextBlock.swift in Sources */,
 				FC981C361FFED9A5000C2EC1 /* Time.swift in Sources */,
 				FC981C461FFED9A5000C2EC1 /* Context.swift in Sources */,
-				EE4739B81FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				FC981C4A1FFED9A5000C2EC1 /* Activity.swift in Sources */,
 				FC981C4C1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */,
 				EEA46B9B1F9A36D600851D5D /* ViewController.swift in Sources */,
 				FC981C3A1FFED9A5000C2EC1 /* User.swift in Sources */,
 				EEA46B991F9A36D600851D5D /* AppDelegate.swift in Sources */,
 				FC981C3E1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */,
-				EE4739B31FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 				FC981C3C1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */,
 				FC981C401FFED9A5000C2EC1 /* Extensions.swift in Sources */,
 				FC981C4E1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */,
@@ -693,9 +653,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4739B91FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */,
-				EE4739B41FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,9 +661,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4739BA1FFECD0D003884A1 /* ProjectManagementTests.swift in Sources */,
 				EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */,
-				EE4739B51FFECD0D003884A1 /* TestElementsGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
