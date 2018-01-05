@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */; };
 		BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */; };
-		BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11211FB38C3E004B5B9E /* Mocado.swift */; };
 		BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */; };
 		BEDE6C751FB0D0DE00ABD6D8 /* FoocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */; };
 		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
@@ -91,7 +90,6 @@
 /* Begin PBXFileReference section */
 		BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewControllerFooco.swift; sourceTree = "<group>"; };
 		BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectContextCell.swift; sourceTree = "<group>"; };
-		BE6E11211FB38C3E004B5B9E /* Mocado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocado.swift; sourceTree = "<group>"; };
 		BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectTableViewControllerFooco.swift; sourceTree = "<group>"; };
 		BEDE6C721FB0D0DE00ABD6D8 /* FoocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE6C741FB0D0DE00ABD6D8 /* FoocoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoocoTests.swift; sourceTree = "<group>"; };
@@ -332,7 +330,6 @@
 			children = (
 				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
 				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
-				BE6E11211FB38C3E004B5B9E /* Mocado.swift */,
 				FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */,
 				EED935551FBF615C00177FCC /* XibLoader.swift */,
 				EEA46B721F9A36CA00851D5D /* Info.plist */,
@@ -624,7 +621,6 @@
 				FC2F29C91F9A3EA100984409 /* Weekday.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
 				FC673FF91FCF48DD00D4E9D4 /* NewContextViewController.swift in Sources */,
-				BE6E11221FB38C3E004B5B9E /* Mocado.swift in Sources */,
 				FC5252B71FD0816400852FDB /* EditContextViewModel.swift in Sources */,
 				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
