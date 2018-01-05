@@ -25,6 +25,7 @@ extension TimeBlockError: CustomStringConvertible {
 
 
 struct TimeBlock {
+    private var hash = UUID() // TODO: Make decent
 
     private var starts: Time!
 
@@ -116,17 +117,22 @@ extension TimeBlock: TimeIntervalType {
     
 }
 
-
 extension TimeBlock: Equatable {
     
-    static func ==(_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool{
+    static func == (_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool{
         return tb1.range == tb2.range
     }
 
-    static func !=(_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool{
+    static func != (_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool{
         return tb1.range != tb2.range
     }
     
+}
+
+extension TimeBlock: Hashable {
+    var hashValue: Int {
+        return self.hash.hashValue // TODO: make decent
+    }
 }
 
 extension TimeBlock {

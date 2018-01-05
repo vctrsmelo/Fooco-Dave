@@ -58,6 +58,12 @@ struct Time {
 
     }
     
+    init(date: Date) {
+        let components = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: date)
+        
+        self.totalSeconds = components.day!.day + components.hour!.hour + components.minute!.minute + components.second!.second
+    }
+    
     init(timeInterval: TimeInterval) {
         
         self.totalSeconds = timeInterval
@@ -72,16 +78,21 @@ struct Time {
         
     }
     
+    func toDate() -> Date {
+        let components = DateComponents(calendar: Calendar.current, day: self.day, hour: self.hour, minute: self.minute, second: self.second)
+        
+        return Calendar.current.date(from: components)!
+    }
 }
 
 extension Time: Comparable {
     
-    static func <(lhs: Time, rhs: Time) -> Bool {
+    static func < (lhs: Time, rhs: Time) -> Bool {
         
         return lhs.totalSeconds < rhs.totalSeconds
     }
     
-    static func ==(lhs: Time, rhs: Time) -> Bool {
+    static func == (lhs: Time, rhs: Time) -> Bool {
         return lhs.totalSeconds == rhs.totalSeconds
     }
     
@@ -90,7 +101,7 @@ extension Time: Comparable {
 
 extension Time {
     
-    static func -(lhs: Time, rhs: Time) -> TimeInterval {
+    static func - (lhs: Time, rhs: Time) -> TimeInterval {
         return lhs.totalSeconds - rhs.totalSeconds
     }
     

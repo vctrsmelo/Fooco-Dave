@@ -36,4 +36,13 @@ class ActivityCardView: UIView {
         
         
 	}
+	
+	private func string(of time: TimeInterval?) -> String {
+		let formatter = DateComponentsFormatter()
+		formatter.allowedUnits = [.day, .hour, .minute]
+		formatter.unitsStyle = .abbreviated
+		formatter.maximumUnitCount = 2
+		
+		return formatter.string(from: time ?? 0)!
+	}
 }

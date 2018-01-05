@@ -34,7 +34,7 @@ class FloatingAddButton: UIButton {
 		
 		self.adjustsImageWhenHighlighted = true
 		
-		self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		self.backgroundColor = UIColor.Interface.iBlack
 		
 		self.shadowColor = .black
 		self.shadowOffset = CGSize(width: 1, height: 1)

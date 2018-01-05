@@ -1,8 +1,138 @@
+################## Minimized result of calling 'swiftlint rules' for version 0.24.0
+
+# +------------------------------------------+--------+-------------+-------------+
+# | identifier                               | opt-in | correctable | kind        |
+# +------------------------------------------+--------+-------------+-------------+
+# | array_init                               | yes    | no          | lint        |
+# | attributes                               | yes    | no          | style       |
+# | block_based_kvo                          | no     | no          | idiomatic   |
+# | class_delegate_protocol                  | no     | no          | lint        |
+# | closing_brace                            | no     | yes         | style       |
+# | closure_end_indentation                  | yes    | no          | style       |
+# | closure_parameter_position               | no     | no          | style       |
+# | closure_spacing                          | yes    | yes         | style       |
+# | colon                                    | no     | yes         | style       |
+# | comma                                    | no     | yes         | style       |
+# | compiler_protocol_init                   | no     | no          | lint        |
+# | conditional_returns_on_newline           | yes    | no          | style       |
+# | contains_over_first_not_nil              | yes    | no          | performance |
+# | control_statement                        | no     | no          | style       |
+# | custom_rules                             | no     | no          | style       |
+# | cyclomatic_complexity                    | no     | no          | metrics     |
+# | discarded_notification_center_observer   | no     | no          | lint        |
+# | discouraged_direct_init                  | no     | no          | lint        |
+# | dynamic_inline                           | no     | no          | lint        |
+# | empty_count                              | yes    | no          | performance |
+# | empty_enum_arguments                     | no     | yes         | style       |
+# | empty_parameters                         | no     | yes         | style       |
+# | empty_parentheses_with_trailing_closure  | no     | yes         | style       |
+# | explicit_enum_raw_value                  | yes    | no          | idiomatic   |
+# | explicit_init                            | yes    | yes         | idiomatic   |
+# | explicit_top_level_acl                   | yes    | no          | idiomatic   |
+# | explicit_type_interface                  | yes    | no          | idiomatic   |
+# | extension_access_modifier                | yes    | no          | idiomatic   |
+# | fallthrough                              | no     | no          | idiomatic   |
+# | fatal_error_message                      | yes    | no          | idiomatic   |
+# | file_header                              | yes    | no          | style       |
+# | file_length                              | no     | no          | metrics     |
+# | first_where                              | yes    | no          | performance |
+# | for_where                                | no     | no          | idiomatic   |
+# | force_cast                               | no     | no          | idiomatic   |
+# | force_try                                | no     | no          | idiomatic   |
+# | force_unwrapping                         | yes    | no          | idiomatic   |
+# | function_body_length                     | no     | no          | metrics     |
+# | function_parameter_count                 | no     | no          | metrics     |
+# | generic_type_name                        | no     | no          | idiomatic   |
+# | identifier_name                          | no     | no          | style       |
+# | implicit_getter                          | no     | no          | style       |
+# | implicit_return                          | yes    | yes         | style       |
+# | implicitly_unwrapped_optional            | yes    | no          | idiomatic   |
+# | is_disjoint                              | no     | no          | idiomatic   |
+# | joined_default_parameter                 | yes    | yes         | idiomatic   |
+# | large_tuple                              | no     | no          | metrics     |
+# | leading_whitespace                       | no     | yes         | style       |
+# | legacy_cggeometry_functions              | no     | yes         | idiomatic   |
+# | legacy_constant                          | no     | yes         | idiomatic   |
+# | legacy_constructor                       | no     | yes         | idiomatic   |
+# | legacy_nsgeometry_functions              | no     | yes         | idiomatic   |
+# | let_var_whitespace                       | yes    | no          | style       |
+# | line_length                              | no     | no          | metrics     |
+# | literal_expression_end_indentation       | yes    | no          | style       |
+# | mark                                     | no     | yes         | lint        |
+# | multiline_arguments                      | yes    | no          | style       |
+# | multiline_parameters                     | yes    | no          | style       |
+# | multiple_closures_with_trailing_closure  | no     | no          | style       |
+# | nesting                                  | no     | no          | metrics     |
+# | nimble_operator                          | yes    | yes         | idiomatic   |
+# | no_extension_access_modifier             | yes    | no          | idiomatic   |
+# | no_grouping_extension                    | yes    | no          | idiomatic   |
+# | notification_center_detachment           | no     | no          | lint        |
+# | number_separator                         | yes    | yes         | style       |
+# | object_literal                           | yes    | no          | idiomatic   |
+# | opening_brace                            | no     | yes         | style       |
+# | operator_usage_whitespace                | yes    | yes         | style       |
+# | operator_whitespace                      | no     | no          | style       |
+# | overridden_super_call                    | yes    | no          | lint        |
+# | override_in_extension                    | yes    | no          | lint        |
+# | pattern_matching_keywords                | yes    | no          | idiomatic   |
+# | private_outlet                           | yes    | no          | lint        |
+# | private_over_fileprivate                 | no     | yes         | idiomatic   |
+# | private_unit_test                        | no     | no          | lint        |
+# | prohibited_super_call                    | yes    | no          | lint        |
+# | protocol_property_accessors_order        | no     | yes         | style       |
+# | quick_discouraged_call                   | yes    | no          | lint        |
+# | quick_discouraged_focused_test           | yes    | no          | lint        |
+# | quick_discouraged_pending_test           | yes    | no          | lint        |
+# | redundant_discardable_let                | no     | yes         | style       |
+# | redundant_nil_coalescing                 | yes    | yes         | idiomatic   |
+# | redundant_optional_initialization        | no     | yes         | idiomatic   |
+# | redundant_string_enum_value              | no     | no          | idiomatic   |
+# | redundant_void_return                    | no     | yes         | idiomatic   |
+# | return_arrow_whitespace                  | no     | yes         | style       |
+# | shorthand_operator                       | no     | no          | style       |
+# | single_test_class                        | yes    | no          | style       |
+# | sorted_first_last                        | yes    | no          | performance |
+# | sorted_imports                           | yes    | yes         | style       |
+# | statement_position                       | no     | yes         | style       |
+# | strict_fileprivate                       | yes    | no          | idiomatic   |
+# | superfluous_disable_command              | no     | no          | lint        |
+# | switch_case_alignment                    | no     | no          | style       |
+# | switch_case_on_newline                   | yes    | no          | style       |
+# | syntactic_sugar                          | no     | no          | idiomatic   |
+# | todo                                     | no     | no          | lint        |
+# | trailing_closure                         | yes    | no          | style       |
+# | trailing_comma                           | no     | yes         | style       |
+# | trailing_newline                         | no     | yes         | style       |
+# | trailing_semicolon                       | no     | yes         | idiomatic   |
+# | trailing_whitespace                      | no     | yes         | style       |
+# | type_body_length                         | no     | no          | metrics     |
+# | type_name                                | no     | no          | idiomatic   |
+# | unneeded_break_in_switch                 | no     | no          | idiomatic   |
+# | unneeded_parentheses_in_closure_argument | yes    | yes         | style       |
+# | unused_closure_parameter                 | no     | yes         | lint        |
+# | unused_enumerated                        | no     | no          | idiomatic   |
+# | unused_optional_binding                  | no     | no          | style       |
+# | valid_ibinspectable                      | no     | no          | lint        |
+# | vertical_parameter_alignment             | no     | no          | style       |
+# | vertical_parameter_alignment_on_call     | yes    | no          | style       |
+# | vertical_whitespace                      | no     | yes         | style       |
+# | void_return                              | no     | yes         | style       |
+# | weak_delegate                            | no     | no          | lint        |
+# | xctfail_message                          | no     | no          | idiomatic   |
+# +------------------------------------------+--------+-------------+-------------+
+
 ################## Paths to ignore during linting. Takes precedence over `included`
 excluded:
-
   - Carthage
   - Pods
+
+################## Rules Options
+identifier_name:
+  excluded:
+    - id
+
+number_separator:
+  minimum_length: 5
 
 ################## Only the rules specified in this list will be enabled
 whitelist_rules:
@@ -11,6 +141,12 @@ whitelist_rules:
 
   # Prefer the new block based KVO API with keypaths when using Swift 3.2 or later.
   - block_based_kvo
+
+  # All declarations should specify Access Control Level keywords explicitly.
+  - explicit_acl
+
+  # Enums should be explicitly assigned their raw values.
+  - explicit_enum_raw_value
 
   # Explicitly calling .init() should be avoided.
   - explicit_init
@@ -23,6 +159,9 @@ whitelist_rules:
 
   # Prefer to use extension access modifiers
   - extension_access_modifier
+
+  # Fallthrough should be avoided.
+  - fallthrough
 
   # A fatalError call should have a message.
   - fatal_error_message
@@ -45,6 +184,9 @@ whitelist_rules:
   # Implicitly unwrapped optionals should be avoided when possible.
 #  - implicitly_unwrapped_optional
 
+  # Prefer using Set.isDisjoint(with:) over Set.intersection(_:).isEmpty.
+  - is_disjoint
+
   # Discouraged explicit usage of the default separator.
   - joined_default_parameter
 
@@ -66,11 +208,17 @@ whitelist_rules:
   # Prefer not to use extension access modifiers
   - no_extension_access_modifier
 
+  # Extensions shouldn't be used to group code within the same source file.
+#  - no_grouping_extension
+
   # Prefer object literals over image and color inits.
   - object_literal
 
+  # Combine multiple pattern matching bindings by moving keywords out of tuples.
+  - pattern_matching_keywords
+
   # Prefer private over fileprivate declarations.
-#  - private_over_fileprivate
+  - private_over_fileprivate
 
   # nil coalescing operator is only evaluated if the lhs is nil, coalescing operator with nil as rhs is redundant
   - redundant_nil_coalescing
@@ -96,6 +244,9 @@ whitelist_rules:
   # Type name should only contain alphanumeric characters, start with an uppercase character and span between 3 and 40 characters in length.
   - type_name
 
+  # Avoid using unneeded break statements.
+  - unneeded_break_in_switch
+
   # When the index or the item is not used, .enumerated() can be removed.
   - unused_enumerated
 
@@ -103,6 +254,9 @@ whitelist_rules:
   - xctfail_message
 
 ### Lint Rules #########################################################
+
+  # Prefer using Array(seq) than seq.map { $0 } to convert a sequence into an Array.
+  - array_init
 
   # Delegate protocols should be class-only so they can be weakly referenced.
   - class_delegate_protocol
@@ -128,6 +282,12 @@ whitelist_rules:
   # Some overridden methods should always call super
   - overridden_super_call
 
+  # Extensions shouldn't override declarations.
+  - override_in_extension
+
+  # IBActions should be private.
+  - private_action
+
   # IBOutlets should be private to avoid leaking UIKit to higher layers.
   - private_outlet
 
@@ -139,6 +299,12 @@ whitelist_rules:
 
   # Discouraged call inside 'describe' and/or 'context' block.
   - quick_discouraged_call
+
+  # Discouraged focused test. Other tests won't run while this one is focused.
+  - quick_discouraged_focused_test
+
+  # Discouraged pending test. This test won't run while it's marked as pending.
+  - quick_discouraged_pending_test
 
   # SwiftLint 'disable' commands are superfluous when the disabled rule would not have triggered a violation in the disabled region.
   - superfluous_disable_command
@@ -154,6 +320,9 @@ whitelist_rules:
 
   # Delegates should be weak to avoid reference cycles.
   - weak_delegate
+
+  # The variable should be placed on the left, the constant on the right of a comparison operator.
+  - yoda_condition
 
 ### Metrics Rules #########################################################
 
@@ -183,11 +352,17 @@ whitelist_rules:
 
 ### Performance Rules #########################################################
 
+  # Prefer contains over first(where:) != nil
+  - contains_over_first_not_nil
+
   # Prefer checking isEmpty over comparing count to zero.
   - empty_count
 
   # Prefer using .first(where:) over .filter { }.first in collections.
   - first_where
+
+  # Prefer using min() or max() over sorted().first or sorted().last
+  - sorted_first_last
 
 ### Style Rules #########################################################
 
@@ -248,8 +423,17 @@ whitelist_rules:
   # Let and var should be separated from other statements by a blank line.
   - let_var_whitespace
 
+  # Array and dictionary literal end should have the same indentation as the line that started it.
+  - literal_expression_end_indentation
+
+  # Arguments should be either on the same line, or one per line.
+  - multiline_arguments
+
   # Functions and methods parameters should be either on the same line, or one per line.
   - multiline_parameters
+
+  # Trailing closure syntax should not be used when passing more than one closure argument.
+  - multiple_closures_with_trailing_closure
 
   # Underscores should be used as thousand separator in large decimal numbers.
   - number_separator
@@ -284,6 +468,9 @@ whitelist_rules:
   # Else and catch should be on the same line, one space after the previous declaration.
   - statement_position
 
+  # Case statements should vertically align with the enclosing switch statement.
+  - switch_case_alignment
+
   # Cases inside a switch should always be on a newline
   - switch_case_on_newline
 
@@ -316,11 +503,3 @@ whitelist_rules:
 
   # Prefer -> Void over -> ().
   - void_return
-
-################## Rules Options
-identifier_name:
-  excluded:
-    - id
-
-number_separator:
-  minimum_length: 5

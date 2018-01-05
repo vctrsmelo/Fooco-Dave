@@ -11,11 +11,9 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 	
 	let unwindFromProject = "unwindFromEditToProjectList"
 	
-	private let segueToEdit = "fromProjectListToEdit"
+	private let segueToProject = "fromProjectListToEdit"
 
 	var projects = [Project]()
-	
-	private var selectedProject: Project?
 	
 	private var addButton: FloatingAddButton!
 	
@@ -37,7 +35,7 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 		self.projects = User.sharedInstance.projects
 		self.tableView.reloadData()
 		
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(from: .white), for: .default)
+		self.navigationController?.navigationBar.removeBackgroundImage()
 	}
 	
 	override func setEditing(_ editing: Bool, animated: Bool) {
@@ -50,18 +48,17 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 	
 	@objc
 	private func addButtonTapped(sender: UIButton) {
-		self.selectedProject = nil
-		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
+		self.performSegue(withIdentifier: self.segueToProject, sender: nil)
 	}
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == self.segueToEdit,
+		if segue.identifier == self.segueToProject,
 			let navigationVC = segue.destination as? UINavigationController,
 			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
 			destinationVC.unwindSegueIdentifier = self.unwindFromProject
-			destinationVC.project = self.selectedProject
+			destinationVC.project = sender as? Project
 		}
     }
 	
@@ -97,8 +94,8 @@ extension ProjectListViewControllerFooco: UITableViewDataSource, UITableViewDele
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		self.selectedProject = self.projects[indexPath.row]
+		let selectedProject = self.projects[indexPath.row]
 		
-		self.performSegue(withIdentifier: self.segueToEdit, sender: self)
+		self.performSegue(withIdentifier: self.segueToProject, sender: selectedProject)
 	}
 }

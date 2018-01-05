@@ -7,16 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */; };
-		BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */; };
-		BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */; };
-		BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
-		E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */; };
-		E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */; };
-		E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
 		E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
-		E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
-		EE61F1FE1FB9F771005D6668 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
 		EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */; };
@@ -28,41 +19,57 @@
 		EEA46BAE1F9A36D600851D5D /* DaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BAD1F9A36D600851D5D /* DaveTests.swift */; };
 		EEA46BB91F9A36D600851D5D /* DaveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46BB81F9A36D600851D5D /* DaveUITests.swift */; };
 		EED935561FBF615C00177FCC /* XibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED935551FBF615C00177FCC /* XibLoader.swift */; };
-		EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */; };
-		EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */; };
-		FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */; };
-		FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
+		EEF932C21FBF571D00D6A29E /* PickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
+		FC8A78221FFF9800003FA15C /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
+		FC8A78231FFF9858003FA15C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
+		FC8A78241FFF9858003FA15C /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
+		FC8A78251FFF9858003FA15C /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */; };
+		FC8A78261FFF9858003FA15C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C311FFED9A4000C2EC1 /* Activity.swift */; };
+		FC8A78271FFF9858003FA15C /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2F1FFED9A4000C2EC1 /* Context.swift */; };
+		FC8A78281FFF9858003FA15C /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */; };
+		FC8A78291FFF9858003FA15C /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C301FFED9A4000C2EC1 /* CustomProtocols.swift */; };
+		FC8A782A1FFF9858003FA15C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C271FFED9A4000C2EC1 /* Day.swift */; };
+		FC8A782B1FFF9858003FA15C /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2D1FFED9A4000C2EC1 /* Project.swift */; };
+		FC8A782C1FFF9858003FA15C /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C261FFED9A4000C2EC1 /* Time.swift */; };
+		FC8A782D1FFF9858003FA15C /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */; };
+		FC8A782E1FFF9858003FA15C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C281FFED9A4000C2EC1 /* User.swift */; };
+		FC8A782F1FFF9858003FA15C /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */; };
+		FC8A78301FFF9858003FA15C /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */; };
+		FC8A78351FFF9933003FA15C /* NewContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */; };
+		FC8A78361FFF9933003FA15C /* EditContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5252B61FD0816400852FDB /* EditContextViewModel.swift */; };
+		FC8A78371FFF9933003FA15C /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */; };
+		FC8A78381FFF9933003FA15C /* PickerAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */; };
+		FC8A78391FFF9933003FA15C /* ProjectListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */; };
+		FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */; };
+		FC8A783B1FFF9933003FA15C /* EditProjectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */; };
+		FC8A783C1FFF9933003FA15C /* MenuTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */; };
+		FC8A783D1FFF9933003FA15C /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
+		FC8A783E1FFF9933003FA15C /* EditProjectViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */; };
+		FC8A783F1FFF9933003FA15C /* EditProjectTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */; };
+		FC8A78401FFF9933003FA15C /* ContextListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB2E21FCF32310031275B /* ContextListViewController.swift */; };
+		FC8A78411FFF9933003FA15C /* ProjectListViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */; };
+		FC8A78421FFF9933003FA15C /* NewContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */; };
+		FC8A78431FFF9933003FA15C /* EditContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */; };
+		FC8A78441FFF9933003FA15C /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
+		FC8A78451FFF9933003FA15C /* PickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A78331FFF991B003FA15C /* PickerAlertView.swift */; };
+		FC8A78461FFF9933003FA15C /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */; };
 		FC9703D21FFEDEF100E5C8A3 /* ProjectManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9703CF1FFEDEEA00E5C8A3 /* ProjectManagementTests.swift */; };
 		FC9703D31FFEDEF100E5C8A3 /* TestElementsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9703CE1FFEDEEA00E5C8A3 /* TestElementsGenerator.swift */; };
-		FC981C351FFED9A5000C2EC1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C261FFED9A4000C2EC1 /* Time.swift */; };
 		FC981C361FFED9A5000C2EC1 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C261FFED9A4000C2EC1 /* Time.swift */; };
-		FC981C371FFED9A5000C2EC1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C271FFED9A4000C2EC1 /* Day.swift */; };
 		FC981C381FFED9A5000C2EC1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C271FFED9A4000C2EC1 /* Day.swift */; };
-		FC981C391FFED9A5000C2EC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C281FFED9A4000C2EC1 /* User.swift */; };
 		FC981C3A1FFED9A5000C2EC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C281FFED9A4000C2EC1 /* User.swift */; };
-		FC981C3B1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */; };
 		FC981C3C1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */; };
-		FC981C3D1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
 		FC981C3E1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
-		FC981C411FFED9A5000C2EC1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2D1FFED9A4000C2EC1 /* Project.swift */; };
 		FC981C421FFED9A5000C2EC1 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2D1FFED9A4000C2EC1 /* Project.swift */; };
-		FC981C431FFED9A5000C2EC1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */; };
 		FC981C441FFED9A5000C2EC1 /* ContextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2E1FFED9A4000C2EC1 /* ContextBlock.swift */; };
-		FC981C451FFED9A5000C2EC1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2F1FFED9A4000C2EC1 /* Context.swift */; };
 		FC981C461FFED9A5000C2EC1 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2F1FFED9A4000C2EC1 /* Context.swift */; };
-		FC981C471FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C301FFED9A4000C2EC1 /* CustomProtocols.swift */; };
 		FC981C481FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C301FFED9A4000C2EC1 /* CustomProtocols.swift */; };
-		FC981C491FFED9A5000C2EC1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C311FFED9A4000C2EC1 /* Activity.swift */; };
 		FC981C4A1FFED9A5000C2EC1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C311FFED9A4000C2EC1 /* Activity.swift */; };
-		FC981C4B1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */; };
 		FC981C4C1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */; };
-		FC981C4D1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */; };
 		FC981C4E1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */; };
-		FC981C4F1FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */; };
 		FC981C501FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */; };
-		FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +103,6 @@
 		BEDE6C721FB0D0DE00ABD6D8 /* FoocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEF900921FB63974007FB677 /* EditProjectContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCell.xib; sourceTree = "<group>"; };
-		E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFooco.swift; sourceTree = "<group>"; };
 		E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewCell.swift; sourceTree = "<group>"; };
 		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
@@ -119,12 +125,20 @@
 		EEA46BB81F9A36D600851D5D /* DaveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaveUITests.swift; sourceTree = "<group>"; };
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EED935551FBF615C00177FCC /* XibLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoader.swift; sourceTree = "<group>"; };
-		EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerAlertView.xib; sourceTree = "<group>"; };
-		EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlertView.swift; sourceTree = "<group>"; };
+		EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerAlertView.xib; sourceTree = "<group>"; };
+		FC0BB2E21FCF32310031275B /* ContextListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextListViewController.swift; sourceTree = "<group>"; };
 		FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
+		FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAlertViewModel.swift; sourceTree = "<group>"; };
 		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
+		FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockTableViewCell.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
+		FC5252B61FD0816400852FDB /* EditContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewModel.swift; sourceTree = "<group>"; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
+		FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewController.swift; sourceTree = "<group>"; };
+		FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewController.swift; sourceTree = "<group>"; };
+		FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFooco.swift; sourceTree = "<group>"; };
+		FC8A78331FFF991B003FA15C /* PickerAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAlertView.swift; sourceTree = "<group>"; };
 		FC9703CE1FFEDEEA00E5C8A3 /* TestElementsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestElementsGenerator.swift; sourceTree = "<group>"; };
 		FC9703CF1FFEDEEA00E5C8A3 /* ProjectManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManagementTests.swift; sourceTree = "<group>"; };
 		FC981C261FFED9A4000C2EC1 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -140,6 +154,7 @@
 		FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
 		FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
 		FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
+		FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewModel.swift; sourceTree = "<group>"; };
 		FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewControllerFooco.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +241,7 @@
 		EEA46B651F9A36CA00851D5D /* Fooco */ = {
 			isa = PBXGroup;
 			children = (
+				FCE6461F1FD07C86008F65D6 /* View Models */,
 				FCE536B41FB4C32D0010BA63 /* Cells */,
 				FCE536B31FB4C2FC0010BA63 /* Controllers */,
 				FCE536B51FB4C3340010BA63 /* Views */,
@@ -341,7 +357,10 @@
 				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
 				BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */,
 				BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */,
-				E78393EC1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift */,
+				FC0BB2E21FCF32310031275B /* ContextListViewController.swift */,
+				FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */,
+				FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */,
+				FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -350,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */,
+				FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */,
 				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
 				BEF900921FB63974007FB677 /* EditProjectContextCell.xib */,
 			);
@@ -360,11 +380,22 @@
 			isa = PBXGroup;
 			children = (
 				E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */,
-				EEF932C31FBF5D7500D6A29E /* DatePickerAlertView.swift */,
-				EEF932C11FBF571D00D6A29E /* DatePickerAlertView.xib */,
+				FC8A78331FFF991B003FA15C /* PickerAlertView.swift */,
+				EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */,
 				FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FCE6461F1FD07C86008F65D6 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */,
+				FC5252B61FD0816400852FDB /* EditContextViewModel.swift */,
+				FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */,
+				FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,12 +558,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC8A78221FFF9800003FA15C /* EditProjectContextCell.xib in Resources */,
+				EEF932C21FBF571D00D6A29E /* PickerAlertView.xib in Resources */,
 				EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */,
-				EEF932C21FBF571D00D6A29E /* DatePickerAlertView.xib in Resources */,
-				BEF900931FB63974007FB677 /* EditProjectContextCell.xib in Resources */,
-				EE61F1FE1FB9F771005D6668 /* (null) in Resources */,
-				FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */,
 				EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */,
+				FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,33 +606,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AE61F21FC6784200F0BE62 /* Extensions.swift in Sources */,
-				FC981C4F1FFED9A5000C2EC1 /* WeekdayTemplate.swift in Sources */,
-				FC981C491FFED9A5000C2EC1 /* Activity.swift in Sources */,
-				FC981C3B1FFED9A5000C2EC1 /* AlgorithmManager.swift in Sources */,
-				FC981C451FFED9A5000C2EC1 /* Context.swift in Sources */,
-				BE6E11201FB386DC004B5B9E /* EditProjectContextCell.swift in Sources */,
-				E7E2ABD21FC6587600F64C09 /* ActivityCardView.swift in Sources */,
-				FC1B323C1FC5FE8A00B1C74F /* FloatingAddButton.swift in Sources */,
-				FC981C4D1FFED9A5000C2EC1 /* WeekTemplate.swift in Sources */,
-				FC981C3D1FFED9A5000C2EC1 /* ActivityScheduler.swift in Sources */,
-				E78393EF1FCA5E32000E3F8A /* ProjectListTableViewCell.swift in Sources */,
-				FC981C351FFED9A5000C2EC1 /* Time.swift in Sources */,
-				BE6E111C1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift in Sources */,
-				FC981C391FFED9A5000C2EC1 /* User.swift in Sources */,
-				E78393ED1FCA5C56000E3F8A /* ProjectListViewControllerFooco.swift in Sources */,
+				FC8A78291FFF9858003FA15C /* CustomProtocols.swift in Sources */,
+				FC8A783B1FFF9933003FA15C /* EditProjectContextCell.swift in Sources */,
+				FC8A783E1FFF9933003FA15C /* EditProjectViewControllerFooco.swift in Sources */,
+				FC8A78441FFF9933003FA15C /* ActivityCardView.swift in Sources */,
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
-				FC981C431FFED9A5000C2EC1 /* ContextBlock.swift in Sources */,
+				FC8A78431FFF9933003FA15C /* EditContextViewController.swift in Sources */,
+				FC8A78381FFF9933003FA15C /* PickerAlertViewModel.swift in Sources */,
+				FC8A782D1FFF9858003FA15C /* TimeBlock.swift in Sources */,
+				FC8A78421FFF9933003FA15C /* NewContextViewController.swift in Sources */,
+				FC8A78251FFF9858003FA15C /* AlgorithmManager.swift in Sources */,
+				FC8A78461FFF9933003FA15C /* FloatingAddButton.swift in Sources */,
+				FC8A783D1FFF9933003FA15C /* HomeViewControllerFooco.swift in Sources */,
+				FC8A78281FFF9858003FA15C /* ContextBlock.swift in Sources */,
+				FC8A782A1FFF9858003FA15C /* Day.swift in Sources */,
+				FC8A783F1FFF9933003FA15C /* EditProjectTableViewControllerFooco.swift in Sources */,
+				FC8A782F1FFF9858003FA15C /* WeekdayTemplate.swift in Sources */,
+				FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCell.swift in Sources */,
+				FC8A78261FFF9858003FA15C /* Activity.swift in Sources */,
+				FC8A783C1FFF9933003FA15C /* MenuTableViewControllerFooco.swift in Sources */,
+				FC8A782C1FFF9858003FA15C /* Time.swift in Sources */,
+				FC8A782E1FFF9858003FA15C /* User.swift in Sources */,
+				FC8A78371FFF9933003FA15C /* EditProjectViewModel.swift in Sources */,
+				FC8A78241FFF9858003FA15C /* ActivityScheduler.swift in Sources */,
+				FC8A78411FFF9933003FA15C /* ProjectListViewControllerFooco.swift in Sources */,
+				FC8A78391FFF9933003FA15C /* ProjectListTableViewCell.swift in Sources */,
+				FC8A78401FFF9933003FA15C /* ContextListViewController.swift in Sources */,
+				FC8A78351FFF9933003FA15C /* NewContextViewModel.swift in Sources */,
+				FC8A78301FFF9858003FA15C /* WeekTemplate.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
-				BE6E11261FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift in Sources */,
+				FC8A78271FFF9858003FA15C /* Context.swift in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
-				FC981C471FFED9A5000C2EC1 /* CustomProtocols.swift in Sources */,
-				FC981C371FFED9A5000C2EC1 /* Day.swift in Sources */,
-				FCF3D6CF1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift in Sources */,
-				FC37F4491FB0CF900003738E /* HomeViewControllerFooco.swift in Sources */,
-				FC981C4B1FFED9A5000C2EC1 /* TimeBlock.swift in Sources */,
-				EEF932C41FBF5D7500D6A29E /* DatePickerAlertView.swift in Sources */,
-				FC981C411FFED9A5000C2EC1 /* Project.swift in Sources */,
+				FC8A78231FFF9858003FA15C /* Extensions.swift in Sources */,
+				FC8A78451FFF9933003FA15C /* PickerAlertView.swift in Sources */,
+				FC8A782B1FFF9858003FA15C /* Project.swift in Sources */,
+				FC8A78361FFF9933003FA15C /* EditContextViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
