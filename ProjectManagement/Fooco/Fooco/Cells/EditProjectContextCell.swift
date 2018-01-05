@@ -124,13 +124,13 @@ class EditProjectContextCell: UICollectionViewCell {
 			
 		} else {
 			nameLabel.text = NSLocalizedString("Add", comment: "Add Context Text")
-			nameLabel.backgroundColor = UIColor.colorOfAddContext()
+			nameLabel.backgroundColor = UIColor.addContextColor
 			
 			iconImageView.image = #imageLiteral(resourceName: "AddIcon")
-			iconImageView.backgroundColor = UIColor.colorOfAddContext()
+			iconImageView.backgroundColor = UIColor.addContextColor
 			
 			iconImageView.layer.borderWidth = 10
-			iconImageView.layer.borderColor = UIColor.colorOfAddContext().cgColor
+			iconImageView.layer.borderColor = UIColor.addContextColor.cgColor
 		}
     }
 }

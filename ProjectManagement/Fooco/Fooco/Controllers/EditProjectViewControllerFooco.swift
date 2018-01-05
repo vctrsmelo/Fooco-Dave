@@ -42,7 +42,7 @@ class EditProjectViewControllerFooco: UIViewController {
         formatNavigationBar()
         
         // hide keyboard when view is tapped
-        hideKeyboardWhenTappedAround()
+        self.hideKeyboardOnOutsideTap()
     }
     
     /**
@@ -104,7 +104,7 @@ extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate
     }
     
     func contextUpdated(for context: Context?) {
-        let color = (context != nil) ? context!.color : UIColor.colorOfAddContext()
+        let color = (context != nil) ? context!.color : UIColor.addContextColor
 		self.navigationController?.navigationBar.changeFontAndTintColor(to: color)
     }
     
