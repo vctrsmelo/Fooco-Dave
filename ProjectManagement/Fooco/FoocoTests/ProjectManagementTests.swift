@@ -221,14 +221,6 @@ class ProjectManagementTests: XCTestCase {
 
     }
 
-    func testAlgorithmManagerGetNextActivityForScheduler() {
-
-        let scheduler = try! ActivityScheduler(timeBlock: TimeBlock(starts: Time(hour: 10), ends: Time(hour:20)), context: college)
-
-        //TODO: implement testAlgorithmManagerGetNextActivityForScheduler tests
-
-    }
-
     func testProjectPriorityCalculation(){
 
         //create weekTemplate for college
