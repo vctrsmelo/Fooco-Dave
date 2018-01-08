@@ -1,5 +1,5 @@
 //
-//  EditProjectViewModel.swift
+//  EditProjectVMFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 13/12/17.
@@ -11,7 +11,7 @@ protocol ViewModelUpdateDelegate: AnyObject {
 	func viewModelDidUpdate()
 }
 
-class EditProjectViewModel {
+class EditProjectVMFooco {
 	
 	private weak var delegate: ViewModelUpdateDelegate?
 	
@@ -102,16 +102,16 @@ class EditProjectViewModel {
 		}
 	}
 	
-	func createAlert(for mode: PickerAlertMode) -> PickerAlertViewModel {
+	func createAlert(for mode: PickerAlertMode) -> PickerAlertVM {
 		switch mode {
 		case .estimatedTime:
-			return PickerAlertViewModel.forEstimatedTime(self.chosenTime, context: self.chosenContext, projectName: self.name, receiver: self)
+			return PickerAlertVM.forEstimatedTime(self.chosenTime, context: self.chosenContext, projectName: self.name, receiver: self)
 		
 		case .date(.begin):
-			return PickerAlertViewModel.forStartingDate(self.startingDate, endDate: self.endingDate, context: self.chosenContext, projectName: self.name, receiver: self)
+			return PickerAlertVM.forStartingDate(self.startingDate, endDate: self.endingDate, context: self.chosenContext, projectName: self.name, receiver: self)
 			
 		case .date(.end):
-			return PickerAlertViewModel.forEndingDate(self.endingDate, startDate: self.startingDate, context: self.chosenContext, projectName: self.name, receiver: self)
+			return PickerAlertVM.forEndingDate(self.endingDate, startDate: self.startingDate, context: self.chosenContext, projectName: self.name, receiver: self)
 			
 		case .timeBlock:
 			fatalError("[Error] Mode not supported")
@@ -121,8 +121,8 @@ class EditProjectViewModel {
 
 // MARK: - PickerAlertViewModelReceiver
 
-extension EditProjectViewModel: PickerAlertViewModelReceiver {
-	func receive(_ viewModel: PickerAlertViewModel) {
+extension EditProjectVMFooco: PickerAlertViewModelReceiver {
+	func receive(_ viewModel: PickerAlertVM) {
 		switch viewModel.mode {
 		case .estimatedTime:
 			self.chosenTime = viewModel.chosenTime

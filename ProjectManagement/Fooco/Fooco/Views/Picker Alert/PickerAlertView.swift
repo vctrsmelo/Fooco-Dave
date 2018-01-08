@@ -9,7 +9,7 @@ import UIKit
 
 class PickerAlertView: UIView {
 	
-	var viewModel: PickerAlertViewModel!
+	var viewModel: PickerAlertVM!
 	
 	private var currentMode: PickerAlertMode {
 		return self.viewModel.mode
@@ -55,7 +55,7 @@ class PickerAlertView: UIView {
 		self.isHidden = true
 	}
 	
-	func present(with viewModel: PickerAlertViewModel) {
+	func present(with viewModel: PickerAlertVM) {
         
         self.viewModel = viewModel
 		

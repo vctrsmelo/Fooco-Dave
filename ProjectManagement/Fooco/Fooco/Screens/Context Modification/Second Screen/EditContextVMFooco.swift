@@ -1,5 +1,5 @@
 //
-//  EditContextViewModel.swift
+//  EditContextVMFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 30/11/17.
@@ -63,7 +63,7 @@ enum DayInWeek: Int, Comparable {
     }
 }
 
-class EditContextViewModel {
+class EditContextVMFooco {
     
     private weak var delegate: ViewModelUpdateDelegate?
 	
@@ -189,20 +189,20 @@ class EditContextViewModel {
         }
 	}
 	
-	func createNewAlert() -> PickerAlertViewModel {
+	func createNewAlert() -> PickerAlertVM {
 		let now = Date()
-		return PickerAlertViewModel.forTimeBlocks(startingTime: now, endingTime: now.addingTimeInterval(1.hour), days: Set(), context: self.context, receiver: self)
+		return PickerAlertVM.forTimeBlocks(startingTime: now, endingTime: now.addingTimeInterval(1.hour), days: Set(), context: self.context, receiver: self)
 	}
     
-    func createEditAlert(for selected: (TimeBlock, [DayInWeek])) -> PickerAlertViewModel {
+    func createEditAlert(for selected: (TimeBlock, [DayInWeek])) -> PickerAlertVM {
         let timeblock = selected.0
         let days = selected.1
-        return PickerAlertViewModel.forTimeBlocks(startingTime: timeblock.start.toDate(), endingTime: timeblock.end.toDate(), days: Set(days), context: self.context, receiver: self) // CHECK
+        return PickerAlertVM.forTimeBlocks(startingTime: timeblock.start.toDate(), endingTime: timeblock.end.toDate(), days: Set(days), context: self.context, receiver: self) // CHECK
     }
 }
 
-extension EditContextViewModel: PickerAlertViewModelReceiver {
-	func receive(_ viewModel: PickerAlertViewModel) {
+extension EditContextVMFooco: PickerAlertViewModelReceiver {
+	func receive(_ viewModel: PickerAlertVM) {
         if viewModel.mode == .timeBlock(.end) {
             self.createTimeBlock(start: viewModel.mainDate, end: viewModel.comparisonDate!, for: viewModel.selectedDays)
             

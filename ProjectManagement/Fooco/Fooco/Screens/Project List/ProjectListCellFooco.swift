@@ -1,5 +1,5 @@
 //
-//  ProjectListTableViewCell.swift
+//  ProjectListCellFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 26/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProjectListTableViewCell: UITableViewCell {
+class ProjectListCellFooco: UITableViewCell {
 
 	static let identifier = "projectCell"
 	

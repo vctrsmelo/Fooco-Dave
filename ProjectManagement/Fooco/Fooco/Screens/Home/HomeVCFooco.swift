@@ -1,5 +1,5 @@
 //
-//  HomeViewControllerFooco.swift
+//  HomeVCFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 06/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
+class HomeVCFooco: UIViewController, EditProjectUnwindOption {
 	
 	// MARK: - Properties
 	
@@ -107,7 +107,7 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == self.segueToEdit,
 			let navigationVC = segue.destination as? UINavigationController,
-			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
+			let destinationVC = navigationVC.topViewController as? EditProjectVCFooco {
 			destinationVC.unwindSegueIdentifier = self.unwindFromProject
 			destinationVC.project = self.projectToEdit // Is set to nil if it's supposed to add
 		}
@@ -123,7 +123,7 @@ class HomeViewControllerFooco: UIViewController, EditProjectUnwindOption {
 
 // MARK: - ViewSwiperDelegate
 
-extension HomeViewControllerFooco: ViewSwiperDelegate {
+extension HomeVCFooco: ViewSwiperDelegate {
 	func doneExecuted() {
 		User.sharedInstance.getNextActivity()?.complete()
 		self.dataUpdate()

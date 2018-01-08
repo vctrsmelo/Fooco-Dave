@@ -1,5 +1,5 @@
 //
-//  EditProjectContextCell.swift
+//  EditProjectContextCellFooco.swift
 //  Fooco
 //
 //  Created by Victor Melo on 08/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditProjectContextCell: UICollectionViewCell {
+class EditProjectContextCellFooco: UICollectionViewCell {
     
     var icon: UIImage!
     
@@ -36,7 +36,7 @@ class EditProjectContextCell: UICollectionViewCell {
     
 	func updateSize(cellFrame: CGRect, container: CGRect) {
         
-        let originalSize = EditProjectContextCell.originalSize
+        let originalSize = EditProjectContextCellFooco.originalSize
         
         let containerXCenter: CGFloat = container.origin.x + container.width / 2
         

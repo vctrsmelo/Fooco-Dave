@@ -1,5 +1,5 @@
 //
-//  EditProjectViewController.swift
+//  EditProjectVCFooco.swift
 //  Fooco
 //
 //  Created by Victor Melo on 08/11/17.
@@ -11,15 +11,15 @@ protocol EditProjectUnwindOption: AnyObject {
 	var unwindFromProject: String { get }
 }
 
-class EditProjectViewControllerFooco: UIViewController {
+class EditProjectVCFooco: UIViewController {
 	
 	var project: Project?
 	
 	var unwindSegueIdentifier: String = ""
 	
-	private weak var tableViewController: EditProjectTableViewControllerFooco!
+	private weak var tableViewController: EditProjectTableVCFooco!
 	
-	private var viewModel: EditProjectViewModel {
+	private var viewModel: EditProjectVMFooco {
 		return self.tableViewController.viewModel
 	}
 		
@@ -60,21 +60,21 @@ class EditProjectViewControllerFooco: UIViewController {
 	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "projectTableViewSegue" {
-            let editProjTableViewController = segue.destination as! EditProjectTableViewControllerFooco
+            let editProjTableViewController = segue.destination as! EditProjectTableVCFooco
 			
 			self.tableViewController = editProjTableViewController
             editProjTableViewController.delegate = self
-			editProjTableViewController.viewModel = EditProjectViewModel(with: self.project, and: editProjTableViewController)
+			editProjTableViewController.viewModel = EditProjectVMFooco(with: self.project, and: editProjTableViewController)
         }
     }
 
 }
 
-// MARK: - EditProjectTableViewControllerDelegate
+// MARK: - EditProjectTableVCDelegate
 
-extension EditProjectViewControllerFooco: EditProjectTableViewControllerDelegate {
+extension EditProjectVCFooco: EditProjectTableVCDelegate {
    
-	func presentPickerAlert(with pickerAlertViewModel: PickerAlertViewModel) {
+	func presentPickerAlert(with pickerAlertViewModel: PickerAlertVM) {
 		self.pickerAlertView.present(with: pickerAlertViewModel)
     }
     

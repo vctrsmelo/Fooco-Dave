@@ -1,5 +1,5 @@
 //
-//  EditProjectTableViewController.swift
+//  EditProjectTableVCFooco.swift
 //  Fooco
 //
 //  Created by Victor Melo on 08/11/17.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol EditProjectTableViewControllerDelegate: AnyObject {
+protocol EditProjectTableVCDelegate: AnyObject {
     func contextUpdated()
-    func presentPickerAlert(with pickerAlertViewModel: PickerAlertViewModel)
+    func presentPickerAlert(with pickerAlertViewModel: PickerAlertVM)
 }
 
-class EditProjectTableViewControllerFooco: UITableViewController {
+class EditProjectTableVCFooco: UITableViewController {
 	
-	var viewModel: EditProjectViewModel!
+	var viewModel: EditProjectVMFooco!
 	
-	weak var delegate: EditProjectTableViewControllerDelegate?
+	weak var delegate: EditProjectTableVCDelegate?
 	
 	private var contextColor: UIColor {
 		if let someSelectedContext = self.viewModel.chosenContext {
@@ -64,7 +64,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 		self.updateProjectInfo()
 		self.updateColor()
 		
-		let nib = UINib(nibName: "EditProjectContextCell", bundle: nil)
+		let nib = UINib(nibName: "EditProjectContextCellFooco", bundle: nil)
 		contextsCollectionView.register(nib, forCellWithReuseIdentifier: "contextCell")
 	}
 	
@@ -242,7 +242,7 @@ class EditProjectTableViewControllerFooco: UITableViewController {
 
 // MARK: - ViewModelUpdateDelegate
 
-extension EditProjectTableViewControllerFooco: ViewModelUpdateDelegate {
+extension EditProjectTableVCFooco: ViewModelUpdateDelegate {
 	func viewModelDidUpdate() {
 		self.updateProjectInfo()
 	}
@@ -250,7 +250,7 @@ extension EditProjectTableViewControllerFooco: ViewModelUpdateDelegate {
 
 // MARK: - TextField
 
-extension EditProjectTableViewControllerFooco: UITextFieldDelegate {
+extension EditProjectTableVCFooco: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		return textField.resignFirstResponder()
 	}
@@ -263,14 +263,14 @@ extension EditProjectTableViewControllerFooco: UITextFieldDelegate {
 
 // MARK: - Collection
 
-extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension EditProjectTableVCFooco: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return User.sharedInstance.contexts.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "contextCell", for: indexPath) as! EditProjectContextCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "contextCell", for: indexPath) as! EditProjectContextCellFooco
         
         let cellFrame = contextsCollectionView.convert(cell.frame, to: contextsCollectionView.superview)
         cell.updateSize(cellFrame: cellFrame, container: collectionView.frame)
@@ -292,14 +292,14 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: EditProjectContextCell.originalSize.width, height: EditProjectContextCell.originalSize.height)
+        return CGSize(width: EditProjectContextCellFooco.originalSize.width, height: EditProjectContextCellFooco.originalSize.height)
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == contextsCollectionView {
             for cell in contextsCollectionView.visibleCells {
                 
-                guard let contextCell = cell as? EditProjectContextCell else {
+                guard let contextCell = cell as? EditProjectContextCellFooco else {
                     return
                 }
 				
@@ -311,7 +311,7 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        let leftInset = (collectionView.frame.size.width - CGFloat(EditProjectContextCell.originalSize.width + 10)) / 2
+        let leftInset = (collectionView.frame.size.width - CGFloat(EditProjectContextCellFooco.originalSize.width + 10)) / 2
         let rightInset = leftInset
 
         return UIEdgeInsets(top: 40, left: leftInset, bottom: 0, right: rightInset)
@@ -320,7 +320,7 @@ extension EditProjectTableViewControllerFooco: UICollectionViewDelegate, UIColle
 
 // MARK: - Scroll
 
-extension EditProjectTableViewControllerFooco {
+extension EditProjectTableVCFooco {
     override func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         scrollView.setContentOffset(scrollView.contentOffset, animated: true)
         focusContextCell()
@@ -330,16 +330,16 @@ extension EditProjectTableViewControllerFooco {
 		focusContextCell()
     }
     
-	private func focusContextCell(chosenCell: EditProjectContextCell? = nil) {
+	private func focusContextCell(chosenCell: EditProjectContextCellFooco? = nil) {
         
         let screenCenterX: CGFloat = contextsCollectionView.frame.origin.x + contextsCollectionView.frame.size.width / 2.0
 		
-		var focusedCell: EditProjectContextCell
+		var focusedCell: EditProjectContextCellFooco
 		
 		if let aCell = chosenCell {
 			focusedCell = aCell
 			
-		} else if let anotherCell = contextsCollectionView.visibleCells.first as? EditProjectContextCell {
+		} else if let anotherCell = contextsCollectionView.visibleCells.first as? EditProjectContextCellFooco {
 			focusedCell = anotherCell
 			
 		} else {
@@ -358,7 +358,7 @@ extension EditProjectTableViewControllerFooco {
             let cellCenterX = cellFrame.origin.x + cellFrame.size.width / 2.0
             
             if abs(screenCenterX - focusedCellCenterX) > abs(screenCenterX - cellCenterX) {
-                focusedCell = cell as! EditProjectContextCell
+                focusedCell = cell as! EditProjectContextCellFooco
                 focusedCellCenterX = cellCenterX
             }
             
