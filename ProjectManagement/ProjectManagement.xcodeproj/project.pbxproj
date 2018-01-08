@@ -241,9 +241,7 @@
 		EEA46B651F9A36CA00851D5D /* Fooco */ = {
 			isa = PBXGroup;
 			children = (
-				FCE6461F1FD07C86008F65D6 /* View Models */,
-				FCE536B41FB4C32D0010BA63 /* Cells */,
-				FCE536B31FB4C2FC0010BA63 /* Controllers */,
+				FC6C774A2003EE2C00EA4277 /* Screens */,
 				FCE536B51FB4C3340010BA63 /* Views */,
 				EEA46B6A1F9A36CA00851D5D /* Main.storyboard */,
 				FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */,
@@ -322,6 +320,110 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FC6C774A2003EE2C00EA4277 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FC6C774C2003EE5900EA4277 /* Menu */,
+				FC6C774B2003EE4400EA4277 /* Home */,
+				FC6C774E2003EEEA00EA4277 /* Project List */,
+				FC6C774D2003EE8800EA4277 /* Project Modification */,
+				FC6C774F2003EEFD00EA4277 /* Context List */,
+				FC6C77532003F02F00EA4277 /* Context Modification */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		FC6C774B2003EE4400EA4277 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FC6C774C2003EE5900EA4277 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		FC6C774D2003EE8800EA4277 /* Project Modification */ = {
+			isa = PBXGroup;
+			children = (
+				FC6C77522003EF5C00EA4277 /* Project Context Cell */,
+				FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */,
+				BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */,
+				BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */,
+			);
+			path = "Project Modification";
+			sourceTree = "<group>";
+		};
+		FC6C774E2003EEEA00EA4277 /* Project List */ = {
+			isa = PBXGroup;
+			children = (
+				FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */,
+				E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */,
+			);
+			path = "Project List";
+			sourceTree = "<group>";
+		};
+		FC6C774F2003EEFD00EA4277 /* Context List */ = {
+			isa = PBXGroup;
+			children = (
+				FC0BB2E21FCF32310031275B /* ContextListViewController.swift */,
+			);
+			path = "Context List";
+			sourceTree = "<group>";
+		};
+		FC6C77512003EF2900EA4277 /* Picker Alert */ = {
+			isa = PBXGroup;
+			children = (
+				FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */,
+				FC8A78331FFF991B003FA15C /* PickerAlertView.swift */,
+				EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */,
+			);
+			path = "Picker Alert";
+			sourceTree = "<group>";
+		};
+		FC6C77522003EF5C00EA4277 /* Project Context Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
+				BEF900921FB63974007FB677 /* EditProjectContextCell.xib */,
+			);
+			path = "Project Context Cell";
+			sourceTree = "<group>";
+		};
+		FC6C77532003F02F00EA4277 /* Context Modification */ = {
+			isa = PBXGroup;
+			children = (
+				FCE536B41FB4C32D0010BA63 /* Cells */,
+				FC6C77542003F09E00EA4277 /* First Screen */,
+				FC6C77552003F0A700EA4277 /* Second Screen */,
+			);
+			path = "Context Modification";
+			sourceTree = "<group>";
+		};
+		FC6C77542003F09E00EA4277 /* First Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */,
+				FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */,
+			);
+			path = "First Screen";
+			sourceTree = "<group>";
+		};
+		FC6C77552003F0A700EA4277 /* Second Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FC5252B61FD0816400852FDB /* EditContextViewModel.swift */,
+				FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */,
+			);
+			path = "Second Screen";
+			sourceTree = "<group>";
+		};
 		FC981C251FFED9A4000C2EC1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,28 +452,10 @@
 			path = Algorithm;
 			sourceTree = "<group>";
 		};
-		FCE536B31FB4C2FC0010BA63 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */,
-				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
-				BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */,
-				BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */,
-				FC0BB2E21FCF32310031275B /* ContextListViewController.swift */,
-				FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */,
-				FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */,
-				FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		FCE536B41FB4C32D0010BA63 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */,
 				FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */,
-				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
-				BEF900921FB63974007FB677 /* EditProjectContextCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -379,23 +463,11 @@
 		FCE536B51FB4C3340010BA63 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FC6C77512003EF2900EA4277 /* Picker Alert */,
 				E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */,
-				FC8A78331FFF991B003FA15C /* PickerAlertView.swift */,
-				EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */,
 				FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		FCE6461F1FD07C86008F65D6 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */,
-				FC5252B61FD0816400852FDB /* EditContextViewModel.swift */,
-				FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */,
-				FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */,
-			);
-			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -962,7 +1034,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1027,7 +1099,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2RF2ZQGYFL;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
