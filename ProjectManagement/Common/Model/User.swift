@@ -136,14 +136,10 @@ class User {
         var weekdayContextBlocks: [ContextBlock] = []
         
         //add contextBlocks lengths if it's for context parameter
-        for contextBlock in weekdayTemplate.contextBlocks {
+        for contextBlock in weekdayTemplate.contextBlocks where contextBlock.context == context {
+            returnValue += contextBlock.timeBlock.length
             
-            if contextBlock.context == context {
-                
-                returnValue += contextBlock.timeBlock.length
-
-                weekdayContextBlocks.append(contextBlock)
-            }
+            weekdayContextBlocks.append(contextBlock)
         }
         
         //decrease activities length if date is already in schedule

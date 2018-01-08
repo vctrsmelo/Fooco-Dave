@@ -220,7 +220,7 @@ whitelist_rules:
   - object_literal
 
   # Combine multiple pattern matching bindings by moving keywords out of tuples.
-  - pattern_matching_keywords
+#  - pattern_matching_keywords
 
   # Prefer private over fileprivate declarations.
   - private_over_fileprivate

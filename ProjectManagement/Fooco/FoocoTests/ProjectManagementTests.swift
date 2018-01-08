@@ -481,14 +481,11 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         //assert that the project1 knows the activity was completed
         XCTAssertTrue(project1.completedActivities.contains { activity1 -> Bool in
 
-            for actvAndDate in project1.completedActivities {
-                if actvAndDate.0 == activity1.0 {
-                    return true
-                }
+            for actvAndDate in project1.completedActivities where actvAndDate.0 == activity1.0 {
+                return true
             }
 
             return false
-
         })
 
         //as the activity1 is completed, the project1 should stop observing it.
