@@ -49,18 +49,16 @@ struct WeekdayTemplate {
     mutating func appendContextBlock(_ contextBlock: ContextBlock) throws {
         for cb in contextBlocks {
             if cb.timeBlock.overlaps(contextBlock.timeBlock) {
-                throw TimeBlockError.Overlaps
+                throw TimeBlockError.overlaps
             }
         }
         
         contextBlocks.append(contextBlock)
-        
     }
-    
 }
 
 extension WeekdayTemplate: Equatable {
-    static func ==(lhs: WeekdayTemplate, rhs: WeekdayTemplate) -> Bool {
+    static func == (lhs: WeekdayTemplate, rhs: WeekdayTemplate) -> Bool {
         
         if lhs.weekday != rhs.weekday {
             return false
@@ -68,19 +66,11 @@ extension WeekdayTemplate: Equatable {
 
         for lhsCb in lhs.contextBlocks {
             
-            if !rhs.contextBlocks.contains(lhsCb){
-            
+            if !rhs.contextBlocks.contains(lhsCb) {
                 return false
-                
             }
-            
         }
         
         return true
-        
     }
-    
-    
 }
-
-

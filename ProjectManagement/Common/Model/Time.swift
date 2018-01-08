@@ -9,13 +9,14 @@
 import Foundation
 
 enum TimeError: Error {
-    case OutOfBounds
+    case outOfBounds
 }
 
 extension TimeError: CustomStringConvertible {
     var description: String {
         switch self {
-        case .OutOfBounds: return "Time is out of bounds. Probably hour, minute or second is an integer out of it's limit."
+        case .outOfBounds:
+            return "Time is out of bounds. Probably hour, minute or second is an integer out of it's limit."
         }
     }
 }
@@ -47,14 +48,14 @@ struct Time {
      */
     let totalSeconds: TimeInterval
     
-    init(day d: Int = 0,hour h: Int = 0, minute m: Int = 0, second s: Int = 0) throws {
+    init(day: Int = 0, hour: Int = 0, minute: Int = 0, second: Int = 0) throws {
         
         
-        if  !TimeRange.hours.contains(h) || !TimeRange.minutes.contains(m) || !TimeRange.seconds.contains(s)  {
-            throw TimeError.OutOfBounds
+        if  !TimeRange.hours.contains(hour) || !TimeRange.minutes.contains(minute) || !TimeRange.seconds.contains(second) {
+            throw TimeError.outOfBounds
         }
         
-        self.totalSeconds = d.day+h.hour+m.minute+s.seconds
+        self.totalSeconds = day.day + hour.hour + minute.minute + second.seconds
 
     }
     
@@ -74,7 +75,7 @@ struct Time {
     */
     func addingTimeInterval(_ timeInterval: TimeInterval) -> Time {
         
-        return Time(timeInterval: timeInterval+self.totalSeconds)
+        return Time(timeInterval: timeInterval + self.totalSeconds)
         
     }
     
@@ -133,7 +134,6 @@ struct TimeRange {
     /**
      The range of hours, from 0 to 23.
      */
-    static let hours  = (0 ... 23)
+    static let hours = (0 ... 23)
     
 }
-

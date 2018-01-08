@@ -9,13 +9,14 @@
 import Foundation
 
 enum ProjectError: Error {
-    case InvalidImportanceValue
+    case invalidImportanceValue
 }
 
 extension ProjectError: CustomStringConvertible {
     var description: String {
         switch self {
-        case .InvalidImportanceValue: return "Importance value should be 1, 2 or 3."
+        case .invalidImportanceValue:
+            return "Importance value should be 1, 2 or 3."
         }
     }
 }
@@ -29,7 +30,7 @@ typealias Priority = Double
 
 class Project: NSObject {
     
-    static private let importanceRange: [Double] = [1.0,2.0,3.0]
+    static private let importanceRange: [Double] = [1.0, 2.0, 3.0]
     
     private let id: UUID
     var name: String
@@ -41,9 +42,9 @@ class Project: NSObject {
     private var _initialEstimatedTime: TimeInterval
     private(set) var estimatedTime: TimeInterval
     
-    var completedActivities: [(Activity,Date)]
+    var completedActivities: [(Activity, Date)]
     
-    var observedActivities: [(Activity,NSKeyValueObservation)] = []
+    var observedActivities: [(Activity, NSKeyValueObservation)] = []
 
     //priority cached. When it's not valid anymore, should be setted to nil
     private var _priority: Priority?
@@ -70,12 +71,12 @@ class Project: NSObject {
         
         }
     
-        _priority = (et*imp*advRange)/(wat*3)
+        _priority = (et * imp * advRange) / (wat * 3)
         return _priority!
         
     }
     
-    init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, completedActivities: [(Activity,Date)] = []) throws {
+    init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, completedActivities: [(Activity, Date)] = []) throws {
         
         self.name = name
         self.startingDate = starts
@@ -84,7 +85,7 @@ class Project: NSObject {
         
         if !Project.importanceRange.contains(importance) {
             
-            throw ProjectError.InvalidImportanceValue
+            throw ProjectError.invalidImportanceValue
             
         }
         
@@ -100,7 +101,7 @@ class Project: NSObject {
     /**
      Should be used internally just to load from database
      */
-    private init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, completedActivities: [(Activity,Date)] = [], id: UUID) {
+    private init(name: String, starts: Date, ends: Date, context: Context, importance: Double, estimatedTime initialEstimatedTime: TimeInterval, completedActivities: [(Activity, Date)] = [], id: UUID) {
         self.name = name
         self.startingDate = starts
         self.endingDate = ends
@@ -155,14 +156,14 @@ class Project: NSObject {
     
     private func addCompletedActivityObservation(for activity: Activity) {
         //becomes oberver of activity
-        let observ = activity.observe(\.isCompleted) { (activity, change) in
+        let observ = activity.observe(\.isCompleted) { activity, _ in
             if activity.isCompleted == true {
-                self.completedActivities.append((activity,Date()))
+                self.completedActivities.append((activity, Date()))
                 self.stopObserving(activity)
             }
         }
         
-        self.observedActivities.append((activity,observ))
+        self.observedActivities.append((activity, observ))
         
     }
     
@@ -212,8 +213,8 @@ class Project: NSObject {
         let ends = endingDate.timeIntervalSince1970
         let today = Date().timeIntervalSince1970
         
-        var val = (today-starts)/(ends-starts)
-        val = Double(round(1000000*val)/1000000)
+        var val = (today - starts) / (ends - starts)
+        val = Double(round(1_000_000 * val) / 1_000_000)
         
         return val
         
@@ -225,7 +226,7 @@ class Project: NSObject {
     */
     func getProgress() -> Double {
         
-        return (_initialEstimatedTime-estimatedTime)/_initialEstimatedTime
+        return (_initialEstimatedTime - estimatedTime) / _initialEstimatedTime
         
     }
     
@@ -237,7 +238,7 @@ class Project: NSObject {
     */
     func addCompletedActivity(_ activity: Activity, at date: Date = Date()) {
         
-        self.completedActivities.append((activity,date))
+        self.completedActivities.append((activity, date))
         
     }
     
@@ -280,14 +281,14 @@ extension Project: Observer {
     func update<T>(with newValue: T) {
         
 
-        estimatedTime = _initialEstimatedTime-getCompletedActivitiesTotalLength()
+        estimatedTime = _initialEstimatedTime - getCompletedActivitiesTotalLength()
 
         guard let schedule = newValue as? [Day] else {
             return
             
         }
         
-        for activity in schedule.activities where activity.project == self{
+        for activity in schedule.activities where activity.project == self {
             estimatedTime -= activity.length
         }
         
@@ -306,9 +307,8 @@ extension Project {
 }
 
 extension Project: Comparable {
-    static func <(lhs: Project, rhs: Project) -> Bool {
+    static func < (lhs: Project, rhs: Project) -> Bool {
         return lhs.priority > rhs.priority
     }
     
 }
-

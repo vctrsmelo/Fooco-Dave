@@ -9,13 +9,14 @@
 import Foundation
 
 enum ActivitySchedulerError: Error {
-    case ActivityOutOfTimeBlocksBound
+    case activityOutOfTimeBlocksBound
 }
 
 extension ActivitySchedulerError: CustomStringConvertible {
     var description: String {
         switch self {
-        case .ActivityOutOfTimeBlocksBound: return "Tried to add an activity out of available timeblocks limits"
+        case .activityOutOfTimeBlocksBound:
+            return "Tried to add an activity out of available timeblocks limits"
         }
     }
 }
@@ -67,7 +68,7 @@ class ActivityScheduler {
             }
         }
         
-        throw ActivitySchedulerError.ActivityOutOfTimeBlocksBound
+        throw ActivitySchedulerError.activityOutOfTimeBlocksBound
         
     }
     

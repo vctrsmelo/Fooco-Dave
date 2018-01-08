@@ -14,7 +14,7 @@ protocol ViewSwiperDelegate: AnyObject {
 	func skipExecuted()
 }
 
-fileprivate enum MovementState {
+fileprivate enum MovementState { // swiftlint:disable:this private_over_fileprivate
 	case atCenter, atRight, atLeft, goingRight, goingLeft
 	
 	static prefix func ! (value: MovementState) -> MovementState {
@@ -53,7 +53,7 @@ fileprivate enum MovementState {
 	}
 }
 
-class ViewSwiper: NSObject {
+class ViewSwiper: NSObject { // swiftlint:disable:this type_body_length
 
 	// MARK: - Properties
 	
@@ -484,4 +484,4 @@ class ViewSwiper: NSObject {
 		self.swipeAnimator.startAnimation()
 	}
 	
-}
+} // swiftlint:disable:this file_length

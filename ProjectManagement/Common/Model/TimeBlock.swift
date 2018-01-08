@@ -10,15 +10,17 @@
 import Foundation
 
 enum TimeBlockError: Error {
-    case InvalidRange
-    case Overlaps
+    case invalidRange
+    case overlaps
 }
 
 extension TimeBlockError: CustomStringConvertible {
     var description: String {
         switch self {
-            case .InvalidRange: return "Invalid range in TimeBlock. Probably starting time is after ending."
-            case .Overlaps: return "Two timeblocks are overlapping when they shouldn't."
+        case .invalidRange:
+            return "Invalid range in TimeBlock. Probably starting time is after ending."
+        case .overlaps:
+            return "Two timeblocks are overlapping when they shouldn't."
         }
     }
 }
@@ -31,11 +33,11 @@ struct TimeBlock {
 
     private var ends: Time!
     
-    private var range: ClosedRange<Time>!{
+    private var range: ClosedRange<Time>! {
         return starts ... ends
     }
     
-    init(starts: Time, ends: Time) throws{
+    init(starts: Time, ends: Time) throws {
         
         try setStarts(starts)
         try setEnds(ends)
@@ -45,7 +47,7 @@ struct TimeBlock {
     mutating func setStarts(_ starts: Time) throws {
 
         if ends != nil && starts > ends {
-            throw TimeBlockError.InvalidRange
+            throw TimeBlockError.invalidRange
         }
         
         self.starts = starts
@@ -53,7 +55,7 @@ struct TimeBlock {
     
     mutating func setEnds(_ ends: Time) throws {
         if starts != nil && starts > ends {
-            throw TimeBlockError.InvalidRange
+            throw TimeBlockError.invalidRange
         }
         self.ends = ends
     }
@@ -82,11 +84,11 @@ extension TimeBlock: IntervalType {
         return self.range.contains(value)
     }
     
-    func contains<I>(_ other: I) -> Bool where I : IntervalType, TimeBlock.Bound == I.Bound {
+    func contains<I>(_ other: I) -> Bool where I: IntervalType, TimeBlock.Bound == I.Bound {
         return self.range.contains(other.start) && self.range.contains(other.end)
     }
     
-    func overlaps<I>(_ other: I) -> Bool where I : IntervalType, Time == I.Bound {
+    func overlaps<I>(_ other: I) -> Bool where I: IntervalType, Time == I.Bound {
         return ((self.start <= other.start && self.end >= other.start) || (other.start <= self.start && other.end >= self.starts))
     }
     
@@ -119,11 +121,11 @@ extension TimeBlock: TimeIntervalType {
 
 extension TimeBlock: Equatable {
     
-    static func == (_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool{
+    static func == (_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool {
         return tb1.range == tb2.range
     }
 
-    static func != (_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool{
+    static func != (_ tb1: TimeBlock, _ tb2: TimeBlock) -> Bool {
         return tb1.range != tb2.range
     }
     
@@ -143,7 +145,7 @@ extension TimeBlock {
     private func getSplittedTimeBlocks(with other: TimeBlock) -> [TimeBlock] {
         
         if !self.overlaps(other) {
-            return [self,other]
+            return [self, other]
         }
         
 //        var times: [Time] = getTimesWithoutDuplicatedValues(from: [self.start, self.end, other.start, other.end])
@@ -155,10 +157,9 @@ extension TimeBlock {
         var resultTimeBlocks: [TimeBlock] = []
 
         if !times.isEmpty {
-            for i in 0 ..< times.count-1 {
+            for i in 0 ..< times.count - 1 {
                 
-                resultTimeBlocks.append(try! TimeBlock(starts: times[i], ends: times[i+1]))
-                
+                resultTimeBlocks.append(try! TimeBlock(starts: times[i], ends: times[i + 1]))
             }
         }
         

@@ -12,17 +12,16 @@ class User {
     
     static var sharedInstance = User()
     
-    
     private var _value: [Day] {
-        get{
+        get {
             guard let schedule = _scheduleCache else {
                 return []
             }
             
             return schedule
-            
         }
-        set{
+        
+        set {
             _scheduleCache = newValue
         }
     }
@@ -40,30 +39,26 @@ class User {
     
     //this variable exists just as a better interface for scheduleCache.
     var schedule: [Day]? {
-        get{
+        get {
             return _scheduleCache
         }
-        set{
-            
+        
+        set {
             _scheduleCache = newValue?.sorted()
             notifyAllObservers(with: newValue)
-            
         }
     }
     
     /**
      Return all the user's completed activities
     */
-    var completedActivities: [(Activity,Date)] {
-        get {
-            var completedActivities: [(Activity,Date)] = []
-            for project in projects {
-                completedActivities.append(contentsOf: project.completedActivities)
-            }
-            
-            return completedActivities
-            
+    var completedActivities: [(Activity, Date)] {
+        var completedActivities: [(Activity, Date)] = []
+        for project in projects {
+            completedActivities.append(contentsOf: project.completedActivities)
         }
+        
+        return completedActivities
     }
     
     private init(projects: [Project] = [], contexts: [Context] = [], weekTemplate: WeekTemplate? = nil, schedule: [Day]? = nil) {
@@ -72,13 +67,12 @@ class User {
             self.weekTemplate = weekTemp
         } else {
             
-            self.weekTemplate = WeekTemplate(sun: WeekdayTemplate(weekday: .sunday),mon: WeekdayTemplate(weekday: .monday),tue: WeekdayTemplate(weekday: .tuesday),wed: WeekdayTemplate(weekday: .wednesday),thu: WeekdayTemplate(weekday: .thursday),fri: WeekdayTemplate(weekday: .friday),sat: WeekdayTemplate(weekday: .saturday))
+            self.weekTemplate = WeekTemplate(sun: WeekdayTemplate(weekday: .sunday), mon: WeekdayTemplate(weekday: .monday), tue: WeekdayTemplate(weekday: .tuesday), wed: WeekdayTemplate(weekday: .wednesday), thu: WeekdayTemplate(weekday: .thursday), fri: WeekdayTemplate(weekday: .friday), sat: WeekdayTemplate(weekday: .saturday))
         }
         
         self.projects = projects
         self.contexts = contexts
         self.schedule = schedule
-        
     }
     
     /**
@@ -108,11 +102,11 @@ class User {
             return nil
         }
         
-        if let day = (schedule.filter{$0.date >= Date()}.sorted().first) {
+        if let day = (schedule.filter { $0.date >= Date() }.sorted().first) {
 
-            let activity = day.activities.sorted(by: { (act1, act2) -> Bool in
-                return act1.timeBlock.start < act2.timeBlock.start
-            }).first
+            let activity = day.activities.sorted { act1, act2 -> Bool in
+                act1.timeBlock.start < act2.timeBlock.start
+            }.first
             
             return activity
                 
@@ -125,7 +119,7 @@ class User {
     /**
      Returns the time available for a context until the date parameter, including it. Discount the activities already allocated into schedule.
     */
-    func getAvailableTime(for context: Context, until date: Date) -> TimeInterval{
+    func getAvailableTime(for context: Context, until date: Date) -> TimeInterval {
 
         var returnValue: TimeInterval = 0.0
         //recursive get each day until today (obs: into today, verifies the current time)
@@ -149,9 +143,7 @@ class User {
                 returnValue += contextBlock.timeBlock.length
 
                 weekdayContextBlocks.append(contextBlock)
-
             }
-            
         }
         
         //decrease activities length if date is already in schedule
@@ -257,13 +249,13 @@ class User {
         - at: filter the activities for the corresponding date. If nil, returns activities for all dates.
      - Returns: All completed activities, and the date they were achieved, filtered according to the parameters.
      */
-    func getCompletedActivitiesWithDate(for contextParam: Context? = nil, at dateParam: Date? = nil) -> [(Activity,Date)] {
+    func getCompletedActivitiesWithDate(for contextParam: Context? = nil, at dateParam: Date? = nil) -> [(Activity, Date)] {
         
-        var completedActivities: [(Activity,Date)] = []
+        var completedActivities: [(Activity, Date)] = []
         
         if let context = contextParam {
          
-            for project in (projects.filter{$0.context == context}) {
+            for project in (projects.filter { $0.context == context }) {
                 completedActivities.append(contentsOf: project.completedActivities)
             }
             
@@ -308,9 +300,9 @@ class User {
      - at: filter the activities for the corresponding date. If nil, returns activities for all dates.
      - Returns: All completed activities, and the date they were achieved, filtered according to the parameters.
      */
-    func getCompletedActivitiesWithDate(for projectParam: Project? = nil, at dateParam: Date? = nil) -> [(Activity,Date)] {
+    func getCompletedActivitiesWithDate(for projectParam: Project? = nil, at dateParam: Date? = nil) -> [(Activity, Date)] {
         
-        var completedActivities: [(Activity,Date)] = []
+        var completedActivities: [(Activity, Date)] = []
         
         if let project = projectParam {
             
@@ -380,7 +372,7 @@ extension User: Observable {
     
     func removeObserver(observer: Observer) {
         
-        observers = observers.filter({$0.observerId != observer.observerId})
+        observers = observers.filter { $0.observerId != observer.observerId }
         
     }
     
