@@ -1,5 +1,5 @@
 //
-//  MenuTableViewControllerFooco.swift
+//  MenuTableVCFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 24/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuTableViewControllerFooco: UITableViewController {
+class MenuTableVCFooco: UITableViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)

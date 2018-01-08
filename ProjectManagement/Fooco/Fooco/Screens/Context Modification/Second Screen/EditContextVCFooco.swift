@@ -1,5 +1,5 @@
 //
-//  EditContextViewController.swift
+//  EditContextVCFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 30/11/17.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class EditContextViewController: UIViewController {
+class EditContextVCFooco: UIViewController {
 
-	var viewModel: EditContextViewModel!
+	var viewModel: EditContextVMFooco!
 	
 	private let cellIdentifier = "timeblockCell"
 	
@@ -96,7 +96,7 @@ class EditContextViewController: UIViewController {
 
 // MARK: - ViewModelUpdateDelegate
 
-extension EditContextViewController: ViewModelUpdateDelegate {
+extension EditContextVCFooco: ViewModelUpdateDelegate {
     func viewModelDidUpdate() {
         self.updateToViewModel()
     }
@@ -104,7 +104,7 @@ extension EditContextViewController: ViewModelUpdateDelegate {
 
 // MARK: - Tableview
 
-extension EditContextViewController: UITableViewDataSource, UITableViewDelegate {
+extension EditContextVCFooco: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.viewModel.totalRows
 	}
@@ -112,7 +112,7 @@ extension EditContextViewController: UITableViewDataSource, UITableViewDelegate 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		var cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
 		
-		if let someCell = cell as? TimeBlockTableViewCell {
+		if let someCell = cell as? TimeBlockTableViewCellFooco {
 			someCell.cellData = self.viewModel.cellData(for: indexPath.row)
 			cell = someCell
 		}

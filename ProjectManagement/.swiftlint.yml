@@ -130,6 +130,11 @@ excluded:
 identifier_name:
   excluded:
     - id
+    - to
+
+type_name:
+  excluded:
+    - T
 
 number_separator:
   minimum_length: 5
@@ -146,7 +151,7 @@ whitelist_rules:
   - explicit_acl
 
   # Enums should be explicitly assigned their raw values.
-  - explicit_enum_raw_value
+#  - explicit_enum_raw_value
 
   # Explicitly calling .init() should be avoided.
   - explicit_init
@@ -215,7 +220,7 @@ whitelist_rules:
   - object_literal
 
   # Combine multiple pattern matching bindings by moving keywords out of tuples.
-  - pattern_matching_keywords
+#  - pattern_matching_keywords
 
   # Prefer private over fileprivate declarations.
   - private_over_fileprivate

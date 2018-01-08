@@ -17,7 +17,7 @@ struct AlgorithmManager {
        Get day schedule until the date parameter.
     
     */
-    static func getDayScheduleFor(date dte: Date) throws -> [Day]{
+    static func getDayScheduleFor(date dte: Date) throws -> [Day] {
         
         let lastDate = dte.getDay()
         
@@ -94,9 +94,7 @@ struct AlgorithmManager {
         var highestProjects: [Project] = getProjectsFor(context: scheduler.context)
         
         //sort projects by their priorities
-        highestProjects.sort { (p1, p2) -> Bool in
-            return p1.priority > p2.priority
-        }
+        highestProjects.sort { $0.priority > $1.priority }
         
         var i = 0
         while highestProjects.count > i {
@@ -104,7 +102,7 @@ struct AlgorithmManager {
             let highestProject = highestProjects[i]
             
             //if timeBlock length is smaller than minimalTimeLength for activity, skip it
-            for timeBlock in (scheduler.getAvailableTimeBlocks().filter {$0.length >= Activity.minimalTimeLength }) {
+            for timeBlock in (scheduler.getAvailableTimeBlocks().filter { $0.length >= Activity.minimalTimeLength }) {
                 
                 //if highestProject found an activity for timeBlock
                 if let nextActivity = highestProject.nextActivity(for: timeBlock) {
@@ -132,7 +130,7 @@ struct AlgorithmManager {
         var projects: [Project] = []
         
         //iterate over user projects
-        for project in (User.sharedInstance.projects.filter {$0.context == context}) {
+        for project in (User.sharedInstance.projects.filter { $0.context == context }) {
             
             projects.append(project)
 

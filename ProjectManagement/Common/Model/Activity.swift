@@ -90,8 +90,6 @@ final class Activity: NSObject {
         self.timeBlock = try TimeBlock(starts: from, ends: to)
         self.isCompleted = completed
         self.id = id
-        
-        
     }
     
 }
@@ -128,12 +126,12 @@ extension Activity: IntervalType {
         return self.timeBlock.contains(value)
     }
 
-    func contains<I>(_ other: I) -> Bool where I : IntervalType, Activity.Bound == I.Bound {
+    func contains<I>(_ other: I) -> Bool where I: IntervalType, Activity.Bound == I.Bound {
         return self.timeBlock.overlaps(other)
     }
 
     
-    func overlaps<I>(_ other: I) -> Bool where I : IntervalType, Activity.Bound == I.Bound {
+    func overlaps<I>(_ other: I) -> Bool where I: IntervalType, Activity.Bound == I.Bound {
         return self.timeBlock.overlaps(other)
     }
 
@@ -149,7 +147,7 @@ extension Activity: IntervalType {
                 continue
             }
             
-            if let project = self.project{
+            if let project = self.project {
                 resultArray.append(try! Activity(from: compTbl.start, to: compTbl.end, project: project))
             }
         }

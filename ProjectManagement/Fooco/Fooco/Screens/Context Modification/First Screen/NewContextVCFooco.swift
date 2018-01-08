@@ -1,5 +1,5 @@
 //
-//  NewContextViewController.swift
+//  NewContextVCFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 29/11/17.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class NewContextViewController: UIViewController {
+class NewContextVCFooco: UIViewController {
 
     private let segueToEdit = "fromNewContextToEdit"
 	private let collectionCellIdentifier = "colorCell"
 	private let tableCellIdentifier = "nameSuggestionCell"
 	
-	private let viewModel = NewContextViewModel()
+	private let viewModel = NewContextVMFooco()
 		
 	@IBOutlet private weak var nameField: UITextField!
 	@IBOutlet private weak var colorsCollection: UICollectionView!
@@ -48,7 +48,7 @@ class NewContextViewController: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == self.segueToEdit, let editViewController = segue.destination as? EditContextViewController {
+		if segue.identifier == self.segueToEdit, let editViewController = segue.destination as? EditContextVCFooco {
 			editViewController.viewModel = self.viewModel.editContextViewModel(with: editViewController)
 		}
     }
@@ -57,7 +57,7 @@ class NewContextViewController: UIViewController {
 
 // MARK: - Textfield
 
-extension NewContextViewController: UITextFieldDelegate {
+extension NewContextVCFooco: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
@@ -69,7 +69,7 @@ extension NewContextViewController: UITextFieldDelegate {
 
 // MARK: - CollectionView
 
-extension NewContextViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension NewContextVCFooco: UICollectionViewDataSource, UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.viewModel.colorOptions.count
 	}
@@ -104,7 +104,7 @@ extension NewContextViewController: UICollectionViewDataSource, UICollectionView
 
 // MARK: - TableView
 
-extension NewContextViewController: UITableViewDataSource, UITableViewDelegate {
+extension NewContextVCFooco: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.viewModel.suggestionOptions.count
 	}

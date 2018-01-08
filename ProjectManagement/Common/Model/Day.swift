@@ -9,13 +9,14 @@
 import Foundation
 
 enum DayError: Error {
-    case ActivitiesOverlapping
+    case activitiesOverlapping
 }
 
 extension DayError: CustomStringConvertible {
     var description: String {
         switch self {
-        case .ActivitiesOverlapping: return "The activities in a day should not overlap."
+        case .activitiesOverlapping:
+            return "The activities in a day should not overlap."
         }
     }
 }
@@ -28,7 +29,7 @@ class Day {
     let date: Date
     var activities: [Activity]
     
-    init(date: Date, activities: [Activity] = []) throws  {
+    init(date: Date, activities: [Activity] = []) throws {
 
         self.date = date.getDay()
         
@@ -36,7 +37,7 @@ class Day {
         self.id = UUID()
         
         if isOverlapping(activities) {
-            throw DayError.ActivitiesOverlapping
+            throw DayError.activitiesOverlapping
         }
     
     }
@@ -58,9 +59,9 @@ class Day {
         if activities.count > 1 {
 
             //loop through all activities, comparing their timeBlock through overlaps method.
-            for i in 0 ..< activities.count-1 {
-                for j in i+1 ..< activities.count {
-                    if activities[i].overlaps(activities[j]){
+            for i in 0 ..< activities.count - 1 {
+                for j in i + 1 ..< activities.count {
+                    if activities[i].overlaps(activities[j]) {
                         return true
                     }
                 }
@@ -73,11 +74,11 @@ class Day {
 
 extension Day: Comparable {
     
-    static func <(lhs: Day, rhs: Day) -> Bool {
+    static func < (lhs: Day, rhs: Day) -> Bool {
         return lhs.date < rhs.date
     }
     
-    static func ==(lhs: Day, rhs: Day) -> Bool {
+    static func == (lhs: Day, rhs: Day) -> Bool {
         return lhs.date == rhs.date
     }
     

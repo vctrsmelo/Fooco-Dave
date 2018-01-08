@@ -1,5 +1,5 @@
 //
-//  ProjectListViewControllerFooco.swift
+//  ProjectListVCFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 26/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption {
+class ProjectListVCFooco: UIViewController, EditProjectUnwindOption {
 	
 	let unwindFromProject = "unwindFromEditToProjectList"
 	
@@ -56,7 +56,7 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == self.segueToProject,
 			let navigationVC = segue.destination as? UINavigationController,
-			let destinationVC = navigationVC.topViewController as? EditProjectViewControllerFooco {
+			let destinationVC = navigationVC.topViewController as? EditProjectVCFooco {
 			destinationVC.unwindSegueIdentifier = self.unwindFromProject
 			destinationVC.project = sender as? Project
 		}
@@ -69,15 +69,15 @@ class ProjectListViewControllerFooco: UIViewController, EditProjectUnwindOption 
 
 // MARK: - Table view data source
 
-extension ProjectListViewControllerFooco: UITableViewDataSource, UITableViewDelegate {
+extension ProjectListVCFooco: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.projects.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		var cell = tableView.dequeueReusableCell(withIdentifier: ProjectListTableViewCell.identifier, for: indexPath)
+		var cell = tableView.dequeueReusableCell(withIdentifier: ProjectListCellFooco.identifier, for: indexPath)
 		
-		if let someCell = cell as? ProjectListTableViewCell {
+		if let someCell = cell as? ProjectListCellFooco {
 			someCell.project = projects[indexPath.row]
 			cell = someCell
 		}

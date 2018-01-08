@@ -15,7 +15,7 @@
         <!--Menu-->
         <scene sceneID="8Ze-Hf-A1O">
             <objects>
-                <tableViewController title="Menu" id="CvE-Lc-NeP" customClass="MenuTableViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Menu" id="CvE-Lc-NeP" customClass="MenuTableVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="84" estimatedRowHeight="84" sectionHeaderHeight="1" sectionFooterHeight="1" id="TXf-us-eGk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +232,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" userLabel="Home View Controller" customClass="HomeViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" userLabel="Home View Controller" customClass="HomeVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -631,7 +631,7 @@
         <!--Projects-->
         <scene sceneID="D2p-uh-1Ra">
             <objects>
-                <viewController title="Projects" id="N4B-fY-LMS" customClass="ProjectListViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Projects" id="N4B-fY-LMS" customClass="ProjectListVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0hg-Q2-SY2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -641,7 +641,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="projectCell" id="WUx-27-8g8" customClass="ProjectListTableViewCell" customModule="Fooco" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="projectCell" id="WUx-27-8g8" customClass="ProjectListCellFooco" customModule="Fooco" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WUx-27-8g8" id="1TX-vk-oTb">
@@ -763,7 +763,7 @@
         <!--Contexts-->
         <scene sceneID="zCd-ph-QQv">
             <objects>
-                <viewController title="Contexts" id="1Q5-vg-VcY" customClass="ContextListViewController" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Contexts" id="1Q5-vg-VcY" customClass="ContextListVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R2b-Wu-SUg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -782,7 +782,7 @@
         <!--New Context-->
         <scene sceneID="Dfh-ae-vKJ">
             <objects>
-                <viewController title="New Context" id="cVk-SC-zzz" customClass="NewContextViewController" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Context" id="cVk-SC-zzz" customClass="NewContextVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mej-Jn-5G6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -958,7 +958,7 @@
         <!--EditContext-->
         <scene sceneID="hmL-UW-0JI">
             <objects>
-                <viewController title="EditContext" id="dtK-j8-lWb" customClass="EditContextViewController" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="EditContext" id="dtK-j8-lWb" customClass="EditContextVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n7T-6j-MUe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1313,7 +1313,7 @@
                                 <rect key="frame" x="0.0" y="411.5" width="375" height="255.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeblockCell" id="lVO-jx-4Lf" customClass="TimeBlockTableViewCell" customModule="Fooco" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeblockCell" id="lVO-jx-4Lf" customClass="TimeBlockTableViewCellFooco" customModule="Fooco" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lVO-jx-4Lf" id="56Y-de-wFu">
@@ -1427,7 +1427,7 @@
         <!--Add Project for-->
         <scene sceneID="zHt-6t-A6D">
             <objects>
-                <viewController id="52a-gu-zMx" customClass="EditProjectViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="52a-gu-zMx" customClass="EditProjectVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y5y-61-yOs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1496,10 +1496,10 @@
             </objects>
             <point key="canvasLocation" x="2562" y="533"/>
         </scene>
-        <!--Edit Project Table View Controller Fooco-->
+        <!--Edit Project TableVC Fooco-->
         <scene sceneID="rrS-li-bBQ">
             <objects>
-                <tableViewController id="ms8-Ga-Gck" customClass="EditProjectTableViewControllerFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ms8-Ga-Gck" customClass="EditProjectTableVCFooco" customModule="Fooco" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="176-OD-bPA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

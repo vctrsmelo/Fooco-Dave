@@ -1,5 +1,5 @@
 //
-//  TimeBlockTableViewCell.swift
+//  TimeBlockTableViewCellFooco.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 08/12/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimeBlockTableViewCell: UITableViewCell {
+class TimeBlockTableViewCellFooco: UITableViewCell {
 
 	var cellData: (timeblock: TimeBlock, days: [DayInWeek])? {
 		didSet {

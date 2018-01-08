@@ -132,16 +132,16 @@ extension Array where Element: Project {
      Returns an array of tuples of a project and it's priority value.
      It's useful to keep the priority value in "cache", as it's calculation is not trivial.
      */
-    func withPriorityValue(sorted: Bool = false) -> [(Project,Priority)] {
-        var returnArray: [(Project,Priority)] = []
+    func withPriorityValue(sorted: Bool = false) -> [(Project, Priority)] {
+        var returnArray: [(Project, Priority)] = []
         
         for proj in self {
-            returnArray.append((proj,proj.priority))
+            returnArray.append((proj, proj.priority))
         }
         
         if sorted {
             //sort by priority values.
-            returnArray.sort { (arg0, arg1) -> Bool in
+            returnArray.sort { arg0, arg1 -> Bool in
                 let priority1 = arg0.1
                 let priority2 = arg1.1
                 return (priority1 > priority2)
@@ -338,25 +338,3 @@ extension UINavigationBar {
 		self.tintColor = color
 	}
 }
-
-extension UIButton {
-    func setTitleColor(_ color: UIColor) {
-        self.setTitleColor(color, for: .normal)
-        self.setTitleColor(color, for: .application)
-        self.setTitleColor(color, for: .disabled)
-        self.setTitleColor(color, for: .focused)
-        self.setTitleColor(color, for: .highlighted)
-        self.setTitleColor(color, for: .reserved)
-        self.setTitleColor(color, for: .selected)
-    }
-    
-    func setTitle(_ title: String) {
-        self.setTitle(title, for: .normal)
-        self.setTitle(title, for: .application)
-        self.setTitle(title, for: .disabled)
-        self.setTitle(title, for: .focused)
-        self.setTitle(title, for: .highlighted)
-        self.setTitle(title, for: .reserved)
-        self.setTitle(title, for: .selected)
-    }
-} 

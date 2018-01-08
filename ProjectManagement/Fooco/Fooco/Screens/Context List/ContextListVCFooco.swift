@@ -1,5 +1,5 @@
 //
-//  ContextListViewController.swift
+//  ContextListVC.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 29/11/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContextListViewController: UIViewController {
+class ContextListVCFooco: UIViewController {
 
 	private let segueToContext = "fromContextListToAdd"
 	

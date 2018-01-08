@@ -18,7 +18,7 @@ protocol IntervalType {
     /**
      invariant: start <= end
      */
-    var end: Self.Bound{
+    var end: Self.Bound {
         get
     }
     
@@ -49,12 +49,12 @@ protocol IntervalType {
     /**
      Returns true if lhs contains rhs.
      */
-    func contains<I : IntervalType>(_ other: I) -> Bool where I.Bound == Bound
+    func contains<I: IntervalType>(_ other: I) -> Bool where I.Bound == Bound
     
     /**
     Returns true if lhs and rhs have a non-empty intersection.
     */
-    func overlaps<I : IntervalType>(_ other: I) -> Bool where I.Bound == Bound
+    func overlaps<I: IntervalType>(_ other: I) -> Bool where I.Bound == Bound
     
     /**
      Get intervals from self that are not contained into parameter. It is the complement of the parameter.
@@ -84,8 +84,9 @@ protocol Observer {
 
 protocol Observable {
     associatedtype T
-    var value : T { get set }
-    var observers : [Observer] { get set }
+    
+    var value: T { get set }
+    var observers: [Observer] { get set }
     
     func addObserver(observer: Observer)
     func removeObserver(observer: Observer)

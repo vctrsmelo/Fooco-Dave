@@ -1,5 +1,5 @@
 //
-//  PickerAlertViewModel.swift
+//  PickerAlertVM.swift
 //  Fooco
 //
 //  Created by Rodrigo Cardoso Buske on 12/12/17.
@@ -43,10 +43,10 @@ enum PickerAlertMode: Equatable {
 }
 
 protocol PickerAlertViewModelReceiver: AnyObject {
-	func receive(_ viewModel: PickerAlertViewModel)
+	func receive(_ viewModel: PickerAlertVM)
 }
 
-final class PickerAlertViewModel {
+final class PickerAlertVM {
 	
     /// Basically a delegate
 	private weak var receiver: PickerAlertViewModelReceiver?
@@ -100,19 +100,19 @@ final class PickerAlertViewModel {
 		self.configureOutputs()
 	}
 	
-	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int), context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forEstimatedTime(_ chosenTime: (days: Int, hours: Int), context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertVM {
 		return self.init(mode: .estimatedTime, context: context, projectName: projectName, chosenTime: chosenTime, receiver: receiver)
 	}
 	
-	static func forStartingDate(_ startDate: Date, endDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forStartingDate(_ startDate: Date, endDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertVM {
 		return self.init(mode: .date(.begin), context: context, projectName: projectName, mainDate: startDate, comparisonDate: endDate, receiver: receiver)
 	}
 	
-	static func forEndingDate(_ endDate: Date, startDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forEndingDate(_ endDate: Date, startDate: Date?, context: Context?, projectName: String?, receiver: PickerAlertViewModelReceiver) -> PickerAlertVM {
 		return self.init(mode: .date(.end), context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate, receiver: receiver)
 	}
 	
-	static func forTimeBlocks(startingTime: Date, endingTime: Date?, days: Set<DayInWeek>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertViewModel {
+	static func forTimeBlocks(startingTime: Date, endingTime: Date?, days: Set<DayInWeek>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertVM {
 		let returnValue = self.init(mode: .timeBlock(.begin), context: context, projectName: nil, mainDate: startingTime, comparisonDate: endingTime, receiver: receiver)
 		
 		returnValue.selectedDays = days
@@ -120,7 +120,7 @@ final class PickerAlertViewModel {
 		return returnValue
 	}
 	
-	func forTimeBlockEnd() -> PickerAlertViewModel {
+	func forTimeBlockEnd() -> PickerAlertVM {
 		self.mode = .timeBlock(.end)
 		self.configureOutputs()
 		

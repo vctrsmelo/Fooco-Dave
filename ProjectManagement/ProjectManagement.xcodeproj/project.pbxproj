@@ -22,7 +22,7 @@
 		EEF932C21FBF571D00D6A29E /* PickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */; };
 		FC480B1F1FC736DC00DBAD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */; };
 		FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */; };
-		FC8A78221FFF9800003FA15C /* EditProjectContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCell.xib */; };
+		FC8A78221FFF9800003FA15C /* EditProjectContextCellFooco.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF900921FB63974007FB677 /* EditProjectContextCellFooco.xib */; };
 		FC8A78231FFF9858003FA15C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
 		FC8A78241FFF9858003FA15C /* ActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2B1FFED9A4000C2EC1 /* ActivityScheduler.swift */; };
 		FC8A78251FFF9858003FA15C /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C2A1FFED9A4000C2EC1 /* AlgorithmManager.swift */; };
@@ -37,21 +37,21 @@
 		FC8A782E1FFF9858003FA15C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C281FFED9A4000C2EC1 /* User.swift */; };
 		FC8A782F1FFF9858003FA15C /* WeekdayTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */; };
 		FC8A78301FFF9858003FA15C /* WeekTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */; };
-		FC8A78351FFF9933003FA15C /* NewContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */; };
-		FC8A78361FFF9933003FA15C /* EditContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5252B61FD0816400852FDB /* EditContextViewModel.swift */; };
-		FC8A78371FFF9933003FA15C /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */; };
-		FC8A78381FFF9933003FA15C /* PickerAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */; };
-		FC8A78391FFF9933003FA15C /* ProjectListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */; };
-		FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */; };
-		FC8A783B1FFF9933003FA15C /* EditProjectContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */; };
-		FC8A783C1FFF9933003FA15C /* MenuTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */; };
-		FC8A783D1FFF9933003FA15C /* HomeViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */; };
-		FC8A783E1FFF9933003FA15C /* EditProjectViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */; };
-		FC8A783F1FFF9933003FA15C /* EditProjectTableViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */; };
-		FC8A78401FFF9933003FA15C /* ContextListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB2E21FCF32310031275B /* ContextListViewController.swift */; };
-		FC8A78411FFF9933003FA15C /* ProjectListViewControllerFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */; };
-		FC8A78421FFF9933003FA15C /* NewContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */; };
-		FC8A78431FFF9933003FA15C /* EditContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */; };
+		FC8A78351FFF9933003FA15C /* NewContextVMFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6461D1FD07C7E008F65D6 /* NewContextVMFooco.swift */; };
+		FC8A78361FFF9933003FA15C /* EditContextVMFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5252B61FD0816400852FDB /* EditContextVMFooco.swift */; };
+		FC8A78371FFF9933003FA15C /* EditProjectVMFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D370D1FE1BA48009F76B9 /* EditProjectVMFooco.swift */; };
+		FC8A78381FFF9933003FA15C /* PickerAlertVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2224481FE05EFF006A4E6C /* PickerAlertVM.swift */; };
+		FC8A78391FFF9933003FA15C /* ProjectListCellFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78393EE1FCA5E32000E3F8A /* ProjectListCellFooco.swift */; };
+		FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCellFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCellFooco.swift */; };
+		FC8A783B1FFF9933003FA15C /* EditProjectContextCellFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111F1FB386DC004B5B9E /* EditProjectContextCellFooco.swift */; };
+		FC8A783C1FFF9933003FA15C /* MenuTableVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3D6CE1FC8BE74006B2EF7 /* MenuTableVCFooco.swift */; };
+		FC8A783D1FFF9933003FA15C /* HomeVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37F4481FB0CF900003738E /* HomeVCFooco.swift */; };
+		FC8A783E1FFF9933003FA15C /* EditProjectVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E111B1FB36BA3004B5B9E /* EditProjectVCFooco.swift */; };
+		FC8A783F1FFF9933003FA15C /* EditProjectTableVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6E11251FB390A0004B5B9E /* EditProjectTableVCFooco.swift */; };
+		FC8A78401FFF9933003FA15C /* ContextListVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BB2E21FCF32310031275B /* ContextListVCFooco.swift */; };
+		FC8A78411FFF9933003FA15C /* ProjectListVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A78311FFF98E7003FA15C /* ProjectListVCFooco.swift */; };
+		FC8A78421FFF9933003FA15C /* NewContextVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC673FF81FCF48DD00D4E9D4 /* NewContextVCFooco.swift */; };
+		FC8A78431FFF9933003FA15C /* EditContextVCFooco.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC713B461FD09B8D0016CEBF /* EditContextVCFooco.swift */; };
 		FC8A78441FFF9933003FA15C /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */; };
 		FC8A78451FFF9933003FA15C /* PickerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A78331FFF991B003FA15C /* PickerAlertView.swift */; };
 		FC8A78461FFF9933003FA15C /* FloatingAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */; };
@@ -97,13 +97,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewControllerFooco.swift; sourceTree = "<group>"; };
-		BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectContextCell.swift; sourceTree = "<group>"; };
-		BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectTableViewControllerFooco.swift; sourceTree = "<group>"; };
+		BE6E111B1FB36BA3004B5B9E /* EditProjectVCFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectVCFooco.swift; sourceTree = "<group>"; };
+		BE6E111F1FB386DC004B5B9E /* EditProjectContextCellFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectContextCellFooco.swift; sourceTree = "<group>"; };
+		BE6E11251FB390A0004B5B9E /* EditProjectTableVCFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectTableVCFooco.swift; sourceTree = "<group>"; };
 		BEDE6C721FB0D0DE00ABD6D8 /* FoocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDE6C761FB0D0DE00ABD6D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BEF900921FB63974007FB677 /* EditProjectContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCell.xib; sourceTree = "<group>"; };
-		E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListTableViewCell.swift; sourceTree = "<group>"; };
+		BEF900921FB63974007FB677 /* EditProjectContextCellFooco.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProjectContextCellFooco.xib; sourceTree = "<group>"; };
+		E78393EE1FCA5E32000E3F8A /* ProjectListCellFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListCellFooco.swift; sourceTree = "<group>"; };
 		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,18 +126,18 @@
 		EEA46BBA1F9A36D600851D5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EED935551FBF615C00177FCC /* XibLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoader.swift; sourceTree = "<group>"; };
 		EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerAlertView.xib; sourceTree = "<group>"; };
-		FC0BB2E21FCF32310031275B /* ContextListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextListViewController.swift; sourceTree = "<group>"; };
+		FC0BB2E21FCF32310031275B /* ContextListVCFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextListVCFooco.swift; sourceTree = "<group>"; };
 		FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAddButton.swift; sourceTree = "<group>"; };
-		FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAlertViewModel.swift; sourceTree = "<group>"; };
-		FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerFooco.swift; sourceTree = "<group>"; };
-		FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockTableViewCell.swift; sourceTree = "<group>"; };
+		FC2224481FE05EFF006A4E6C /* PickerAlertVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAlertVM.swift; sourceTree = "<group>"; };
+		FC37F4481FB0CF900003738E /* HomeVCFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCFooco.swift; sourceTree = "<group>"; };
+		FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCellFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockTableViewCellFooco.swift; sourceTree = "<group>"; };
 		FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Fooco/Fooco/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
-		FC5252B61FD0816400852FDB /* EditContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewModel.swift; sourceTree = "<group>"; };
+		FC4D370D1FE1BA48009F76B9 /* EditProjectVMFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectVMFooco.swift; sourceTree = "<group>"; };
+		FC5252B61FD0816400852FDB /* EditContextVMFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextVMFooco.swift; sourceTree = "<group>"; };
 		FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwiper.swift; sourceTree = "<group>"; };
-		FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewController.swift; sourceTree = "<group>"; };
-		FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextViewController.swift; sourceTree = "<group>"; };
-		FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewControllerFooco.swift; sourceTree = "<group>"; };
+		FC673FF81FCF48DD00D4E9D4 /* NewContextVCFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextVCFooco.swift; sourceTree = "<group>"; };
+		FC713B461FD09B8D0016CEBF /* EditContextVCFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContextVCFooco.swift; sourceTree = "<group>"; };
+		FC8A78311FFF98E7003FA15C /* ProjectListVCFooco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListVCFooco.swift; sourceTree = "<group>"; };
 		FC8A78331FFF991B003FA15C /* PickerAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerAlertView.swift; sourceTree = "<group>"; };
 		FC9703CE1FFEDEEA00E5C8A3 /* TestElementsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestElementsGenerator.swift; sourceTree = "<group>"; };
 		FC9703CF1FFEDEEA00E5C8A3 /* ProjectManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManagementTests.swift; sourceTree = "<group>"; };
@@ -154,8 +154,8 @@
 		FC981C321FFED9A4000C2EC1 /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
 		FC981C331FFED9A4000C2EC1 /* WeekTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekTemplate.swift; sourceTree = "<group>"; };
 		FC981C341FFED9A4000C2EC1 /* WeekdayTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTemplate.swift; sourceTree = "<group>"; };
-		FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextViewModel.swift; sourceTree = "<group>"; };
-		FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewControllerFooco.swift; sourceTree = "<group>"; };
+		FCE6461D1FD07C7E008F65D6 /* NewContextVMFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContextVMFooco.swift; sourceTree = "<group>"; };
+		FCF3D6CE1FC8BE74006B2EF7 /* MenuTableVCFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableVCFooco.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,9 +241,7 @@
 		EEA46B651F9A36CA00851D5D /* Fooco */ = {
 			isa = PBXGroup;
 			children = (
-				FCE6461F1FD07C86008F65D6 /* View Models */,
-				FCE536B41FB4C32D0010BA63 /* Cells */,
-				FCE536B31FB4C2FC0010BA63 /* Controllers */,
+				FC6C774A2003EE2C00EA4277 /* Screens */,
 				FCE536B51FB4C3340010BA63 /* Views */,
 				EEA46B6A1F9A36CA00851D5D /* Main.storyboard */,
 				FC480B1E1FC736DB00DBAD63 /* Assets.xcassets */,
@@ -315,11 +313,116 @@
 			children = (
 				EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */,
 				EEA46B661F9A36CA00851D5D /* AppDelegate.swift */,
-				FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */,
 				EED935551FBF615C00177FCC /* XibLoader.swift */,
 				EEA46B721F9A36CA00851D5D /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC6C774A2003EE2C00EA4277 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FC6C774C2003EE5900EA4277 /* Menu */,
+				FC6C774B2003EE4400EA4277 /* Home */,
+				FC6C774E2003EEEA00EA4277 /* Project List */,
+				FC6C774D2003EE8800EA4277 /* Project Modification */,
+				FC6C774F2003EEFD00EA4277 /* Context List */,
+				FC6C77532003F02F00EA4277 /* Context Modification */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		FC6C774B2003EE4400EA4277 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FC37F4481FB0CF900003738E /* HomeVCFooco.swift */,
+				E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */,
+				FC65222D1FBA3B6E00BAD6DE /* ViewSwiper.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FC6C774C2003EE5900EA4277 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				FCF3D6CE1FC8BE74006B2EF7 /* MenuTableVCFooco.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		FC6C774D2003EE8800EA4277 /* Project Modification */ = {
+			isa = PBXGroup;
+			children = (
+				FC6C77522003EF5C00EA4277 /* Project Context Cell */,
+				FC4D370D1FE1BA48009F76B9 /* EditProjectVMFooco.swift */,
+				BE6E111B1FB36BA3004B5B9E /* EditProjectVCFooco.swift */,
+				BE6E11251FB390A0004B5B9E /* EditProjectTableVCFooco.swift */,
+			);
+			path = "Project Modification";
+			sourceTree = "<group>";
+		};
+		FC6C774E2003EEEA00EA4277 /* Project List */ = {
+			isa = PBXGroup;
+			children = (
+				FC8A78311FFF98E7003FA15C /* ProjectListVCFooco.swift */,
+				E78393EE1FCA5E32000E3F8A /* ProjectListCellFooco.swift */,
+			);
+			path = "Project List";
+			sourceTree = "<group>";
+		};
+		FC6C774F2003EEFD00EA4277 /* Context List */ = {
+			isa = PBXGroup;
+			children = (
+				FC0BB2E21FCF32310031275B /* ContextListVCFooco.swift */,
+			);
+			path = "Context List";
+			sourceTree = "<group>";
+		};
+		FC6C77512003EF2900EA4277 /* Picker Alert */ = {
+			isa = PBXGroup;
+			children = (
+				FC2224481FE05EFF006A4E6C /* PickerAlertVM.swift */,
+				FC8A78331FFF991B003FA15C /* PickerAlertView.swift */,
+				EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */,
+			);
+			path = "Picker Alert";
+			sourceTree = "<group>";
+		};
+		FC6C77522003EF5C00EA4277 /* Project Context Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE6E111F1FB386DC004B5B9E /* EditProjectContextCellFooco.swift */,
+				BEF900921FB63974007FB677 /* EditProjectContextCellFooco.xib */,
+			);
+			path = "Project Context Cell";
+			sourceTree = "<group>";
+		};
+		FC6C77532003F02F00EA4277 /* Context Modification */ = {
+			isa = PBXGroup;
+			children = (
+				FCE536B41FB4C32D0010BA63 /* Cells */,
+				FC6C77542003F09E00EA4277 /* First Screen */,
+				FC6C77552003F0A700EA4277 /* Second Screen */,
+			);
+			path = "Context Modification";
+			sourceTree = "<group>";
+		};
+		FC6C77542003F09E00EA4277 /* First Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FCE6461D1FD07C7E008F65D6 /* NewContextVMFooco.swift */,
+				FC673FF81FCF48DD00D4E9D4 /* NewContextVCFooco.swift */,
+			);
+			path = "First Screen";
+			sourceTree = "<group>";
+		};
+		FC6C77552003F0A700EA4277 /* Second Screen */ = {
+			isa = PBXGroup;
+			children = (
+				FC5252B61FD0816400852FDB /* EditContextVMFooco.swift */,
+				FC713B461FD09B8D0016CEBF /* EditContextVCFooco.swift */,
+			);
+			path = "Second Screen";
 			sourceTree = "<group>";
 		};
 		FC981C251FFED9A4000C2EC1 /* Model */ = {
@@ -350,28 +453,10 @@
 			path = Algorithm;
 			sourceTree = "<group>";
 		};
-		FCE536B31FB4C2FC0010BA63 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				FCF3D6CE1FC8BE74006B2EF7 /* MenuTableViewControllerFooco.swift */,
-				FC37F4481FB0CF900003738E /* HomeViewControllerFooco.swift */,
-				BE6E111B1FB36BA3004B5B9E /* EditProjectViewControllerFooco.swift */,
-				BE6E11251FB390A0004B5B9E /* EditProjectTableViewControllerFooco.swift */,
-				FC0BB2E21FCF32310031275B /* ContextListViewController.swift */,
-				FC8A78311FFF98E7003FA15C /* ProjectListViewControllerFooco.swift */,
-				FC673FF81FCF48DD00D4E9D4 /* NewContextViewController.swift */,
-				FC713B461FD09B8D0016CEBF /* EditContextViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		FCE536B41FB4C32D0010BA63 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E78393EE1FCA5E32000E3F8A /* ProjectListTableViewCell.swift */,
-				FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCell.swift */,
-				BE6E111F1FB386DC004B5B9E /* EditProjectContextCell.swift */,
-				BEF900921FB63974007FB677 /* EditProjectContextCell.xib */,
+				FC4202531FDB0D1A00D8550F /* TimeBlockTableViewCellFooco.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -379,23 +464,10 @@
 		FCE536B51FB4C3340010BA63 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */,
-				FC8A78331FFF991B003FA15C /* PickerAlertView.swift */,
-				EEF932C11FBF571D00D6A29E /* PickerAlertView.xib */,
+				FC6C77512003EF2900EA4277 /* Picker Alert */,
 				FC1B323B1FC5FE8A00B1C74F /* FloatingAddButton.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		FCE6461F1FD07C86008F65D6 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				FCE6461D1FD07C7E008F65D6 /* NewContextViewModel.swift */,
-				FC5252B61FD0816400852FDB /* EditContextViewModel.swift */,
-				FC4D370D1FE1BA48009F76B9 /* EditProjectViewModel.swift */,
-				FC2224481FE05EFF006A4E6C /* PickerAlertViewModel.swift */,
-			);
-			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +498,7 @@
 				EEA46B5F1F9A36CA00851D5D /* Sources */,
 				EEA46B601F9A36CA00851D5D /* Frameworks */,
 				EEA46B611F9A36CA00851D5D /* Resources */,
+				FC6C77562003F75900EA4277 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -558,7 +631,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC8A78221FFF9800003FA15C /* EditProjectContextCell.xib in Resources */,
+				FC8A78221FFF9800003FA15C /* EditProjectContextCellFooco.xib in Resources */,
 				EEF932C21FBF571D00D6A29E /* PickerAlertView.xib in Resources */,
 				EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */,
 				EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */,
@@ -592,6 +665,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FC6C77562003F75900EA4277 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BEDE6C6E1FB0D0DE00ABD6D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -607,32 +696,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC8A78291FFF9858003FA15C /* CustomProtocols.swift in Sources */,
-				FC8A783B1FFF9933003FA15C /* EditProjectContextCell.swift in Sources */,
-				FC8A783E1FFF9933003FA15C /* EditProjectViewControllerFooco.swift in Sources */,
+				FC8A783B1FFF9933003FA15C /* EditProjectContextCellFooco.swift in Sources */,
+				FC8A783E1FFF9933003FA15C /* EditProjectVCFooco.swift in Sources */,
 				FC8A78441FFF9933003FA15C /* ActivityCardView.swift in Sources */,
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
-				FC8A78431FFF9933003FA15C /* EditContextViewController.swift in Sources */,
-				FC8A78381FFF9933003FA15C /* PickerAlertViewModel.swift in Sources */,
+				FC8A78431FFF9933003FA15C /* EditContextVCFooco.swift in Sources */,
+				FC8A78381FFF9933003FA15C /* PickerAlertVM.swift in Sources */,
 				FC8A782D1FFF9858003FA15C /* TimeBlock.swift in Sources */,
-				FC8A78421FFF9933003FA15C /* NewContextViewController.swift in Sources */,
+				FC8A78421FFF9933003FA15C /* NewContextVCFooco.swift in Sources */,
 				FC8A78251FFF9858003FA15C /* AlgorithmManager.swift in Sources */,
 				FC8A78461FFF9933003FA15C /* FloatingAddButton.swift in Sources */,
-				FC8A783D1FFF9933003FA15C /* HomeViewControllerFooco.swift in Sources */,
+				FC8A783D1FFF9933003FA15C /* HomeVCFooco.swift in Sources */,
 				FC8A78281FFF9858003FA15C /* ContextBlock.swift in Sources */,
 				FC8A782A1FFF9858003FA15C /* Day.swift in Sources */,
-				FC8A783F1FFF9933003FA15C /* EditProjectTableViewControllerFooco.swift in Sources */,
+				FC8A783F1FFF9933003FA15C /* EditProjectTableVCFooco.swift in Sources */,
 				FC8A782F1FFF9858003FA15C /* WeekdayTemplate.swift in Sources */,
-				FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCell.swift in Sources */,
+				FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCellFooco.swift in Sources */,
 				FC8A78261FFF9858003FA15C /* Activity.swift in Sources */,
-				FC8A783C1FFF9933003FA15C /* MenuTableViewControllerFooco.swift in Sources */,
+				FC8A783C1FFF9933003FA15C /* MenuTableVCFooco.swift in Sources */,
 				FC8A782C1FFF9858003FA15C /* Time.swift in Sources */,
 				FC8A782E1FFF9858003FA15C /* User.swift in Sources */,
-				FC8A78371FFF9933003FA15C /* EditProjectViewModel.swift in Sources */,
+				FC8A78371FFF9933003FA15C /* EditProjectVMFooco.swift in Sources */,
 				FC8A78241FFF9858003FA15C /* ActivityScheduler.swift in Sources */,
-				FC8A78411FFF9933003FA15C /* ProjectListViewControllerFooco.swift in Sources */,
-				FC8A78391FFF9933003FA15C /* ProjectListTableViewCell.swift in Sources */,
-				FC8A78401FFF9933003FA15C /* ContextListViewController.swift in Sources */,
-				FC8A78351FFF9933003FA15C /* NewContextViewModel.swift in Sources */,
+				FC8A78411FFF9933003FA15C /* ProjectListVCFooco.swift in Sources */,
+				FC8A78391FFF9933003FA15C /* ProjectListCellFooco.swift in Sources */,
+				FC8A78401FFF9933003FA15C /* ContextListVCFooco.swift in Sources */,
+				FC8A78351FFF9933003FA15C /* NewContextVMFooco.swift in Sources */,
 				FC8A78301FFF9858003FA15C /* WeekTemplate.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
 				FC8A78271FFF9858003FA15C /* Context.swift in Sources */,
@@ -640,7 +729,7 @@
 				FC8A78231FFF9858003FA15C /* Extensions.swift in Sources */,
 				FC8A78451FFF9933003FA15C /* PickerAlertView.swift in Sources */,
 				FC8A782B1FFF9858003FA15C /* Project.swift in Sources */,
-				FC8A78361FFF9933003FA15C /* EditContextViewModel.swift in Sources */,
+				FC8A78361FFF9933003FA15C /* EditContextVMFooco.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

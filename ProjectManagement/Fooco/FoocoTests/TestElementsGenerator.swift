@@ -27,7 +27,7 @@ class TestElementsGenerator {
         
         for elem in contextAndDailyTime {
         
-            let contextBlock = try! ContextBlock.init(context: elem.0, timeBlock: TimeBlock(starts: Time(hour: 0), ends: Time(timeInterval: elem.1)))
+            let contextBlock = try! ContextBlock(context: elem.0, timeBlock: TimeBlock(starts: Time(hour: 0), ends: Time(timeInterval: elem.1)))
             
             do {
                 
