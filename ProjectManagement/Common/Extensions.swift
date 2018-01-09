@@ -338,3 +338,22 @@ extension UINavigationBar {
 		self.tintColor = color
 	}
 }
+
+extension Date {
+    
+    /**
+     Returns the hour, minutes and seconds of the date.
+    */
+    func getTime() -> Time {
+        
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: self)
+        let minutes = calendar.component(.minute, from: self)
+        let seconds = calendar.component(.second, from: self)
+        
+        return Time(hour: hour, minute: minutes, second: seconds)
+        
+    }
+    
+}

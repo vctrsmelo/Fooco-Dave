@@ -55,6 +55,34 @@ struct WeekdayTemplate {
         
         contextBlocks.append(contextBlock)
     }
+    
+    /**
+     Returns the weekdayTemplate starting at the specified time parameter. Useful for when user skips an activity.
+    */
+    func startingAt(_ time: Time) -> WeekdayTemplate {
+        
+        var newContextBlocks: [ContextBlock] = []
+        
+        for contextBlock in self.contextBlocks {
+    
+            //if the contextblock contains the lower bound time, it should be splitted, using time as starting time
+            if contextBlock.timeBlock.contains(time) {
+                
+                let newTimeBlock = try! TimeBlock(starts: time, ends: contextBlock.timeBlock.end)
+                newContextBlocks.append(ContextBlock(context: contextBlock.context, timeBlock: newTimeBlock))
+             
+                continue
+                
+            }
+            
+            newContextBlocks.append(contextBlock)
+            
+        }
+        
+        return WeekdayTemplate(weekday: self.weekday, contextBlocks: newContextBlocks)
+        
+    }
+    
 }
 
 extension WeekdayTemplate: Equatable {

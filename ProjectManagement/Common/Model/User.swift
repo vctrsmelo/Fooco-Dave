@@ -117,6 +117,24 @@ class User {
     }
     
     /**
+     Skip the next activity time
+    */
+    func skipNextActivity() {
+       
+        //schedule reseted. All projects will recalculate their estimated time
+        if self.schedule != nil {
+            self.schedule = nil
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    /**
      Returns the time available for a context until the date parameter, including it. Discount the activities already allocated into schedule.
     */
     func getAvailableTime(for context: Context, until date: Date) -> TimeInterval {
@@ -219,22 +237,25 @@ class User {
         
     }
     
-    func getWeekdayTemplate(for weekday: Weekday) -> WeekdayTemplate {
+    func getWeekdayTemplate(for weekday: Weekday, startingAt: Time? = nil) -> WeekdayTemplate {
+
+        let initialTime: Time = (startingAt) ?? (try! Time(hour: 0, minute: 0, second: 0))
+        
         switch weekday {
         case .sunday:
-            return weekTemplate.value.0
+            return weekTemplate.value.0.startingAt(initialTime)
         case .monday:
-            return weekTemplate.value.1
+            return weekTemplate.value.1.startingAt(initialTime)
         case .tuesday:
-            return weekTemplate.value.2
+            return weekTemplate.value.2.startingAt(initialTime)
         case .wednesday:
-            return weekTemplate.value.3
+            return weekTemplate.value.3.startingAt(initialTime)
         case .thursday:
-            return weekTemplate.value.4
+            return weekTemplate.value.4.startingAt(initialTime)
         case .friday:
-            return weekTemplate.value.5
+            return weekTemplate.value.5.startingAt(initialTime)
         case .saturday:
-            return weekTemplate.value.6
+            return weekTemplate.value.6.startingAt(initialTime)
         }
     }
     

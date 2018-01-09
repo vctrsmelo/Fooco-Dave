@@ -74,12 +74,12 @@ final class Activity: NSObject {
     }
     
     /**
-     Complete the current activity
+     Complete the activity
     */
     func complete() {
         self.isCompleted = true
     }
-    
+        
     /**
      Should be used internally just to load from database
     */
