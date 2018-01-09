@@ -352,7 +352,7 @@ extension Date {
         let minutes = calendar.component(.minute, from: self)
         let seconds = calendar.component(.second, from: self)
         
-        return Time(hour: hour, minute: minutes, second: seconds)
+        return try! Time(hour: hour, minute: minutes, second: seconds)
         
     }
     

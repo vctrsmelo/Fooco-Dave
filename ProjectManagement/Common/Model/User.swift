@@ -121,15 +121,16 @@ class User {
     */
     func skipNextActivity() {
        
-        //schedule reseted. All projects will recalculate their estimated time
-        if self.schedule != nil {
-            self.schedule = nil
+        guard let skippedActivity = self.getNextActivity() else {
+            return
         }
         
+        let tomorrow = Date().getDay().addingTimeInterval(1.day)
         
-        
-        
-        
+        let startingTime = skippedActivity.timeBlock.end
+        let startingDate = Date().getDay().addingTimeInterval(startingTime.totalSeconds)
+
+        self.schedule = try! AlgorithmManager.getDayScheduleFor(date: tomorrow, since: startingDate)
         
     }
     
