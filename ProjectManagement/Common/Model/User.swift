@@ -22,7 +22,7 @@ class User {
         }
         
         set {
-            _scheduleCache = newValue
+            _scheduleCache = newValue.sorted()
         }
     }
     private var _observers: [Observer] = []
@@ -47,7 +47,9 @@ class User {
     */
     private var _scheduleCache: [Day]?
     
-    //this variable exists just as a better interface for scheduleCache.
+    /**
+     User schedule sorted
+    */
     private(set) var schedule: [Day]? {
         get {
             return _scheduleCache
@@ -154,28 +156,34 @@ class User {
     
     /**
      Get next activity available into user schedule.
+     - Parameters:
+        - untilDate: limit date to search for the next activity. If the activity is beyond that date, will return nil. Default is until tomorrow.
     */
-    func getNextActivity() -> Activity? {
+    func getNextActivity(_ untilDate: Date = Date().getDay().addingTimeInterval(1.day)) -> Activity? {
+        
+        var activity: Activity?
         
         if self.schedule == nil {
-            self.updateSchedule(until: Date().getDay().addingTimeInterval(1.day))
+            self.updateSchedule(until: untilDate)
         }
     
         if let schedule = self.schedule {
-        
-            if let day = (schedule.filter { $0.date >= Date() }.min()) {
+  
+            var i = 0
+            
+            while activity == nil && i < schedule.count {
                 
-                let activity = day.activities.min {
+                activity = schedule[i].activities.min {
                     $0.timeBlock.start < $1.timeBlock.start
                 }
-
-                return activity
+                
+                i += 1
                 
             }
     
         }
         
-        return nil
+        return activity
         
     }
     

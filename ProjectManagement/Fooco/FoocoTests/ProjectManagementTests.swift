@@ -495,26 +495,62 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         XCTAssertEqual(project1.observedActivities.count, 0)
     }
     
-    func testUserSkipActivity() {
+    /**
+     User has a timeblock with 5 hours, and two activities were defined: one with 4 hours and other with 1 hour. When user skips the first, the second remains as nextActivity.
+    */
+    func testUserSkipActivity1() {
         
         //create weekTemplate for college
-        let weekTemplate = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 4.hours), (work, 8.hour)])
+        let weekTemplate = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 5.hours)])
         User.sharedInstance.weekTemplate = weekTemplate
         
-        let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 4.hours)
+        let collegeProject = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(1.day), context: college, importance: 3, estimatedTime: 4.hours)
+        User.sharedInstance.add(projects: [collegeProject])
         
-        User.sharedInstance.add(projects: [project1])
         let nextActivitySkipped = User.sharedInstance.getNextActivity()
         
-        XCTAssertNotNil(nextActivitySkipped)
+        XCTAssertTrue(nextActivitySkipped != nil)
 
         User.sharedInstance.skipNextActivity()
         
         let nextActivity = User.sharedInstance.getNextActivity()
         
-        XCTAssertNotNil(nextActivity)
+        XCTAssertTrue(nextActivity != nil)
         XCTAssertNotEqual(nextActivitySkipped!.start, nextActivity!.start)
         XCTAssertTrue(nextActivitySkipped!.end <= nextActivity!.start)
+        
+    }
+    
+    /**
+     User has a timeblock with 5 hours, and a project with 5 hours. The today activity is skipped, then it should be readded tomorrow
+     */
+    func testUserSkipActivity2() {
+        
+        //create weekTemplate for college
+        let weekTemplate = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 5.hours)])
+        User.sharedInstance.weekTemplate = weekTemplate
+        
+        let collegeProject = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(1.day), context: college, importance: 3, estimatedTime: 5.hours)
+        User.sharedInstance.add(projects: [collegeProject])
+        
+        let activityToBeSkipped = User.sharedInstance.getNextActivity()
+        
+        XCTAssertTrue(activityToBeSkipped != nil)
+        
+        let firstDayContainedSkippedActivity = User.sharedInstance.schedule?[0].activities.contains(activityToBeSkipped!)
+        
+        User.sharedInstance.skipNextActivity()
+        
+        let tomorrowActivity = User.sharedInstance.getNextActivity()
+
+        XCTAssertTrue(tomorrowActivity != nil)
+
+        let firstDayStillContainsSkippedActivity = User.sharedInstance.schedule?[0].activities.contains(activityToBeSkipped!)
+        let secondDayContainsNewActivity = User.sharedInstance.schedule?[1].activities.contains(tomorrowActivity!)
+        
+        XCTAssertTrue(firstDayContainedSkippedActivity!)
+        XCTAssertFalse(firstDayStillContainsSkippedActivity!)
+        XCTAssertTrue(secondDayContainsNewActivity!)
         
     }
     
