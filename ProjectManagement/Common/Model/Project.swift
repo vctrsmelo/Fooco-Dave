@@ -143,8 +143,9 @@ class Project: NSObject {
     /**
      - parameter timeBlock: is the timeBlock considered available to be used for creating the Activity. The activity returned may have a time block smaller or equal to the parameter.
      - returns: maybe Activity.
-     - postcondition: timeBlock.length < ActivityminimalTimeLength => result == nil
-     - postcondition: self.estimatedTime <= 0 => result == nil
+     - postcondition:
+        - timeBlock.length < ActivityminimalTimeLength => result == nil
+        - self.estimatedTime <= 0 => result == nil
     */
     func nextActivity(for timeBlock: TimeBlock) -> Activity? {
         

@@ -85,7 +85,7 @@ class EditProjectVMFooco {
 				
 				self.project = editedProject
 				let index = User.sharedInstance.projects.index(of: editedProject) // TODO: Give id to projects and make this better
-				User.sharedInstance.projects[index!] = editedProject
+                User.sharedInstance.updateProject(at: index!, with: editedProject)
 				
 			} else {
 				//let newProject = Project(named: name, startsAt: self.startingDate, endsAt: self.endingDate, withContext: context, importance: importance, totalTimeEstimated: totalEstimate)

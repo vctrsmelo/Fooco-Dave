@@ -171,6 +171,25 @@ extension Array where Element: Equatable {
         return result
     }
     
+    /**
+     Returns self array without the parameter element in it
+    */
+    func removeElement(_ element: Element) -> [Element] {
+        
+        for i in 0 ..< self.count {
+            if self[i] == element {
+                
+                var newArray = self
+                newArray.remove(at: i)
+                
+                return newArray
+            }
+        }
+        
+        return self
+        
+    }
+    
 }
 
 extension Array where Element: Day {

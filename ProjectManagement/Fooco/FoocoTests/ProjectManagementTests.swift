@@ -17,7 +17,7 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        User.sharedInstance.projects = []
+        User.sharedInstance.updateAllProjects([])
         User.sharedInstance.contexts = []
         User.sharedInstance.schedule = nil
     }
@@ -265,8 +265,10 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         let proj1Work = try! Project(name: "Website for John's e-commerce", starts: Date(), ends: Date().addingTimeInterval(30.day), context: work, importance: 3, estimatedTime: 20.hours)
         let proj2Work = try! Project(name: "Presentation prepare for meeting with boss", starts: Date(), ends: Date().addingTimeInterval(10.day), context: work, importance: 2, estimatedTime: 3.hours)
 
-        User.sharedInstance.projects = [proj1College, proj2College, proj3College, proj1Work, proj2Work]
+        User.sharedInstance.add(projects: [proj1College, proj2College, proj3College, proj1Work, proj2Work])
 
+        
+        
         let collegeProjects = AlgorithmManager.getProjectsFor(context: college)
         let workProjects = AlgorithmManager.getProjectsFor(context: work)
 
@@ -394,7 +396,7 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
 
         let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
 
-        User.sharedInstance.projects = [project1]
+        User.sharedInstance.add(project: project1)
         User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
 
         XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
@@ -415,13 +417,13 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 3.hours), (work, 4.hours)])
         User.sharedInstance.weekTemplate = schedule
         User.sharedInstance.schedule = nil
-        User.sharedInstance.projects = []
+        User.sharedInstance.updateAllProjects([])
 
         let projCollege = try! Project(name: "College Project", starts: Date().addingTimeInterval(-1.day), ends: Date().addingTimeInterval(10.days), context: college, importance: 2, estimatedTime: 10.hours)
 
         let projWork = try! Project(name: "Work Project", starts: Date(), ends: Date().addingTimeInterval(20.days), context: work, importance: 3, estimatedTime: 20.hours)
 
-        User.sharedInstance.projects = [projCollege, projWork]
+        User.sharedInstance.add(projects: [projCollege, projWork])
         User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(3.days))
 
         XCTAssertEqual(User.sharedInstance.schedule!.count, 4)
@@ -461,7 +463,7 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
 
         let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
 
-        User.sharedInstance.projects = [project1]
+        User.sharedInstance.updateAllProjects([project1])
         User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
 
         XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
@@ -491,4 +493,22 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         //as the activity1 is completed, the project1 should stop observing it.
         XCTAssertEqual(project1.observedActivities.count, 0)
     }
+    
+    func testUserSkipActivity() {
+        
+        //create weekTemplate for college
+        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 4.hours),(work,8.hour)])
+        User.sharedInstance.weekTemplate = schedule
+        
+        let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 4.hours)
+        
+        User.sharedInstance.add(projects: [project1])
+        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
+        XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
+        
+        
+
+        
+    }
+    
 } // swiftlint:disable:this file_length

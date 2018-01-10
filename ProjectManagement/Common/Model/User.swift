@@ -27,7 +27,17 @@ class User {
     }
     private var _observers: [Observer] = []
 
-    var projects: [Project]
+    private var _projects: [Project] = []
+    private(set) var projects: [Project] {
+        set {
+            self.schedule = []
+            self._projects = newValue
+        }
+        get {
+            return _projects
+        }
+    }
+    
     var contexts: [Context]
     var weekTemplate: WeekTemplate
     
@@ -70,20 +80,69 @@ class User {
             self.weekTemplate = WeekTemplate(sun: WeekdayTemplate(weekday: .sunday), mon: WeekdayTemplate(weekday: .monday), tue: WeekdayTemplate(weekday: .tuesday), wed: WeekdayTemplate(weekday: .wednesday), thu: WeekdayTemplate(weekday: .thursday), fri: WeekdayTemplate(weekday: .friday), sat: WeekdayTemplate(weekday: .saturday))
         }
         
-        self.projects = projects
         self.contexts = contexts
         self.schedule = schedule
+        self.projects = projects
     }
     
     /**
-     Append the projects into user current projects list
+     Add the projects into user current projects list
      */
     func add(projects projs: [Project]) {
         projects.append(contentsOf: projs)
     }
     
+    /**
+     Add the project into user current projects list
+     */
+    func add(project proj: Project) {
+        add(projects: [proj])
+    }
+    
     func add(contexts ctxs: [Context]) {
         contexts.append(contentsOf: ctxs)
+    }
+    
+    /**
+    Remove the projects from user schedule
+    */
+    func remove(projects projs: [Project]) {
+        
+        for proj in projs {
+            
+            if self.projects.contains(proj) {
+                self.projects = self.projects.removeElement(proj)
+            }
+            
+        }
+        
+    }
+    
+    /**
+     Remove all old projects and update them with newProjects parameter
+    */
+    func updateAllProjects(_ newProjects: [Project]) {
+        self.projects = newProjects
+    }
+    
+    /**
+     Update the project at the index parameter.
+     - Precondition:
+        - index: self.projects[index] == Project
+    */
+    func updateProject(at index: Int, with newProject: Project) {
+        
+        self.projects[index] = newProject
+        
+    }
+    
+    /**
+     Remove the project from user schedule
+     */
+    func remove(project proj: Project) {
+        
+        remove(projects: [proj])
+        
     }
     
     /**
