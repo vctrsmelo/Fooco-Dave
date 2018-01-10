@@ -48,7 +48,7 @@ class User {
     private var _scheduleCache: [Day]?
     
     //this variable exists just as a better interface for scheduleCache.
-    var schedule: [Day]? {
+    private(set) var schedule: [Day]? {
         get {
             return _scheduleCache
         }
@@ -158,7 +158,7 @@ class User {
     func getNextActivity() -> Activity? {
         
         guard let schedule = self.schedule else {
-            return nil
+            self.updateSchedule(until: Date().getDay().addingTimeInterval(1.day))
         }
         
         if let day = (schedule.filter { $0.date >= Date() }.sorted().first) {
@@ -190,6 +190,12 @@ class User {
         let startingDate = Date().getDay().addingTimeInterval(startingTime.totalSeconds)
 
         self.schedule = try! AlgorithmManager.getDayScheduleFor(date: tomorrow, since: startingDate)
+        
+    }
+    
+    func updateSchedule(until date: Date) {
+        
+        self.schedule = try! AlgorithmManager.getDayScheduleFor(date: date, since: Date())
         
     }
     

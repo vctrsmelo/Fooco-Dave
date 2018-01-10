@@ -497,15 +497,13 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
     func testUserSkipActivity() {
         
         //create weekTemplate for college
-        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 4.hours),(work,8.hour)])
+        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 4.hours), (work,8.hour)])
         User.sharedInstance.weekTemplate = schedule
         
         let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 4.hours)
         
         User.sharedInstance.add(projects: [project1])
-        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
-        XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
-        
+        User.sharedInstance.getNextActivity()
         
 
         
