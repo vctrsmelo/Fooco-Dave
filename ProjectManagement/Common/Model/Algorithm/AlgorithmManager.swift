@@ -14,22 +14,38 @@ import Foundation
 struct AlgorithmManager {
     
     /**
-       Get day schedule until the date parameter.
+       Get day schedule until the date parameter. The parameter since represents the starting date, the lowest limit of schedule. It's useful for cases when an activity is skipped, so a new activity should not be returned for the skipped activity time.
     
     */
-    static func getDayScheduleFor(date dte: Date) throws -> [Day] {
+    static func getDayScheduleFor(date dte: Date, since startingDate: Date? = nil) throws -> [Day] {
         
         let lastDate = dte.getDay()
         
         //receives the day after the last cached day, or receives today, if there is no cached days.
         var iteratorDate: Date! = (User.sharedInstance.schedule == nil || User.sharedInstance.schedule!.isEmpty) ? Date().getDay() : User.sharedInstance.schedule!.last!.date.addingTimeInterval(1.day)
+
+        //if a starting date was defined, iteratorDate starts at startingDate day.
+        if startingDate != nil && iteratorDate.getDay() < startingDate!.getDay() {
+            
+            iteratorDate = startingDate!.getDay()
+            
+        }
         
         var resultDays: [Day] = []
         
         //Implemented using iterator, not recursive because of possibility of memory leak if the date is far in the future.
         while iteratorDate <= lastDate {
             
-            try resultDays.append(getDayScheduleForAux(date: iteratorDate))
+            //if a startingDate was defined, and iteratorDate is before it, then staringDate should be used to get the day schedule.
+            if startingDate != nil && iteratorDate < startingDate! {
+                
+                try resultDays.append(getDayScheduleForAux(date: startingDate!))
+
+            } else {
+            
+                try resultDays.append(getDayScheduleForAux(date: iteratorDate))
+            
+            }
             
             //increase iteratorDate
             iteratorDate = iteratorDate.addingTimeInterval(1.day)
@@ -45,9 +61,9 @@ struct AlgorithmManager {
      - postcondition: will return a Day with the correct activities scheduled.
     */
     private static func getDayScheduleForAux(date: Date) throws -> Day {
-        
+
         //get weekdayTemplate
-        let weekdayTemplate = User.sharedInstance.getWeekdayTemplate(for: date.getWeekday())
+        let weekdayTemplate = (date.getTime() == date.getDay().getTime()) ? User.sharedInstance.getWeekdayTemplate(for: date.getWeekday()) : User.sharedInstance.getWeekdayTemplate(for: date.getWeekday(), startingAt: date.getTime())
     
         var activitiesForDay: [Activity] = []
         

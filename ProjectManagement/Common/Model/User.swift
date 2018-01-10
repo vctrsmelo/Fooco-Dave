@@ -22,12 +22,22 @@ class User {
         }
         
         set {
-            _scheduleCache = newValue
+            _scheduleCache = newValue.sorted()
         }
     }
     private var _observers: [Observer] = []
 
-    var projects: [Project]
+    private var _projects: [Project] = []
+    private(set) var projects: [Project] {
+        set {
+            self.schedule = nil
+            self._projects = newValue
+        }
+        get {
+            return _projects
+        }
+    }
+    
     var contexts: [Context]
     var weekTemplate: WeekTemplate
     
@@ -37,8 +47,10 @@ class User {
     */
     private var _scheduleCache: [Day]?
     
-    //this variable exists just as a better interface for scheduleCache.
-    var schedule: [Day]? {
+    /**
+     User schedule sorted
+    */
+    private(set) var schedule: [Day]? {
         get {
             return _scheduleCache
         }
@@ -70,16 +82,23 @@ class User {
             self.weekTemplate = WeekTemplate(sun: WeekdayTemplate(weekday: .sunday), mon: WeekdayTemplate(weekday: .monday), tue: WeekdayTemplate(weekday: .tuesday), wed: WeekdayTemplate(weekday: .wednesday), thu: WeekdayTemplate(weekday: .thursday), fri: WeekdayTemplate(weekday: .friday), sat: WeekdayTemplate(weekday: .saturday))
         }
         
-        self.projects = projects
         self.contexts = contexts
+        self.projects = projects
         self.schedule = schedule
     }
     
     /**
-     Append the projects into user current projects list
+     Add the projects into user current projects list
      */
     func add(projects projs: [Project]) {
         projects.append(contentsOf: projs)
+    }
+    
+    /**
+     Add the project into user current projects list
+     */
+    func add(project proj: Project) {
+        add(projects: [proj])
     }
     
     func add(contexts ctxs: [Context]) {
@@ -87,34 +106,128 @@ class User {
     }
     
     /**
+    Remove the projects from user schedule
+    */
+    func remove(projects projs: [Project]) {
+        
+        for proj in projs {
+            
+            if self.projects.contains(proj) {
+                self.projects = self.projects.removeElement(proj)
+            }
+            
+        }
+        
+    }
+    
+    /**
+     Remove all old projects and update them with newProjects parameter
+    */
+    func updateAllProjects(_ newProjects: [Project]) {
+        self.projects = newProjects
+    }
+    
+    /**
+     Update the project at the index parameter.
+     - Precondition:
+        - index: self.projects[index] == Project
+    */
+    func updateProject(at index: Int, with newProject: Project) {
+        
+        self.projects[index] = newProject
+        
+    }
+    
+    /**
+     Remove the project from user schedule
+     */
+    func remove(project proj: Project) {
+        
+        remove(projects: [proj])
+        
+    }
+    
+    /**
      Invalidates the current schedule cached.
     */
     func invalidateSchedule() {
-        self.schedule = []
+        self.schedule = nil
     }
     
     /**
      Get next activity available into user schedule.
+     - Parameters:
+        - untilDate: limit date to search for the next activity. If the activity is beyond that date, will return nil. Default is until tomorrow.
     */
-    func getNextActivity() -> Activity? {
+    func getNextActivity(_ untilDate: Date = Date().getDay().addingTimeInterval(1.day)) -> Activity? {
         
-        guard let schedule = self.schedule else {
-            return nil
+        var activity: Activity?
+        
+        if self.schedule == nil {
+            self.updateSchedule(until: untilDate)
         }
         
-        if let day = (schedule.filter { $0.date >= Date() }.sorted().first) {
-
-            let activity = day.activities.sorted { act1, act2 -> Bool in
-                act1.timeBlock.start < act2.timeBlock.start
-            }.first
+    
+        if let schedule = self.schedule {
+  
+            var i = 0
             
-            return activity
+            while activity == nil && i < schedule.count {
                 
+                activity = schedule[i].activities.min {
+                    $0.timeBlock.start < $1.timeBlock.start
+                }
+                
+                i += 1
+                
+            }
+    
         }
         
-        return nil
+        return activity
         
     }
+    
+    /**
+     Skip the next activity time
+    */
+    func skipNextActivity() {
+       
+        guard let skippedActivity = self.getNextActivity() else {
+            return
+        }
+        
+        let tomorrow = Date().getDay().addingTimeInterval(1.day)
+        
+        let startingTime = skippedActivity.timeBlock.end
+        let startingDate = Date().getDay().addingTimeInterval(startingTime.totalSeconds)
+
+        self.invalidateSchedule()
+        self.updateSchedule(until: tomorrow, since: startingDate)
+        
+    }
+    
+    /**
+     Update the schedule until date parameter. If schedule is not nil, will append next dates.
+     - Precondition: schedule should be consistent or nil.
+    */
+    func updateSchedule(until endingDate: Date, since startingDate: Date = Date()) {
+        
+        //if schedule exists and is not empty, append next days to it
+        if self.schedule != nil && !self.schedule!.isEmpty {
+            
+            let nextDays = try! AlgorithmManager.getDayScheduleFor(date: endingDate, since: self.schedule!.last!.date)
+            self.schedule?.append(contentsOf: nextDays)
+            
+        //else, if schedule is nil or empty, replace it by a new schedule
+        } else {
+        
+            self.schedule = try! AlgorithmManager.getDayScheduleFor(date: endingDate, since: startingDate)
+        
+        }
+        
+    }
+    
     
     /**
      Returns the time available for a context until the date parameter, including it. Discount the activities already allocated into schedule.
@@ -219,22 +332,25 @@ class User {
         
     }
     
-    func getWeekdayTemplate(for weekday: Weekday) -> WeekdayTemplate {
+    func getWeekdayTemplate(for weekday: Weekday, startingAt: Time? = nil) -> WeekdayTemplate {
+
+        let initialTime: Time = (startingAt) ?? (try! Time(hour: 0, minute: 0, second: 0))
+        
         switch weekday {
         case .sunday:
-            return weekTemplate.value.0
+            return weekTemplate.value.0.startingAt(initialTime)
         case .monday:
-            return weekTemplate.value.1
+            return weekTemplate.value.1.startingAt(initialTime)
         case .tuesday:
-            return weekTemplate.value.2
+            return weekTemplate.value.2.startingAt(initialTime)
         case .wednesday:
-            return weekTemplate.value.3
+            return weekTemplate.value.3.startingAt(initialTime)
         case .thursday:
-            return weekTemplate.value.4
+            return weekTemplate.value.4.startingAt(initialTime)
         case .friday:
-            return weekTemplate.value.5
+            return weekTemplate.value.5.startingAt(initialTime)
         case .saturday:
-            return weekTemplate.value.6
+            return weekTemplate.value.6.startingAt(initialTime)
         }
     }
     
@@ -378,4 +494,4 @@ extension User: Observable {
         }
     }
     
-}
+} // swiftlint:disable:this file_length

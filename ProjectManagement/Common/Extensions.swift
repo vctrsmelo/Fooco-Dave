@@ -171,6 +171,21 @@ extension Array where Element: Equatable {
         return result
     }
     
+    /**
+     Returns self array without the parameter element in it
+    */
+    func removeElement(_ element: Element) -> [Element] {
+    
+        for i in 0 ..< self.count where self[i] == element {
+            var newArray = self
+            newArray.remove(at: i)
+            return newArray
+        }
+        
+        return self
+        
+    }
+    
 }
 
 extension Array where Element: Day {
@@ -337,4 +352,23 @@ extension UINavigationBar {
 		self.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
 		self.tintColor = color
 	}
+}
+
+extension Date {
+    
+    /**
+     Returns the hour, minutes and seconds of the date.
+    */
+    func getTime() -> Time {
+        
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: self)
+        let minutes = calendar.component(.minute, from: self)
+        let seconds = calendar.component(.second, from: self)
+        
+        return try! Time(hour: hour, minute: minutes, second: seconds)
+        
+    }
+    
 }

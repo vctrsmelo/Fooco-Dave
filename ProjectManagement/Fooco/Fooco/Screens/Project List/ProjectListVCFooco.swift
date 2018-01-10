@@ -87,8 +87,8 @@ extension ProjectListVCFooco: UITableViewDataSource, UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
-			User.sharedInstance.projects.remove(at: indexPath.row)
-			self.projects = User.sharedInstance.projects
+            User.sharedInstance.remove(project: projects[indexPath.row])
+            self.projects = User.sharedInstance.projects
 			tableView.deleteRows(at: [indexPath], with: .left)
 		}
 	}

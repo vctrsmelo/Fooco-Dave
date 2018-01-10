@@ -116,11 +116,36 @@ class Project: NSObject {
     
     }
     
+    
+    /**
+     Update the initial estimated time for the project.
+     */
+    func updateInitialEstimatedTime(_ timeInterval: TimeInterval) {
+        
+        _initialEstimatedTime = timeInterval
+        update(with: User.sharedInstance.schedule)
+        
+    }
+    
+    private func addCompletedActivityObservation(for activity: Activity) {
+        //becomes oberver of activity
+        let observ = activity.observe(\.isCompleted) { activity, _ in
+            if activity.isCompleted == true {
+                self.completedActivities.append((activity, Date()))
+                self.stopObserving(activity)
+            }
+        }
+        
+        self.observedActivities.append((activity, observ))
+        
+    }
+    
     /**
      - parameter timeBlock: is the timeBlock considered available to be used for creating the Activity. The activity returned may have a time block smaller or equal to the parameter.
      - returns: maybe Activity.
-     - postcondition: timeBlock.length < ActivityminimalTimeLength => result == nil
-     - postcondition: self.estimatedTime <= 0 => result == nil
+     - postcondition:
+        - timeBlock.length < ActivityminimalTimeLength => result == nil
+        - self.estimatedTime <= 0 => result == nil
     */
     func nextActivity(for timeBlock: TimeBlock) -> Activity? {
         
@@ -143,31 +168,7 @@ class Project: NSObject {
         return activity
         
     }
-    
-    /**
-     Update the initial estimated time for the project.
-    */
-    func updateInitialEstimatedTime(_ timeInterval: TimeInterval) {
-        
-        _initialEstimatedTime = timeInterval
-        update(with: User.sharedInstance.schedule)
-        
-    }
-    
-    private func addCompletedActivityObservation(for activity: Activity) {
-        //becomes oberver of activity
-        let observ = activity.observe(\.isCompleted) { activity, _ in
-            if activity.isCompleted == true {
-                self.completedActivities.append((activity, Date()))
-                self.stopObserving(activity)
-            }
-        }
-        
-        self.observedActivities.append((activity, observ))
-        
-    }
-    
-    
+  
     /**
      Compares the parameter timeBlock with Activity.minimalTimeLength and with self.estimatedTime to get the real time block for the activity that shall be created.
      - postcondition: result <= timeBlock OR result == nil
@@ -262,12 +263,17 @@ class Project: NSObject {
      Remove the activity from current observed activities
     */
     func stopObserving(_ activity: Activity) {
-        for i in 0 ..< self.observedActivities.count {
-            if self.observedActivities[i].0 == activity {
-                self.observedActivities.remove(at: i)
-                break
-            }
+        for i in 0 ..< self.observedActivities.count where self.observedActivities[i].0 == activity {
+            self.observedActivities.remove(at: i)
+            break
         }
+    }
+    
+    /**
+     When an activity is skipped this method should be called
+    */
+    func activitySkipped(_ activity: Activity) {
+        
     }
     
 }
