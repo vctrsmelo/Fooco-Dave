@@ -166,6 +166,7 @@ class User {
         if self.schedule == nil {
             self.updateSchedule(until: untilDate)
         }
+        
     
         if let schedule = self.schedule {
   
@@ -207,13 +208,23 @@ class User {
     }
     
     /**
-     Update the schedule until date parameter.
+     Update the schedule until date parameter. If schedule is not nil, will append next dates.
+     - Precondition: schedule should be consistent or nil.
     */
     func updateSchedule(until endingDate: Date, since startingDate: Date = Date()) {
         
-        self.invalidateSchedule()
+        //if schedule exists and is not empty, append next days to it
+        if self.schedule != nil && !self.schedule!.isEmpty {
+            
+            let nextDays = try! AlgorithmManager.getDayScheduleFor(date: endingDate, since: self.schedule!.last!.date)
+            self.schedule?.append(contentsOf: nextDays)
+            
+        //else, if schedule is nil or empty, replace it by a new schedule
+        } else {
         
-        self.schedule = try! AlgorithmManager.getDayScheduleFor(date: endingDate, since: startingDate)
+            self.schedule = try! AlgorithmManager.getDayScheduleFor(date: endingDate, since: startingDate)
+        
+        }
         
     }
     
