@@ -19,7 +19,8 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         // Put setup code here. This method is called before the invocation of each test method in the class.
         User.sharedInstance.updateAllProjects([])
         User.sharedInstance.contexts = []
-        User.sharedInstance.schedule = nil
+        User.sharedInstance.invalidateSchedule()
+
     }
 
     override func tearDown() {
@@ -397,8 +398,8 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
 
         User.sharedInstance.add(project: project1)
-        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
-
+        User.sharedInstance.updateSchedule(until: Date().addingTimeInterval(1.day))
+        
         XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
 
         for day in User.sharedInstance.schedule! {
@@ -416,7 +417,7 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
 
         schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 3.hours), (work, 4.hours)])
         User.sharedInstance.weekTemplate = schedule
-        User.sharedInstance.schedule = nil
+        User.sharedInstance.invalidateSchedule()
         User.sharedInstance.updateAllProjects([])
 
         let projCollege = try! Project(name: "College Project", starts: Date().addingTimeInterval(-1.day), ends: Date().addingTimeInterval(10.days), context: college, importance: 2, estimatedTime: 10.hours)
@@ -424,8 +425,8 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         let projWork = try! Project(name: "Work Project", starts: Date(), ends: Date().addingTimeInterval(20.days), context: work, importance: 3, estimatedTime: 20.hours)
 
         User.sharedInstance.add(projects: [projCollege, projWork])
-        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(3.days))
-
+        User.sharedInstance.updateSchedule(until: Date().addingTimeInterval(3.days))
+        
         XCTAssertEqual(User.sharedInstance.schedule!.count, 4)
 
         for day in User.sharedInstance.schedule! {
@@ -464,8 +465,8 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 5.hours)
 
         User.sharedInstance.updateAllProjects([project1])
-        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(1.day))
-
+        User.sharedInstance.updateSchedule(until: Date().addingTimeInterval(1.day))
+        
         XCTAssertEqual(User.sharedInstance.schedule!.count, 2)
 
         for day in User.sharedInstance.schedule! {
@@ -497,15 +498,23 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
     func testUserSkipActivity() {
         
         //create weekTemplate for college
-        let schedule = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 4.hours), (work,8.hour)])
-        User.sharedInstance.weekTemplate = schedule
+        let weekTemplate = TestElementsGenerator.getWeekSchedule(contextAndDailyTime: [(college, 4.hours), (work, 8.hour)])
+        User.sharedInstance.weekTemplate = weekTemplate
         
         let project1 = try! Project(name: "Algebra Project", starts: Date(), ends: Date().addingTimeInterval(86_400), context: college, importance: 3, estimatedTime: 4.hours)
         
         User.sharedInstance.add(projects: [project1])
-        User.sharedInstance.getNextActivity()
+        let nextActivitySkipped = User.sharedInstance.getNextActivity()
         
+        XCTAssertNotNil(nextActivitySkipped)
 
+        User.sharedInstance.skipNextActivity()
+        
+        let nextActivity = User.sharedInstance.getNextActivity()
+        
+        XCTAssertNotNil(nextActivity)
+        XCTAssertNotEqual(nextActivitySkipped!.start, nextActivity!.start)
+        XCTAssertTrue(nextActivitySkipped!.end <= nextActivity!.start)
         
     }
     

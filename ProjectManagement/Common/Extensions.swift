@@ -175,15 +175,11 @@ extension Array where Element: Equatable {
      Returns self array without the parameter element in it
     */
     func removeElement(_ element: Element) -> [Element] {
-        
-        for i in 0 ..< self.count {
-            if self[i] == element {
-                
-                var newArray = self
-                newArray.remove(at: i)
-                
-                return newArray
-            }
+    
+        for i in 0 ..< self.count where self[i] == element {
+            var newArray = self
+            newArray.remove(at: i)
+            return newArray
         }
         
         return self

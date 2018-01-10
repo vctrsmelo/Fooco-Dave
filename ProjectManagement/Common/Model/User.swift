@@ -30,7 +30,7 @@ class User {
     private var _projects: [Project] = []
     private(set) var projects: [Project] {
         set {
-            self.schedule = []
+            self.schedule = nil
             self._projects = newValue
         }
         get {
@@ -81,8 +81,8 @@ class User {
         }
         
         self.contexts = contexts
-        self.schedule = schedule
         self.projects = projects
+        self.schedule = schedule
     }
     
     /**
@@ -149,7 +149,7 @@ class User {
      Invalidates the current schedule cached.
     */
     func invalidateSchedule() {
-        self.schedule = []
+        self.schedule = nil
     }
     
     /**
@@ -157,18 +157,22 @@ class User {
     */
     func getNextActivity() -> Activity? {
         
-        guard let schedule = self.schedule else {
+        if self.schedule == nil {
             self.updateSchedule(until: Date().getDay().addingTimeInterval(1.day))
         }
+    
+        if let schedule = self.schedule {
         
-        if let day = (schedule.filter { $0.date >= Date() }.sorted().first) {
-
-            let activity = day.activities.sorted { act1, act2 -> Bool in
-                act1.timeBlock.start < act2.timeBlock.start
-            }.first
-            
-            return activity
+            if let day = (schedule.filter { $0.date >= Date() }.min()) {
                 
+                let activity = day.activities.min {
+                    $0.timeBlock.start < $1.timeBlock.start
+                }
+
+                return activity
+                
+            }
+    
         }
         
         return nil
@@ -189,13 +193,19 @@ class User {
         let startingTime = skippedActivity.timeBlock.end
         let startingDate = Date().getDay().addingTimeInterval(startingTime.totalSeconds)
 
-        self.schedule = try! AlgorithmManager.getDayScheduleFor(date: tomorrow, since: startingDate)
+        self.invalidateSchedule()
+        self.updateSchedule(until: tomorrow, since: startingDate)
         
     }
     
-    func updateSchedule(until date: Date) {
+    /**
+     Update the schedule until date parameter.
+    */
+    func updateSchedule(until endingDate: Date, since startingDate: Date = Date()) {
         
-        self.schedule = try! AlgorithmManager.getDayScheduleFor(date: date, since: Date())
+        self.invalidateSchedule()
+        
+        self.schedule = try! AlgorithmManager.getDayScheduleFor(date: endingDate, since: startingDate)
         
     }
     
@@ -465,4 +475,4 @@ extension User: Observable {
         }
     }
     
-}
+} // swiftlint:disable:this file_length

@@ -263,11 +263,9 @@ class Project: NSObject {
      Remove the activity from current observed activities
     */
     func stopObserving(_ activity: Activity) {
-        for i in 0 ..< self.observedActivities.count {
-            if self.observedActivities[i].0 == activity {
-                self.observedActivities.remove(at: i)
-                break
-            }
+        for i in 0 ..< self.observedActivities.count where self.observedActivities[i].0 == activity {
+            self.observedActivities.remove(at: i)
+            break
         }
     }
     

@@ -53,8 +53,9 @@ class HomeVCFooco: UIViewController, EditProjectUnwindOption {
 	}
 	
 	private func dataUpdate() {
-        User.sharedInstance.schedule = try! AlgorithmManager.getDayScheduleFor(date: Date().addingTimeInterval(2.days))
-		
+        
+        User.sharedInstance.updateSchedule(until: Date().addingTimeInterval(2.days))
+        
 		self.currentActivity = User.sharedInstance.getNextActivity()
         self.currentActivity = User.sharedInstance.getNextActivity()
         
