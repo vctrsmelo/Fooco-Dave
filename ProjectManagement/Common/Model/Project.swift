@@ -32,7 +32,7 @@ class Project: NSObject {
     
     static private let importanceRange: [Double] = [1.0, 2.0, 3.0]
     
-    private let id: UUID
+    let id: UUID
     var name: String
     var startingDate: Date
     var endingDate: Date

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
+		EE9F799520178DF800A276CF /* projectManagement.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE9F799320178DF800A276CF /* projectManagement.xcdatamodeld */; };
+		EE9F799D20178EE200A276CF /* ProjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F799920178EE200A276CF /* ProjectDAO.swift */; };
+		EE9F79A52017990200A276CF /* UserDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F79A42017990200A276CF /* UserDAO.swift */; };
+		EE9F79A92017995B00A276CF /* ProjectDAOCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F79A82017995B00A276CF /* ProjectDAOCD.swift */; };
+		EE9F79AD20179E5A00A276CF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F79AC20179E5A00A276CF /* CoreDataManager.swift */; };
 		EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA46B661F9A36CA00851D5D /* AppDelegate.swift */; };
 		EEA46B6C1F9A36CA00851D5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6A1F9A36CA00851D5D /* Main.storyboard */; };
 		EEA46B711F9A36CA00851D5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA46B6F1F9A36CA00851D5D /* LaunchScreen.storyboard */; };
@@ -106,6 +111,11 @@
 		E78393EE1FCA5E32000E3F8A /* ProjectListCellFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListCellFooco.swift; sourceTree = "<group>"; };
 		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
+		EE9F799420178DF800A276CF /* projectManagement.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = projectManagement.xcdatamodel; sourceTree = "<group>"; };
+		EE9F799920178EE200A276CF /* ProjectDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDAO.swift; sourceTree = "<group>"; };
+		EE9F79A42017990200A276CF /* UserDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDAO.swift; sourceTree = "<group>"; };
+		EE9F79A82017995B00A276CF /* ProjectDAOCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDAOCD.swift; sourceTree = "<group>"; };
+		EE9F79AC20179E5A00A276CF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		EEA46B631F9A36CA00851D5D /* Fooco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fooco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA46B661F9A36CA00851D5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA46B6B1F9A36CA00851D5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -216,9 +226,37 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		EE9F799820178ED200A276CF /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F79A72017995300A276CF /* DAO */,
+				EE9F79A62017994900A276CF /* CoreData */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		EE9F79A62017994900A276CF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F79A82017995B00A276CF /* ProjectDAOCD.swift */,
+				EE9F79AC20179E5A00A276CF /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		EE9F79A72017995300A276CF /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F799920178EE200A276CF /* ProjectDAO.swift */,
+				EE9F79A42017990200A276CF /* UserDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
 		EEA46B581F9A36A400851D5D = {
 			isa = PBXGroup;
 			children = (
+				EE9F799320178DF800A276CF /* projectManagement.xcdatamodeld */,
 				EE99BB8A1F9A37E70051B33B /* Common */,
 				EEA46BC51F9A370600851D5D /* Dave */,
 				FC2F29C11F9A3D8200984409 /* Fooco */,
@@ -428,6 +466,7 @@
 		FC981C251FFED9A4000C2EC1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EE9F799820178ED200A276CF /* Persistence */,
 				FC981C291FFED9A4000C2EC1 /* Algorithm */,
 				FC981C311FFED9A4000C2EC1 /* Activity.swift */,
 				FC981C2F1FFED9A4000C2EC1 /* Context.swift */,
@@ -700,6 +739,7 @@
 				FC8A783E1FFF9933003FA15C /* EditProjectVCFooco.swift in Sources */,
 				FC8A78441FFF9933003FA15C /* ActivityCardView.swift in Sources */,
 				EED935561FBF615C00177FCC /* XibLoader.swift in Sources */,
+				EE9F79A92017995B00A276CF /* ProjectDAOCD.swift in Sources */,
 				FC8A78431FFF9933003FA15C /* EditContextVCFooco.swift in Sources */,
 				FC8A78381FFF9933003FA15C /* PickerAlertVM.swift in Sources */,
 				FC8A782D1FFF9858003FA15C /* TimeBlock.swift in Sources */,
@@ -714,6 +754,7 @@
 				FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCellFooco.swift in Sources */,
 				FC8A78261FFF9858003FA15C /* Activity.swift in Sources */,
 				FC8A783C1FFF9933003FA15C /* MenuTableVCFooco.swift in Sources */,
+				EE9F799D20178EE200A276CF /* ProjectDAO.swift in Sources */,
 				FC8A782C1FFF9858003FA15C /* Time.swift in Sources */,
 				FC8A782E1FFF9858003FA15C /* User.swift in Sources */,
 				FC8A78371FFF9933003FA15C /* EditProjectVMFooco.swift in Sources */,
@@ -724,11 +765,14 @@
 				FC8A78351FFF9933003FA15C /* NewContextVMFooco.swift in Sources */,
 				FC8A78301FFF9858003FA15C /* WeekTemplate.swift in Sources */,
 				FC65222E1FBA3B6E00BAD6DE /* ViewSwiper.swift in Sources */,
+				EE9F79A52017990200A276CF /* UserDAO.swift in Sources */,
 				FC8A78271FFF9858003FA15C /* Context.swift in Sources */,
+				EE9F799520178DF800A276CF /* projectManagement.xcdatamodeld in Sources */,
 				EEA46B671F9A36CA00851D5D /* AppDelegate.swift in Sources */,
 				FC8A78231FFF9858003FA15C /* Extensions.swift in Sources */,
 				FC8A78451FFF9933003FA15C /* PickerAlertView.swift in Sources */,
 				FC8A782B1FFF9858003FA15C /* Project.swift in Sources */,
+				EE9F79AD20179E5A00A276CF /* CoreDataManager.swift in Sources */,
 				FC8A78361FFF9933003FA15C /* EditContextVMFooco.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1069,6 +1113,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1128,6 +1173,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Fooco/Fooco/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.victormelo.Fooco;
@@ -1577,6 +1623,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EE9F799320178DF800A276CF /* projectManagement.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EE9F799420178DF800A276CF /* projectManagement.xcdatamodel */,
+			);
+			currentVersion = EE9F799420178DF800A276CF /* projectManagement.xcdatamodel */;
+			path = projectManagement.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EEA46B591F9A36A400851D5D /* Project object */;
 }
