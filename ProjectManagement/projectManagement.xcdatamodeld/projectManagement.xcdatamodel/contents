@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C205" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ActivityEntity" representedClassName="ActivityEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="completedAtTotalSeconds" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="endsAtTotalSeconds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="startsAt" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="activity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectEntity" inverseName="completedActivities" inverseEntity="ProjectEntity" syncable="YES"/>
-    </entity>
-    <entity name="ContextEntity" representedClassName="ContextEntity" syncable="YES" codeGenerationType="class">
-        <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectEntity" inverseName="context" inverseEntity="ProjectEntity" syncable="YES"/>
-    </entity>
-    <entity name="ProjectEntity" representedClassName="ProjectEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="endingDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="importance" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startingDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="completedActivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActivityEntity" inverseName="activity" inverseEntity="ActivityEntity" syncable="YES"/>
-        <relationship name="context" maxCount="1" deletionRule="Nullify" destinationEntity="ContextEntity" inverseName="projects" inverseEntity="ContextEntity" syncable="YES"/>
-    </entity>
+    <entity name="CompletedActivityCD" representedClassName="CompletedActivityCD" syncable="YES" codeGenerationType="class"/>
+    <entity name="ContextBlockCD" representedClassName="ContextBlockCD" syncable="YES" codeGenerationType="class"/>
+    <entity name="ContextCD" representedClassName="ContextCD" syncable="YES" codeGenerationType="class"/>
+    <entity name="PersistedElementCD" representedClassName="PersistedElementCD" syncable="YES" codeGenerationType="class"/>
+    <entity name="ProjectCD" representedClassName="ProjectCD" syncable="YES" codeGenerationType="class"/>
+    <entity name="WeekdayTemplateCD" representedClassName="WeekdayTemplateCD" syncable="YES" codeGenerationType="class"/>
+    <entity name="WeekTemplateCD" representedClassName="WeekTemplateCD" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="ProjectEntity" positionX="-101" positionY="-288" width="128" height="148"/>
-        <element name="ContextEntity" positionX="-54" positionY="18" width="128" height="28"/>
-        <element name="ActivityEntity" positionX="-252" positionY="-63" width="128" height="103"/>
+        <element name="PersistedElementCD" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="ContextCD" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="CompletedActivityCD" positionX="-36" positionY="9" width="128" height="45"/>
+        <element name="ProjectCD" positionX="-18" positionY="27" width="128" height="45"/>
+        <element name="ContextBlockCD" positionX="0" positionY="45" width="128" height="45"/>
+        <element name="WeekTemplateCD" positionX="18" positionY="63" width="128" height="45"/>
+        <element name="WeekdayTemplateCD" positionX="36" positionY="81" width="128" height="45"/>
     </elements>
 </model>

@@ -10,6 +10,8 @@ import Foundation
 
 class User {
     
+    // MARK: - Properties
+    
     static var sharedInstance = User()
     
     private var _value: [Day] {
@@ -25,6 +27,7 @@ class User {
             _scheduleCache = newValue.sorted()
         }
     }
+    
     private var _observers: [Observer] = []
 
     private var _projects: [Project] = []
@@ -61,6 +64,7 @@ class User {
         }
     }
     
+
     /**
      Return all the user's completed activities
     */
@@ -72,6 +76,8 @@ class User {
         
         return completedActivities
     }
+    
+    // MARK: - Init
     
     private init(projects: [Project] = [], contexts: [Context] = [], weekTemplate: WeekTemplate? = nil, schedule: [Day]? = nil) {
         
@@ -86,6 +92,8 @@ class User {
         self.projects = projects
         self.schedule = schedule
     }
+    
+    // MARK: - Methods
     
     /**
      Add the projects into user current projects list
@@ -455,6 +463,8 @@ class User {
     }
     
 }
+
+// MARK: - Observable
 
 extension User: Observable {
     

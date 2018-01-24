@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E7AE61F31FC6784200F0BE62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE61F11FC6784200F0BE62 /* Extensions.swift */; };
+		EE659FE220181A65000C4CCE /* ContextDAOCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE659FE120181A65000C4CCE /* ContextDAOCD.swift */; };
 		EE9F799520178DF800A276CF /* projectManagement.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE9F799320178DF800A276CF /* projectManagement.xcdatamodeld */; };
 		EE9F799D20178EE200A276CF /* ProjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F799920178EE200A276CF /* ProjectDAO.swift */; };
 		EE9F79A52017990200A276CF /* UserDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F79A42017990200A276CF /* UserDAO.swift */; };
@@ -111,6 +112,7 @@
 		E78393EE1FCA5E32000E3F8A /* ProjectListCellFooco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListCellFooco.swift; sourceTree = "<group>"; };
 		E7AE61F11FC6784200F0BE62 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E7E2ABD11FC6587600F64C09 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
+		EE659FE120181A65000C4CCE /* ContextDAOCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDAOCD.swift; sourceTree = "<group>"; };
 		EE9F799420178DF800A276CF /* projectManagement.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = projectManagement.xcdatamodel; sourceTree = "<group>"; };
 		EE9F799920178EE200A276CF /* ProjectDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDAO.swift; sourceTree = "<group>"; };
 		EE9F79A42017990200A276CF /* UserDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDAO.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				EE9F79A82017995B00A276CF /* ProjectDAOCD.swift */,
 				EE9F79AC20179E5A00A276CF /* CoreDataManager.swift */,
+				EE659FE120181A65000C4CCE /* ContextDAOCD.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				FC8A782A1FFF9858003FA15C /* Day.swift in Sources */,
 				FC8A783F1FFF9933003FA15C /* EditProjectTableVCFooco.swift in Sources */,
 				FC8A782F1FFF9858003FA15C /* WeekdayTemplate.swift in Sources */,
+				EE659FE220181A65000C4CCE /* ContextDAOCD.swift in Sources */,
 				FC8A783A1FFF9933003FA15C /* TimeBlockTableViewCellFooco.swift in Sources */,
 				FC8A78261FFF9858003FA15C /* Activity.swift in Sources */,
 				FC8A783C1FFF9933003FA15C /* MenuTableVCFooco.swift in Sources */,
