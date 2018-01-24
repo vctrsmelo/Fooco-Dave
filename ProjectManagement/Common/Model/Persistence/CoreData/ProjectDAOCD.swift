@@ -20,15 +20,14 @@ class ProjectDAOCD: ProjectDAO {
         
         let projectCD = NSManagedObject(entity: entity!, insertInto: managedContext)
         
-        projectCD.setValue(project.id, forKey: "id")
+        projectCD.setValue(project.id, forKey: "uuid")
         projectCD.setValue(project.name, forKey: "name")
         projectCD.setValue(project.startingDate, forKey: "startingDate")
         projectCD.setValue(project.endingDate, forKey: "endingDate")
         projectCD.setValue(project.importance, forKey: "importance")
-        
-        //definir lógica pra salvar contexto. Precisa ver se já existe. Caso já exista, referenciar ele. Caso contrário, criar e então refenciar o novo contexto criado.
-        
-        
+        projectCD.setValue(project.initialEstimatedTime, forKey: "initialEstimatedTime")
+        projectCD.setValue(project.completedActivities, forKey: "completedActivities")
+        projectCD.setValue(project.context, forKey: "context")
         
         
     }

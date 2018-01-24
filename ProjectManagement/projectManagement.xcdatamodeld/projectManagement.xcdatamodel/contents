@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C205" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CompletedActivityCD" representedClassName="CompletedActivityCD" syncable="YES" codeGenerationType="class"/>
-    <entity name="ContextBlockCD" representedClassName="ContextBlockCD" syncable="YES" codeGenerationType="class"/>
-    <entity name="ContextCD" representedClassName="ContextCD" syncable="YES" codeGenerationType="class"/>
-    <entity name="PersistedElementCD" representedClassName="PersistedElementCD" syncable="YES" codeGenerationType="class"/>
-    <entity name="ProjectCD" representedClassName="ProjectCD" syncable="YES" codeGenerationType="class"/>
-    <entity name="WeekdayTemplateCD" representedClassName="WeekdayTemplateCD" syncable="YES" codeGenerationType="class"/>
-    <entity name="WeekTemplateCD" representedClassName="WeekTemplateCD" syncable="YES" codeGenerationType="class"/>
+    <entity name="CompletedActivityCD" representedClassName="CompletedActivityCD" parentEntity="PersistedElementCD" syncable="YES" codeGenerationType="class">
+        <attribute name="completionDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="endingTimeInterval" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startingTimeInterval" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectCD" inverseName="completedActivities" inverseEntity="ProjectCD" syncable="YES"/>
+    </entity>
+    <entity name="ContextBlockCD" representedClassName="ContextBlockCD" syncable="YES" codeGenerationType="class">
+        <attribute name="endingTimeInterval" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startingTimeInterval" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weekday" attributeType="Integer 16" minValueString="0" maxValueString="6" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="context" maxCount="1" deletionRule="Nullify" destinationEntity="ContextCD" inverseName="contextBlocks" inverseEntity="ContextCD" syncable="YES"/>
+    </entity>
+    <entity name="ContextCD" representedClassName="ContextCD" parentEntity="PersistedElementCD" syncable="YES" codeGenerationType="class">
+        <attribute name="color" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
+        <relationship name="contextBlocks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ContextBlockCD" inverseName="context" inverseEntity="ContextBlockCD" syncable="YES"/>
+        <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectCD" inverseName="context" inverseEntity="ProjectCD" syncable="YES"/>
+    </entity>
+    <entity name="PersistedElementCD" representedClassName="PersistedElementCD" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+    </entity>
+    <entity name="ProjectCD" representedClassName=".ProjectCD" parentEntity="PersistedElementCD" syncable="YES" codeGenerationType="class">
+        <attribute name="endingDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="importance" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="1" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="initialEstimatedTime" attributeType="Double" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startingDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="completedActivities" toMany="YES" deletionRule="Nullify" destinationEntity="CompletedActivityCD" inverseName="project" inverseEntity="CompletedActivityCD" syncable="YES"/>
+        <relationship name="context" maxCount="1" deletionRule="Nullify" destinationEntity="ContextCD" inverseName="projects" inverseEntity="ContextCD" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="PersistedElementCD" positionX="-63" positionY="-18" width="128" height="45"/>
-        <element name="ContextCD" positionX="-54" positionY="-9" width="128" height="45"/>
-        <element name="CompletedActivityCD" positionX="-36" positionY="9" width="128" height="45"/>
-        <element name="ProjectCD" positionX="-18" positionY="27" width="128" height="45"/>
-        <element name="ContextBlockCD" positionX="0" positionY="45" width="128" height="45"/>
-        <element name="WeekTemplateCD" positionX="18" positionY="63" width="128" height="45"/>
-        <element name="WeekdayTemplateCD" positionX="36" positionY="81" width="128" height="45"/>
+        <element name="PersistedElementCD" positionX="-261" positionY="-207" width="128" height="75"/>
+        <element name="ContextCD" positionX="-470" positionY="-0" width="128" height="88"/>
+        <element name="CompletedActivityCD" positionX="7" positionY="12" width="128" height="103"/>
+        <element name="ProjectCD" positionX="-254" positionY="-0" width="128" height="133"/>
+        <element name="ContextBlockCD" positionX="-407" positionY="308" width="128" height="88"/>
     </elements>
 </model>
