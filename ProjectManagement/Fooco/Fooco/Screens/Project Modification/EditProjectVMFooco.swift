@@ -51,9 +51,8 @@ class EditProjectVMFooco {
 			self.startingDate = someProject.startingDate
 			self.endingDate = someProject.endingDate
 			
-			//let days = Int(someProject.totalTimeEstimated) / Int(1.day) // CHECK
-            let days = Int(someProject.estimatedTime) / Int(1.day)
-			let hours = Int(someProject.estimatedTime.truncatingRemainder(dividingBy: 1.day) / 1.hour)
+            let days = Int(someProject.initialEstimatedTime) / Int(1.day)
+			let hours = Int(someProject.initialEstimatedTime.truncatingRemainder(dividingBy: 1.day) / 1.hour)
 			
 			self.chosenTime = (days: days, hours: hours)
 			self.importance = Int(someProject.importance)
@@ -62,7 +61,8 @@ class EditProjectVMFooco {
 	
     func canSaveProject() -> Bool { // TODO: All error handling (testing and giving feedback to the user), should be done here
 		return self.chosenContext != nil &&
-			self.name != nil && self.name != "" &&
+			self.name != nil &&
+			self.name != "" &&
 			self.chosenTime != (days: 0, hours: 0) &&
 			self.startingDate < self.endingDate
 	}
@@ -79,26 +79,28 @@ class EditProjectVMFooco {
 				editedProject.name = name
 				editedProject.startingDate = self.startingDate
 				editedProject.endingDate = self.endingDate
-				//editedProject.totalTimeEstimated = totalEstimate
-                editedProject.updateInitialEstimatedTime(totalEstimate)// CHECK
+				editedProject.updateInitialEstimatedTime(totalEstimate)
 				editedProject.importance = Double(self.importance)
 				
 				self.project = editedProject
-				let index = User.sharedInstance.projects.index(of: editedProject) // TODO: Give id to projects and make this better
-                User.sharedInstance.updateProject(at: index!, with: editedProject)
+                User.sharedInstance.updateProject(editedProject)
 				
 			} else {
-				//let newProject = Project(named: name, startsAt: self.startingDate, endsAt: self.endingDate, withContext: context, importance: importance, totalTimeEstimated: totalEstimate)
-                let newProject = try! Project(name: name, starts: self.startingDate, ends: self.endingDate, context: context, importance: Double(self.importance), estimatedTime: totalEstimate)
-				
-				self.project = newProject
-				User.sharedInstance.add(projects: [newProject])
+				do {
+					let newProject = try Project(name: name, starts: self.startingDate, ends: self.endingDate, context: context, importance: Double(self.importance), estimatedTime: totalEstimate)
+					
+					self.project = newProject
+					User.sharedInstance.add(project: newProject)
+					
+				} catch {
+					print("[Error] \(error)")
+				}
 			}
 			
 			User.sharedInstance.invalidateSchedule()
 			
 		} else {
-			// TODO: Error message
+			print("[Error] Could not save")
 		}
 	}
 	
