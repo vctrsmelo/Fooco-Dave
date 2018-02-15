@@ -25,9 +25,18 @@ class NewContextVMFooco {
         }
     }
 	
+	func indexPathFor(color: UIColor?) -> IndexPath? {
+		if let color = color,
+			let index = self.colorOptions.index(of: color) {
+			return IndexPath(row: index, section: 0)
+			
+		} else {
+			return nil
+		}
+	}
+	
     func editContextViewModel(with delegate: ViewModelUpdateDelegate) -> EditContextVMFooco {
-		//let context = Context(named: self.name!, color: self.color!, icon: nil, projects: nil, minProjectWorkingTime: 1, maximumWorkingHoursPerProject: 4)
-        let context = Context(name: self.name!, color: self.color!, icon: UIImage()) // CHECK
+        let context = Context(name: self.name!, color: self.color!, icon: UIImage())
         return EditContextVMFooco(context: context, and: delegate)
 	}
 }

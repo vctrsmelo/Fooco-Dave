@@ -19,7 +19,6 @@ class NewContextVCFooco: UIViewController {
 	@IBOutlet private weak var colorsCollection: UICollectionView!
 	@IBOutlet private weak var suggestionsTable: UITableView!
 	
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -33,20 +32,22 @@ class NewContextVCFooco: UIViewController {
     private func updateToViewModel() {
         self.nameField.text = self.viewModel.name
         
-        // TODO: make something for the color selection
+		if let indexPath = self.viewModel.indexPathFor(color: self.viewModel.color) {
+			self.colorsCollection.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+		}
     }
 
     // MARK: - Navigation
     
-    @IBAction func nextTapped(_ sender: UIBarButtonItem) {
-		if self.viewModel.hasValidData() {
-			self.performSegue(withIdentifier: self.segueToEdit, sender: nil)
-		} else {
+    @IBAction private func nextTapped(_ sender: UIBarButtonItem) {
+		guard self.viewModel.hasValidData() else {
 			print("[Error] Missing information") // TODO: Tell the user that there is missing information
+			return
 		}
+		
+		self.performSegue(withIdentifier: self.segueToEdit, sender: nil)
     }
     
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == self.segueToEdit, let editViewController = segue.destination as? EditContextVCFooco {
 			editViewController.viewModel = self.viewModel.editContextViewModel(with: editViewController)
