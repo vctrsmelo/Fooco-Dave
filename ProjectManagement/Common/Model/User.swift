@@ -137,6 +137,20 @@ class User {
         self.projects[index] = newProject
         
     }
+	
+	/**
+	 Update the project with the same id.
+	 - Precondition:
+		- project: self.projects.contains(project)
+	*/
+	func updateProject(_ project: Project) {
+		if let index = self.projects.index(where: { $0.id == project.id }) {
+			self.projects[index] = project
+			
+		} else {
+			print("[Error] Could not update project \(project), could not find equivalent project to change")
+		}
+	}
     
     /**
      Remove the project from user schedule
@@ -159,15 +173,14 @@ class User {
      - Parameters:
         - untilDate: limit date to search for the next activity. If the activity is beyond that date, will return nil. Default is until tomorrow.
     */
-    func getNextActivity(_ untilDate: Date = Date().getDay().addingTimeInterval(1.day)) -> Activity? {
+    func getNextActivity(_ untilDate: Date = Date(timeIntervalSinceNow: 1.day).getDay()) -> Activity? {
         
         var activity: Activity?
         
         if self.schedule == nil {
             self.updateSchedule(until: untilDate)
         }
-        
-    
+		
         if let schedule = self.schedule {
   
             var i = 0
@@ -227,8 +240,7 @@ class User {
         }
         
     }
-    
-    
+	
     /**
      Returns the time available for a context until the date parameter, including it. Discount the activities already allocated into schedule.
     */
@@ -293,14 +305,12 @@ class User {
                     returnValue -= clampedTimeBlock.length
                     
                 }
-                
-                
+				
             }
             
         }
         
         return returnValue
-        
     }
     
     /**
@@ -308,7 +318,6 @@ class User {
     */
     func getWeeklyAvailableTime(for context: Context) -> TimeInterval {
         
-
         var weekContextBlocks = weekTemplate.value.0.contextBlocks
         weekContextBlocks.append(contentsOf: weekTemplate.value.1.contextBlocks)
         weekContextBlocks.append(contentsOf: weekTemplate.value.2.contextBlocks)
