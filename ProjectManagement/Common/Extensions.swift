@@ -87,16 +87,25 @@ extension Date {
     }
     
     /**
+	Returns the hour, minutes and seconds of the date.
+	*/
+	func getTime() -> Time {
+		let calendar = Calendar.current
+		
+		let hour = calendar.component(.hour, from: self)
+		let minutes = calendar.component(.minute, from: self)
+		let seconds = calendar.component(.second, from: self)
+		
+		return try! Time(hour: hour, minute: minutes, second: seconds)
+	}
+    
+    /**
      Return the same date with hours, minutes and seconds setted to zero.
      */
     func getDay() -> Date {
-        
         let today = Calendar.current.dateComponents([.day, .month, .year], from: self)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
         
-        return dateFormatter.date(from: "\(today.day!)-\(today.month!)-\(today.year!)")!
-        
+        return Calendar.current.date(from: today)!
     }
     
     /**
