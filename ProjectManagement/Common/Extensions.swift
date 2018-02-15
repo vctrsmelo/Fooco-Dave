@@ -85,8 +85,8 @@ extension Date {
     func isToday() -> Bool {
         return self.getDay() == Date().getDay()
     }
-    
-    /**
+	
+	/**
 	Returns the hour, minutes and seconds of the date.
 	*/
 	func getTime() -> Time {
@@ -102,9 +102,9 @@ extension Date {
     /**
      Return the same date with hours, minutes and seconds setted to zero.
      */
-    func getDay() -> Date {
+    func getDay() -> Date {        
         let today = Calendar.current.dateComponents([.day, .month, .year], from: self)
-        
+
         return Calendar.current.date(from: today)!
     }
     
@@ -159,8 +159,6 @@ extension Array where Element: Project {
         
         return returnArray
     }
-    
-    
 }
 
 extension Array where Element: Equatable {
@@ -220,43 +218,6 @@ extension Dictionary {
 
 // MARK: - Core Graphics
 
-extension UIColor {
-    
-    struct Interface {
-        private init() {}
-        
-        static let iWhite = #colorLiteral(red: 0.9677794576, green: 1, blue: 0.963481009, alpha: 1)
-        static let iLightGreen = #colorLiteral(red: 0.7637994885, green: 0.948982656, blue: 0.7377385497, alpha: 1)
-        static let iGreen = #colorLiteral(red: 0.3586075306, green: 0.7084770203, blue: 0.610791266, alpha: 1)
-        static let iBlue = #colorLiteral(red: 0.3035645783, green: 0.547811389, blue: 0.648229301, alpha: 1)
-        static let iDarkBlue = #colorLiteral(red: 0.1394162476, green: 0.3316068649, blue: 0.4398950338, alpha: 1)
-        static let iPurple = #colorLiteral(red: 0.2533134818, green: 0.2501349747, blue: 0.5410738587, alpha: 1)
-        static let iBlack = #colorLiteral(red: 0.0337530449, green: 0.1313122213, blue: 0.2268140912, alpha: 1)
-    }
-    
-    static let addContextColor = #colorLiteral(red: 0.5843137255, green: 0.5843137255, blue: 0.5843137255, alpha: 1)
-    
-    static func contextColors() -> [UIColor] {
-        return [#colorLiteral(red: 0.596470058, green: 0.8240941167, blue: 0.8377798796, alpha: 1), #colorLiteral(red: 0.2224018574, green: 0.7209109664, blue: 0.59053123, alpha: 1), #colorLiteral(red: 0.8436028361, green: 0.6334985495, blue: 0.6773697734, alpha: 1), #colorLiteral(red: 0.7921995521, green: 0.8247993588, blue: 0.4140916467, alpha: 1), #colorLiteral(red: 0.9068188071, green: 0.3804750741, blue: 0.3638587296, alpha: 1), #colorLiteral(red: 0.5450553298, green: 0.679359138, blue: 0.6552342772, alpha: 1), #colorLiteral(red: 0.4687731862, green: 0.4971648455, blue: 0.7168904543, alpha: 1)]
-    }
-}
-
-extension UIImage {
-    convenience init?(from color: UIColor) {
-        let rect = CGRect(origin: .zero, size: CGSize.one)
-        UIGraphicsBeginImageContext(rect.size)
-        color.setFill()
-        UIRectFill(rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        guard let cgImage = image?.cgImage else {
-            return nil
-        }
-        self.init(cgImage: cgImage)
-    }
-}
-
 extension CGPoint {
 	static var one: CGPoint {
 		return CGPoint(x: 1, y: 1)
@@ -274,6 +235,42 @@ extension CGSize {
 }
 
 // MARK: - UIKit
+
+extension UIColor {
+	struct Interface {
+		private init() {}
+		
+		static let iWhite = #colorLiteral(red: 0.9677794576, green: 1, blue: 0.963481009, alpha: 1)
+		static let iLightGreen = #colorLiteral(red: 0.7637994885, green: 0.948982656, blue: 0.7377385497, alpha: 1)
+		static let iGreen = #colorLiteral(red: 0.3586075306, green: 0.7084770203, blue: 0.610791266, alpha: 1)
+		static let iBlue = #colorLiteral(red: 0.3035645783, green: 0.547811389, blue: 0.648229301, alpha: 1)
+		static let iDarkBlue = #colorLiteral(red: 0.1394162476, green: 0.3316068649, blue: 0.4398950338, alpha: 1)
+		static let iPurple = #colorLiteral(red: 0.2533134818, green: 0.2501349747, blue: 0.5410738587, alpha: 1)
+		static let iBlack = #colorLiteral(red: 0.0337530449, green: 0.1313122213, blue: 0.2268140912, alpha: 1)
+	}
+	
+	static let addContextColor = #colorLiteral(red: 0.5843137255, green: 0.5843137255, blue: 0.5843137255, alpha: 1)
+	
+	static func contextColors() -> [UIColor] {
+		return [#colorLiteral(red: 0.596470058, green: 0.8240941167, blue: 0.8377798796, alpha: 1), #colorLiteral(red: 0.2224018574, green: 0.7209109664, blue: 0.59053123, alpha: 1), #colorLiteral(red: 0.8436028361, green: 0.6334985495, blue: 0.6773697734, alpha: 1), #colorLiteral(red: 0.7921995521, green: 0.8247993588, blue: 0.4140916467, alpha: 1), #colorLiteral(red: 0.9068188071, green: 0.3804750741, blue: 0.3638587296, alpha: 1), #colorLiteral(red: 0.5450553298, green: 0.679359138, blue: 0.6552342772, alpha: 1), #colorLiteral(red: 0.4687731862, green: 0.4971648455, blue: 0.7168904543, alpha: 1)]
+	}
+}
+
+extension UIImage {
+	convenience init?(from color: UIColor) {
+		let rect = CGRect(origin: .zero, size: CGSize.one)
+		UIGraphicsBeginImageContext(rect.size)
+		color.setFill()
+		UIRectFill(rect)
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		guard let cgImage = image?.cgImage else {
+			return nil
+		}
+		self.init(cgImage: cgImage)
+	}
+}
 
 extension UIView {
 	// MARK: Shadows
@@ -361,23 +358,4 @@ extension UINavigationBar {
 		self.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
 		self.tintColor = color
 	}
-}
-
-extension Date {
-    
-    /**
-     Returns the hour, minutes and seconds of the date.
-    */
-    func getTime() -> Time {
-        
-        let calendar = Calendar.current
-        
-        let hour = calendar.component(.hour, from: self)
-        let minutes = calendar.component(.minute, from: self)
-        let seconds = calendar.component(.second, from: self)
-        
-        return try! Time(hour: hour, minute: minutes, second: seconds)
-        
-    }
-    
 }
