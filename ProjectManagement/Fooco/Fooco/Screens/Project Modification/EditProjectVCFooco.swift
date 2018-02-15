@@ -43,19 +43,19 @@ class EditProjectVCFooco: UIViewController {
     
     // MARK: - Navigation
     
-	@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+	@IBAction private func cancelTapped(_ sender: UIBarButtonItem) {
 		self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 	}
 	
-	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
-		if self.viewModel.canSaveProject() {
-			self.viewModel.saveProject()
-			
-			self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
-			
-		} else {
+	@IBAction private func saveTapped(_ sender: UIBarButtonItem) {
+		guard self.viewModel.canSaveProject() else {
 			print("[Error] Missing information") // TODO: Tell the user that there is missing information
+			return
 		}
+		
+		self.viewModel.saveProject()
+		
+		self.performSegue(withIdentifier: self.unwindSegueIdentifier, sender: self)
 	}
 	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
