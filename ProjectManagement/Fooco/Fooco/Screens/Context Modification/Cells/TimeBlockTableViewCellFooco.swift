@@ -25,11 +25,9 @@ class TimeBlockTableViewCellFooco: UITableViewCell {
 			dateFormatter.dateStyle = .none
 			dateFormatter.timeStyle = .short
 			
-			//self.startTime.text = dateFormatter.string(from: someCellData.timeblock.start) // CHECK
-            self.startTime.text = someCellData.timeblock.start.description
-			//self.endTime.text = dateFormatter.string(from: someCellData.timeblock.endsAt)
-			self.endTime.text = someCellData.timeblock.end.description
-            
+			self.startTime.text = dateFormatter.string(from: someCellData.timeblock.start.toDate())
+			self.endTime.text = dateFormatter.string(from: someCellData.timeblock.end.toDate())
+			
 			self.weekDays.text = Weekday.weekdaysText(for: someCellData.days.sorted(), style: .normal)
 		}
 	}
