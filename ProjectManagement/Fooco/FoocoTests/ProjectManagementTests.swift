@@ -53,7 +53,6 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         XCTAssertNotEqual(try! Time(hour: 23, minute: 0, second: 3), try! Time(hour: 23, minute: 2, second: 3))
         XCTAssertNotEqual(try! Time(day: 1, hour: 0), try! Time(hour: 0, minute: 0))
 
-
         //test hour, minute and second variables relation with totalSeconds
         var time = try! Time(hour: 20)
         XCTAssertTrue(time.hour * 60 * 60 + time.minute * 60 + time.second == Int(time.totalSeconds))
@@ -85,7 +84,6 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
 
         var tb1 = try! TimeBlock(starts: try! Time(hour: 20), ends: try! Time(hour: 22))
         XCTAssertThrowsError(try tb1.setStarts(try! Time(hour: 22, minute: 0, second: 1)))
-
 
         //equals time blocks
         XCTAssertTrue((try! TimeBlock(starts: t1, ends: t2)) == (try! (TimeBlock(starts: t1, ends: t2))))
@@ -206,8 +204,6 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         XCTAssertThrowsError(try Day(date: Date(), activities: [actvC1, actvC2]))
         XCTAssertThrowsError(try Day(date: Date(), activities: [actvC2, actvC2]))
         XCTAssertNoThrow(try Day(date: Date(), activities: [actvA1, actvC2]))
-
-
     }
 
     func testProjectPriorityCalculation() {
@@ -268,8 +264,6 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
 
         User.sharedInstance.add(projects: [proj1College, proj2College, proj3College, proj1Work, proj2Work])
 
-        
-        
         let collegeProjects = AlgorithmManager.getProjectsFor(context: college)
         let workProjects = AlgorithmManager.getProjectsFor(context: work)
 
@@ -364,8 +358,6 @@ class ProjectManagementTests: XCTestCase { // swiftlint:disable:this type_body_l
         }
 
         XCTAssertEqual(getAvailableTimeBlocksCounter, 2) //getAvailableTimeBlocks still returned correct values
-
-
     }
 
     func testGetWeekdayTemplate() {

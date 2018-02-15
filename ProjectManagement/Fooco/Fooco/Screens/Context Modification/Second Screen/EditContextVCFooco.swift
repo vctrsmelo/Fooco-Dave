@@ -89,7 +89,7 @@ class EditContextVCFooco: UIViewController {
 		self.saturdayBarHeight.constant = self.viewModel.size(for: .saturday)
 	}
 	
-	@IBAction func addContextTimes() {
+	@IBAction private func addContextTimes() {
 		self.pickerAlertView.present(with: self.viewModel.createNewAlert())
 	}
 }

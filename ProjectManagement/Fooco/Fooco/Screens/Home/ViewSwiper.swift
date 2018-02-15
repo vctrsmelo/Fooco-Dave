@@ -14,7 +14,7 @@ protocol ViewSwiperDelegate: AnyObject {
 	func skipExecuted()
 }
 
-fileprivate enum MovementState { // swiftlint:disable:this private_over_fileprivate
+private enum MovementState {
 	case atCenter, atRight, atLeft, goingRight, goingLeft
 	
 	static prefix func ! (value: MovementState) -> MovementState {

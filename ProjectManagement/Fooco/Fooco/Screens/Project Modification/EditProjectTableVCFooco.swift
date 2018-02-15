@@ -204,36 +204,35 @@ class EditProjectTableVCFooco: UITableViewController {
 	
 	// MARK: - Touch Handling
 	
-	@IBAction func estimatedHoursTouched(_ sender: UIButton) {
+	@IBAction private func estimatedHoursTouched(_ sender: UIButton) {
 		let pickerAlertViewModel = self.viewModel.createAlert(for: .estimatedTime)
 		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 	}
 	
-	@IBAction func startingDateTouched(_ sender: UIButton) {
+	@IBAction private func startingDateTouched(_ sender: UIButton) {
 		let pickerAlertViewModel = self.viewModel.createAlert(for: .date(.begin))
 		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 		
 	}
 	
-	@IBAction func deadlineDateTouched(_ sender: UIButton) {
+	@IBAction private func deadlineDateTouched(_ sender: UIButton) {
 		let pickerAlertViewModel = self.viewModel.createAlert(for: .date(.end))
 		delegate?.presentPickerAlert(with: pickerAlertViewModel)
 	}
 	
-	@IBAction func lowImportanceTouched(_ sender: UIButton) {
+	@IBAction private func lowImportanceTouched(_ sender: UIButton) {
 		self.viewModel.importance = 1
 		self.updateSelectedImportance()
 		self.updateImportanceColor()
 	}
 	
-	
-	@IBAction func mediumImportanceTouched(_ sender: UIButton) {
+	@IBAction private func mediumImportanceTouched(_ sender: UIButton) {
 		self.viewModel.importance = 2
 		self.updateSelectedImportance()
 		self.updateImportanceColor()
 	}
 	
-	@IBAction func highImportanceTouched(_ sender: Any) {
+	@IBAction private func highImportanceTouched(_ sender: Any) {
 		self.viewModel.importance = 3
 		self.updateSelectedImportance()
 		self.updateImportanceColor()
@@ -259,7 +258,6 @@ extension EditProjectTableVCFooco: UITextFieldDelegate {
 		self.viewModel.name = textField.text
 	}
 }
-
 
 // MARK: - Collection
 
@@ -346,7 +344,6 @@ extension EditProjectTableVCFooco {
 			return
 		}
 		
-        
         let focusedCellAttributes = contextsCollectionView.layoutAttributesForItem(at: contextsCollectionView.indexPath(for: focusedCell)!)
         let focusedCellFrame = contextsCollectionView.convert(focusedCellAttributes!.frame, to: contextsCollectionView.superview!)
         var focusedCellCenterX = focusedCellFrame.origin.x + focusedCellFrame.size.width / 2.0

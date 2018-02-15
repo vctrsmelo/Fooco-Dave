@@ -52,7 +52,6 @@ final class Activity: NSObject {
         id = UUID()
     }
 
-    
     init(from: Time, to: Time, project: Project, completed: Bool = false) throws {
         
         self.project = project
@@ -130,7 +129,6 @@ extension Activity: IntervalType {
         return self.timeBlock.overlaps(other)
     }
 
-    
     func overlaps<I>(_ other: I) -> Bool where I: IntervalType, Activity.Bound == I.Bound {
         return self.timeBlock.overlaps(other)
     }
@@ -166,12 +164,9 @@ extension Activity: TimeIntervalType {
     var length: TimeInterval {
         return timeBlock.end - timeBlock.start
     }
-    
-    
 }
 
-//equatable
-extension Activity {
+extension Activity { // Equatable
 
     override func isEqual(_ object: Any?) -> Bool {
         return self.timeBlock == (object as? Activity)?.timeBlock

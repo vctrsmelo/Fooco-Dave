@@ -33,11 +33,8 @@ class ContextListVCFooco: UIViewController {
 	}
 
     // MARK: - Navigation
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    }
     
-    @IBAction func unwindToContextList(with unwindSegue: UIStoryboardSegue) {
+    @IBAction private func unwindToContextList(with unwindSegue: UIStoryboardSegue) {
     }
 
 }

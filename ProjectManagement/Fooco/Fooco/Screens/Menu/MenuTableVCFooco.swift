@@ -19,8 +19,7 @@ class MenuTableVCFooco: UITableViewController {
 
     // MARK: - Navigation
 	
-	@IBAction func unwindToMenu(with unwindSegue: UIStoryboardSegue) {
+	@IBAction private func unwindToMenu(with unwindSegue: UIStoryboardSegue) {
 		
 	}
-
 }

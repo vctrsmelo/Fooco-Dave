@@ -21,7 +21,6 @@ extension DayError: CustomStringConvertible {
     }
 }
 
-
 class Day {
     
     private let id: UUID
@@ -81,6 +80,4 @@ extension Day: Comparable {
     static func == (lhs: Day, rhs: Day) -> Bool {
         return lhs.date == rhs.date
     }
-    
-    
 }

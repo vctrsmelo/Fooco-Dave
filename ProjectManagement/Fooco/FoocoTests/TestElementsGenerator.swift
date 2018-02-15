@@ -11,7 +11,6 @@ import Foundation
 
 class TestElementsGenerator {
     
-    
     /**
      - Returns: weekly schedule with only one daily context block for each context parameter.
     */

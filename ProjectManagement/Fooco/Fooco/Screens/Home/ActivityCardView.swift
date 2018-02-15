@@ -31,10 +31,7 @@ class ActivityCardView: UIView {
             self.project.text = data.project?.name ?? data.name!
 
             self.focusTime.text = "\(data.timeBlock.length.inHours)"
-
         }
-        
-        
 	}
 	
 	private func string(of time: TimeInterval?) -> String {

@@ -23,10 +23,10 @@ enum PickerAlertMode: Equatable {
 		case (.estimatedTime, .estimatedTime):
 			return true
 			
-		case (.date(let stageLhs), .date(let stageRhs)):
+		case let (.date(stageLhs), .date(stageRhs)):
 			return stageLhs == stageRhs
 			
-		case (.timeBlock(let stageLhs), .timeBlock(let stageRhs)):
+		case let (.timeBlock(stageLhs), .timeBlock(stageRhs)):
 			return stageLhs == stageRhs
 		
 		// These are added so the default case is not need and the compiler always warns if a new case is added

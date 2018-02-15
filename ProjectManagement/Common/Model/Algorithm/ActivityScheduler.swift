@@ -64,14 +64,9 @@ class ActivityScheduler {
                 activities.append(activity)
             
                 return
-                
             }
         }
         
         throw ActivitySchedulerError.activityOutOfTimeBlocksBound
-        
     }
-    
-    
-    
 }

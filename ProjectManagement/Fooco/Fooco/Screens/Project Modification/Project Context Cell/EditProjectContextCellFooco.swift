@@ -17,8 +17,7 @@ class EditProjectContextCellFooco: UICollectionViewCell {
 	static let originalSize = CGSize(width: 150, height: 100)
     private let heightIncreaseFactor: CGFloat = 40.0
     private var featuredPercentage: CGFloat?
-    
-    
+	
     private var _context: Context!
     var context: Context! {
         set {
@@ -43,20 +42,17 @@ class EditProjectContextCellFooco: UICollectionViewCell {
         let cellXCenter: CGFloat = cellFrame.origin.x + cellFrame.width / 2
         
         let distance: CGFloat = abs(containerXCenter - cellXCenter)
-        
-        
+		
         //entre 0 e 100, sendo 100 = maior tamanho e 0 = menor tamanho
         featuredPercentage = (1 - (distance / container.width)) * 100
         
         let newHeight = originalSize.height + (featuredPercentage! * heightIncreaseFactor) / 100
         let newWidth = (originalSize.width / originalSize.height) * newHeight
-        
-        
+		
         //size changes relating to current size
         let increasedHeight = abs(self.frame.height - newHeight)
         let increasedWidth = abs(self.frame.width - newWidth)
-        
-        
+		
         //position changes relating to current position
         let newX = (self.frame.width < newWidth) ? self.frame.origin.x - increasedWidth / 2 : self.frame.origin.x + increasedWidth / 2
         let newY = (self.frame.height < newHeight) ? self.frame.origin.y - increasedHeight : self.frame.origin.y + increasedHeight
@@ -88,8 +84,6 @@ class EditProjectContextCellFooco: UICollectionViewCell {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = finalShadowRadius
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 4).cgPath
-        
-        
     }
     
     override func awakeFromNib() {
@@ -111,7 +105,6 @@ class EditProjectContextCellFooco: UICollectionViewCell {
         self.iconImageView.layer.cornerRadius = 50 / 100 * iconImageView.frame.size.width
         
     }
-
 
     private func updatedContext() {
         

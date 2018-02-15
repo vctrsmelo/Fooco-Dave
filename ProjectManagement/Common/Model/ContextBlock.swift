@@ -24,7 +24,6 @@ struct ContextBlock {
     
 }
 
-
 extension ContextBlock: TimeIntervalType {
     
     /**
@@ -44,8 +43,5 @@ extension ContextBlock: Equatable {
         }
         
         return false
-        
     }
-    
-    
 }

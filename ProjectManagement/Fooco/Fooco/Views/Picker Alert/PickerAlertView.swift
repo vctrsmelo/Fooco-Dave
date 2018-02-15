@@ -163,7 +163,7 @@ class PickerAlertView: UIView {
 	}
 	
 	// TODO: hide view if touch outside it
-    @IBAction func confirmTouched(_ sender: UIButton) {
+    @IBAction private func confirmTouched(_ sender: UIButton) {
 		
 		self.isHidden = true
         
@@ -187,7 +187,7 @@ class PickerAlertView: UIView {
 		}
     }
     
-    @IBAction func dateChanged(_ sender: UIDatePicker) {
+    @IBAction private func dateChanged(_ sender: UIDatePicker) {
 		if self.currentMode == .timeBlock(.end) {
 			self.viewModel.comparisonDate = sender.date
 		} else {
@@ -197,7 +197,7 @@ class PickerAlertView: UIView {
 		self.updateToViewModel()
     }
     
-    @IBAction func dayTouched(_ sender: UIButton) {
+    @IBAction private func dayTouched(_ sender: UIButton) {
         sender.isSelected = false // It's easier to update only the selected on the self.updateToViewModel()
         self.viewModel.dayTouched(tag: sender.tag)
         self.updateToViewModel()

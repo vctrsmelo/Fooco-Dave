@@ -1,4 +1,4 @@
-################## Minimized result of calling 'swiftlint rules' for version 0.24.0
+################## Minimized result of calling 'swiftlint rules' for version 0.25.0
 
 # +------------------------------------------+--------+-------------+-------------+
 # | identifier                               | opt-in | correctable | kind        |
@@ -21,11 +21,14 @@
 # | cyclomatic_complexity                    | no     | no          | metrics     |
 # | discarded_notification_center_observer   | no     | no          | lint        |
 # | discouraged_direct_init                  | no     | no          | lint        |
+# | discouraged_object_literal               | yes    | no          | idiomatic   |
+# | discouraged_optional_boolean             | yes    | no          | idiomatic   |
 # | dynamic_inline                           | no     | no          | lint        |
 # | empty_count                              | yes    | no          | performance |
 # | empty_enum_arguments                     | no     | yes         | style       |
 # | empty_parameters                         | no     | yes         | style       |
 # | empty_parentheses_with_trailing_closure  | no     | yes         | style       |
+# | explicit_acl                             | yes    | no          | idiomatic   |
 # | explicit_enum_raw_value                  | yes    | no          | idiomatic   |
 # | explicit_init                            | yes    | yes         | idiomatic   |
 # | explicit_top_level_acl                   | yes    | no          | idiomatic   |
@@ -75,6 +78,8 @@
 # | overridden_super_call                    | yes    | no          | lint        |
 # | override_in_extension                    | yes    | no          | lint        |
 # | pattern_matching_keywords                | yes    | no          | idiomatic   |
+# | prefixed_toplevel_constant               | yes    | no          | style       |
+# | private_action                           | yes    | no          | lint        |
 # | private_outlet                           | yes    | no          | lint        |
 # | private_over_fileprivate                 | no     | yes         | idiomatic   |
 # | private_unit_test                        | no     | no          | lint        |
@@ -88,6 +93,7 @@
 # | redundant_optional_initialization        | no     | yes         | idiomatic   |
 # | redundant_string_enum_value              | no     | no          | idiomatic   |
 # | redundant_void_return                    | no     | yes         | idiomatic   |
+# | required_enum_case                       | yes    | no          | lint        |
 # | return_arrow_whitespace                  | no     | yes         | style       |
 # | shorthand_operator                       | no     | no          | style       |
 # | single_test_class                        | yes    | no          | style       |
@@ -119,6 +125,7 @@
 # | void_return                              | no     | yes         | style       |
 # | weak_delegate                            | no     | no          | lint        |
 # | xctfail_message                          | no     | no          | idiomatic   |
+# | yoda_condition                           | yes    | no          | lint        |
 # +------------------------------------------+--------+-------------+-------------+
 
 ################## Paths to ignore during linting. Takes precedence over `included`
@@ -147,8 +154,14 @@ whitelist_rules:
   # Prefer the new block based KVO API with keypaths when using Swift 3.2 or later.
   - block_based_kvo
 
+  # Prefer initializers over object literals.
+#  - discouraged_object_literal
+  
+  # Prefer non-optional booleans over optional booleans.
+#  - discouraged_optional_boolean
+
   # All declarations should specify Access Control Level keywords explicitly.
-  - explicit_acl
+#  - explicit_acl
 
   # Enums should be explicitly assigned their raw values.
 #  - explicit_enum_raw_value
@@ -220,7 +233,7 @@ whitelist_rules:
   - object_literal
 
   # Combine multiple pattern matching bindings by moving keywords out of tuples.
-#  - pattern_matching_keywords
+  - pattern_matching_keywords
 
   # Prefer private over fileprivate declarations.
   - private_over_fileprivate
@@ -238,7 +251,7 @@ whitelist_rules:
   - redundant_void_return
 
   # fileprivate should be avoided.
-#  - strict_fileprivate
+  - strict_fileprivate
 
   # Shorthand syntactic sugar should be used, i.e. [Int] instead of Array
   - syntactic_sugar
@@ -310,6 +323,9 @@ whitelist_rules:
 
   # Discouraged pending test. This test won't run while it's marked as pending.
   - quick_discouraged_pending_test
+  
+  # Enums conforming to a specified protocol must implement a specific case(s).
+  - required_enum_case
 
   # SwiftLint 'disable' commands are superfluous when the disabled rule would not have triggered a violation in the disabled region.
   - superfluous_disable_command
@@ -451,6 +467,9 @@ whitelist_rules:
 
   # Operators should be surrounded by a single whitespace when defining them.
   - operator_whitespace
+  
+  # Top-level constants should be prefixed by k.
+  - prefixed_toplevel_constant
 
   # When declaring properties in protocols, the order of accessors should be get set.
   - protocol_property_accessors_order
@@ -504,7 +523,8 @@ whitelist_rules:
   - vertical_parameter_alignment_on_call
 
   # Limit vertical whitespace to a single empty line.
-#  - vertical_whitespace
+  - vertical_whitespace
 
   # Prefer -> Void over -> ().
   - void_return
+  
