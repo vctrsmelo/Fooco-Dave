@@ -21,7 +21,6 @@ extension ProjectError: CustomStringConvertible {
     }
 }
 
-
 /**
  The priority value of a project.
  - Invariant: it's a value between 0 and 1. The closer to 1, the higher is the priority of the project.
@@ -32,14 +31,14 @@ class Project: NSObject {
     
     static private let importanceRange: [Double] = [1.0, 2.0, 3.0]
     
-    private let id: UUID
+    let id: UUID
     var name: String
     var startingDate: Date
     var endingDate: Date
     var context: Context
     var importance: Double
     
-    private var _initialEstimatedTime: TimeInterval
+    private(set) var initialEstimatedTime: TimeInterval
     private(set) var estimatedTime: TimeInterval
     
     var completedActivities: [(Activity, Date)]
@@ -90,7 +89,7 @@ class Project: NSObject {
         }
         
         self.estimatedTime = initialEstimatedTime
-        self._initialEstimatedTime = initialEstimatedTime
+        self.initialEstimatedTime = initialEstimatedTime
         self.importance = importance
         self.completedActivities = completedActivities
         self.id = UUID()
@@ -108,21 +107,20 @@ class Project: NSObject {
         self.context = context
         self.importance = importance
         self.estimatedTime = initialEstimatedTime
-        self._initialEstimatedTime = initialEstimatedTime
+        self.initialEstimatedTime = initialEstimatedTime
         self.completedActivities = completedActivities
         self.id = id
         super.init()
         User.sharedInstance.addObserver(observer: self)
     
     }
-    
-    
+	
     /**
      Update the initial estimated time for the project.
      */
     func updateInitialEstimatedTime(_ timeInterval: TimeInterval) {
         
-        _initialEstimatedTime = timeInterval
+        initialEstimatedTime = timeInterval
         update(with: User.sharedInstance.schedule)
         
     }
@@ -184,14 +182,11 @@ class Project: NSObject {
         
         //left time to complete the project is smaller than timeBlock length
         if currentLeftTime < timeBlock.length {
-            
-            
+			
             if currentLeftTime < Activity.minimalTimeLength {
                 
                 //activity should have length of Activity.minimalTimeLength
                 return try! TimeBlock(starts: timeBlock.start, ends: timeBlock.start.addingTimeInterval(Activity.minimalTimeLength))
-              
-                
             }
             
             //activity should have length of currentLeftTime
@@ -227,7 +222,7 @@ class Project: NSObject {
     */
     func getProgress() -> Double {
         
-        return (_initialEstimatedTime - estimatedTime) / _initialEstimatedTime
+        return (initialEstimatedTime - estimatedTime) / initialEstimatedTime
         
     }
     
@@ -285,9 +280,8 @@ extension Project: Observer {
     }
     
     func update<T>(with newValue: T) {
-        
-
-        estimatedTime = _initialEstimatedTime - getCompletedActivitiesTotalLength()
+		
+        estimatedTime = initialEstimatedTime - getCompletedActivitiesTotalLength()
 
         guard let schedule = newValue as? [Day] else {
             return
@@ -300,21 +294,16 @@ extension Project: Observer {
         
     }
     
-    
 }
 
-//Equatable
-extension Project {
-    
+extension Project { // Equatable
     override func isEqual(_ object: Any?) -> Bool {
         return self.id == (object as? Project)?.id
     }
-    
 }
 
 extension Project: Comparable {
     static func < (lhs: Project, rhs: Project) -> Bool {
         return lhs.priority > rhs.priority
     }
-    
 }
