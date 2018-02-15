@@ -8,61 +8,6 @@
 import CoreGraphics
 import Foundation
 
-enum DayInWeek: Int, Comparable {
-    static func < (lhs: DayInWeek, rhs: DayInWeek) -> Bool {
-        return lhs.rawValue < rhs.rawValue
-    }
-    
-    enum SizeStyle {
-        case veryShort, short, normal
-    }
-    
-	case sunday, monday, tuesday, wednesday, thursday, friday, saturday
-	
-	var string: String {
-		return DateFormatter().standaloneWeekdaySymbols[self.rawValue]
-	}
-	
-	var shortString: String {
-		return DateFormatter().shortStandaloneWeekdaySymbols[self.rawValue]
-	}
-	
-	var veryShortString: String {
-		return DateFormatter().veryShortStandaloneWeekdaySymbols[self.rawValue]
-	}
-    
-    func string(_ style: SizeStyle) -> String {
-        switch style {
-        case .veryShort:
-            return self.veryShortString
-            
-        case .short:
-            return self.shortString
-            
-        case .normal:
-            return self.string
-        }
-    }
-    
-    static func weekdaysText(for days: [DayInWeek], style: SizeStyle) -> String {
-        var weekdaysText = ""
-        
-        for day in days {
-            if day == days.first {
-                weekdaysText.append(NSLocalizedString("at ", comment: "weekdaysText first part"))
-            } else if day == days.last {
-                weekdaysText.append(NSLocalizedString(" and ", comment: "weekdaysText second to last part"))
-            } else {
-                weekdaysText.append(", ")
-            }
-            
-            weekdaysText.append(day.string(style).lowercased())
-        }
-        
-        return weekdaysText
-    }
-}
-
 class EditContextVMFooco {
     
     private weak var delegate: ViewModelUpdateDelegate?
@@ -71,10 +16,10 @@ class EditContextVMFooco {
 	
 	private let barSize: CGFloat = 100
 	
-	private var week = [DayInWeek: [TimeBlock]]()
+	private var week = [Weekday: [TimeBlock]]()
 	
-	private var counterWeek: [TimeBlock: [DayInWeek]] {
-		var value = [TimeBlock: [DayInWeek]]()
+	private var counterWeek: [TimeBlock: [Weekday]] {
+		var value = [TimeBlock: [Weekday]]()
 		
 		for day in self.week {
 			for block in day.value {
@@ -139,19 +84,19 @@ class EditContextVMFooco {
 		return formatter.string(from: time)!
 	}
 	
-	private func time(for day: DayInWeek) -> TimeInterval {
+	private func time(for day: Weekday) -> TimeInterval {
 		var totalTime: TimeInterval = 0
 		
 		if let someDay = self.week[day] {
 			for someTime in someDay {
-				totalTime += someTime.length // CHECK
+				totalTime += someTime.length // TODO: CHECK
 			}
 		}
 		
 		return totalTime
 	}
 	
-	func timeDescription(for day: DayInWeek) -> String {
+	func timeDescription(for day: Weekday) -> String {
 		let time = self.time(for: day)
 		
 		var result: String
@@ -165,7 +110,7 @@ class EditContextVMFooco {
 		return result
 	}
 	
-	func size(for day: DayInWeek) -> CGFloat {
+	func size(for day: Weekday) -> CGFloat {
 		let dayTime = self.time(for: day)
 		
 		let size = CGFloat(dayTime / self.busiestDayTotalTime)
@@ -173,12 +118,12 @@ class EditContextVMFooco {
 		return size * self.barSize
 	}
 	
-	func cellData(for row: Int) -> (TimeBlock, [DayInWeek]) {
+	func cellData(for row: Int) -> (TimeBlock, [Weekday]) {
 		return self.counterWeek.row(row)
 	}
 	
-	private func createTimeBlock(start: Date, end: Date, for days: Set<DayInWeek>) {
-        let newTimeBlock = try! TimeBlock(starts: Time(date: start), ends: Time(date: end)) // CHECK
+	private func createTimeBlock(start: Date, end: Date, for days: Set<Weekday>) {
+		let newTimeBlock = try! TimeBlock(starts: Time(date: start), ends: Time(date: end)) // TODO: CHECK
 		
         for day in days {
             if self.week[day] == nil {
@@ -194,10 +139,10 @@ class EditContextVMFooco {
 		return PickerAlertVM.forTimeBlocks(startingTime: now, endingTime: now.addingTimeInterval(1.hour), days: Set(), context: self.context, receiver: self)
 	}
     
-    func createEditAlert(for selected: (TimeBlock, [DayInWeek])) -> PickerAlertVM {
+    func createEditAlert(for selected: (TimeBlock, [Weekday])) -> PickerAlertVM {
         let timeblock = selected.0
         let days = selected.1
-        return PickerAlertVM.forTimeBlocks(startingTime: timeblock.start.toDate(), endingTime: timeblock.end.toDate(), days: Set(days), context: self.context, receiver: self) // CHECK
+		return PickerAlertVM.forTimeBlocks(startingTime: timeblock.start.toDate(), endingTime: timeblock.end.toDate(), days: Set(days), context: self.context, receiver: self) // TODO: CHECK
     }
 }
 

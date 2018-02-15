@@ -57,7 +57,7 @@ final class PickerAlertVM {
 	private(set) var projectName: String?
 	private(set) var context: Context?
 	
-	private(set) var selectedDays = Set<DayInWeek>()
+	private(set) var selectedDays = Set<Weekday>()
 	
 	// MARK: Output
     let tagAdd = 100 // The tags start at 100 to diferentiate from not tagged items
@@ -112,7 +112,7 @@ final class PickerAlertVM {
 		return self.init(mode: .date(.end), context: context, projectName: projectName, mainDate: endDate, comparisonDate: startDate, receiver: receiver)
 	}
 	
-	static func forTimeBlocks(startingTime: Date, endingTime: Date?, days: Set<DayInWeek>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertVM {
+	static func forTimeBlocks(startingTime: Date, endingTime: Date?, days: Set<Weekday>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertVM {
 		let returnValue = self.init(mode: .timeBlock(.begin), context: context, projectName: nil, mainDate: startingTime, comparisonDate: endingTime, receiver: receiver)
 		
 		returnValue.selectedDays = days
@@ -134,7 +134,7 @@ final class PickerAlertVM {
 	// MARK: - Prepare Output to View
     
     func dayTouched(tag: Int) {
-        if let day = DayInWeek(rawValue: tag - self.tagAdd) {
+        if let day = Weekday(rawValue: tag - self.tagAdd) {
             if self.selectedDays.contains(day) {
                 self.selectedDays.remove(day)
                 
@@ -155,7 +155,7 @@ final class PickerAlertVM {
         if self.selectedDays.isEmpty {
             self.footerTitle = NSLocalizedString("choose one or more days", comment: "FooterTitle for .timeBlock(.begin), with empty days set")
         } else {
-            self.footerTitle = DayInWeek.weekdaysText(for: self.selectedDays.sorted(), style: .short)
+            self.footerTitle = Weekday.weekdaysText(for: self.selectedDays.sorted(), style: .short)
         }
 		
 		switch self.mode {

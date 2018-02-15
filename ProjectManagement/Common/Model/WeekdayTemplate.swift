@@ -12,13 +12,55 @@ import Foundation
  weekdays, where sunday is 1 and saturday is 7
  */
 enum Weekday: Int {
-    case sunday = 1
-    case monday
-    case tuesday
-    case wednesday
-    case thursday
-    case friday
-    case saturday
+	
+	case sunday = 1
+	case monday
+	case tuesday
+	case wednesday
+	case thursday
+	case friday
+	case saturday
+	
+	enum SizeStyle {
+		case veryShort, short, normal
+	}
+	
+	func string(_ style: SizeStyle) -> String {
+		switch style {
+		case .veryShort:
+			return DateFormatter().veryShortStandaloneWeekdaySymbols[self.rawValue - 1]
+			
+		case .short:
+			return DateFormatter().shortStandaloneWeekdaySymbols[self.rawValue - 1]
+			
+		case .normal:
+			return DateFormatter().standaloneWeekdaySymbols[self.rawValue - 1]
+		}
+	}
+	
+	static func weekdaysText(for days: [Weekday], style: SizeStyle) -> String {
+		var weekdaysText = ""
+		
+		for day in days {
+			if day == days.first {
+				weekdaysText.append(NSLocalizedString("at ", comment: "weekdaysText first part"))
+			} else if day == days.last {
+				weekdaysText.append(NSLocalizedString(" and ", comment: "weekdaysText second to last part"))
+			} else {
+				weekdaysText.append(", ")
+			}
+			
+			weekdaysText.append(day.string(style).lowercased())
+		}
+		
+		return weekdaysText
+	}
+}
+
+extension Weekday: Comparable {
+	static func < (lhs: Weekday, rhs: Weekday) -> Bool {
+		return lhs.rawValue < rhs.rawValue
+	}
 }
 
 /**

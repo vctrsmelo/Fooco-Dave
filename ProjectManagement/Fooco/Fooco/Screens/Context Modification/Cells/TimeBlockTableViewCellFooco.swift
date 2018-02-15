@@ -9,7 +9,7 @@ import UIKit
 
 class TimeBlockTableViewCellFooco: UITableViewCell {
 
-	var cellData: (timeblock: TimeBlock, days: [DayInWeek])? {
+	var cellData: (timeblock: TimeBlock, days: [Weekday])? {
 		didSet {
 			self.fillCellData()
 		}
@@ -30,7 +30,7 @@ class TimeBlockTableViewCellFooco: UITableViewCell {
 			//self.endTime.text = dateFormatter.string(from: someCellData.timeblock.endsAt)
 			self.endTime.text = someCellData.timeblock.end.description
             
-			self.weekDays.text = DayInWeek.weekdaysText(for: someCellData.days.sorted(), style: .normal)
+			self.weekDays.text = Weekday.weekdaysText(for: someCellData.days.sorted(), style: .normal)
 		}
 	}
 
