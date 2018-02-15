@@ -6,7 +6,6 @@
 //  Copyright © 2017 Victor S Melo. All rights reserved.
 //
 
-
 import Foundation
 
 enum TimeBlockError: Error {
@@ -25,10 +24,7 @@ extension TimeBlockError: CustomStringConvertible {
     }
 }
 
-
 struct TimeBlock {
-    private var hash = UUID() // TODO: Make decent
-
     private var starts: Time!
 
     private var ends: Time!
@@ -133,7 +129,7 @@ extension TimeBlock: Equatable {
 
 extension TimeBlock: Hashable {
     var hashValue: Int {
-        return self.hash.hashValue // TODO: make decent
+        return self.starts.hashValue &+ self.ends.hashValue // &+ is the operator for addition that allows overflow
     }
 }
 

@@ -21,8 +21,6 @@ extension TimeError: CustomStringConvertible {
     }
 }
 
-let dailyTotalSeconds = 86_400
-
 struct Time {
     
     var day: Int {
@@ -49,7 +47,6 @@ struct Time {
     let totalSeconds: TimeInterval
     
     init(day: Int = 0, hour: Int = 0, minute: Int = 0, second: Int = 0) throws {
-        
         
         if  !TimeRange.hours.contains(hour) || !TimeRange.minutes.contains(minute) || !TimeRange.seconds.contains(second) {
             throw TimeError.outOfBounds
@@ -86,22 +83,26 @@ struct Time {
     }
 }
 
+extension Time: Equatable {
+	static func == (lhs: Time, rhs: Time) -> Bool {
+		return lhs.totalSeconds == rhs.totalSeconds
+	}
+}
+
 extension Time: Comparable {
-    
     static func < (lhs: Time, rhs: Time) -> Bool {
         
         return lhs.totalSeconds < rhs.totalSeconds
     }
-    
-    static func == (lhs: Time, rhs: Time) -> Bool {
-        return lhs.totalSeconds == rhs.totalSeconds
-    }
-    
-    
+}
+
+extension Time: Hashable {
+	var hashValue: Int {
+		return self.totalSeconds.hashValue
+	}
 }
 
 extension Time {
-    
     static func - (lhs: Time, rhs: Time) -> TimeInterval {
         return lhs.totalSeconds - rhs.totalSeconds
     }
@@ -112,8 +113,6 @@ extension Time: CustomStringConvertible {
     var description: String {
         return "\(hour):\(minute):\(second)"
     }
-    
-    
 }
 
 /**
