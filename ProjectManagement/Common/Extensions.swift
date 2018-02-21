@@ -86,6 +86,13 @@ extension Date {
         return self.getDay() == Date().getDay()
     }
 	
+	func clamped(by minuteInterval: Int) -> Date {
+		let referenceTimeInterval = self.timeIntervalSinceReferenceDate
+		let remainingSeconds = referenceTimeInterval.truncatingRemainder(dividingBy: minuteInterval.minutes)
+		let timeRoundedToInterval = referenceTimeInterval - remainingSeconds
+		return Date(timeIntervalSinceReferenceDate: timeRoundedToInterval)
+	}
+	
 	/**
 	Returns the hour, minutes and seconds of the date.
 	*/

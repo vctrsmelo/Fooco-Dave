@@ -28,32 +28,44 @@ enum Weekday: Int {
 	func string(_ style: SizeStyle) -> String {
 		switch style {
 		case .veryShort:
-			return DateFormatter().veryShortStandaloneWeekdaySymbols[self.rawValue - 1]
+			return Calendar.current.veryShortStandaloneWeekdaySymbols[self.rawValue - 1]
 			
 		case .short:
-			return DateFormatter().shortStandaloneWeekdaySymbols[self.rawValue - 1]
+			return Calendar.current.shortStandaloneWeekdaySymbols[self.rawValue - 1]
 			
 		case .normal:
-			return DateFormatter().standaloneWeekdaySymbols[self.rawValue - 1]
+			return Calendar.current.standaloneWeekdaySymbols[self.rawValue - 1]
 		}
 	}
 	
-	static func weekdaysText(for days: [Weekday], style: SizeStyle) -> String {
-		var weekdaysText = ""
+	static func weekdaysText(for days: [Weekday], style: SizeStyle, friendlyDates: Bool) -> String {
 		
-		for day in days {
-			if day == days.first {
-				weekdaysText.append(NSLocalizedString("at ", comment: "weekdaysText first part"))
-			} else if day == days.last {
-				weekdaysText.append(NSLocalizedString(" and ", comment: "weekdaysText second to last part"))
-			} else {
-				weekdaysText.append(", ")
+		if friendlyDates && days == [.monday, .tuesday, .wednesday, .thursday, .friday] {
+			return NSLocalizedString("at business days", comment: "Text for all business days selected")
+			
+		} else if friendlyDates && days == [.sunday, .saturday] {
+			return NSLocalizedString("at weekends", comment: "Text for weekend selected")
+			
+		} else if friendlyDates && days == [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday] {
+			return NSLocalizedString("every day", comment: "Text for every day selected")
+			
+		} else {
+			var weekdaysText = ""
+			
+			for day in days {
+				if day == days.first {
+					weekdaysText.append(NSLocalizedString("at ", comment: "weekdaysText first part"))
+				} else if day == days.last {
+					weekdaysText.append(NSLocalizedString(" and ", comment: "weekdaysText second to last part"))
+				} else {
+					weekdaysText.append(", ")
+				}
+				
+				weekdaysText.append(day.string(style).lowercased())
 			}
 			
-			weekdaysText.append(day.string(style).lowercased())
+			return weekdaysText
 		}
-		
-		return weekdaysText
 	}
 }
 

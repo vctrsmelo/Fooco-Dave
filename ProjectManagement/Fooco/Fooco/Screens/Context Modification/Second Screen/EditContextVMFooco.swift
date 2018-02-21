@@ -123,15 +123,18 @@ class EditContextVMFooco {
 	}
 	
 	private func createTimeBlock(start: Date, end: Date, for days: Set<Weekday>) {
-		let newTimeBlock = try! TimeBlock(starts: Time(date: start), ends: Time(date: end)) // TODO: CHECK
-		
-        for day in days {
-            if self.week[day] == nil {
-                self.week[day] = []
-            }
-            
-            self.week[day]?.append(newTimeBlock)
-        }
+		do {
+			let newTimeBlock = try TimeBlock(starts: Time(date: start), ends: Time(date: end)) // TODO: CHECK
+			for day in days {
+				if self.week[day] == nil {
+					self.week[day] = []
+				}
+				
+				self.week[day]?.append(newTimeBlock)
+			}
+		} catch {
+			print(error)
+		}
 	}
 	
 	func createNewAlert() -> PickerAlertVM {

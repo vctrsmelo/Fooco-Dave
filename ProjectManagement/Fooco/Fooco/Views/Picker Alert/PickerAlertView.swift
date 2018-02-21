@@ -45,6 +45,8 @@ class PickerAlertView: UIView {
     @IBOutlet private weak var datePicker: UIDatePicker!
     @IBOutlet private weak var hoursPicker: UIPickerView!
 	
+	@IBOutlet private var daysButtons: [UIButton]!
+	
     @IBOutlet private weak var confirmButton: UIButton!
 	
 	func initialSetup() {
@@ -84,19 +86,23 @@ class PickerAlertView: UIView {
 			
 		case .timeBlock(.begin):
 			self.datePicker.datePickerMode = .time
-            self.datePicker.minuteInterval = 15
+            self.datePicker.minuteInterval = self.viewModel.minuteInterval
 			
-			self.datePicker.setDate(self.viewModel.mainDate, animated: false)
+			self.datePicker.setDate(self.viewModel.mainDate.clamped(by: self.viewModel.minuteInterval), animated: true)
 			
 			self.footerIsHidden = false
 			
 		case .timeBlock(.end):
 			self.datePicker.datePickerMode = .time
-            self.datePicker.minuteInterval = 15
+            self.datePicker.minuteInterval = self.viewModel.minuteInterval
 
-			self.datePicker.minimumDate = self.viewModel.mainDate.addingTimeInterval(1.hour)
+			self.datePicker.minimumDate = self.viewModel.mainDate.addingTimeInterval(self.viewModel.minimumTimeBlockSize.hour)
 			
-            self.datePicker.setDate(self.viewModel.comparisonDate ?? Date().addingTimeInterval(1.hour), animated: true)
+			if let comparisonDate = self.viewModel.comparisonDate, comparisonDate.clamped(by: self.viewModel.minuteInterval) < self.datePicker.minimumDate! {
+				self.viewModel.comparisonDate = self.datePicker.minimumDate
+			}
+			
+            self.datePicker.setDate(self.viewModel.comparisonDate?.clamped(by: self.viewModel.minuteInterval) ?? self.datePicker.minimumDate!, animated: true)
             
             self.footerIsHidden = false
 		}
@@ -135,9 +141,12 @@ class PickerAlertView: UIView {
         
         self.confirmButton.setTitle(self.viewModel.button.title, for: .normal)
         self.confirmButton.backgroundColor = self.viewModel.button.color
-        
+		
+		for dayButton in self.daysButtons {
+			dayButton.isSelected = false
+		}
         for day in self.viewModel.selectedDays {
-            (self.footer.viewWithTag(day.rawValue + self.viewModel.tagAdd) as? UIButton)?.isSelected = true
+            self.daysButtons[day.rawValue - 1].isSelected = true
         }
 	}
 
@@ -165,25 +174,30 @@ class PickerAlertView: UIView {
 	// TODO: hide view if touch outside it
     @IBAction private func confirmTouched(_ sender: UIButton) {
 		
-		self.isHidden = true
-        
-		switch self.currentMode {
-		case .estimatedTime:
-			self.viewModel.chosenTime.days = self.hoursPicker.selectedRow(inComponent: 0)
-			self.viewModel.chosenTime.hours = self.hoursPicker.selectedRow(inComponent: 1)
-            self.viewModel.sendToReceiver()
+		if self.viewModel.isDataValid() {
 			
-		case .date:
-			self.viewModel.mainDate = self.datePicker.date
-            self.viewModel.sendToReceiver()
+			self.isHidden = true
 			
-		case .timeBlock(.begin):
-			self.viewModel.mainDate = self.datePicker.date
-			self.present(with: self.viewModel.forTimeBlockEnd())
-			
-		case .timeBlock(.end):
-			self.viewModel.comparisonDate = self.datePicker.date
-            self.viewModel.sendToReceiver()
+			switch self.currentMode {
+			case .estimatedTime:
+				self.viewModel.chosenTime.days = self.hoursPicker.selectedRow(inComponent: 0)
+				self.viewModel.chosenTime.hours = self.hoursPicker.selectedRow(inComponent: 1)
+				self.viewModel.sendToReceiver()
+				
+			case .date:
+				self.viewModel.mainDate = self.datePicker.date
+				self.viewModel.sendToReceiver()
+				
+			case .timeBlock(.begin):
+				self.viewModel.mainDate = self.datePicker.date
+				self.present(with: self.viewModel.forTimeBlockEnd())
+				
+			case .timeBlock(.end):
+				self.viewModel.comparisonDate = self.datePicker.date
+				self.viewModel.sendToReceiver()
+			}
+		} else {
+			print("[Error] Invalid data")
 		}
     }
     

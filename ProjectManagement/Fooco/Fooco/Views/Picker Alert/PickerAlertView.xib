@@ -27,6 +27,13 @@
                 <outlet property="titleLabel" destination="xI4-JY-bqQ" id="tcV-my-V8a"/>
                 <outlet property="underTitleLabel" destination="LKH-yo-3xD" id="782-H0-GBn"/>
                 <outlet property="viewContainer" destination="iN0-l3-epB" id="eh4-hN-Wbu"/>
+                <outletCollection property="daysButtons" destination="c87-jV-YHi" collectionClass="NSMutableArray" id="Ooh-0f-qWA"/>
+                <outletCollection property="daysButtons" destination="xtG-Eq-VYT" collectionClass="NSMutableArray" id="XYA-0O-pcy"/>
+                <outletCollection property="daysButtons" destination="VH6-Q6-44P" collectionClass="NSMutableArray" id="QRx-rd-cHC"/>
+                <outletCollection property="daysButtons" destination="Jit-zm-0J7" collectionClass="NSMutableArray" id="XOB-9u-4u6"/>
+                <outletCollection property="daysButtons" destination="ghs-Qz-2WN" collectionClass="NSMutableArray" id="pz9-Wx-HbL"/>
+                <outletCollection property="daysButtons" destination="OJb-yC-OyS" collectionClass="NSMutableArray" id="cGy-qt-Vua"/>
+                <outletCollection property="daysButtons" destination="tXy-gR-vGE" collectionClass="NSMutableArray" id="3hg-Lx-WFP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

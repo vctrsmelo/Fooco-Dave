@@ -57,10 +57,20 @@ final class PickerAlertVM {
 	private(set) var projectName: String?
 	private(set) var context: Context?
 	
-	private(set) var selectedDays = Set<Weekday>()
+	private(set) var selectedDays: Set<Weekday>
 	
 	// MARK: Output
-    let tagAdd = 100 // The tags start at 100 to diferentiate from not tagged items
+	let tagAdd = 100 // The tags start at 100 to diferentiate from not tagged items
+	
+	private static let minuteInterval = 15
+	var minuteInterval: Int {
+		return PickerAlertVM.minuteInterval
+	}
+	
+	private static let minimumTimeBlockSize = 1
+	var minimumTimeBlockSize: Int {
+		return PickerAlertVM.minimumTimeBlockSize
+	}
     
 	private(set) var overTitle = ""
 	private(set) var title = ""
@@ -87,12 +97,13 @@ final class PickerAlertVM {
 	
 	// MARK: - Initialization
 	
-    private init(mode: PickerAlertMode, context: Context?, projectName: String?, mainDate: Date = Date(), comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int) = (days: 0, hours: 0), receiver: PickerAlertViewModelReceiver) {
+	private init(mode: PickerAlertMode, context: Context?, projectName: String?, selectedDays: Set<Weekday> = Set(), mainDate: Date = Date(), comparisonDate: Date? = nil, chosenTime: (days: Int, hours: Int) = (days: 0, hours: 0), receiver: PickerAlertViewModelReceiver) {
 		self.receiver = receiver
 		
 		self.mode = mode
-		self.context = context
 		self.projectName = projectName == "" ? nil : projectName
+		self.context = context
+		self.selectedDays = selectedDays
 		self.mainDate = mainDate
 		self.comparisonDate = comparisonDate
 		self.chosenTime = chosenTime
@@ -113,11 +124,15 @@ final class PickerAlertVM {
 	}
 	
 	static func forTimeBlocks(startingTime: Date, endingTime: Date?, days: Set<Weekday>, context: Context, receiver: PickerAlertViewModelReceiver) -> PickerAlertVM {
-		let returnValue = self.init(mode: .timeBlock(.begin), context: context, projectName: nil, mainDate: startingTime, comparisonDate: endingTime, receiver: receiver)
+		let finalStartingTime = startingTime.clamped(by: self.minuteInterval)
 		
-		returnValue.selectedDays = days
+		var finalEndingTime = endingTime
 		
-		return returnValue
+		if let endingTime = endingTime, endingTime.clamped(by: self.minuteInterval) < finalStartingTime.addingTimeInterval(self.minimumTimeBlockSize.hours) {
+			finalEndingTime = finalStartingTime.addingTimeInterval(self.minimumTimeBlockSize.hours)
+		}
+		
+		return self.init(mode: .timeBlock(.begin), context: context, projectName: nil, selectedDays: days, mainDate: finalStartingTime, comparisonDate: finalEndingTime, receiver: receiver)
 	}
 	
 	func forTimeBlockEnd() -> PickerAlertVM {
@@ -155,7 +170,7 @@ final class PickerAlertVM {
         if self.selectedDays.isEmpty {
             self.footerTitle = NSLocalizedString("choose one or more days", comment: "FooterTitle for .timeBlock(.begin), with empty days set")
         } else {
-            self.footerTitle = Weekday.weekdaysText(for: self.selectedDays.sorted(), style: .short)
+            self.footerTitle = Weekday.weekdaysText(for: self.selectedDays.sorted(), style: .short, friendlyDates: true)
         }
 		
 		switch self.mode {
@@ -204,4 +219,20 @@ final class PickerAlertVM {
 		}
 	}
 	
+	// MARK: - Verify Data
+	
+	func isDataValid() -> Bool {
+		switch self.mode {
+		case .estimatedTime:
+			print("[Error] Not implemented")
+			return true
+			
+		case .date:
+			print("[Error] Not implemented")
+			return true
+			
+		case .timeBlock:
+			return !self.selectedDays.isEmpty
+		}
+	}
 }
